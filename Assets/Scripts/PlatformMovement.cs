@@ -5,25 +5,64 @@ using UnityEngine;
 public class PlatformMovement : MonoBehaviour
 {
     public bool isMoving = false;
+    public Vector3 velocity;
+
     [SerializeField]
     private Transform startPoint, endPoint, targetPoint;
     [SerializeField]
-    private float m_Speed = 1f;
+    private float m_speed = 1f;
     private bool m_isReversing = false;
     private Rigidbody m_Rigidbody;
+    private Vector3 m_lastPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = startPoint.position;
+        velocity = new Vector3(0f, 0f, 0f);
+        m_lastPosition = transform.position;
         targetPoint = endPoint;
         m_Rigidbody = GetComponent<Rigidbody>();
     }
 
-    void MyCollisions()
+    void Update() 
+    {
+        velocity = (transform.position - m_lastPosition) / Time.deltaTime;
+        m_lastPosition = transform.position;
+    }
+
+    void FixedUpdate()
+    {
+        checkCollisions();
+        if (isMoving)
+        {
+            Vector3 platformVelocity = targetPoint.position - transform.position;
+
+            m_Rigidbody.MovePosition(transform.position + platformVelocity.normalized * Time.deltaTime * m_speed);
+
+            if ((m_Rigidbody.position - targetPoint.position).sqrMagnitude < 0.001f)
+            {
+                if (m_isReversing)
+                {
+                    targetPoint = endPoint;
+                    m_isReversing = false;
+                }
+                else
+                {
+                    targetPoint = startPoint;
+                    m_isReversing = true;
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks if the player is on this platform using OverlapBox
+     */
+    void checkCollisions()
     {
         // Use the OverlapBox to detect if there are any other colliders within this box area.
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(2.0f, 2.0f, 2.0f), Quaternion.identity);
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z), Quaternion.identity);
         int i = 0;
         // Check when there is a new collider coming into contact with the box
         while (i < hitColliders.Length)
@@ -45,39 +84,13 @@ public class PlatformMovement : MonoBehaviour
         }
     }
 
+    /**
+     * Draws a red cube around the platform to show the OverlapBox 
+     * for testing purposes
+     */
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        // Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-        Gizmos.DrawWireCube(transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(2.0f, 2.0f, 2.0f));
-    }
-
-    void FixedUpdate()
-    {
-        MyCollisions();
-        if (isMoving)
-        {
-            //Store user input as a movement vector
-            Vector3 velocity = targetPoint.position - transform.position;
-
-            //Apply the movement vector to the current position, which is
-            //multiplied by deltaTime and speed for a smooth MovePosition
-            m_Rigidbody.MovePosition(transform.position + velocity.normalized * Time.deltaTime * m_Speed);
-
-            if ((m_Rigidbody.position - targetPoint.position).sqrMagnitude < 0.001f)
-            {
-                if (m_isReversing)
-                {
-                    targetPoint = endPoint;
-                    m_isReversing = false;
-                }
-                else
-                {
-                    targetPoint = startPoint;
-                    m_isReversing = true;
-                }
-            }
-        }
-        
+        Gizmos.DrawWireCube(transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z));
     }
 }
