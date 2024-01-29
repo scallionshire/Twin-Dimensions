@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    public bool isMoving = false;
-    public Vector3 velocity;
+    public bool isMoving = false; // to be toggled by external scripts
+    [HideInInspector]
+    public Vector3 velocity; // to be exposed to the player movement script
 
     [SerializeField]
     private Transform startPoint, endPoint, targetPoint;
@@ -31,6 +32,7 @@ public class PlatformMovement : MonoBehaviour
         m_lastPosition = transform.position;
     }
 
+    // Apply physics-based movement in FixedUpdate
     void FixedUpdate()
     {
         checkCollisions();
@@ -40,6 +42,7 @@ public class PlatformMovement : MonoBehaviour
 
             m_Rigidbody.MovePosition(transform.position + platformVelocity.normalized * Time.deltaTime * m_speed);
 
+            // Reverse the platform if it's reached either end
             if ((m_Rigidbody.position - targetPoint.position).sqrMagnitude < 0.001f)
             {
                 if (m_isReversing)

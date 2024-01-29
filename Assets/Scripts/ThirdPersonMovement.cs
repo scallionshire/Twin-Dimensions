@@ -49,8 +49,7 @@ public class ThirdPersonMovement : MonoBehaviour
             //     audioManager.Play("Walking");
             // }
 
-            
-
+            // Adjust angle of movement
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
@@ -58,6 +57,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+            // Check if player is on a platform, and move character controller accordingly
             if (transform.parent != null) {
                 Vector3 parentDir = transform.parent.gameObject.GetComponent<PlatformMovement>().velocity;
                 controller.Move(moveDir.normalized * speed * Time.deltaTime + parentDir * Time.deltaTime);
@@ -69,6 +69,8 @@ public class ThirdPersonMovement : MonoBehaviour
             // {
             //     audioManager.Pause("Walking");
             // }
+
+            // Check if player is on a platform, and move character controller accordingly
             if (transform.parent != null)
             {
                 Vector3 parentDir = transform.parent.gameObject.GetComponent<PlatformMovement>().velocity;
@@ -86,6 +88,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
         // Apply gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime); // Apply gravity and jump velocity
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 }

@@ -737,6 +737,10 @@ PrefabInstance:
       value: Moving Platform (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8982754185488328261, guid: 942254f9b460349b193f2fc066517011, type: 3}
+      propertyPath: m_speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982754185488328261, guid: 942254f9b460349b193f2fc066517011, type: 3}
       propertyPath: endPoint
       value: 
       objectReference: {fileID: 1273508920}
@@ -953,11 +957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000000784867
+      value: -0.0000000078486675
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000035232497
+      value: 0.0000000035232484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
