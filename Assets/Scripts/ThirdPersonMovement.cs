@@ -14,12 +14,12 @@ public class ThirdPersonMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Animator animator;
-    private AudioManager audioManager;
+    // private AudioManager audioManager;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+        // audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
         animator = GetComponent<Animator>();
     }
 
@@ -39,13 +39,11 @@ public class ThirdPersonMovement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             // Play footsteps
-            if (!audioManager.isPlaying("Walking"))
-            {
-                audioManager.Play("Walking");
-            }
+            // if (!audioManager.isPlaying("Walking"))
+            // {
+            //     audioManager.Play("Walking");
+            // }
 
-            // Animation
-            
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
@@ -54,21 +52,22 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         } else {
-            if (audioManager.isPlaying("Walking"))
-            {
-                audioManager.Pause("Walking");
-            }
+            // if (audioManager.isPlaying("Walking"))
+            // {
+            //     audioManager.Pause("Walking");
+            // }
         }
 
         // Jump
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
+            Debug.Log("jumped");
+            // animator.SetBool("Jump", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
         // Apply gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime); // Apply gravity and jump velocity
-        // Debug.Log("Grounded: " + groundedPlayer);
     }
 }
