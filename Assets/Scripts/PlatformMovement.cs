@@ -63,25 +63,23 @@ public class PlatformMovement : MonoBehaviour
     {
         // Use the OverlapBox to detect if there are any other colliders within this box area.
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z), Quaternion.identity);
+
+        // Check when the player is coming into contact with the box
         int i = 0;
-        // Check when there is a new collider coming into contact with the box
         while (i < hitColliders.Length)
         {
-            // Output all of the collider names
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-            // Increase the number of Colliders in the array
+            Debug.Log("Hit: " + hitColliders[i].gameObject.name);
             if (hitColliders[i].gameObject.tag == "Player")
             {
                 Debug.Log("Player is on the platform");
                 hitColliders[i].transform.parent = transform;
+                return;
             }
             i++;
         }
-        if (hitColliders.Length < 2)
-        {
-            Debug.Log("Player is not on the platform");
-            transform.DetachChildren();
-        }
+
+        Debug.Log("Player is not on the platform");
+        transform.DetachChildren();
     }
 
     /**
