@@ -150,11 +150,11 @@ PrefabInstance:
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockPrefab
       value: 
-      objectReference: {fileID: 3641232955907479536, guid: 79681083d31e841199a39445deeb4c3a, type: 3}
+      objectReference: {fileID: 581470781}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: connectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1f0b1b43bcd6f4122a511ac593c85fec, type: 3}
+      objectReference: {fileID: 21300000, guid: 574d98043a7964d5f9205b12064323c2, type: 3}
     - target: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_Name
       value: greenTrigger
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.49
+      value: -0.868
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112686479}
+  - component: {fileID: 112686480}
   m_Layer: 0
   m_Name: Tilemap_Blocks
   m_TagString: Untagged
@@ -247,6 +248,44 @@ Transform:
   - {fileID: 581470782}
   m_Father: {fileID: 1503297645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1839735485 &112686480
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112686478}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &129756149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,11 +2189,11 @@ PrefabInstance:
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockPrefab
       value: 
-      objectReference: {fileID: 5048503453967909460, guid: dd544d40338434fb38812f021ff2bf1c, type: 3}
+      objectReference: {fileID: 208445946}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: connectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1c2b11758ef7c4e40a05d2f74f464fe6, type: 3}
+      objectReference: {fileID: 21300000, guid: 574d98043a7964d5f9205b12064323c2, type: 3}
     - target: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_Name
       value: pinkTrigger
@@ -2169,11 +2208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.49
+      value: 0.584
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.857
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2364,11 +2403,11 @@ PrefabInstance:
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockPrefab
       value: 
-      objectReference: {fileID: 1853523778234313275, guid: b695b5ad6dbd544d4a8aa0592abe102a, type: 3}
+      objectReference: {fileID: 1243848474}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: connectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: e65fa16196da440609e9442f423fe21c, type: 3}
+      objectReference: {fileID: 21300000, guid: 574d98043a7964d5f9205b12064323c2, type: 3}
     - target: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_Name
       value: yellowTrigger
@@ -2383,7 +2422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.53
+      value: -1.787
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2671,7 +2710,7 @@ PrefabInstance:
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockPrefab
       value: 
-      objectReference: {fileID: 3507673626354832598, guid: 8c1a108679c33410293a0a171387c6b3, type: 3}
+      objectReference: {fileID: 2016772797}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: connectedSprite
       value: 
@@ -2690,7 +2729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.61
+      value: -0.135
       objectReference: {fileID: 0}
     - target: {fileID: 6500095809446441051, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_LocalPosition.y

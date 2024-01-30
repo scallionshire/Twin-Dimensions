@@ -26,6 +26,8 @@ public class BlockScript : MonoBehaviour
             puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { position = puzzleManager.correctBlocks[blockId].position, correctTile = puzzleManager.correctBlocks[blockId].correctTile, isCorrect = true };
             Debug.Log("???");
             GameObject.Find("PuzzleManager").GetComponent<AudioSource>().Play();
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

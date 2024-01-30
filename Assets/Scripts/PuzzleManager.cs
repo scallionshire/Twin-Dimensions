@@ -22,7 +22,7 @@ public class PuzzleManager : MonoBehaviour
     void Start()
     {
         tilemap = GameObject.Find("Tilemap_Blocks").GetComponent<Tilemap>();
-        audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+        //audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -31,7 +31,8 @@ public class PuzzleManager : MonoBehaviour
         if (IsPuzzleSolved())
         {
             // Puzzle is solved, provide feedback and handle progression
-            StartCoroutine(changeScene());
+            //StartCoroutine(changeScene());
+             Debug.Log("Puzzle solved");
         }
     }
 
@@ -52,11 +53,14 @@ public class PuzzleManager : MonoBehaviour
         // Iterate through each cell in the tilemap
         foreach (PuzzlePiece piece in correctBlocks)
         {
+             Debug.Log("Piece: " + piece.position + " - IsCorrect: " + piece.isCorrect);
             if (!piece.isCorrect)
             {
                 // Check for the right tile here
                 return false;
-            } else {
+            } 
+            else 
+            {
                 tilemap.SetTile(piece.position, piece.correctTile);
             }
         }
