@@ -8,24 +8,21 @@ public class PuzzleManager : MonoBehaviour
 {
     [System.Serializable]
     public struct PuzzlePiece {
-        public Vector3Int position;
-        public TileBase correctTile;
+        public GameObject destinationObject;
         public bool isCorrect;
     }
 
-    public Tilemap tilemap;
-    public TileBase startTileDone;
-    public TileBase endTileDone;
     public List<PuzzlePiece> correctBlocks;
+    public Sprite correctSprite;
     private AudioManager audioManager;
-
     private GameManager gameManager;
 
     void Start()
     {
-        tilemap = GameObject.Find("Tilemap_Blocks").GetComponent<Tilemap>();
-        //audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
-         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (GameObject.Find("GameManager") != null) {
+            audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        }
     }
 
     void Update()
@@ -34,42 +31,38 @@ public class PuzzleManager : MonoBehaviour
         if (IsPuzzleSolved())
         {
             // Puzzle is solved, provide feedback and handle progression
-            //StartCoroutine(changeScene());
-             Debug.Log("Puzzle solved");
-             gameManager.doorUnlocked = true;
-             SceneManager.LoadScene("tutroom");
+            Debug.Log("Puzzle solved");
+            StartCoroutine(changeScene());
         }
     }
 
     IEnumerator changeScene()
     {
-        tilemap.SetTile(new Vector3Int(-3, 1, 0), startTileDone);
-        tilemap.SetTile(new Vector3Int(1, -1, 0), startTileDone);
-        Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 180f, 0f), Vector3.one);
-        tilemap.SetTransformMatrix(new Vector3Int(1, -1, 0), matrix);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("GameManager").GetComponent<GameManager>().doorUnlocked = true;
-        audioManager.Play("DoorOpen");
-        SceneManager.LoadScene("SampleScene 1");
+        if (gameManager != null && audioManager != null) {
+            audioManager.Play("USB");
+            gameManager.doorUnlocked = true;
+        }
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("tutroom");
     }
 
     bool IsPuzzleSolved()
     {
+        bool isSolved = true;
         // Iterate through each cell in the tilemap
         foreach (PuzzlePiece piece in correctBlocks)
         {
-            //Debug.Log("Piece: " + piece.position + " - IsCorrect: " + piece.isCorrect);
             if (!piece.isCorrect)
             {
                 // Check for the right tile here
-                return false;
-            } 
-            else 
+                isSolved = false;
+            } else 
             {
-                tilemap.SetTile(piece.position, piece.correctTile);
+                Debug.Log("Correct piece found: " + piece.destinationObject.name);
+                piece.destinationObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
             }
         }
 
-        return true;
+        return isSolved;
     }
 }
