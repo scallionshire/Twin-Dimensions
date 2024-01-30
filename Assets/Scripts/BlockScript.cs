@@ -7,27 +7,31 @@ public class BlockScript : MonoBehaviour
     public PuzzleManager puzzleManager;
     public int blockId;
     public BoxCollider2D boxCollider;
-    public Sprite connectedSprite;
-    public GameObject blockPrefab;
+    public string blockName;
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
         boxCollider = GetComponent<BoxCollider2D>();
+        if (GameObject.Find("GameManager") != null) {
+            audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+        }
     }
 
     // Update is called once per frame
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Block" && collision.gameObject.name == blockPrefab.name)
+        if (collision.gameObject.tag == "Block" && collision.gameObject.name == blockName)
         {
+            puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, isCorrect = true };
 
-            puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { position = puzzleManager.correctBlocks[blockId].position, correctTile = puzzleManager.correctBlocks[blockId].correctTile, isCorrect = true };
-            Debug.Log("???");
-            GameObject.Find("PuzzleManager").GetComponent<AudioSource>().Play();
+            if (audioManager != null) {
+                audioManager.Play("Success");
+            }
+
             Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
     }
 }
