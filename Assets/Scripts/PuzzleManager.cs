@@ -19,10 +19,13 @@ public class PuzzleManager : MonoBehaviour
     public List<PuzzlePiece> correctBlocks;
     private AudioManager audioManager;
 
+    private GameManager gameManager;
+
     void Start()
     {
         tilemap = GameObject.Find("Tilemap_Blocks").GetComponent<Tilemap>();
         //audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -33,6 +36,7 @@ public class PuzzleManager : MonoBehaviour
             // Puzzle is solved, provide feedback and handle progression
             //StartCoroutine(changeScene());
              Debug.Log("Puzzle solved");
+             gameManager.doorUnlocked = true;
              SceneManager.LoadScene("tutroom");
         }
     }

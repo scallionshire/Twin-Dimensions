@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3478488515786829688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812115896519696071}
+  - component: {fileID: 7516719043319510648}
+  - component: {fileID: 2820990776697252143}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &812115896519696071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478488515786829688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5871488, y: 2.024952, z: 4.0047817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7516719043319510648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478488515786829688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ea68e9e56d145218644060be364139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {x: 0, y: 0, z: 0}
+  doorUnlocked: 0
+--- !u!114 &2820990776697252143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478488515786829688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd245d546bda84fe891c5f13a5cfdcf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BGM
+    clip: {fileID: 8300000, guid: 3c3dbeb4ce5bf41beb84b79e7b5c2ab0, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Success
+    clip: {fileID: 8300000, guid: 8f760e49e0b484e438245ab2db2b8130, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walking
+    clip: {fileID: 8300000, guid: 76127ad238110436f82bbf8e3285321e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: 6c804c68941f44543ad1e6a8c6fc3a03, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: USB
+    clip: {fileID: 8300000, guid: 271af3f06db034972a4b5913f540a8d8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BoxSliding
+    clip: {fileID: 8300000, guid: 59f477b24707946f5b2443f3e10f4e8a, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: 3b5c663d1277e47b2b354ae035bb86a8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
