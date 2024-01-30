@@ -17,7 +17,7 @@ public class Player2DMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
+        //audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -35,10 +35,10 @@ public class Player2DMovement : MonoBehaviour
             {
                 transform.GetChild(i).transform.parent = GameObject.Find("Tilemap_Blocks").transform;
             }
-            if (audioManager.isPlaying("BoxSliding"))
-            {
-                audioManager.Pause("BoxSliding");
-            }
+            //if (audioManager.isPlaying("BoxSliding"))
+           // {
+           //     audioManager.Pause("BoxSliding");
+            //}
         }
 
         _animator.SetFloat("Horizontal", movement.x);
@@ -49,16 +49,17 @@ public class Player2DMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (movingBlock && collision.gameObject.tag == "Block" && transform.childCount < 1)
         {
-            if (!audioManager.isPlaying("BoxSliding"))
-            {
-                audioManager.Play("BoxSliding");
-            }
+            //if (!audioManager.isPlaying("BoxSliding"))
+            //{
+            //    audioManager.Play("BoxSliding");
+            //}
             collision.gameObject.transform.parent = transform;
         }
     }
