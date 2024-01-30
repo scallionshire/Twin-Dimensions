@@ -33,6 +33,7 @@ public class PuzzleManager : MonoBehaviour
             // Puzzle is solved, provide feedback and handle progression
             //StartCoroutine(changeScene());
              Debug.Log("Puzzle solved");
+             SceneManager.LoadScene("tutroom");
         }
     }
 
@@ -53,7 +54,7 @@ public class PuzzleManager : MonoBehaviour
         // Iterate through each cell in the tilemap
         foreach (PuzzlePiece piece in correctBlocks)
         {
-             Debug.Log("Piece: " + piece.position + " - IsCorrect: " + piece.isCorrect);
+            //Debug.Log("Piece: " + piece.position + " - IsCorrect: " + piece.isCorrect);
             if (!piece.isCorrect)
             {
                 // Check for the right tile here
