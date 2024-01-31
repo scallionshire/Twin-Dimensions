@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -863,7 +863,7 @@ Transform:
   m_GameObject: {fileID: 208445946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.48999998, y: -1.29, z: 0}
+  m_LocalPosition: {x: 0.5, y: -1.3, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1200,12 +1200,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4354db10ad6dd437495e3ca34ebcf76f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24dae37baae31cc4395e6094b8245703, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.84, y: 9.86}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1486,7 +1486,7 @@ Transform:
   m_GameObject: {fileID: 581470781}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 0.73, z: 0.04}
+  m_LocalPosition: {x: 0.5, y: 1.1, z: 0.04}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1813,7 +1813,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0154c6a5683194313bb226cab724fb41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18609672850a5224ebbc16909b267494, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1851,7 +1851,7 @@ Transform:
   m_GameObject: {fileID: 1243848474}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.48000002, y: -1.29, z: 0.04}
+  m_LocalPosition: {x: -0.5, y: -1.3, z: 0.04}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2806,7 +2806,7 @@ Transform:
   m_GameObject: {fileID: 2016772797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.48, y: 0.74, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0.75, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3135,7 +3135,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a8602e4f47ac246b7a7337dae9be2de3, type: 3}
     - target: {fileID: 6110240822570001739, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: 2D Player
       objectReference: {fileID: 0}
     - target: {fileID: 6110240822570001739, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_TagString

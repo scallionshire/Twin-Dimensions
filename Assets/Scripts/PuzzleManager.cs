@@ -32,18 +32,8 @@ public class PuzzleManager : MonoBehaviour
         {
             // Puzzle is solved, provide feedback and handle progression
             Debug.Log("Puzzle solved");
-            StartCoroutine(changeScene());
+            gameManager.gameState.DoorUnlocked = true;
         }
-    }
-
-    IEnumerator changeScene()
-    {
-        if (gameManager != null && audioManager != null) {
-            audioManager.Play("USB");
-            gameManager.doorUnlocked = true;
-        }
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("tutroom");
     }
 
     bool IsPuzzleSolved()
@@ -54,12 +44,25 @@ public class PuzzleManager : MonoBehaviour
         {
             if (!piece.isCorrect)
             {
-                // Check for the right tile here
                 isSolved = false;
             } else 
             {
                 Debug.Log("Correct piece found: " + piece.destinationObject.name);
                 piece.destinationObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
+
+                if (piece.destinationObject.name == "elevatorTrigger") {
+                    gameManager.gameState.ElevatorBlockSet = true;
+                    gameManager.gameState.completedBlocks.Add(0);
+                } else if (piece.destinationObject.name == "pinkTrigger") {
+                    gameManager.gameState.PinkBlockSet = true;
+                    gameManager.gameState.completedBlocks.Add(2);
+                } else if (piece.destinationObject.name == "greenTrigger") {
+                    gameManager.gameState.GreenBlockSet = true;
+                    gameManager.gameState.completedBlocks.Add(1);
+                } else if (piece.destinationObject.name == "yellowTrigger") {
+                    gameManager.gameState.YellowBlockSet = true;
+                    gameManager.gameState.completedBlocks.Add(3);
+                }
             }
         }
 
