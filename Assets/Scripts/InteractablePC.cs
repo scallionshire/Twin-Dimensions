@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class InteractablePC : MonoBehaviour
 {   
     public Material highlightMaterial;
     private List<Material> originalMaterials = new List<Material>();
     private List<Renderer> renderers = new List<Renderer>();
-    public string sceneToLoad = "TopDownEnv"; 
+
+    private bool wasHighlighted = false;
 
     void Start()
     {
@@ -23,11 +23,13 @@ public class InteractablePC : MonoBehaviour
 
     void Update()
     {
-        RemoveHighlight();
-
-        if (Input.GetKeyDown(KeyCode.F))
+        if (!wasHighlighted)
         {
-            GameObject.Find("Door").SetActive(false);
+            RemoveHighlight();
+        }
+        else 
+        {
+            wasHighlighted = false;
         }
     }
 
@@ -37,6 +39,7 @@ public class InteractablePC : MonoBehaviour
         {
             rend.material = highlightMaterial;
         }
+        wasHighlighted = true;
     }
 
     public void RemoveHighlight()
@@ -52,17 +55,11 @@ public class InteractablePC : MonoBehaviour
 
     public void Interact()
     {
-        // Implement your interaction logic here
         Debug.Log("Interacted with " + gameObject.name);
-        // gameObject.SetActive(false);
-        // Save player position using GameManager
-        GameObject.Find("Player").GetComponent<PlayerManager>().savePlayer();
-        SceneManager.LoadScene(sceneToLoad);
-
     }
 
     public void LookAt()
-    {
+    {   
         Highlight();
     }
 }

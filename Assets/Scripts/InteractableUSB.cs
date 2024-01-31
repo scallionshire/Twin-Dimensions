@@ -6,6 +6,8 @@ public class InteractableUSB : MonoBehaviour
     public Material highlightMaterial;
     private List<Material> originalMaterials = new List<Material>();
     private List<Renderer> renderers = new List<Renderer>();
+    
+    private bool wasHighlighted = false;
 
     void Start()
     {
@@ -21,7 +23,14 @@ public class InteractableUSB : MonoBehaviour
 
     void Update()
     {
-        RemoveHighlight();
+        if (!wasHighlighted)
+        {
+            RemoveHighlight();
+        }
+        else 
+        {
+            wasHighlighted = false;
+        }
     }
 
     public void Highlight()
@@ -30,6 +39,7 @@ public class InteractableUSB : MonoBehaviour
         {
             rend.material = highlightMaterial;
         }
+        wasHighlighted = true;
     }
 
     public void RemoveHighlight()
@@ -45,7 +55,6 @@ public class InteractableUSB : MonoBehaviour
 
     public void Interact()
     {
-        // Implement your interaction logic here
         Debug.Log("Interacted with " + gameObject.name);
         gameObject.SetActive(false);
     }

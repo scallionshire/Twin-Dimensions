@@ -5,7 +5,7 @@ public class Interaction : MonoBehaviour
     public Camera playerCamera; 
     public float interactDistance = 5f;
     public LayerMask layers;
-    public PlayerManager playerManager;
+    private GameManager gameManager;
     private AudioManager audioManager;
 
     void Start()
@@ -14,7 +14,7 @@ public class Interaction : MonoBehaviour
         {
             playerCamera = Camera.main; 
         }
-        playerManager = GetComponent<PlayerManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
     }
 
@@ -23,10 +23,8 @@ public class Interaction : MonoBehaviour
         // Constantly detect ray
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
-        // Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 2f);
         if (Physics.Raycast(ray, out hit, interactDistance, layers))
         {   
-            Debug.Log("Hit " + hit.collider.gameObject.name);
             InteractablePC interactablePC = hit.collider.GetComponent<InteractablePC>();
             InteractableUSB interactableUSB = hit.collider.GetComponent<InteractableUSB>();
 
@@ -41,16 +39,17 @@ public class Interaction : MonoBehaviour
 
             if (Input.GetKeyDown("e")) // "e" is the key to interact with objects
             {   
-                if (interactablePC != null && playerManager.getHasUSB())
+                if (interactablePC != null && gameManager.gameState.PlayerHasUSB && !gameManager.gameState.USBInserted)
                 {   
                     audioManager.Play("USB");
                     interactablePC.Interact();
+                    gameManager.gameState.USBInserted = true;
                 }
                 else if (interactableUSB != null)
                 {   
                     audioManager.Play("Pickup");
                     interactableUSB.Interact();
-                    playerManager.setHasUSB(true);
+                    gameManager.gameState.PlayerHasUSB = true;
                 }
             }
         }

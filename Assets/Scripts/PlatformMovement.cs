@@ -7,7 +7,7 @@ public class PlatformMovement : MonoBehaviour
     public bool isMoving = false; // to be toggled by external scripts
     [HideInInspector]
     public Vector3 velocity; // to be exposed to the player movement script
-
+    
     [SerializeField]
     private Transform startPoint, endPoint, targetPoint;
     [SerializeField]
@@ -71,7 +71,7 @@ public class PlatformMovement : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            Debug.Log("Hit: " + hitColliders[i].gameObject.name);
+            // Debug.Log("Hit: " + hitColliders[i].gameObject.name);
             if (hitColliders[i].gameObject.tag == "Player")
             {
                 Debug.Log("Player is on the platform");
@@ -81,7 +81,7 @@ public class PlatformMovement : MonoBehaviour
             i++;
         }
 
-        Debug.Log("Player is not on the platform");
+        // Debug.Log("Player is not on the platform");
         transform.DetachChildren();
     }
 
