@@ -189,8 +189,8 @@ public class GameState
     // Constructor
     public GameState()
     {
-        PlayerPosition3D = Vector3.zero;
-        PlayerRotation3D = Vector3.zero;
+        PlayerPosition3D = new Vector3(-0.73f,3.877926f,27.88f);
+        PlayerRotation3D = new Vector3(0f,90f,0f);
         CameraPosition3D = Vector3.zero;
         CameraRotation3D = Vector3.zero;
 
