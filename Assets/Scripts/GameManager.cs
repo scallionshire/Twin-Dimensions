@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour
             }
             
             if (gameState.DoorUnlocked) {
-                Destroy(GameObject.Find("Door")); 
                 // TODO: replace the above with a door anim instead
+                GameObject.Find("Door").GetComponent<Animator>().SetBool("isOpen", true);
 
                 // Enable the moving platforms
                 GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
                 Debug.Log("Platform moving");
                 foreach (GameObject platform in platforms) {
-                    platform.GetComponent<PlatformMovement>().isMoving = true;
+                    platform.GetComponent<Extrudable>().isExtruding = true;
                 }
             }
         }
