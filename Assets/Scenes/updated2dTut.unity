@@ -1016,7 +1016,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00010791421, y: 0.0032050088}
+  m_Offset: {x: -0.00060331076, y: -0.009674802}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1027,7 +1027,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2763642, y: 0.27712595}
+  m_Size: {x: 0.22979884, y: 0.24938479}
   m_EdgeRadius: 0
 --- !u!212 &208445949
 SpriteRenderer:
@@ -1413,6 +1413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345196045}
   - component: {fileID: 345196044}
+  - component: {fileID: 345196046}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1497,6 +1498,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &345196046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345196043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &386194598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1740,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01045081, y: -0.0025047138}
+  m_Offset: {x: -0.00033132732, y: -0.008576453}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1727,7 +1751,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28638953, y: 0.2880447}
+  m_Size: {x: 0.2297202, y: 0.24351874}
   m_EdgeRadius: 0
 --- !u!212 &581470784
 SpriteRenderer:
@@ -2218,7 +2242,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00073476136, y: -0.00032963604}
+  m_Offset: {x: -0.00023940206, y: -0.008751057}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2229,7 +2253,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.275655, y: 0.28033346}
+  m_Size: {x: 0.23107108, y: 0.24962007}
   m_EdgeRadius: 0
 --- !u!212 &1243848477
 SpriteRenderer:
@@ -3172,7 +3196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0.0031211972, y: -0.08306211}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3183,7 +3207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.88, y: 0.94}
+  m_Size: {x: 0.8238168, y: 0.8338758}
   m_EdgeRadius: 0
 --- !u!212 &2016772800
 SpriteRenderer:
@@ -3438,19 +3462,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Size.x
-      value: 0.327904
+      value: 0.18384278
       objectReference: {fileID: 0}
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Size.y
-      value: 0.35310835
+      value: 0.25020754
       objectReference: {fileID: 0}
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Offset.x
-      value: 0.00001513958
+      value: 0.002073124
       objectReference: {fileID: 0}
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Offset.y
-      value: -0.009354264
+      value: -0.023760378
       objectReference: {fileID: 0}
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

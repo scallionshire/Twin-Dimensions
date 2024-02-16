@@ -124,8 +124,6 @@ public class GameManager : MonoBehaviour
         }
         // Player State Persistence
         if (SceneManager.GetActiveScene().name == "updated3DTut") {
-        
-        
             GameObject Player3D = GameObject.Find("3D Player");
             if (Player3D != null) {
                 gameState.PlayerPosition3D = Player3D.transform.position;
