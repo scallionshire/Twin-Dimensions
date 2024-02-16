@@ -20,9 +20,12 @@ public class Interaction : MonoBehaviour
     {   
         // Constantly detect ray
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.green);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, interactDistance, layers))
         {   
+            Debug.DrawLine(ray.origin, hit.point, Color.red);
+            Debug.Log(hit.collider.name);
             InteractablePC interactablePC = hit.collider.GetComponent<InteractablePC>();
             InteractableUSB interactableUSB = hit.collider.GetComponent<InteractableUSB>();
 
