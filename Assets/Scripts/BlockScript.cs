@@ -25,7 +25,7 @@ public class BlockScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Block" && collision.gameObject.name == blockName)
         {
-            puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, isCorrect = true };
+            puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, correctSprite = puzzleManager.correctBlocks[blockId].correctSprite, isCorrect = true };
 
             if (audioManager != null) {
                 audioManager.Play("Success");

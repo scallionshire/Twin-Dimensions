@@ -9,11 +9,11 @@ public class PuzzleManager : MonoBehaviour
     [System.Serializable]
     public struct PuzzlePiece {
         public GameObject destinationObject;
+        public Sprite correctSprite;
         public bool isCorrect;
     }
 
     public List<PuzzlePiece> correctBlocks;
-    public Sprite correctSprite;
     private AudioManager audioManager;
     private GameManager gameManager;
 
@@ -48,7 +48,8 @@ public class PuzzleManager : MonoBehaviour
             } else 
             {
                 Debug.Log("Correct piece found: " + piece.destinationObject.name);
-                piece.destinationObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
+                piece.destinationObject.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
+                piece.destinationObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
                 if (piece.destinationObject.name == "elevatorTrigger") {
                     gameManager.gameState.ElevatorBlockSet = true;
