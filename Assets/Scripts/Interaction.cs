@@ -6,7 +6,6 @@ public class Interaction : MonoBehaviour
     public float interactDistance = 5f;
     public LayerMask layers;
     private GameManager gameManager;
-    private AudioManager audioManager;
 
     void Start()
     {
@@ -15,7 +14,6 @@ public class Interaction : MonoBehaviour
             playerCamera = Camera.main; 
         }
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -41,13 +39,13 @@ public class Interaction : MonoBehaviour
             {   
                 if (interactablePC != null && gameManager.gameState.PlayerHasUSB && !gameManager.gameState.USBInserted)
                 {   
-                    audioManager.Play("USB");
+                    // audioManager.Play("USB");
                     interactablePC.Interact();
                     gameManager.gameState.USBInserted = true;
                 }
                 else if (interactableUSB != null)
                 {   
-                    audioManager.Play("Pickup");
+                    //audioManager.Play("Pickup");
                     interactableUSB.Interact();
                     gameManager.gameState.PlayerHasUSB = true;
                 }
