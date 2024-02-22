@@ -2155,8 +2155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
-  extrudeDirection: {x: 0, y: 0, z: 1}
-  extrudeAmount: 8
+  extrudeDirection: {x: 0, y: 0, z: -1}
+  extrudeAmount: 2
   shouldLoop: 0
   isMoving: 0
   isExtruding: 0
@@ -2202,7 +2202,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25d13ce83d5ecda409f4d71655b6e79e, type: 2}
+  - {fileID: -6478536213147159724, guid: 21c5b89853b1042cc9b105f2ffc11868, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2241,8 +2241,8 @@ Transform:
   m_GameObject: {fileID: 809719086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3623, y: 4.5915, z: -1}
-  m_LocalScale: {x: 2.021639, y: 8.592628, z: 12}
+  m_LocalPosition: {x: 1.433, y: 6.46, z: 4.886}
+  m_LocalScale: {x: -2.13, y: 1.55, z: 0.13}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3407,7 +3407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: SprintSpeed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: GroundLayers.m_Bits
@@ -5731,11 +5731,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000031177418
+      value: -0.000000034960962
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000065564203
+      value: 0.0000000073520763
       objectReference: {fileID: 0}
     - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_Follow
