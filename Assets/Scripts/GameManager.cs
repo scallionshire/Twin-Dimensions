@@ -196,6 +196,15 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void GetUSB() {
+        gameState.PlayerHasUSB = true;
+        GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
+    }
+
+    public void InsertUSB() {
+        gameState.USBInserted = true;
+    }
 }
 
 public class GameState

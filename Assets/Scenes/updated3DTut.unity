@@ -423,6 +423,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 62ea92019d89b4ca3b834a83c5222dd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62ea92019d89b4ca3b834a83c5222dd6, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -436,10 +440,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea92019d89b4ca3b834a83c5222dd6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 76532831}
+      addedObject: {fileID: 76532830}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea92019d89b4ca3b834a83c5222dd6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 76532830}
+      addedObject: {fileID: 76532831}
     - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: 62ea92019d89b4ca3b834a83c5222dd6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 76532829}
@@ -510,9 +514,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 76532828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad254f6f195c4593a64bcab1953f49a, type: 3}
+  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1622229876}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GetUSB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   highlightMaterial: {fileID: 2100000, guid: 60f373f9da29d41b7bbff1f936b88b13, type: 2}
 --- !u!1 &97657127
 GameObject:
@@ -5655,7 +5674,7 @@ PrefabInstance:
       addedObject: {fileID: 1712565168}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5fb31d48fa9b147098c1a3e492a5137d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1712565167}
+      addedObject: {fileID: 1712565169}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb31d48fa9b147098c1a3e492a5137d, type: 3}
 --- !u!4 &1712565165 stripped
 Transform:
@@ -5667,19 +5686,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5fb31d48fa9b147098c1a3e492a5137d, type: 3}
   m_PrefabInstance: {fileID: 1712565164}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1712565167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712565166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04658e92146d34db4be1a7e982193305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 60f373f9da29d41b7bbff1f936b88b13, type: 2}
 --- !u!65 &1712565168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5701,6 +5707,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.043287948, y: 0.078581125, z: 0.072284326}
   m_Center: {x: -0.00978883, y: 0.05026407, z: -0.0016092634}
+--- !u!114 &1712565169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712565166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1622229876}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: InsertUSB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  highlightMaterial: {fileID: 2100000, guid: 60f373f9da29d41b7bbff1f936b88b13, type: 2}
 --- !u!1001 &1757371633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5731,11 +5765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000031177418
+      value: -0.000000033676184
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000065564203
+      value: 0.0000000070818955
       objectReference: {fileID: 0}
     - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_Follow

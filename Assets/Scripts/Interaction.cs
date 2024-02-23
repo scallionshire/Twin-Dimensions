@@ -5,7 +5,6 @@ public class Interaction : MonoBehaviour
     public Camera playerCamera; 
     public float interactDistance = 5f;
     public LayerMask layers;
-    private GameManager gameManager;
 
     void Start()
     {
@@ -13,7 +12,6 @@ public class Interaction : MonoBehaviour
         {
             playerCamera = Camera.main; 
         }
-        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -36,23 +34,6 @@ public class Interaction : MonoBehaviour
                     interactable.Interact();
                 }
             }
-
-            // if (Input.GetKeyDown("e")) // "e" is the key to interact with objects
-            // {   
-                
-            //     if (interactable != null && gameManager.gameState.PlayerHasUSB && !gameManager.gameState.USBInserted)
-            //     {   
-            //         // audioManager.Play("USB");
-            //         interactable.Interact();
-            //         gameManager.gameState.USBInserted = true;
-            //     }
-            //     else if (interactable != null)
-            //     {   
-            //         //audioManager.Play("Pickup");
-            //         interactable.Interact();
-            //         gameManager.gameState.PlayerHasUSB = true;
-            //     }
-            // }
         }
     
     }
