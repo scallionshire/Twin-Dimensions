@@ -35,10 +35,6 @@ public class Player2DMovement : MonoBehaviour
             {
                 transform.GetChild(i).transform.parent = GameObject.Find("Tilemap_Blocks").transform;
             }
-            //if (audioManager.isPlaying("BoxSliding"))
-           // {
-           //     audioManager.Pause("BoxSliding");
-            //}
         }
 
         _animator.SetFloat("Horizontal", movement.x);
@@ -56,10 +52,6 @@ public class Player2DMovement : MonoBehaviour
     {
         if (movingBlock && collision.gameObject.tag == "Block" && transform.childCount < 1)
         {
-            //if (!audioManager.isPlaying("BoxSliding"))
-            //{
-            //    audioManager.Play("BoxSliding");
-            //}
             collision.gameObject.transform.parent = transform;
         }
     }
