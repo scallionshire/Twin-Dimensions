@@ -67,61 +67,61 @@ public class GameManager : MonoBehaviour
                 PushWall.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
 
-            GameObject ElevatorBlock = GameObject.Find("elevator");
-            if (ElevatorBlock != null) 
-            {
-                if (gameState.ElevatorBlockSet) {
-                    Destroy(ElevatorBlock);
-                    GameObject.Find("elevatorTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[0].correctSprite;
-                } else {
-                    Debug.Log("Setting ElevatorBlock to position " + gameState.ElevatorBlockPosition);
-                    ElevatorBlock.transform.localPosition = gameState.ElevatorBlockPosition;
-                }
-            }
+            // GameObject ElevatorBlock = GameObject.Find("elevator");
+            // if (ElevatorBlock != null) 
+            // {
+            //     if (gameState.ElevatorBlockSet) {
+            //         Destroy(ElevatorBlock);
+            //         GameObject.Find("elevatorTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[0].correctSprite;
+            //     } else {
+            //         Debug.Log("Setting ElevatorBlock to position " + gameState.ElevatorBlockPosition);
+            //         ElevatorBlock.transform.localPosition = gameState.ElevatorBlockPosition;
+            //     }
+            // }
 
-            GameObject PinkBlock = GameObject.Find("pink");
-            if (PinkBlock != null) 
-            {
-                if (gameState.PinkBlockSet) {
-                    Destroy(PinkBlock);
-                    GameObject.Find("pinkTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[2].correctSprite;
-                } else {
-                    Debug.Log("Setting PinkBlock to position " + gameState.PinkBlockPosition);
-                    PinkBlock.transform.localPosition = gameState.PinkBlockPosition;
-                }
-            }
+            // GameObject PinkBlock = GameObject.Find("pink");
+            // if (PinkBlock != null) 
+            // {
+            //     if (gameState.PinkBlockSet) {
+            //         Destroy(PinkBlock);
+            //         GameObject.Find("pinkTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[2].correctSprite;
+            //     } else {
+            //         Debug.Log("Setting PinkBlock to position " + gameState.PinkBlockPosition);
+            //         PinkBlock.transform.localPosition = gameState.PinkBlockPosition;
+            //     }
+            // }
 
-            GameObject GreenBlock = GameObject.Find("green");
-            if (GreenBlock != null) 
-            {
-                if (gameState.GreenBlockSet) {
-                    Destroy(GreenBlock);
-                    GameObject.Find("greenTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[1].correctSprite;
-                } else {
-                    Debug.Log("Setting GreenBlock to position " + gameState.GreenBlockPosition);
-                    GreenBlock.transform.localPosition = gameState.GreenBlockPosition;
-                }
-            }
+            // GameObject GreenBlock = GameObject.Find("green");
+            // if (GreenBlock != null) 
+            // {
+            //     if (gameState.GreenBlockSet) {
+            //         Destroy(GreenBlock);
+            //         GameObject.Find("greenTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[1].correctSprite;
+            //     } else {
+            //         Debug.Log("Setting GreenBlock to position " + gameState.GreenBlockPosition);
+            //         GreenBlock.transform.localPosition = gameState.GreenBlockPosition;
+            //     }
+            // }
 
-            GameObject YellowBlock = GameObject.Find("yellow");
-            if (YellowBlock != null) 
-            {
-                if (gameState.YellowBlockSet) {
-                    Destroy(YellowBlock);
-                    GameObject.Find("yellowTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[3].correctSprite;
-                } else {
-                    Debug.Log("Setting YellowBlock to position " + gameState.YellowBlockPosition);
-                    YellowBlock.transform.localPosition = gameState.YellowBlockPosition;
-                }
-            }
+            // GameObject YellowBlock = GameObject.Find("yellow");
+            // if (YellowBlock != null) 
+            // {
+            //     if (gameState.YellowBlockSet) {
+            //         Destroy(YellowBlock);
+            //         GameObject.Find("yellowTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[3].correctSprite;
+            //     } else {
+            //         Debug.Log("Setting YellowBlock to position " + gameState.YellowBlockPosition);
+            //         YellowBlock.transform.localPosition = gameState.YellowBlockPosition;
+            //     }
+            // }
 
-            for (int blockId = 0; blockId < 4; blockId++) {
-                if (gameState.completedBlocks.Contains(blockId)) {
-                    if (puzzleManager != null) {
-                        puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, correctSprite = puzzleManager.correctBlocks[blockId].correctSprite, isCorrect = true };
-                    }
-                }
-            }
+            // for (int blockId = 0; blockId < 4; blockId++) {
+            //     if (gameState.completedBlocks.Contains(blockId)) {
+            //         if (puzzleManager != null) {
+            //             puzzleManager.correctBlocks[blockId] = new PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, correctSprite = puzzleManager.correctBlocks[blockId].correctSprite, isCorrect = true };
+            //         }
+            //     }
+            // }
 
             // restore player position
             GameObject Player2D = GameObject.Find("2D Player");

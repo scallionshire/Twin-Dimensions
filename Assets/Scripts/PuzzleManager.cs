@@ -1,27 +1,50 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+
+[System.Serializable]
+public struct PuzzlePiece {
+    public GameObject destinationObject; // reference to destination object
+    public Sprite correctSprite;
+    public bool isCorrect;
+}
 
 public class PuzzleManager : MonoBehaviour
 {
-    [System.Serializable]
-    public struct PuzzlePiece {
-        public GameObject destinationObject;
-        public Sprite correctSprite;
-        public bool isCorrect;
-    }
-
     public List<PuzzlePiece> correctBlocks;
-    private AudioManager audioManager;
     private GameManager gameManager;
+    public int currentPuzzleId;
+    public List<bool> puzzleSolved;
+    public BlockPuzzles levelPuzzles;
 
     void Start()
     {
         if (GameObject.Find("GameManager") != null) {
-            audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        }
+
+        puzzleSolved = new List<bool>(levelPuzzles.puzzles[0].puzzleBlocks.Count);
+
+        for (int i = 0; i < levelPuzzles.puzzles[0].puzzleBlocks.Count; i++) {
+            Debug.Log(i);
+            GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[0].puzzleBlocks[i].destinationPosition, Quaternion.identity);
+
+            newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[0].puzzleBlocks[i].destinationSprite;
+            newDestination.name = levelPuzzles.puzzles[0].puzzleBlocks[i].destinationName;
+            newDestination.GetComponent<BlockScript>().blockId = i;
+            newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[0].puzzleBlocks[i].blockName;
+
+            GameObject newBlock = Instantiate(levelPuzzles.blockPrefab, levelPuzzles.puzzles[0].puzzleBlocks[i].blockInitPosition, Quaternion.identity);
+
+            newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[0].puzzleBlocks[i].blockSprite;
+            newBlock.name = levelPuzzles.puzzles[0].puzzleBlocks[i].blockName;
+
+            PuzzlePiece piece = new PuzzlePiece() {
+                destinationObject = newDestination,
+                correctSprite = levelPuzzles.puzzles[0].puzzleBlocks[i].correctSprite,
+                isCorrect = false
+            };
+
+            correctBlocks.Add(piece);
         }
     }
 
@@ -39,6 +62,8 @@ public class PuzzleManager : MonoBehaviour
     bool IsPuzzleSolved()
     {
         bool isSolved = true;
+
+        int index = 0;
         // Iterate through each cell in the tilemap
         foreach (PuzzlePiece piece in correctBlocks)
         {
@@ -47,22 +72,33 @@ public class PuzzleManager : MonoBehaviour
                 isSolved = false;
             } else 
             {
-                Debug.Log("Correct piece found: " + piece.destinationObject.name);
-                piece.destinationObject.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
-                piece.destinationObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                Debug.Log("Correct piece found");
+                foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
+                    if (go.GetComponent<BlockScript>().blockId == index) {
+                        go.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
+                        go.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                        break;
+                    }
+                }
 
-                if (piece.destinationObject.name == "elevatorTrigger") {
-                    gameManager.gameState.ElevatorBlockSet = true;
-                    gameManager.gameState.completedBlocks.Add(0);
-                } else if (piece.destinationObject.name == "pinkTrigger") {
-                    gameManager.gameState.PinkBlockSet = true;
-                    gameManager.gameState.completedBlocks.Add(2);
-                } else if (piece.destinationObject.name == "greenTrigger") {
-                    gameManager.gameState.GreenBlockSet = true;
-                    gameManager.gameState.completedBlocks.Add(1);
-                } else if (piece.destinationObject.name == "yellowTrigger") {
-                    gameManager.gameState.YellowBlockSet = true;
-                    gameManager.gameState.completedBlocks.Add(3);
+                // TODO: change this from being hardcoded later
+                switch (piece.destinationObject.name) {
+                    case "elevatorTrigger":
+                        gameManager.gameState.ElevatorBlockSet = true;
+                        gameManager.gameState.completedBlocks.Add(0);
+                        break;
+                    case "pinkTrigger":
+                        gameManager.gameState.PinkBlockSet = true;
+                        gameManager.gameState.completedBlocks.Add(2);
+                        break;
+                    case "greenTrigger":
+                        gameManager.gameState.GreenBlockSet = true;
+                        gameManager.gameState.completedBlocks.Add(1);
+                        break;
+                    case "yellowTrigger":
+                        gameManager.gameState.YellowBlockSet = true;
+                        gameManager.gameState.completedBlocks.Add(3);
+                        break;
                 }
             }
         }
