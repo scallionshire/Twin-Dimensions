@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 208445947}
   - component: {fileID: 208445949}
   - component: {fileID: 208445948}
+  - component: {fileID: 208445950}
   m_Layer: 0
   m_Name: pink
   m_TagString: Block
@@ -1165,6 +1166,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &208445950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208445946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &208817266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +1892,7 @@ GameObject:
   - component: {fileID: 581470782}
   - component: {fileID: 581470784}
   - component: {fileID: 581470783}
+  - component: {fileID: 581470785}
   m_Layer: 0
   m_Name: green
   m_TagString: Block
@@ -1979,6 +2012,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &581470785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581470781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &599037954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,6 +2429,7 @@ GameObject:
   - component: {fileID: 1243848475}
   - component: {fileID: 1243848477}
   - component: {fileID: 1243848476}
+  - component: {fileID: 1243848478}
   m_Layer: 0
   m_Name: yellow
   m_TagString: Block
@@ -2484,6 +2549,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1243848478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243848474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1371122207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +3041,34 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockId
       value: 3
@@ -3020,6 +3144,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1606814144}
+    - targetCorrespondingSourceObject: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1606814148}
   m_SourcePrefab: {fileID: 100100000, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
 --- !u!1 &1606814140 stripped
 GameObject:
@@ -3078,6 +3205,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1606814148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606814140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1627213558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3333,14 +3491,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2000236046
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000236045}
-  m_Enabled: 1
 --- !u!20 &2000236047
 Camera:
   m_ObjectHideFlags: 0
@@ -3628,6 +3778,7 @@ GameObject:
   - component: {fileID: 2016772798}
   - component: {fileID: 2016772800}
   - component: {fileID: 2016772799}
+  - component: {fileID: 2016772801}
   m_Layer: 0
   m_Name: elevator
   m_TagString: Block
@@ -3747,6 +3898,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2016772801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016772797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2145193926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,6 +3991,34 @@ PrefabInstance:
     - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691382957421799594, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3942375971316830507, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
       propertyPath: blockName
