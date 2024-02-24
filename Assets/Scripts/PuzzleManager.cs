@@ -22,25 +22,25 @@ public class PuzzleManager : MonoBehaviour
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
-        puzzleSolved = new List<bool>(levelPuzzles.puzzles[0].puzzleBlocks.Count);
+        puzzleSolved = new List<bool>(levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count);
 
-        for (int i = 0; i < levelPuzzles.puzzles[0].puzzleBlocks.Count; i++) {
+        for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             Debug.Log(i);
-            GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[0].puzzleBlocks[i].destinationPosition, Quaternion.identity);
+            GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationPosition, Quaternion.identity);
 
-            newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[0].puzzleBlocks[i].destinationSprite;
-            newDestination.name = levelPuzzles.puzzles[0].puzzleBlocks[i].destinationName;
+            newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationSprite;
+            newDestination.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationName;
             newDestination.GetComponent<BlockScript>().blockId = i;
-            newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[0].puzzleBlocks[i].blockName;
+            newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
 
-            GameObject newBlock = Instantiate(levelPuzzles.blockPrefab, levelPuzzles.puzzles[0].puzzleBlocks[i].blockInitPosition, Quaternion.identity);
+            GameObject newBlock = Instantiate(levelPuzzles.blockPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockInitPosition, Quaternion.identity);
 
-            newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[0].puzzleBlocks[i].blockSprite;
-            newBlock.name = levelPuzzles.puzzles[0].puzzleBlocks[i].blockName;
+            newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockSprite;
+            newBlock.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
 
             PuzzlePiece piece = new PuzzlePiece() {
                 destinationObject = newDestination,
-                correctSprite = levelPuzzles.puzzles[0].puzzleBlocks[i].correctSprite,
+                correctSprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].correctSprite,
                 isCorrect = false
             };
 
