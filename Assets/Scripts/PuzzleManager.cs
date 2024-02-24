@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
     public List<PuzzlePiece> correctBlocks;
     private GameManager gameManager;
     public int currentPuzzleId;
-    public List<bool> puzzleSolved;
+    public bool[] puzzlesSolved;
     public BlockPuzzles levelPuzzles;
 
     void Start()
@@ -22,7 +23,7 @@ public class PuzzleManager : MonoBehaviour
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
-        puzzleSolved = new List<bool>(levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count);
+        puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
 
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             Debug.Log(i);
@@ -55,7 +56,8 @@ public class PuzzleManager : MonoBehaviour
         {
             // Puzzle is solved, provide feedback and handle progression
             Debug.Log("Puzzle solved");
-            gameManager.gameState.DoorUnlocked = true;
+            puzzlesSolved[currentPuzzleId] = true;
+            // TODO: trigger door unlock on GameStateManager's side
         }
     }
 
@@ -72,7 +74,6 @@ public class PuzzleManager : MonoBehaviour
                 isSolved = false;
             } else 
             {
-                Debug.Log("Correct piece found");
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
                     if (go.GetComponent<BlockScript>().blockId == index) {
                         go.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
@@ -101,8 +102,20 @@ public class PuzzleManager : MonoBehaviour
                         break;
                 }
             }
+
+            index++;
         }
 
         return isSolved;
+    }
+
+    public void SetCurrentPuzzle(int puzzleId)
+    {
+        currentPuzzleId = puzzleId;
+    }
+
+    public void SetPuzzleState(bool[] puzzlesSolvedState)
+    {
+        puzzlesSolved = puzzlesSolvedState;
     }
 }
