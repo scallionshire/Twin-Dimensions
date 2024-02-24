@@ -43,12 +43,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            // Play footsteps
-            // if (!audioManager.isPlaying("Walking"))
-            // {
-            //     audioManager.Play("Walking");
-            // }
-
             // Adjust angle of movement
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -65,11 +59,6 @@ public class ThirdPersonMovement : MonoBehaviour
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
         } else {
-            // if (audioManager.isPlaying("Walking"))
-            // {
-            //     audioManager.Pause("Walking");
-            // }
-
             // Check if player is on a platform, and move character controller accordingly
             if (transform.parent != null)
             {

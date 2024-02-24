@@ -2,22 +2,20 @@ using UnityEngine;
 
 public class Player2DMovement : MonoBehaviour
 {
-    private Animator _animator;
-
     public float moveSpeed = 2.5f;
-    // private float moveLimiter = 0.7f;
+
     private Vector2 movement;
-    private bool movingBlock = false;
-    public Rigidbody2D rb;
-    private AudioManager audioManager;
+    private Animator _animator;
+    private Rigidbody2D rb;
+
+    [HideInInspector]
+    public GameObject collidedBlock;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
 
         rb = GetComponent<Rigidbody2D>();
-
-        //audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -28,12 +26,21 @@ public class Player2DMovement : MonoBehaviour
 
         if (Input.GetKey("space"))
         {
-            movingBlock = true;
-            movement = movement * 0.5f;
+            movement = movement * 0.7f; // TODO: find some way to slow down walking anim?
+
+            // Interact with whatever block we last collided into
+            if (collidedBlock != null && collidedBlock.tag == "Block") {
+                collidedBlock.transform.parent = transform;
+            } else if (collidedBlock != null && collidedBlock.tag == "Extrudable") {
+                collidedBlock.GetComponent<Extrudable>().Extrude();
+            }
         } else {
+            // Remove the currently held block from being a child of the player
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).transform.parent = GameObject.Find("Tilemap_Blocks").transform;
+                if (transform.GetChild(i).tag == "Block") {
+                    transform.GetChild(i).transform.parent = GameObject.Find("Blocks").transform;
+                }
             }
         }
 
@@ -45,14 +52,13 @@ public class Player2DMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (movingBlock && collision.gameObject.tag == "Block" && transform.childCount < 1)
+        if (transform.childCount < 2 || collision.gameObject.tag == "Extrudable")
         {
-            collision.gameObject.transform.parent = transform;
+            collidedBlock = collision.gameObject;
         }
     }
 }
