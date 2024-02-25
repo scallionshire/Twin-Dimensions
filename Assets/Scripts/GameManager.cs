@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
             }
             else if (SceneManager.GetActiveScene().name == "updated3DTut")
             {
-                // cutsceneManager.PlayCutscene("3DTwinVisor");
+                cutsceneManager.PlayCutscene("3DTwinVisor");
                 sceneLoaded = false;
                 SceneManager.LoadScene("updated2dTut");
             }

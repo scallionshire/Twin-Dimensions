@@ -62,6 +62,8 @@ public class CutsceneManager : MonoBehaviour
     {
         videoImage.color = new Color(0, 0, 0, 0);
         Debug.Log("Cutscene ended.");
+        videoPlayer.Stop();
+        videoPlayer.clip = null;
     }
 
     public bool IsPlaying()
