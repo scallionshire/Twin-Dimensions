@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState = new GameState();
     public static GameManager instance;
     private bool sceneLoaded = true;
+    private CutsceneManager cutsceneManager;
 
     void Awake()
     {   
@@ -25,8 +26,9 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   
         SceneManager.sceneLoaded += OnSceneLoaded;
+        cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -191,6 +193,7 @@ public class GameManager : MonoBehaviour
             }
             else if (SceneManager.GetActiveScene().name == "updated3DTut")
             {
+                // cutsceneManager.PlayCutscene("3DTwinVisor");
                 sceneLoaded = false;
                 SceneManager.LoadScene("updated2dTut");
             }
@@ -201,7 +204,7 @@ public class GameManager : MonoBehaviour
         gameState.PlayerHasUSB = true;
         GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
     }
-
+     
     public void InsertUSB() {
         gameState.USBInserted = true;
     }
