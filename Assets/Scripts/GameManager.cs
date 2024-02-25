@@ -258,10 +258,10 @@ public class GameState
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
 
         PushWallPosition = new Vector3(-1.2622f, -0.2348f, 0.0f);
-        ElevatorBlockPosition = new Vector3(0.035f, 0.525f, 0.0f);
-        PinkBlockPosition = new Vector3(-2.5f, 1.5f, 0.0f);
-        YellowBlockPosition = new Vector3(0.5f, -0.7f, 0.0f);
-        GreenBlockPosition = new Vector3(-6.5f, 0.5f, 0.0f);
+        ElevatorBlockPosition = new Vector3(10f, 0f, 0.0f);
+        PinkBlockPosition = new Vector3(6f, 1.5f, 0.0f);
+        YellowBlockPosition = new Vector3(10.5f, -1.8f, 0.0f);
+        GreenBlockPosition = new Vector3(0f, 0f, 0.0f);
         ElevatorBlockSet = false;
         PinkBlockSet = false;
         GreenBlockSet = false;
