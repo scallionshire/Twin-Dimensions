@@ -14,7 +14,15 @@ public struct PuzzleSet {
 }
 
 [System.Serializable]
+public struct CircuitSet {
+    public Vector3 circuitInitPosition;
+    public Sprite circuitSprite;
+    public string circuitName;
+}
+
+[System.Serializable]
 public class PuzzleList {
+    public List<CircuitSet> circuitSprites;
     public List<PuzzleSet> puzzleBlocks;
 }
 
@@ -26,5 +34,6 @@ public class BlockPuzzles : ScriptableObject
     public Level level;
     public GameObject destinationPrefab; // destination prefab to instantiate
     public GameObject blockPrefab; // block prefab to instantiate
+    public GameObject circuitPrefab; // circuit environment prefab to instantiate
     public List<PuzzleList> puzzles;
 }

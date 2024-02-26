@@ -24,7 +24,8 @@ public class Player2DMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal"); // -1 is left
         movement.y = Input.GetAxisRaw("Vertical"); // -1 is down
 
-        if (Input.GetKey("space"))
+        // If player is pressing space and they aren't currently holding a block
+        if (Input.GetKey("space") && transform.childCount < 2)
         {
             movement = movement * 0.7f; // TODO: find some way to slow down walking anim?
 
@@ -34,8 +35,13 @@ public class Player2DMovement : MonoBehaviour
             } else if (collidedBlock != null && collidedBlock.tag == "Extrudable") {
                 collidedBlock.GetComponent<Extrudable>().Extrude();
             }
-        } else {
-            // Remove the currently held block from being a child of the player
+
+            collidedBlock = null;
+        } else if (Input.GetKey("space") && transform.childCount >= 2) {
+            // We don't care about other collisions while we're already holding a block
+            collidedBlock = null;
+        } else if (!Input.GetKey("space") && transform.childCount >= 2) {
+            // Remove the currently held block from being a child of the player once player lets go of space key
             for (int i = 0; i < transform.childCount; i++)
             {
                 if (transform.GetChild(i).tag == "Block") {
@@ -56,8 +62,9 @@ public class Player2DMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (transform.childCount < 2 || collision.gameObject.tag == "Extrudable")
+        if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
+            Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
         }
     }

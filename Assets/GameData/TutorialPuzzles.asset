@@ -15,8 +15,13 @@ MonoBehaviour:
   level: 0
   destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
   blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
+  circuitPrefab: {fileID: 6973451946996186604, guid: c4ccaa72ae45349eab8facd80f377298, type: 3}
   puzzles:
-  - puzzleBlocks:
+  - circuitSprites:
+    - circuitInitPosition: {x: -2.78, y: -1.74, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 00465aa3c20584dc3b20221946674d02, type: 3}
+      circuitName: elevator
+    puzzleBlocks:
     - blockInitPosition: {x: 0.052500006, y: 0.78749996, z: 0}
       blockSprite: {fileID: 21300000, guid: f01150ace07a04147b66071f463c3aa5, type: 3}
       blockName: elevator
@@ -24,19 +29,29 @@ MonoBehaviour:
       destinationPosition: {x: -4.48, y: -1.58, z: 0}
       destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
       destinationName: elevatorTrigger
-  - puzzleBlocks:
+  - circuitSprites:
+    - circuitInitPosition: {x: -5.09, y: -0.83, z: 0}
+      circuitSprite: {fileID: 21300000, guid: c7ad248cd36e74bdbab10ae86b172d4b, type: 3}
+      circuitName: green
+    - circuitInitPosition: {x: -1.345, y: 0.529, z: 0}
+      circuitSprite: {fileID: 21300000, guid: a51e64949a1044559826636316be3316, type: 3}
+      circuitName: pink
+    - circuitInitPosition: {x: -3.93, y: 1.36, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 589d70eec6db24f53a8a8d73651273f4, type: 3}
+      circuitName: yellow
+    puzzleBlocks:
     - blockInitPosition: {x: -9.75, y: 0.75, z: 0}
       blockSprite: {fileID: 21300000, guid: 7686c1468a3d3834c8bd6f9712abf1f6, type: 3}
       blockName: green
       correctSprite: {fileID: 21300000, guid: 1ec195c2d07094f5487a606685f3e50b, type: 3}
-      destinationPosition: {x: -6.7, y: 0.55, z: 0}
+      destinationPosition: {x: -6.7, y: 0.474, z: 0}
       destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
       destinationName: greenTrigger
     - blockInitPosition: {x: -3.75, y: 2.25, z: 0}
       blockSprite: {fileID: 21300000, guid: aab65e77e2e14bd42b425e28b9480511, type: 3}
       blockName: pink
       correctSprite: {fileID: 21300000, guid: f8616c8a4100140ca965d4117ee0541c, type: 3}
-      destinationPosition: {x: 0.79, y: 0.78, z: 0}
+      destinationPosition: {x: 0.79, y: 0.691, z: 0}
       destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
       destinationName: pinkTrigger
     - blockInitPosition: {x: 0.75, y: -1.05, z: 0}
