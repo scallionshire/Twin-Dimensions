@@ -339,7 +339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &243148058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243148057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0.00000002753376, z: -0.000000011404857, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.00000005554978, z: -0.000000023009472, w: 0.92387956}
   m_LocalPosition: {x: -6.47, y: 6.12, z: 2.1599998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327269881}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846a6714233d24d90b16c44de782cab7, type: 3}
   m_Name: 
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1811136946b864972a03225ecaa9bd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 243148062}
   interactDistance: 10
   layers:
     serializedVersion: 2
@@ -1390,11 +1390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 4.2297403e-15
+      value: 0.000000044380823
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.1258816e-15
+      value: -0.000000027520493
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1599,11 +1599,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
-  extrudeDirection: {x: 0, y: 0, z: 0}
-  extrudeAmount: 0
+  extrudeDirection: {x: 0, y: 0, z: 1}
+  extrudeAmount: 100
   shouldLoop: 0
   isMoving: 0
-  isExtruding: 0
+  isExtruding: 1
   extrudeSpeed: 1
 --- !u!23 &752441384
 MeshRenderer:
@@ -1664,8 +1664,8 @@ Transform:
   m_GameObject: {fileID: 752441381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.658, y: 8.67, z: 29.83}
-  m_LocalScale: {x: 215.09651, y: 215.09651, z: 292.53125}
+  m_LocalPosition: {x: -3.658, y: 8.67, z: 30.534}
+  m_LocalScale: {x: 215.09651, y: 215.09651, z: 25.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1883,11 +1883,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
-  extrudeDirection: {x: 0, y: 0, z: 0}
-  extrudeAmount: 0
+  extrudeDirection: {x: 1, y: 0, z: 0}
+  extrudeAmount: 100
   shouldLoop: 0
   isMoving: 0
-  isExtruding: 0
+  isExtruding: 1
   extrudeSpeed: 1
 --- !u!23 &965392444
 MeshRenderer:
@@ -1948,7 +1948,7 @@ Transform:
   m_GameObject: {fileID: 965392441}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.95, y: 14.57, z: 28.74}
+  m_LocalPosition: {x: 7.95, y: 14.57, z: 29.22}
   m_LocalScale: {x: 50, y: 2000, z: 215.0965}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1999,7 +1999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1164109357
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2059,8 +2059,8 @@ Transform:
   m_GameObject: {fileID: 1164109356}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.52, y: 3.5, z: 21.5526}
-  m_LocalScale: {x: 215.09651, y: 215.09651, z: 292.53125}
+  m_LocalPosition: {x: -7.39, y: 3.5, z: 21.5526}
+  m_LocalScale: {x: 19, y: 215.09651, z: 292.53125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2079,11 +2079,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
-  extrudeDirection: {x: 0, y: 0, z: 0}
-  extrudeAmount: 0
+  extrudeDirection: {x: 1, y: 0, z: 0}
+  extrudeAmount: 200
   shouldLoop: 0
   isMoving: 0
-  isExtruding: 0
+  isExtruding: 1
   extrudeSpeed: 1
 --- !u!65 &1164109361
 BoxCollider:
@@ -2187,11 +2187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
-  extrudeDirection: {x: 0, y: 0, z: 0}
-  extrudeAmount: 0
+  extrudeDirection: {x: 1, y: 0, z: 0}
+  extrudeAmount: 100
   shouldLoop: 0
   isMoving: 0
-  isExtruding: 0
+  isExtruding: 1
   extrudeSpeed: 1
 --- !u!23 &1451059212
 MeshRenderer:
@@ -2252,8 +2252,8 @@ Transform:
   m_GameObject: {fileID: 1451059209}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.55, y: 6.83, z: 29.83}
-  m_LocalScale: {x: 215.09651, y: 215.09651, z: 292.53125}
+  m_LocalPosition: {x: -7.57, y: 6.83, z: 29.83}
+  m_LocalScale: {x: 20.4, y: 215.09651, z: 292.53125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
