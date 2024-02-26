@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {   
     public GameState gameState = new GameState();
     public static GameManager instance;
+    public InventorySystem inventorySystem;
+
     private bool sceneLoaded = true;
 
     void Awake()
@@ -199,6 +201,7 @@ public class GameManager : MonoBehaviour
 
     public void GetUSB() {
         gameState.PlayerHasUSB = true;
+        InventorySystem.instance.AddToInventory("USB");
         GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
     }
 
