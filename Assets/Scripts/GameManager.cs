@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
             ThirdPersonCamera.transform.position = gameState.CameraPosition3D;
             ThirdPersonCamera.transform.eulerAngles = gameState.CameraRotation3D;
 
+            GameObject Player3D = GameObject.Find("3D Player");
+            Player3D.transform.position = gameState.PlayerPosition3D;
+            Player3D.transform.eulerAngles = gameState.PlayerRotation3D;
+
             if (gameState.PlayerHasUSB) {
                 Debug.Log("Setting USB to inactive");
                 GameObject.Find("USB").SetActive(false);
@@ -72,6 +76,15 @@ public class GameManager : MonoBehaviour
         }
 
         if (scene.name == "fbx3dmain") {
+            GameObject ThirdPersonCamera = GameObject.Find("Third Person Camera");
+            ThirdPersonCamera.transform.position = gameState.CameraPosition3D;
+            ThirdPersonCamera.transform.eulerAngles = gameState.CameraRotation3D;
+
+            GameObject Player3D = GameObject.Find("3D Player");
+            Player3D.transform.position = gameState.PlayerPosition3D;
+            Player3D.transform.eulerAngles = gameState.PlayerRotation3D;
+
+
             for (int i = 0; i < gameState.BioLabExtrudables.Count; i++) {
                 if (gameState.BioLabExtrudables[i]) {
                     GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
