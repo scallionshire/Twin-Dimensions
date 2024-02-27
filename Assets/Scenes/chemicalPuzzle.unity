@@ -1414,6 +1414,9 @@ MonoBehaviour:
   - destinationObject: {fileID: 0}
     correctSprite: {fileID: 21300000, guid: f3b546128b8534fc5b808af4d5b68398, type: 3}
     isCorrect: 0
+  currentPuzzleId: 0
+  puzzlesSolved: 
+  levelPuzzles: {fileID: 0}
 --- !u!4 &713982315
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,7 +2867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1449107167
 Transform:
   m_ObjectHideFlags: 0
