@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: BioLabPuzzle
+  m_EditorClassIdentifier: Assembly-CSharp::BlockPuzzles
+  level: 0
+  destinationPrefab: {fileID: 6068090127222488158, guid: 9ce50e3b9eb2b4cafb2c5dd9281e20de, type: 3}
+  blockPrefab: {fileID: 1566539604079352776, guid: c4ae08e32f07f4b6fad23a66a8998638, type: 3}
+  circuitPrefab: {fileID: 0}
+  puzzles:
+  - circuitSprites: []
+    puzzleBlocks:
+    - blockInitPosition: {x: -8.4495, y: -1.7655001, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+      blockName: vertical
+      correctSprite: {fileID: 21300000, guid: 169685d8f21284f3f9c973ddd0f90c10, type: 3}
+      destinationPosition: {x: -9.444, y: 0.459, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: verticalBlueTrigger
+    - blockInitPosition: {x: -10.38, y: 2.2649999, z: 0}
+      blockSprite: {fileID: 21300000, guid: cfccc851a39664714a91fade2ff9b141, type: 3}
+      blockName: cornerBlue
+      correctSprite: {fileID: 21300000, guid: 57ed855ec89364cd19bf90f98990c84b, type: 3}
+      destinationPosition: {x: -9.444, y: 1.464, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: cornerBlueTrigger
+    - blockInitPosition: {x: -10.11, y: 0.63, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6ad6850f257da4515905f48491d23068, type: 3}
+      blockName: horizontal
+      correctSprite: {fileID: 21300000, guid: 392400b40fb9a47cc975664dc189e45c, type: 3}
+      destinationPosition: {x: -8.403, y: 1.464, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: horizontalBlueTrigger
+    - blockInitPosition: {x: -6.321, y: 2.205, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6ad6850f257da4515905f48491d23068, type: 3}
+      blockName: horizontal
+      correctSprite: {fileID: 21300000, guid: 4359f6dd01d4e4656b8c314b25be2f72, type: 3}
+      destinationPosition: {x: -6.31, y: 1.464, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: horizontalYellowTrigger
+    - blockInitPosition: {x: -4.86, y: 2.16, z: 0}
+      blockSprite: {fileID: 21300000, guid: 7188f78ac93f946ffb4c5fa42b2b8d8e, type: 3}
+      blockName: cornerYellow
+      correctSprite: {fileID: 21300000, guid: 82f6a5ae9691948ea8b9446ed116375e, type: 3}
+      destinationPosition: {x: -5.302, y: 1.464, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: cornerYellowTrigger
+    - blockInitPosition: {x: -6.315, y: 0.49049994, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+      blockName: vertical
+      correctSprite: {fileID: 21300000, guid: 43734983d42f94ca9850503f4f3d1a1e, type: 3}
+      destinationPosition: {x: -5.302, y: 0.479, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: verticalYellowTrigger
+  - circuitSprites: []
+    puzzleBlocks: []
