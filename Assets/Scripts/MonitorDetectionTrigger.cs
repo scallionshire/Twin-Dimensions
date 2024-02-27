@@ -15,6 +15,7 @@ public class MonitorDetectionTrigger : MonoBehaviour
         else if (isMonitoringActive && other.CompareTag("Player"))
         {
             Debug.Log("The player has entered the detection zone.");
+            GetComponent<ResetToCheckpoint>().Reset();
         }
     }
 
