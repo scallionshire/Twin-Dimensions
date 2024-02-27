@@ -19,11 +19,12 @@ public class PlatformMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = startPoint.position;
+        // transform.position = startPoint.position;
         velocity = new Vector3(0f, 0f, 0f);
         m_lastPosition = transform.position;
         targetPoint = endPoint;
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody.position = startPoint.position;
     }
 
     void Update() 
@@ -35,7 +36,7 @@ public class PlatformMovement : MonoBehaviour
     // Apply physics-based movement in FixedUpdate
     void FixedUpdate()
     {
-        checkCollisions();
+        // checkCollisions();
         if (isMoving)
         {
             Vector3 platformVelocity = targetPoint.position - transform.position;
