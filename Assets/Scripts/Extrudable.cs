@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 
 public class Extrudable : MonoBehaviour
 {
+    public int extrudableId;
+    private bool gameStateUpdated = false;
+    
     [HideInInspector]
     public Vector3 initScale;
     [HideInInspector]
@@ -17,6 +20,7 @@ public class Extrudable : MonoBehaviour
     private Vector3 targetPosition;
 
     private Mesh mesh;
+    private GameManager gameManager;
 
     public Vector3 extrudeDirection;
     public float extrudeAmount;
@@ -28,6 +32,8 @@ public class Extrudable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         float scaleFactor = 1.0f;
 
         if (GetComponent<MeshFilter>() != null) {
@@ -63,6 +69,11 @@ public class Extrudable : MonoBehaviour
     void Update()
     {
         if (isMoving) {
+            if (!gameStateUpdated) {
+                gameStateUpdated = true;
+                gameManager.UpdateExtrudables(extrudableId);
+            }
+
             if ((targetScale - transform.localScale).sqrMagnitude < 0.05f) {
                 if (shouldLoop && targetScale == endScale) {
                     targetScale = initScale;

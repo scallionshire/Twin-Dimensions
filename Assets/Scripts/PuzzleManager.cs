@@ -13,7 +13,7 @@ public class PuzzleManager : MonoBehaviour
 {
     public List<PuzzlePiece> correctBlocks;
     private GameManager gameManager;
-    public int currentPuzzleId;
+    private int currentPuzzleId;
     public bool[] puzzlesSolved;
     public BlockPuzzles levelPuzzles;
 
@@ -24,36 +24,59 @@ public class PuzzleManager : MonoBehaviour
         }
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
+        currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
 
+        if (currentPuzzleId == -1) {
+            Debug.Log("No puzzle selected");
+            return;
+        }
+
+        // TODO: handle blocks that were already solved 
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             // Instantiate destination blocks
             GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationPosition, Quaternion.identity);
-
-            newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationSprite;
-            newDestination.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationName;
-            newDestination.GetComponent<BlockScript>().blockId = i;
-            newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
-
-            // Instantiate movable puzzle blocks
-            GameObject newBlock = Instantiate(levelPuzzles.blockPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockInitPosition, Quaternion.identity);
-
-            newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockSprite;
-            newBlock.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
-
-            // Instantiate environment sprites
-            GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
-
-            newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
-            Color tmp = newWire.GetComponent<SpriteRenderer>().color;
-            tmp.a = 0.3f;
-            newWire.GetComponent<SpriteRenderer>().color = tmp;
-            newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
 
             PuzzlePiece piece = new PuzzlePiece() {
                 destinationObject = newDestination,
                 correctSprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].correctSprite,
                 isCorrect = false
             };
+
+            if (levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].isSolved) {
+                newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].correctSprite;
+                piece.isCorrect = true;
+
+                newDestination.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationName;
+                newDestination.GetComponent<BlockScript>().blockId = i;
+                newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
+
+                // Instantiate environment sprites
+                GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
+
+                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
+                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+            } else {
+                newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationSprite;
+
+                newDestination.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationName;
+                newDestination.GetComponent<BlockScript>().blockId = i;
+                newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
+
+                // Instantiate movable puzzle blocks
+                GameObject newBlock = Instantiate(levelPuzzles.blockPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockInitPosition, Quaternion.identity);
+
+                newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockSprite;
+                newBlock.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
+
+                // Instantiate environment sprites
+                GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
+
+                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
+                Color tmp = newWire.GetComponent<SpriteRenderer>().color;
+                tmp.a = 0.3f;
+                newWire.GetComponent<SpriteRenderer>().color = tmp;
+                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+            }
 
             correctBlocks.Add(piece);
         }
@@ -62,12 +85,12 @@ public class PuzzleManager : MonoBehaviour
     void Update()
     {
         // Check for puzzle completion
-        if (IsPuzzleSolved())
+        if (currentPuzzleId >= 0 && IsPuzzleSolved())
         {
             // Puzzle is solved, provide feedback and handle progression
             Debug.Log("Puzzle solved");
             puzzlesSolved[currentPuzzleId] = true;
-            // TODO: trigger respective game state updates on GameStateManager's side
+            gameManager.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
         }
     }
 
@@ -106,42 +129,13 @@ public class PuzzleManager : MonoBehaviour
                     }
                 }
 
-                // TODO: change this from being hardcoded later
-                switch (piece.destinationObject.name) {
-                    case "elevatorTrigger":
-                        gameManager.gameState.ElevatorBlockSet = true;
-                        gameManager.gameState.completedBlocks.Add(0);
-                        break;
-                    case "pinkTrigger":
-                        gameManager.gameState.PinkBlockSet = true;
-                        gameManager.gameState.completedBlocks.Add(2);
-                        break;
-                    case "greenTrigger":
-                        gameManager.gameState.GreenBlockSet = true;
-                        gameManager.gameState.completedBlocks.Add(1);
-                        break;
-                    case "yellowTrigger":
-                        gameManager.gameState.YellowBlockSet = true;
-                        gameManager.gameState.completedBlocks.Add(3);
-                        break;
-                }
+                // Update game state
+                gameManager.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
             }
 
             index++;
         }
 
         return isSolved;
-    }
-
-    // GameStateManager should call this to update the current puzzle when 20 is plugged into a different port
-    public void SetCurrentPuzzle(int puzzleId)
-    {
-        currentPuzzleId = puzzleId;
-    }
-
-    // GameStateManager should call this to make sure game state doesn't change when you switch back into the scene
-    public void SetPuzzleState(bool[] puzzlesSolvedState)
-    {
-        puzzlesSolved = puzzlesSolvedState;
     }
 }
