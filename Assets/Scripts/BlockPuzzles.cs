@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "ScriptableObjects/BlockPuzzleScriptableObject")]
-public class BlockPuzzles : ScriptableObject
+public class BlockPuzzles
 {
     // Level that this 2d block puzzle belongs to
     public Level level;

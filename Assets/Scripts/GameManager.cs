@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Load in initial puzzle game data
-        gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
-        gameState.CurrComputerPuzzle = Instantiate(initComputerPuzzle);
-        gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
+        gameState.CurrTutorialPuzzle = initTutorialPuzzle;
+        gameState.CurrComputerPuzzle = initComputerPuzzle;
+        gameState.CurrChemicalPuzzle = initChemicalPuzzle;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
