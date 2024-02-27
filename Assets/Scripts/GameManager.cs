@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool sceneLoaded = true;
 
+    // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public BlockPuzzles initTutorialPuzzle;
+    public BlockPuzzles initComputerPuzzle;
+    public BlockPuzzles initChemicalPuzzle;
+
     void Awake()
     {   
         if (instance == null)
@@ -27,6 +32,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Load in initial puzzle game data
+        gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
+        gameState.CurrComputerPuzzle = Instantiate(initComputerPuzzle);
+        gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -44,82 +54,35 @@ public class GameManager : MonoBehaviour
             
             if (gameState.DoorUnlocked) {
                 GameObject.Find("Door").GetComponent<Animator>().SetBool("isOpen", true);
+            }
 
-                // Enable the moving platforms
+            for (int i = 0; i < gameState.TutorialExtrudables.Count; i++) {
+                if (gameState.TutorialExtrudables[i]) {
+                    GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
+                }
+            }
+
+            if (gameState.ElevatorRunning) {
                 GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
                 Debug.Log("Platform moving");
                 foreach (GameObject platform in platforms) {
                     platform.GetComponent<Extrudable>().isMoving = true;
                 }
             }
-
-            if (gameState.WallPushedIn) {
-                GameObject.Find("ExtrudeWall").GetComponent<Extrudable>().isMoving = true;
-            }
         }
 
         if (scene.name == "updated2dTut") {
             PuzzleManager puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
 
-            GameObject PushWall = GameObject.Find("PushWall");
-            if (gameState.WallPushedIn) {
-                PushWall.transform.position = gameState.PushWallPosition;
-                PushWall.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            }
+            puzzleManager.levelPuzzles = gameState.CurrTutorialPuzzle;
 
-            GameObject ElevatorBlock = GameObject.Find("elevator");
-            if (ElevatorBlock != null) 
-            {
-                if (gameState.ElevatorBlockSet) {
-                    Destroy(ElevatorBlock);
-                    GameObject.Find("elevatorTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[0].correctSprite;
-                } else {
-                    Debug.Log("Setting ElevatorBlock to position " + gameState.ElevatorBlockPosition);
-                    ElevatorBlock.transform.localPosition = gameState.ElevatorBlockPosition;
-                }
-            }
+            // Note: puzzle manager will instantiate the relevant variables for us!
 
-            GameObject PinkBlock = GameObject.Find("pink");
-            if (PinkBlock != null) 
-            {
-                if (gameState.PinkBlockSet) {
-                    Destroy(PinkBlock);
-                    GameObject.Find("pinkTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[2].correctSprite;
-                } else {
-                    Debug.Log("Setting PinkBlock to position " + gameState.PinkBlockPosition);
-                    PinkBlock.transform.localPosition = gameState.PinkBlockPosition;
-                }
-            }
-
-            GameObject GreenBlock = GameObject.Find("green");
-            if (GreenBlock != null) 
-            {
-                if (gameState.GreenBlockSet) {
-                    Destroy(GreenBlock);
-                    GameObject.Find("greenTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[1].correctSprite;
-                } else {
-                    Debug.Log("Setting GreenBlock to position " + gameState.GreenBlockPosition);
-                    GreenBlock.transform.localPosition = gameState.GreenBlockPosition;
-                }
-            }
-
-            GameObject YellowBlock = GameObject.Find("yellow");
-            if (YellowBlock != null) 
-            {
-                if (gameState.YellowBlockSet) {
-                    Destroy(YellowBlock);
-                    GameObject.Find("yellowTrigger").GetComponent<SpriteRenderer>().sprite = puzzleManager.correctBlocks[3].correctSprite;
-                } else {
-                    Debug.Log("Setting YellowBlock to position " + gameState.YellowBlockPosition);
-                    YellowBlock.transform.localPosition = gameState.YellowBlockPosition;
-                }
-            }
-
-            for (int blockId = 0; blockId < 4; blockId++) {
-                if (gameState.completedBlocks.Contains(blockId)) {
-                    if (puzzleManager != null) {
-                        puzzleManager.correctBlocks[blockId] = new PuzzleManager.PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, correctSprite = puzzleManager.correctBlocks[blockId].correctSprite, isCorrect = true };
-                    }
+            // Handle extrusion states
+            foreach (GameObject extrudable in GameObject.FindGameObjectsWithTag("Extrudable")) {
+                Extrudable ext = extrudable.GetComponent<Extrudable>();
+                if (ext != null && gameState.TutorialExtrudables[ext.extrudableId]) {
+                    ext.isMoving = true;
                 }
             }
 
@@ -130,12 +93,14 @@ public class GameManager : MonoBehaviour
 
         sceneLoaded = true;
     }
+    
 
     void Update()
     {   
         if (!sceneLoaded) {
             return;
         }
+
         // Player State Persistence
         if (SceneManager.GetActiveScene().name == "updated3DTut") {
             GameObject Player3D = GameObject.Find("3D Player");
@@ -153,30 +118,20 @@ public class GameManager : MonoBehaviour
 
         // 2D Puzzle State Persistence
         if (SceneManager.GetActiveScene().name == "updated2dTut") {
-            GameObject PushWall = GameObject.Find("PushWall");
-            if (!gameState.WallPushedIn) {
-                gameState.PushWallPosition = PushWall.transform.position;
-            }
-
-            GameObject ElevatorBlock = GameObject.Find("elevator");
-            if (ElevatorBlock != null) {
-                gameState.ElevatorBlockPosition = ElevatorBlock.transform.localPosition;
-            }
-            GameObject PinkBlock = GameObject.Find("pink");
-            if (PinkBlock != null) {
-                gameState.PinkBlockPosition = PinkBlock.transform.localPosition;
-            }
-            GameObject GreenBlock = GameObject.Find("green");
-            if (GreenBlock != null) {
-                gameState.GreenBlockPosition = GreenBlock.transform.localPosition;
-            }
-            GameObject YellowBlock = GameObject.Find("yellow");
-            if (YellowBlock != null) {
-                gameState.YellowBlockPosition = YellowBlock.transform.localPosition;
-            }
             GameObject Player2D = GameObject.Find("2D Player");
             if (Player2D != null) {
                 gameState.PlayerPosition2D = Player2D.transform.position;
+            }
+
+            // Update positions of each block in game state
+            if (gameState.CurrentPuzzleId >= 0) {
+                for (int i = 0; i < gameState.CurrTutorialPuzzle.puzzles[gameState.CurrentPuzzleId].puzzleBlocks.Count; i++) {
+                    if (!gameState.CurrTutorialPuzzle.puzzles[gameState.CurrentPuzzleId].puzzleBlocks[i].isSolved) {
+                        PuzzleSet temp = gameState.CurrTutorialPuzzle.puzzles[gameState.CurrentPuzzleId].puzzleBlocks[i];
+                        temp.blockInitPosition = GameObject.Find(temp.blockName).transform.position;
+                        gameState.CurrTutorialPuzzle.puzzles[gameState.CurrentPuzzleId].puzzleBlocks[i] = temp;
+                    }
+                }
             }
         }
 
@@ -205,10 +160,71 @@ public class GameManager : MonoBehaviour
     public void InsertUSB() {
         gameState.USBInserted = true;
     }
+
+    public void UpdateExtrudables(int extrudableId) {
+        switch (gameState.CurrentLevel) {
+            case Level.tutorial:
+                gameState.TutorialExtrudables[extrudableId] = true;
+                break;
+            case Level.biolab:
+                gameState.BioLabExtrudables[extrudableId] = true;
+                break;
+            case Level.computerlab:
+                gameState.ComputerLabExtrudables[extrudableId] = true;
+                break;
+        }
+    }
+
+    public void SolvePuzzleBlock(int puzzleId, int blockId, Level level) {
+        switch (level) {
+            case Level.tutorial:
+                PuzzleSet x = gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                x.isSolved = true;
+                gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = x;
+                break;
+            case Level.biolab:
+                PuzzleSet y = gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                y.isSolved = true;
+                gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = y;
+                break;
+            case Level.computerlab:
+                PuzzleSet z = gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                z.isSolved = true;
+                gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = z;
+                break;
+        }
+    }
+
+    public void SolvePuzzle(Level level, int puzzleId) {
+        switch (level) {
+            case Level.tutorial:
+                switch (puzzleId) {
+                    case 0: 
+                        gameState.ElevatorRunning = true;
+                        break;
+                    case 1:
+                        gameState.DoorUnlocked = true;
+                        break;
+                }
+                break;
+            case Level.biolab:
+                break;
+            case Level.computerlab:
+                break;
+        }
+    }
+
+    public void SetCurrentPuzzle(int puzzleId) {
+        gameState.CurrentPuzzleId = puzzleId;
+    }
 }
 
 public class GameState
 {
+    // Current level
+    public Level CurrentLevel { get; set; }
+    public int CurrentPuzzleId { get; set; } // id of puzzle in current level
+
     // 3D Character State
     public Vector3 PlayerPosition3D { get; set; }
     public Vector3 PlayerRotation3D { get; set; }
@@ -219,22 +235,22 @@ public class GameState
     public bool DoorUnlocked { get; set; }
     public bool PlayerHasUSB { get; set; }
     public bool USBInserted { get; set; }
-    public bool WallPushedIn { get; set; }
+    public bool ElevatorRunning { get; set; }
     
     // 2D Character State
     public Vector2 PlayerPosition2D { get; set; }
 
     // 2D Game State
-    public Vector3 PushWallPosition { get; set; }
-    public Vector3 ElevatorBlockPosition { get; set; }
-    public Vector3 PinkBlockPosition { get; set; }
-    public Vector3 GreenBlockPosition { get; set; }
-    public Vector3 YellowBlockPosition { get; set; }
-    public bool ElevatorBlockSet { get; set; }
-    public bool PinkBlockSet { get; set; }
-    public bool GreenBlockSet { get; set; }
-    public bool YellowBlockSet { get; set; }
-    public List<int> completedBlocks = new List<int>();
+    
+    // Dynamically updated instances of puzzle states
+    public BlockPuzzles CurrTutorialPuzzle { get; set; }
+    public BlockPuzzles CurrComputerPuzzle { get; set; }
+    public BlockPuzzles CurrChemicalPuzzle { get; set; }
+
+    // Lists of bools indicating whether or not the corresponding extrudable block in that level has been extruded
+    public List<bool> TutorialExtrudables { get; set; }
+    public List<bool> BioLabExtrudables { get; set; }
+    public List<bool> ComputerLabExtrudables { get; set; }
 
     // Scene State
     public string SceneName { get; set; }
@@ -242,6 +258,9 @@ public class GameState
     // Constructor
     public GameState()
     {
+        CurrentLevel = Level.tutorial;
+        CurrentPuzzleId = -1;
+
         PlayerPosition3D = new Vector3(-0.73f,3.877926f,27.88f);
         PlayerRotation3D = new Vector3(0f,90f,0f);
         CameraPosition3D = Vector3.zero;
@@ -250,18 +269,14 @@ public class GameState
         DoorUnlocked = false;
         PlayerHasUSB = false;
         USBInserted = false;
-        WallPushedIn = false;
+        ElevatorRunning = false;
 
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
 
-        PushWallPosition = new Vector3(-1.2622f, -0.2348f, 0.0f);
-        ElevatorBlockPosition = new Vector3(0.035f, 0.525f, 0.0f);
-        PinkBlockPosition = new Vector3(-2.5f, 1.5f, 0.0f);
-        YellowBlockPosition = new Vector3(0.5f, -0.7f, 0.0f);
-        GreenBlockPosition = new Vector3(-6.5f, 0.5f, 0.0f);
-        ElevatorBlockSet = false;
-        PinkBlockSet = false;
-        GreenBlockSet = false;
-        YellowBlockSet = false;
+        TutorialExtrudables = new List<bool> { false, false };
+        BioLabExtrudables = new List<bool> { false, false, false, false, false };
+        ComputerLabExtrudables = new List<bool> { false, false, false };
+
+        SceneName = "updated3DTut";
     }
 }

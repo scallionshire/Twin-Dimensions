@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Extrudable : MonoBehaviour
 {
+    public int extrudableId;
+    private bool gameStateUpdated = false;
+    
     [HideInInspector]
     public Vector3 initScale;
     [HideInInspector]
@@ -15,6 +19,9 @@ public class Extrudable : MonoBehaviour
     private Vector3 targetScale;
     private Vector3 targetPosition;
 
+    private Mesh mesh;
+    private GameManager gameManager;
+
     public Vector3 extrudeDirection;
     public float extrudeAmount;
     public bool shouldLoop = false;
@@ -25,8 +32,25 @@ public class Extrudable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager")?.GetComponent<GameManager>();
+
+        float scaleFactor = 1.0f;
+
+        if (GetComponent<MeshFilter>() != null) {
+            // This is probably a 3D object
+            mesh = GetComponent<MeshFilter>().mesh;
+
+            // Only take the value we want
+            Vector3 meshSize = Vector3.Scale(mesh.bounds.size, extrudeDirection);
+            Debug.Log(gameObject.name + " meshSize: " + meshSize);
+
+            scaleFactor = Mathf.Max(Mathf.Abs(meshSize.x), Mathf.Abs(meshSize.y), Mathf.Abs(meshSize.z));
+        }
+        
         initScale = transform.localScale;
         initPosition = transform.position;
+
+        Debug.Log(gameObject.name + " scaleFactor: " + scaleFactor);
 
         // Gives level designers an extra option in case it's not extruding in the right direction
         if (isExtruding) {
@@ -35,7 +59,7 @@ public class Extrudable : MonoBehaviour
             endScale = initScale + extrudeDirection * extrudeAmount * (-1);
         }
 
-        endPosition = initPosition + extrudeDirection * extrudeAmount / 2;
+        endPosition = initPosition + extrudeDirection * scaleFactor * extrudeAmount / 2;
 
         targetScale = endScale;
         targetPosition = endPosition;
@@ -45,6 +69,11 @@ public class Extrudable : MonoBehaviour
     void Update()
     {
         if (isMoving) {
+            if (!gameStateUpdated) {
+                gameStateUpdated = true;
+                gameManager?.UpdateExtrudables(extrudableId);
+            }
+
             if ((targetScale - transform.localScale).sqrMagnitude < 0.05f) {
                 if (shouldLoop && targetScale == endScale) {
                     targetScale = initScale;
