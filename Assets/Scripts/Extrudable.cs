@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Extrudable : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Extrudable : MonoBehaviour
     private Vector3 targetScale;
     private Vector3 targetPosition;
 
+    private Mesh mesh;
+
     public Vector3 extrudeDirection;
     public float extrudeAmount;
     public bool shouldLoop = false;
@@ -25,8 +28,23 @@ public class Extrudable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float scaleFactor = 1.0f;
+
+        if (GetComponent<MeshFilter>() != null) {
+            // This is probably a 3D object
+            mesh = GetComponent<MeshFilter>().mesh;
+
+            // Only take the value we want
+            Vector3 meshSize = Vector3.Scale(mesh.bounds.size, extrudeDirection);
+            Debug.Log(gameObject.name + " meshSize: " + meshSize);
+
+            scaleFactor = Mathf.Max(Mathf.Abs(meshSize.x), Mathf.Abs(meshSize.y), Mathf.Abs(meshSize.z));
+        }
+        
         initScale = transform.localScale;
         initPosition = transform.position;
+
+        Debug.Log(gameObject.name + " scaleFactor: " + scaleFactor);
 
         // Gives level designers an extra option in case it's not extruding in the right direction
         if (isExtruding) {
@@ -35,7 +53,7 @@ public class Extrudable : MonoBehaviour
             endScale = initScale + extrudeDirection * extrudeAmount * (-1);
         }
 
-        endPosition = initPosition + extrudeDirection * extrudeAmount / 2;
+        endPosition = initPosition + extrudeDirection * scaleFactor * extrudeAmount / 2;
 
         targetScale = endScale;
         targetPosition = endPosition;
