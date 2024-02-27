@@ -3405,7 +3405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.size
@@ -3468,6 +3468,14 @@ PrefabInstance:
       value: vertical
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockName
+      value: cornerSE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].blockName
+      value: vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockName
       value: elevator
       objectReference: {fileID: 0}
@@ -3513,6 +3521,14 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: afa041d0d38d54a0c8ca728d88256ead, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[1].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cfccc851a39664714a91fade2ff9b141, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].blockSprite
       value: 
       objectReference: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
@@ -3611,6 +3627,14 @@ PrefabInstance:
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[1].correctSprite
       value: 
       objectReference: {fileID: 21300000, guid: 432cd9acb6cad437795765e6c1d57e22, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 245fe2d31434b4d2592d6160795a6ef9, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d44c54e9a4e70465fa03d83294894720, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitName
       value: elevator
@@ -3736,6 +3760,14 @@ PrefabInstance:
       value: verticalPinkTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].destinationName
+      value: cornerSETrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].destinationName
+      value: verticalGreenTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitSprite
       value: 
       objectReference: {fileID: 21300000, guid: 00465aa3c20584dc3b20221946674d02, type: 3}
@@ -3779,6 +3811,10 @@ PrefabInstance:
       propertyPath: initTutorialPuzzle.puzzles.Array.data[2].circuitSprites.Array.data[2].circuitSprite
       value: 
       objectReference: {fileID: 21300000, guid: 589d70eec6db24f53a8a8d73651273f4, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].destinationSprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationSprite
       value: 
@@ -3858,6 +3894,22 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[1].blockInitPosition.y
       value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockInitPosition.x
+      value: -8.448
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockInitPosition.y
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].blockInitPosition.x
+      value: -6.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].blockInitPosition.y
+      value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockInitPosition.x
@@ -3954,6 +4006,22 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[1].destinationPosition.y
       value: 0.462
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].destinationPosition.x
+      value: -8.448
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].destinationPosition.y
+      value: 1.4655
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].destinationPosition.x
+      value: -7.365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].destinationPosition.y
+      value: 0.504
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationPosition.x
@@ -8001,11 +8069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008338881
+      value: 0.000000008338878
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000021161262
+      value: -0.0000000021161255
       objectReference: {fileID: 0}
     - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_Follow
