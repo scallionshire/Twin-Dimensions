@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted || Input.GetKeyDown(KeyCode.M)) // M is cheat code to switch scenes
         {   
-            Debug.Log("Switching scenes");
+            Debug.Log("Switching scenes for level " + gameState.CurrentLevel);
 
             switch (gameState.CurrentLevel) {
                 case Level.tutorial:
@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 case Level.biolab:
-                    if (SceneManager.GetActiveScene().name == "2dmain")
+                    if (SceneManager.GetActiveScene().name == "2dmain" || SceneManager.GetActiveScene().name == "computerPuzzle" || SceneManager.GetActiveScene().name == "chemicalPuzzle")
                     {
                         sceneLoaded = false;
                         SceneManager.LoadScene("fbx3dmain");
@@ -298,10 +298,10 @@ public class GameManager : MonoBehaviour
 
     public void ActivateChemPuzzle() {
         gameState.ChemPuzzleUnlocked = true;
-
-        gameState.CurrentLevel = Level.biolab;
-        sceneLoaded = false;
         gameState.CurrentPuzzleId = 0;
+        gameState.CurrentLevel = Level.biolab;
+
+        sceneLoaded = false;
         SceneManager.LoadScene("chemicalPuzzle");
     }
 }
