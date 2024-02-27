@@ -594,7 +594,12 @@ MonoBehaviour:
   correctBlocks: []
   currentPuzzleId: 0
   puzzlesSolved: 
-  levelPuzzles: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
+  levelPuzzles:
+    level: 0
+    destinationPrefab: {fileID: 0}
+    blockPrefab: {fileID: 0}
+    circuitPrefab: {fileID: 0}
+    puzzles: []
 --- !u!4 &713982315
 Transform:
   m_ObjectHideFlags: 0
@@ -722,7 +727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1449107167
 Transform:
   m_ObjectHideFlags: 0
@@ -913,79 +918,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2145193927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1627213558
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5871488
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.024952
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.0047817
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3478488515786829688, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3478488515786829688, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: initChemicalPuzzle
-      value: 
-      objectReference: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
-    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: initComputerPuzzle
-      value: 
-      objectReference: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
-    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: initTutorialPuzzle
-      value: 
-      objectReference: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
 --- !u!1 &1665609232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1324,5 @@ SceneRoots:
   - {fileID: 7296833063241298496}
   - {fileID: 1503297645}
   - {fileID: 713982315}
-  - {fileID: 1627213558}
   - {fileID: 2145193927}
   - {fileID: 1665609234}

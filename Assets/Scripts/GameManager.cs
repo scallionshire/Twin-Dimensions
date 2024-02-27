@@ -112,6 +112,18 @@ public class GameManager : MonoBehaviour
             Player2D.transform.position = gameState.PlayerPosition2D;
         }
 
+        if (scene.name == "chemicalPuzzle") {
+            PuzzleManager puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
+
+            puzzleManager.levelPuzzles = gameState.CurrChemicalPuzzle;
+        }
+
+        if (scene.name == "computerPuzzle") {
+            PuzzleManager puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
+
+            puzzleManager.levelPuzzles = gameState.CurrComputerPuzzle;
+        }
+
         sceneLoaded = true;
     }
     
@@ -201,7 +213,16 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 case Level.computerlab:
-                    gameState.CurrentLevel = Level.tutorial;
+                    if (SceneManager.GetActiveScene().name == "2dmain" || SceneManager.GetActiveScene().name == "computerPuzzle" || SceneManager.GetActiveScene().name == "chemicalPuzzle")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("fbx3dmain");
+                    }
+                    else if (SceneManager.GetActiveScene().name == "fbx3dmain")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("2dmain");
+                    }
                     break;
             }
         }
@@ -296,7 +317,7 @@ public class GameManager : MonoBehaviour
     // Set to new level and switch scene if need be
     public void SetCurrentLevel(Level level) {
         gameState.CurrentLevel = level;
-        gameState.CurrentPuzzleId = -1;
+        gameState.CurrentPuzzleId = 0;
 
         switch (level) {
             case Level.biolab:
@@ -316,6 +337,15 @@ public class GameManager : MonoBehaviour
 
         sceneLoaded = false;
         SceneManager.LoadScene("chemicalPuzzle");
+    }
+
+    public void ActivateComputerPuzzle() {
+        gameState.ComputerPuzzleUnlocked = true;
+        gameState.CurrentPuzzleId = 0;
+        gameState.CurrentLevel = Level.computerlab;
+
+        sceneLoaded = false;
+        SceneManager.LoadScene("computerPuzzle");
     }
 }
 
@@ -340,6 +370,7 @@ public class GameState
 
     // Biolab
     public bool ChemPuzzleUnlocked { get; set; }
+    public bool ComputerPuzzleUnlocked { get; set; }
     
     // 2D Character State
     public Vector2 PlayerPosition2D { get; set; }
@@ -380,7 +411,7 @@ public class GameState
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
 
         TutorialExtrudables = new List<bool> { false, false };
-        BioLabExtrudables = new List<bool> { false, false, false, false };
+        BioLabExtrudables = new List<bool> { false, false, false, false, false };
         ComputerLabExtrudables = new List<bool> { false, false, false };
 
         SceneName = "fbx3dtut";
