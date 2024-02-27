@@ -7,8 +7,24 @@ public class ComputerLabMonitorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("The player has entered the detection zone.");
-            // Call Reset method from ResetToCheckpoint.cs, attached to this GameObject
+
             GetComponent<ResetToCheckpoint>().Reset();
+
+            showRedHint();
+            showBlueHint();
         }
     }
+
+    private void showRedHint()
+    {
+        GameObject red32 = GameObject.Find("red32");
+        red32.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    private void showBlueHint()
+    {
+        GameObject blue32 = GameObject.Find("blue32");
+        blue32.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
 }

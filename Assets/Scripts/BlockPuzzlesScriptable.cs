@@ -11,6 +11,8 @@ public struct PuzzleSet {
     public Vector3 destinationPosition;
     public Sprite destinationSprite;
     public string destinationName;
+
+    public bool isSolved;
 }
 
 [System.Serializable]
