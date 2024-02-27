@@ -13,7 +13,7 @@ public class PuzzleManager : MonoBehaviour
 {
     public List<PuzzlePiece> correctBlocks;
     private GameManager gameManager;
-    private int currentPuzzleId;
+    public int currentPuzzleId;
     public bool[] puzzlesSolved;
     public BlockPuzzles levelPuzzles;
 
@@ -24,14 +24,19 @@ public class PuzzleManager : MonoBehaviour
         }
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
-        currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
+        if (gameManager != null) {
+            currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
+        } else {
+            currentPuzzleId = 0;
+        }
+        
 
         if (currentPuzzleId == -1) {
             Debug.Log("No puzzle selected");
             return;
         }
 
-        // TODO: handle blocks that were already solved 
+        // Load in puzzle
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             // Instantiate destination blocks
             GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationPosition, Quaternion.identity);
@@ -50,11 +55,13 @@ public class PuzzleManager : MonoBehaviour
                 newDestination.GetComponent<BlockScript>().blockId = i;
                 newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
 
-                // Instantiate environment sprites
-                GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
+                if (levelPuzzles.circuitPrefab != null) {
+                    // Instantiate environment sprites
+                    GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
 
-                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
-                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+                    newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
+                    newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+                }
             } else {
                 newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationSprite;
 
@@ -68,14 +75,16 @@ public class PuzzleManager : MonoBehaviour
                 newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockSprite;
                 newBlock.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
 
-                // Instantiate environment sprites
-                GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
+                if (levelPuzzles.circuitPrefab != null) {
+                    // Instantiate environment sprites
+                    GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
 
-                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
-                Color tmp = newWire.GetComponent<SpriteRenderer>().color;
-                tmp.a = 0.3f;
-                newWire.GetComponent<SpriteRenderer>().color = tmp;
-                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+                    newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
+                    Color tmp = newWire.GetComponent<SpriteRenderer>().color;
+                    tmp.a = 0.3f;
+                    newWire.GetComponent<SpriteRenderer>().color = tmp;
+                    newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
+                }
             }
 
             correctBlocks.Add(piece);
@@ -90,7 +99,7 @@ public class PuzzleManager : MonoBehaviour
             // Puzzle is solved, provide feedback and handle progression
             Debug.Log("Puzzle solved");
             puzzlesSolved[currentPuzzleId] = true;
-            gameManager.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
+            gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
         }
     }
 
@@ -109,28 +118,30 @@ public class PuzzleManager : MonoBehaviour
             {
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
-                    if (go.GetComponent<BlockScript>().blockId == index) {
+                    if (go.GetComponent<BlockScript>().blockName == levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName) {
                         // Replace trigger block with the correct sprite
-                        go.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
-                        go.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                        piece.destinationObject.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
+                        piece.destinationObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
                         break;
                     }
                 }
 
-                foreach (GameObject go in GameObject.FindGameObjectsWithTag("Connector")) {
-                    if (go.name == levelPuzzles.puzzles[currentPuzzleId].circuitSprites[index].circuitName) {
-                        // Make corresponding connector opaque
-                        Color tmp = go.GetComponent<SpriteRenderer>().color;
-                        tmp.a = 1f;
-                        go.GetComponent<SpriteRenderer>().color = tmp;
+                if (levelPuzzles.circuitPrefab != null) {
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Connector")) {
+                        if (go.name == levelPuzzles.puzzles[currentPuzzleId].circuitSprites[index].circuitName) {
+                            // Make corresponding connector opaque
+                            Color tmp = go.GetComponent<SpriteRenderer>().color;
+                            tmp.a = 1f;
+                            go.GetComponent<SpriteRenderer>().color = tmp;
 
-                        break;
+                            break;
+                        }
                     }
                 }
 
                 // Update game state
-                gameManager.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
+                gameManager?.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
             }
 
             index++;
