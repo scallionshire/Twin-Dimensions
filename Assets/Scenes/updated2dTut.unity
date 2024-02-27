@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctBlocks: []
-  currentPuzzleId: 0
+  currentPuzzleId: 1
   puzzlesSolved: 
   levelPuzzles: {fileID: 11400000, guid: 23ab64dc0adb34f06be58ac535497474, type: 2}
 --- !u!4 &713982315
@@ -1232,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3478488515786829688, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1367,6 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: 1, y: 0, z: 0}
