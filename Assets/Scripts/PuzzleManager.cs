@@ -24,6 +24,7 @@ public class PuzzleManager : MonoBehaviour
         }
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
+        
         if (gameManager != null) {
             currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
         } else {
@@ -54,14 +55,6 @@ public class PuzzleManager : MonoBehaviour
                 newDestination.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationName;
                 newDestination.GetComponent<BlockScript>().blockId = i;
                 newDestination.GetComponent<BlockScript>().blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
-
-                if (levelPuzzles.circuitPrefab != null) {
-                    // Instantiate environment sprites
-                    GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
-
-                    newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
-                    newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
-                }
             } else {
                 newDestination.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationSprite;
 
@@ -74,20 +67,26 @@ public class PuzzleManager : MonoBehaviour
 
                 newBlock.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockSprite;
                 newBlock.name = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].blockName;
-
-                if (levelPuzzles.circuitPrefab != null) {
-                    // Instantiate environment sprites
-                    GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitInitPosition, Quaternion.identity);
-
-                    newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitSprite;
-                    Color tmp = newWire.GetComponent<SpriteRenderer>().color;
-                    tmp.a = 0.3f;
-                    newWire.GetComponent<SpriteRenderer>().color = tmp;
-                    newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[i].circuitName;
-                }
             }
 
             correctBlocks.Add(piece);
+        }
+
+        for (int k = 0; k < levelPuzzles.puzzles[currentPuzzleId].circuitSprites.Count; k++) {
+            // Instantiate environment sprites
+            GameObject newWire = Instantiate(levelPuzzles.circuitPrefab, levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitInitPosition, Quaternion.identity);
+
+            if ((k < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count && levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[k].isSolved)|| levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitName.Contains("env")) {
+                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitSprite;
+                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitName;
+            } else {
+                newWire.GetComponent<SpriteRenderer>().sprite = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitSprite;
+                newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitName;
+
+                Color tmp = newWire.GetComponent<SpriteRenderer>().color;
+                tmp.a = 0.3f;
+                newWire.GetComponent<SpriteRenderer>().color = tmp;
+            }
         }
     }
 

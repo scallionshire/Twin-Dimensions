@@ -15,9 +15,24 @@ MonoBehaviour:
   level: 0
   destinationPrefab: {fileID: 6068090127222488158, guid: 9ce50e3b9eb2b4cafb2c5dd9281e20de, type: 3}
   blockPrefab: {fileID: 1566539604079352776, guid: c4ae08e32f07f4b6fad23a66a8998638, type: 3}
-  circuitPrefab: {fileID: 0}
+  circuitPrefab: {fileID: 7268238707072762127, guid: 418cc8865e47a40e58058e3c45c17b2d, type: 3}
   puzzles:
-  - circuitSprites: []
+  - circuitSprites:
+    - circuitInitPosition: {x: -7.35, y: -0.86, z: 0}
+      circuitSprite: {fileID: 21300000, guid: e5c3496fcf296cb44a9446930c65a3b2, type: 3}
+      circuitName: env
+    - circuitInitPosition: {x: -7.34, y: 1.49, z: 0}
+      circuitSprite: {fileID: 21300000, guid: f5d942df6525a7649a43fa221ab7fe41, type: 3}
+      circuitName: env
+    - circuitInitPosition: {x: -7.35, y: 0.49, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+      circuitName: env
+    - circuitInitPosition: {x: -9.45, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 78e57b6136cc64558943aaa247f7022e, type: 3}
+      circuitName: env
+    - circuitInitPosition: {x: -5.28, y: -0.4980001, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 47d545d1320ad4b3099861f3920a6e04, type: 3}
+      circuitName: env
     puzzleBlocks:
     - blockInitPosition: {x: -8.4495, y: -1.7655001, z: 0}
       blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
@@ -26,6 +41,7 @@ MonoBehaviour:
       destinationPosition: {x: -9.444, y: 0.459, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: verticalBlueTrigger
+      isSolved: 0
     - blockInitPosition: {x: -10.38, y: 2.2649999, z: 0}
       blockSprite: {fileID: 21300000, guid: cfccc851a39664714a91fade2ff9b141, type: 3}
       blockName: cornerBlue
@@ -33,6 +49,7 @@ MonoBehaviour:
       destinationPosition: {x: -9.444, y: 1.464, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: cornerBlueTrigger
+      isSolved: 0
     - blockInitPosition: {x: -10.11, y: 0.63, z: 0}
       blockSprite: {fileID: 21300000, guid: 6ad6850f257da4515905f48491d23068, type: 3}
       blockName: horizontal
@@ -40,6 +57,7 @@ MonoBehaviour:
       destinationPosition: {x: -8.403, y: 1.464, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: horizontalBlueTrigger
+      isSolved: 0
     - blockInitPosition: {x: -6.321, y: 2.205, z: 0}
       blockSprite: {fileID: 21300000, guid: 6ad6850f257da4515905f48491d23068, type: 3}
       blockName: horizontal
@@ -47,6 +65,7 @@ MonoBehaviour:
       destinationPosition: {x: -6.31, y: 1.464, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: horizontalYellowTrigger
+      isSolved: 0
     - blockInitPosition: {x: -4.86, y: 2.16, z: 0}
       blockSprite: {fileID: 21300000, guid: 7188f78ac93f946ffb4c5fa42b2b8d8e, type: 3}
       blockName: cornerYellow
@@ -54,6 +73,7 @@ MonoBehaviour:
       destinationPosition: {x: -5.302, y: 1.464, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: cornerYellowTrigger
+      isSolved: 0
     - blockInitPosition: {x: -6.315, y: 0.49049994, z: 0}
       blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
       blockName: vertical
@@ -61,5 +81,59 @@ MonoBehaviour:
       destinationPosition: {x: -5.302, y: 0.479, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: verticalYellowTrigger
-  - circuitSprites: []
-    puzzleBlocks: []
+      isSolved: 0
+  - circuitSprites:
+    - circuitInitPosition: {x: -9.46, y: -0.5, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 8ba4bd2d448fd4630a04aa6209df4e4c, type: 3}
+      circuitName: env0
+    - circuitInitPosition: {x: -7.37, y: -1.02, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 5b3c8367936b04ce29540c4891f5c5c4, type: 3}
+      circuitName: env1
+    - circuitInitPosition: {x: -7.365, y: 1.473, z: 0}
+      circuitSprite: {fileID: 21300000, guid: f5d942df6525a7649a43fa221ab7fe41, type: 3}
+      circuitName: env2
+    - circuitInitPosition: {x: -6.363, y: 1.4565, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 7188f78ac93f946ffb4c5fa42b2b8d8e, type: 3}
+      circuitName: env3
+    - circuitInitPosition: {x: -6.3374996, y: 0.48, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 9553bfab0dff2b84dae1112beb2f6b34, type: 3}
+      circuitName: env4
+    - circuitInitPosition: {x: -5.3760004, y: 0.4695, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 7188f78ac93f946ffb4c5fa42b2b8d8e, type: 3}
+      circuitName: env5
+    - circuitInitPosition: {x: -5.37, y: -0.88, z: 0}
+      circuitSprite: {fileID: 21300000, guid: e5c3496fcf296cb44a9446930c65a3b2, type: 3}
+      circuitName: env6
+    puzzleBlocks:
+    - blockInitPosition: {x: -8.481, y: -2.3, z: 0}
+      blockSprite: {fileID: 21300000, guid: afa041d0d38d54a0c8ca728d88256ead, type: 3}
+      blockName: cornerNW
+      correctSprite: {fileID: 21300000, guid: cbc9303f4cc4e43a2a50248a2baa1c67, type: 3}
+      destinationPosition: {x: -8.481, y: -0.5205, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: cornerNWTrigger
+      isSolved: 0
+    - blockInitPosition: {x: -10.26, y: -0.31, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+      blockName: vertical
+      correctSprite: {fileID: 21300000, guid: 432cd9acb6cad437795765e6c1d57e22, type: 3}
+      destinationPosition: {x: -8.4645, y: 0.462, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: verticalPinkTrigger
+      isSolved: 0
+    - blockInitPosition: {x: -8.448, y: -0.31, z: 0}
+      blockSprite: {fileID: 21300000, guid: cfccc851a39664714a91fade2ff9b141, type: 3}
+      blockName: cornerSE
+      correctSprite: {fileID: 21300000, guid: 245fe2d31434b4d2592d6160795a6ef9, type: 3}
+      destinationPosition: {x: -8.448, y: 1.4655, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: cornerSETrigger
+      isSolved: 0
+    - blockInitPosition: {x: -6.36, y: -2.01, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
+      blockName: vertical
+      correctSprite: {fileID: 21300000, guid: d44c54e9a4e70465fa03d83294894720, type: 3}
+      destinationPosition: {x: -7.365, y: 0.5039998, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: verticalGreenTrigger
+      isSolved: 0

@@ -32,7 +32,7 @@ public class Extrudable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager")?.GetComponent<GameManager>();
 
         float scaleFactor = 1.0f;
 
@@ -71,7 +71,7 @@ public class Extrudable : MonoBehaviour
         if (isMoving) {
             if (!gameStateUpdated) {
                 gameStateUpdated = true;
-                gameManager.UpdateExtrudables(extrudableId);
+                gameManager?.UpdateExtrudables(extrudableId);
             }
 
             if ((targetScale - transform.localScale).sqrMagnitude < 0.05f) {
