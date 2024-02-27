@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DetectionZoneTrigger : MonoBehaviour
+public class ComputerLabMonitorTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
