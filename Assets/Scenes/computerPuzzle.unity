@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2560,7 +2560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &713982314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,19 +2573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7419ffc87354e2298890c513c01e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctBlocks:
-  - destinationObject: {fileID: 0}
-    correctSprite: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
-    isCorrect: 0
-  - destinationObject: {fileID: 0}
-    correctSprite: {fileID: 21300000, guid: 1ec195c2d07094f5487a606685f3e50b, type: 3}
-    isCorrect: 0
-  - destinationObject: {fileID: 0}
-    correctSprite: {fileID: 21300000, guid: f8616c8a4100140ca965d4117ee0541c, type: 3}
-    isCorrect: 0
-  - destinationObject: {fileID: 0}
-    correctSprite: {fileID: 21300000, guid: f3b546128b8534fc5b808af4d5b68398, type: 3}
-    isCorrect: 0
+  correctBlocks: []
   currentPuzzleId: 0
   puzzlesSolved: 
   levelPuzzles: {fileID: 0}
@@ -5650,7 +5638,7 @@ GameObject:
   - component: {fileID: 1665609234}
   - component: {fileID: 1665609233}
   m_Layer: 0
-  m_Name: Tilemap_Blocks
+  m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
