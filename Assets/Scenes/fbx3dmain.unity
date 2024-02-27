@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -469,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -1041,6 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -1299,8 +1302,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243148057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268352, y: 0.00000000730385, z: -0.0000000030253542, w: 0.92387956}
-  m_LocalPosition: {x: -4.128, y: 6.12, z: -12.12}
+  m_LocalRotation: {x: 0.3826835, y: -1.3460221e-15, z: 5.575407e-16, w: 0.92387956}
+  m_LocalPosition: {x: -13.18, y: 10.969999, z: 3.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1499,6 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -1706,15 +1710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.06
+      value: -13.18
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 5.35
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.67
+      value: 7.08
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2028,8 +2032,8 @@ GameObject:
   - component: {fileID: 334935296}
   - component: {fileID: 334935295}
   m_Layer: 7
-  m_Name: extrudable (4)
-  m_TagString: Extrudable
+  m_Name: Extrudable5
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2046,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: 1, y: 0, z: 0}
@@ -2198,6 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -2753,6 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -3678,23 +3685,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008002176
+      value: 0.000000008002176
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000031591263
+      value: -0.0000000031591263
       objectReference: {fileID: 0}
     - target: {fileID: 7786381001790821031, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.06
+      value: -13.18
       objectReference: {fileID: 0}
     - target: {fileID: 7786381001790821031, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.12
+      value: 10.969999
       objectReference: {fileID: 0}
     - target: {fileID: 7786381001790821031, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.67
+      value: 3.08
       objectReference: {fileID: 0}
     - target: {fileID: 7786381001790821031, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3742,15 +3749,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22829996
+      value: 0.22829993
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000000671872
+      value: -1.0109121e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000041662718
+      value: -2.0142749e-16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3914,8 +3921,8 @@ GameObject:
   - component: {fileID: 752441383}
   - component: {fileID: 752441382}
   m_Layer: 7
-  m_Name: extrudable (2)
-  m_TagString: Untagged
+  m_Name: Extrudable2
+  m_TagString: Extrudable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3953,6 +3960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: 0, y: 0, z: -1}
@@ -4625,8 +4633,8 @@ GameObject:
   - component: {fileID: 965392444}
   - component: {fileID: 965392443}
   m_Layer: 7
-  m_Name: extrudable (3)
-  m_TagString: Untagged
+  m_Name: Extrudable3
+  m_TagString: Extrudable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4643,6 +4651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -4721,6 +4730,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -2427768999281476138, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
   m_PrefabInstance: {fileID: 1844464853}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1034303546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8513424388201257645, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
+  m_PrefabInstance: {fileID: 1670020518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1034303550
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034303546}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
 --- !u!1 &1039988328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2709249609632485999, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
@@ -4935,6 +4971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -5258,8 +5295,8 @@ GameObject:
   - component: {fileID: 1164109360}
   - component: {fileID: 1164109361}
   m_Layer: 7
-  m_Name: extrudable
-  m_TagString: Untagged
+  m_Name: Extrudable0
+  m_TagString: Extrudable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5341,6 +5378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: 1, y: 0, z: 0}
@@ -5503,6 +5541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -5700,6 +5739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -6092,8 +6132,8 @@ GameObject:
   - component: {fileID: 1451059211}
   - component: {fileID: 1451059210}
   m_Layer: 7
-  m_Name: extrudable (1)
-  m_TagString: Untagged
+  m_Name: Extrudable1
+  m_TagString: Extrudable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6131,6 +6171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: 1, y: 0, z: 0}
@@ -6739,6 +6780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -7152,6 +7194,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.007838718, y: 0.009999999, z: 0.004085207}
   m_Center: {x: 2.3283087e-10, y: 0, z: -6.9849193e-10}
+--- !u!114 &1645663537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645663532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ActivateChemPuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  highlightMaterial: {fileID: 2100000, guid: 60f373f9da29d41b7bbff1f936b88b13, type: 2}
 --- !u!1001 &1670020518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7212,6 +7282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -3270834789232462163, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
       propertyPath: m_LocalScale.y
       value: 7.728982
@@ -7227,7 +7301,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1034303550}
   m_SourcePrefab: {fileID: 100100000, guid: 9f227ad6f7c43ca4d89e84b38220ab8e, type: 3}
 --- !u!1 &1700505425
 GameObject:
@@ -7428,6 +7505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c7860abe0c342d4bb64b5422d9e401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extrudableId: 0
   initScale: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
   extrudeDirection: {x: -1, y: 0, z: 0}
@@ -7973,8 +8051,12 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -7235015103121818086, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
+      propertyPath: m_Name
+      value: ChemistryPort
+      objectReference: {fileID: 0}
+    - target: {fileID: -7235015103121818086, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7203739694736632449, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
       propertyPath: m_Layer
@@ -9565,6 +9647,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7235015103121818086, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1645663536}
+    - targetCorrespondingSourceObject: {fileID: -7235015103121818086, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1645663537}
     - targetCorrespondingSourceObject: {fileID: -8140499575222096, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1348850105}
@@ -10059,3 +10144,4 @@ SceneRoots:
   - {fileID: 812145871}
   - {fileID: 1542703441}
   - {fileID: 943748930}
+  - {fileID: 474945843}

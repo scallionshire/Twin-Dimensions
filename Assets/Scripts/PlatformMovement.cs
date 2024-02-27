@@ -35,7 +35,7 @@ public class PlatformMovement : MonoBehaviour
     // Apply physics-based movement in FixedUpdate
     void FixedUpdate()
     {
-        checkCollisions();
+        // checkCollisions();
         if (isMoving)
         {
             Vector3 platformVelocity = targetPoint.position - transform.position;
@@ -62,36 +62,56 @@ public class PlatformMovement : MonoBehaviour
     /**
      * Checks if the player is on this platform using OverlapBox
      */
-    void checkCollisions()
+    // void checkCollisions()
+    // {
+    //     // Use the OverlapBox to detect if there are any other colliders within this box area.
+    //     Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z), Quaternion.identity);
+
+    //     // Check when the player is coming into contact with the box
+    //     int i = 0;
+    //     while (i < hitColliders.Length)
+    //     {
+    //         // Debug.Log("Hit: " + hitColliders[i].gameObject.name);
+    //         if (hitColliders[i].gameObject.tag == "Player")
+    //         {
+    //             Debug.Log("Player is on the platform");
+    //             hitColliders[i].transform.parent = transform;
+    //             return;
+    //         }
+    //         i++;
+    //     }
+
+    //     // Debug.Log("Player is not on the platform");
+    //     transform.DetachChildren();
+    // }
+
+    void OnTriggerEnter(Collider collision)
     {
-        // Use the OverlapBox to detect if there are any other colliders within this box area.
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z), Quaternion.identity);
-
-        // Check when the player is coming into contact with the box
-        int i = 0;
-        while (i < hitColliders.Length)
+        if (collision.gameObject.tag == "Player")
         {
-            // Debug.Log("Hit: " + hitColliders[i].gameObject.name);
-            if (hitColliders[i].gameObject.tag == "Player")
-            {
-                Debug.Log("Player is on the platform");
-                hitColliders[i].transform.parent = transform;
-                return;
-            }
-            i++;
-        }
+            Debug.Log("Player is on the platform");
+            isMoving = true;
+            collision.transform.parent = transform;
 
-        // Debug.Log("Player is not on the platform");
-        transform.DetachChildren();
+            // Change scene after 3 seconds
+            StartCoroutine(GoToBioLab());
+        }
     }
 
     /**
      * Draws a red cube around the platform to show the OverlapBox 
      * for testing purposes
      */
-    void OnDrawGizmos()
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireCube(transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z));
+    // }
+
+    IEnumerator GoToBioLab()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z));
+        yield return new WaitForSeconds(3);
+        isMoving = true;
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetCurrentLevel(Level.biolab);
     }
 }

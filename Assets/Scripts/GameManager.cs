@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {   
         Debug.Log("Scene loaded: " + scene.name);
-        if (scene.name == "updated3DTut") {
+        if (scene.name == "fbx3dtut") {
             GameObject ThirdPersonCamera = GameObject.Find("Third Person Camera");
             ThirdPersonCamera.transform.position = gameState.CameraPosition3D;
             ThirdPersonCamera.transform.eulerAngles = gameState.CameraRotation3D;
@@ -67,6 +67,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Platform moving");
                 foreach (GameObject platform in platforms) {
                     platform.GetComponent<Extrudable>().isMoving = true;
+                }
+            }
+        }
+
+        if (scene.name == "fbx3dmain") {
+            for (int i = 0; i < gameState.BioLabExtrudables.Count; i++) {
+                if (gameState.BioLabExtrudables[i]) {
+                    GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
                 }
             }
         }
@@ -102,7 +110,21 @@ public class GameManager : MonoBehaviour
         }
 
         // Player State Persistence
-        if (SceneManager.GetActiveScene().name == "updated3DTut") {
+        if (SceneManager.GetActiveScene().name == "fbx3dtut") {
+            GameObject Player3D = GameObject.Find("3D Player");
+            if (Player3D != null) {
+                gameState.PlayerPosition3D = Player3D.transform.position;
+                gameState.PlayerRotation3D = Player3D.transform.eulerAngles;
+            }
+
+            GameObject ThirdPersonCamera = GameObject.Find("Third Person Camera");
+            if (ThirdPersonCamera != null) {
+                gameState.CameraPosition3D = ThirdPersonCamera.transform.position;
+                gameState.CameraRotation3D = ThirdPersonCamera.transform.eulerAngles;
+            }
+        }
+
+        if (SceneManager.GetActiveScene().name == "fbx3dmain") {
             GameObject Player3D = GameObject.Find("3D Player");
             if (Player3D != null) {
                 gameState.PlayerPosition3D = Player3D.transform.position;
@@ -139,15 +161,55 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted || Input.GetKeyDown(KeyCode.M)) // M is cheat code to switch scenes
         {   
             Debug.Log("Switching scenes");
-            if (SceneManager.GetActiveScene().name == "updated2dTut")
-            {
-                sceneLoaded = false;
-                SceneManager.LoadScene("updated3DTut");
+
+            switch (gameState.CurrentLevel) {
+                case Level.tutorial:
+                    if (SceneManager.GetActiveScene().name == "updated2dTut")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("fbx3dtut");
+                    }
+                    else if (SceneManager.GetActiveScene().name == "fbx3dtut")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("updated2dTut");
+                    }
+                    break;
+                case Level.biolab:
+                    if (SceneManager.GetActiveScene().name == "2dmain")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("fbx3dmain");
+                    }
+                    else if (SceneManager.GetActiveScene().name == "fbx3dmain")
+                    {
+                        sceneLoaded = false;
+                        SceneManager.LoadScene("2dmain");
+                    }
+                    break;
+                case Level.computerlab:
+                    gameState.CurrentLevel = Level.tutorial;
+                    break;
             }
-            else if (SceneManager.GetActiveScene().name == "updated3DTut")
-            {
-                sceneLoaded = false;
-                SceneManager.LoadScene("updated2dTut");
+        }
+
+        // C is a cheat code to try out the computer puzzle
+        if (Input.GetKeyDown(KeyCode.C)) {
+            gameState.CurrentLevel = Level.computerlab;
+            sceneLoaded = false;
+            gameState.CurrentPuzzleId = 0;
+            SceneManager.LoadScene("computerPuzzle");
+        }
+
+        // V is a cheat code to view the monitor room
+        if (Input.GetKeyDown(KeyCode.V) && SceneManager.GetActiveScene().name == "fbx3dmain") {
+            GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(2.90f,11.88f,-11.48f);
+        }
+
+        // X is a cheat code to extrude everything
+        if (Input.GetKeyDown(KeyCode.X)) {
+            foreach (GameObject ext in GameObject.FindGameObjectsWithTag("Extrudable")) {
+                ext.GetComponent<Extrudable>().Extrude();
             }
         }
     }
@@ -217,6 +279,31 @@ public class GameManager : MonoBehaviour
     public void SetCurrentPuzzle(int puzzleId) {
         gameState.CurrentPuzzleId = puzzleId;
     }
+
+    // Set to new level and switch scene if need be
+    public void SetCurrentLevel(Level level) {
+        gameState.CurrentLevel = level;
+        gameState.CurrentPuzzleId = -1;
+
+        switch (level) {
+            case Level.biolab:
+                sceneLoaded = false;
+                SceneManager.LoadScene("fbx3dmain");
+                break;
+            // case Level.computerlab:
+            //     gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
+            //     break;
+        }
+    }
+
+    public void ActivateChemPuzzle() {
+        gameState.ChemPuzzleUnlocked = true;
+
+        gameState.CurrentLevel = Level.biolab;
+        sceneLoaded = false;
+        gameState.CurrentPuzzleId = 0;
+        SceneManager.LoadScene("chemicalPuzzle");
+    }
 }
 
 public class GameState
@@ -232,10 +319,14 @@ public class GameState
     public Vector3 CameraRotation3D { get; set; }
 
     // 3D Game State
+    // Tutorial
     public bool DoorUnlocked { get; set; }
     public bool PlayerHasUSB { get; set; }
     public bool USBInserted { get; set; }
     public bool ElevatorRunning { get; set; }
+
+    // Biolab
+    public bool ChemPuzzleUnlocked { get; set; }
     
     // 2D Character State
     public Vector2 PlayerPosition2D { get; set; }
@@ -271,12 +362,14 @@ public class GameState
         USBInserted = false;
         ElevatorRunning = false;
 
+        ChemPuzzleUnlocked = false;
+
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
 
         TutorialExtrudables = new List<bool> { false, false };
-        BioLabExtrudables = new List<bool> { false, false, false, false, false };
+        BioLabExtrudables = new List<bool> { false, false, false, false };
         ComputerLabExtrudables = new List<bool> { false, false, false };
 
-        SceneName = "updated3DTut";
+        SceneName = "fbx3dtut";
     }
 }
