@@ -3368,9 +3368,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.blockPrefab
       value: 
       objectReference: {fileID: 1566539604079352776, guid: c4ae08e32f07f4b6fad23a66a8998638, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.blockPrefab
+      value: 
+      objectReference: {fileID: 6192464661413001736, guid: c42f8ae76016a4f83992cadc49083122, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.blockPrefab
       value: 
@@ -3388,12 +3396,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6068090127222488158, guid: 9ce50e3b9eb2b4cafb2c5dd9281e20de, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.destinationPrefab
+      value: 
+      objectReference: {fileID: 6192464661413001736, guid: 4137e1b2184a94c22a2f605eca9fa46a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.destinationPrefab
       value: 
       objectReference: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.size
@@ -3406,6 +3422,10 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.size
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.size
@@ -3422,6 +3442,10 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].circuitSprites.Array.size
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].circuitSprites.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].circuitSprites.Array.size
@@ -3476,6 +3500,46 @@ PrefabInstance:
       value: vertical
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockName
+      value: vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].blockName
+      value: horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].blockName
+      value: cornerSW
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].blockName
+      value: vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].blockName
+      value: cornerNE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockName
+      value: horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].blockName
+      value: vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].blockName
+      value: vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].blockName
+      value: vertica
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].blockName
+      value: cornerNW
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockName
       value: elevator
       objectReference: {fileID: 0}
@@ -3490,6 +3554,14 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockName
       value: yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].blockName
+      value: horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].blockName
+      value: cornerSW
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockSprite
@@ -3532,6 +3604,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6a207784518cfce478b59caf2a2f0160, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d101137c5a96b420680f35415a9362bb, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 819fd9980fdf32f4b90538d927826193, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: abebea63e94c2e74b87181985915f1e4, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockSprite
       value: 
       objectReference: {fileID: 21300000, guid: f01150ace07a04147b66071f463c3aa5, type: 3}
@@ -3547,6 +3659,14 @@ PrefabInstance:
       propertyPath: initTutorialPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockSprite
       value: 
       objectReference: {fileID: 21300000, guid: 472cc3c879fb99341943b1ae7fe7144f, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].blockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d101137c5a96b420680f35415a9362bb, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitName
       value: env
@@ -3636,6 +3756,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d44c54e9a4e70465fa03d83294894720, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b45b700c2fec4adf94540cae98d96a8, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bba3e127a95806d4bb3f5c21682d3029, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0504316e859a8864cb35fa0c098181e1, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitName
       value: elevator
       objectReference: {fileID: 0}
@@ -3679,6 +3839,14 @@ PrefabInstance:
       propertyPath: initTutorialPuzzle.puzzles.Array.data[2].circuitSprites.Array.data[2].circuitName
       value: yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].correctSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b45b700c2fec4adf94540cae98d96a8, type: 3}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitSprite
       value: 
@@ -3768,6 +3936,46 @@ PrefabInstance:
       value: verticalGreenTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationName
+      value: dest0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].destinationName
+      value: dest1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].destinationName
+      value: dest2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].destinationName
+      value: dest3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].destinationName
+      value: dest4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].destinationName
+      value: dest5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].destinationName
+      value: dest6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].destinationName
+      value: dest7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].destinationName
+      value: dest8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].destinationName
+      value: dest9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitSprite
       value: 
       objectReference: {fileID: 21300000, guid: 00465aa3c20584dc3b20221946674d02, type: 3}
@@ -3811,6 +4019,14 @@ PrefabInstance:
       propertyPath: initTutorialPuzzle.puzzles.Array.data[2].circuitSprites.Array.data[2].circuitSprite
       value: 
       objectReference: {fileID: 21300000, guid: 589d70eec6db24f53a8a8d73651273f4, type: 3}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].destinationName
+      value: dest10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].destinationName
+      value: dest11
+      objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[3].destinationSprite
       value: 
@@ -3912,6 +4128,86 @@ PrefabInstance:
       value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockInitPosition.x
+      value: -7.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockInitPosition.y
+      value: -3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].blockInitPosition.x
+      value: -10.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].blockInitPosition.y
+      value: -0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].blockInitPosition.x
+      value: -8.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].blockInitPosition.y
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].blockInitPosition.x
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].blockInitPosition.y
+      value: -3.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].blockInitPosition.x
+      value: -4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].blockInitPosition.y
+      value: -2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockInitPosition.x
+      value: -8.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockInitPosition.y
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].blockInitPosition.x
+      value: -5.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].blockInitPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].blockInitPosition.x
+      value: -3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].blockInitPosition.y
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].blockInitPosition.x
+      value: -3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].blockInitPosition.y
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].blockInitPosition.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].blockInitPosition.y
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].blockInitPosition.x
       value: 0.0525
       objectReference: {fileID: 0}
@@ -3942,6 +4238,22 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].blockInitPosition.y
       value: -1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].blockInitPosition.x
+      value: -7.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].blockInitPosition.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].blockInitPosition.x
+      value: -5.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].blockInitPosition.y
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationPosition.x
@@ -4024,6 +4336,86 @@ PrefabInstance:
       value: 0.504
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationPosition.x
+      value: -6.9750004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationPosition.y
+      value: -2.685
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].destinationPosition.x
+      value: -7.815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[1].destinationPosition.y
+      value: -0.85649997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].destinationPosition.x
+      value: -7.0950003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[2].destinationPosition.y
+      value: -0.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].destinationPosition.x
+      value: -5.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[3].destinationPosition.y
+      value: -1.935
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].destinationPosition.x
+      value: -5.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[4].destinationPosition.y
+      value: -2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].destinationPosition.x
+      value: -7.0199995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].destinationPosition.y
+      value: 0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].destinationPosition.x
+      value: -4.3650002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[6].destinationPosition.y
+      value: 0.16499999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].destinationPosition.x
+      value: -3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[7].destinationPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].destinationPosition.x
+      value: -2.9850001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[8].destinationPosition.y
+      value: -0.615
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].destinationPosition.x
+      value: -2.2649999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[9].destinationPosition.y
+      value: -1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[0].destinationPosition.x
       value: -4.48
       objectReference: {fileID: 0}
@@ -4054,6 +4446,22 @@ PrefabInstance:
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initTutorialPuzzle.puzzles.Array.data[1].puzzleBlocks.Array.data[2].destinationPosition.y
       value: 2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].destinationPosition.x
+      value: -5.9700003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[10].destinationPosition.y
+      value: 2.415
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].destinationPosition.x
+      value: -5.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[11].destinationPosition.y
+      value: 2.715
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].circuitSprites.Array.data[0].circuitInitPosition.x
@@ -8069,11 +8477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008338878
+      value: -0.000000008338878
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021161255
+      value: 0.0000000021161255
       objectReference: {fileID: 0}
     - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_Follow
@@ -8201,7 +8609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000014701978
+      value: -0.00000001470198
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
