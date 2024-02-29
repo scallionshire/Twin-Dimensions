@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool sceneLoaded = true;
 
+    public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public PuzzleDataScriptable initChemicalPuzzle;
+
     // Initial puzzle states, loaded in via ScriptableObjects in the inspector
-    public BlockPuzzles initTutorialPuzzle;
-    public BlockPuzzles initComputerPuzzle;
-    public BlockPuzzles initChemicalPuzzle;
+
 
     void Awake()
     {   
@@ -376,11 +378,9 @@ public class GameState
     public Vector2 PlayerPosition2D { get; set; }
 
     // 2D Game State
-    
-    // Dynamically updated instances of puzzle states
-    public BlockPuzzles CurrTutorialPuzzle { get; set; }
-    public BlockPuzzles CurrComputerPuzzle { get; set; }
-    public BlockPuzzles CurrChemicalPuzzle { get; set; }
+    public PuzzleDataScriptable CurrTutorialPuzzle { get; set; }
+    public PuzzleDataScriptable CurrChemicalPuzzle { get; set; }
+    public PuzzleDataScriptable CurrComputerPuzzle { get; set; }
 
     // Lists of bools indicating whether or not the corresponding extrudable block in that level has been extruded
     public List<bool> TutorialExtrudables { get; set; }

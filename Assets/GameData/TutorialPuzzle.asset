@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: TutorialPuzzles
-  m_EditorClassIdentifier: Assembly-CSharp::BlockPuzzles
+  m_Script: {fileID: 11500000, guid: 462d7f447acaf425cb6e77786b2c29b6, type: 3}
+  m_Name: TutorialPuzzle
+  m_EditorClassIdentifier: 
   level: 0
   destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
   blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
@@ -22,13 +22,14 @@ MonoBehaviour:
       circuitSprite: {fileID: 21300000, guid: 00465aa3c20584dc3b20221946674d02, type: 3}
       circuitName: elevator
     puzzleBlocks:
-    - blockInitPosition: {x: 0.052500006, y: 0.78749996, z: 0}
+    - blockInitPosition: {x: 0.0525, y: 0.7875, z: 0}
       blockSprite: {fileID: 21300000, guid: f01150ace07a04147b66071f463c3aa5, type: 3}
       blockName: elevator
       correctSprite: {fileID: 21300000, guid: 5ecb48e4af1b64259a155ab17b9c375a, type: 3}
       destinationPosition: {x: -4.48, y: -1.58, z: 0}
-      destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
+      destinationSprite: {fileID: 21300000, guid: a48e2df7fddbd47719fbd09ef49b59e5, type: 3}
       destinationName: elevatorTrigger
+      isSolved: 0
   - circuitSprites:
     - circuitInitPosition: {x: -5.09, y: -0.83, z: 0}
       circuitSprite: {fileID: 21300000, guid: c7ad248cd36e74bdbab10ae86b172d4b, type: 3}
@@ -47,6 +48,7 @@ MonoBehaviour:
       destinationPosition: {x: -6.7, y: 0.474, z: 0}
       destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
       destinationName: greenTrigger
+      isSolved: 0
     - blockInitPosition: {x: -3.75, y: 2.25, z: 0}
       blockSprite: {fileID: 21300000, guid: aab65e77e2e14bd42b425e28b9480511, type: 3}
       blockName: pink
@@ -54,6 +56,7 @@ MonoBehaviour:
       destinationPosition: {x: 0.79, y: 0.691, z: 0}
       destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
       destinationName: pinkTrigger
+      isSolved: 0
     - blockInitPosition: {x: 0.75, y: -1.05, z: 0}
       blockSprite: {fileID: 21300000, guid: 472cc3c879fb99341943b1ae7fe7144f, type: 3}
       blockName: yellow
@@ -61,3 +64,4 @@ MonoBehaviour:
       destinationPosition: {x: -0.9, y: 2.07, z: 0}
       destinationSprite: {fileID: 21300000, guid: dbbea8a8bc6d5434c9055763c515be22, type: 3}
       destinationName: yellowTrigger
+      isSolved: 0

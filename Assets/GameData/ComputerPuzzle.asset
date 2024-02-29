@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: ComputerLabPuzzle
-  m_EditorClassIdentifier: Assembly-CSharp::BlockPuzzles
+  m_Script: {fileID: 11500000, guid: 462d7f447acaf425cb6e77786b2c29b6, type: 3}
+  m_Name: ComputerPuzzle
+  m_EditorClassIdentifier: 
   level: 2
   destinationPrefab: {fileID: 6192464661413001736, guid: 4137e1b2184a94c22a2f605eca9fa46a, type: 3}
   blockPrefab: {fileID: 6192464661413001736, guid: c42f8ae76016a4f83992cadc49083122, type: 3}
@@ -85,11 +85,11 @@ MonoBehaviour:
       isSolved: 0
     - blockInitPosition: {x: -3.82, y: 1.36, z: 0}
       blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertical
+      blockName: vertica
       correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
       destinationPosition: {x: -2.9850001, y: -0.615, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest7
+      destinationName: dest8
       isSolved: 0
     - blockInitPosition: {x: -3.5, y: -1.2, z: 0}
       blockSprite: {fileID: 21300000, guid: abebea63e94c2e74b87181985915f1e4, type: 3}
@@ -97,7 +97,7 @@ MonoBehaviour:
       correctSprite: {fileID: 21300000, guid: 0504316e859a8864cb35fa0c098181e1, type: 3}
       destinationPosition: {x: -2.2649999, y: -1.17, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest8
+      destinationName: dest9
       isSolved: 0
     - blockInitPosition: {x: -7.45, y: 1.52, z: 0}
       blockSprite: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
@@ -105,7 +105,7 @@ MonoBehaviour:
       correctSprite: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
       destinationPosition: {x: -5.9700003, y: 2.415, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest9
+      destinationName: dest10
       isSolved: 0
     - blockInitPosition: {x: -5.87, y: 1.55, z: 0}
       blockSprite: {fileID: 21300000, guid: d101137c5a96b420680f35415a9362bb, type: 3}
@@ -113,5 +113,5 @@ MonoBehaviour:
       correctSprite: {fileID: 21300000, guid: 8b45b700c2fec4adf94540cae98d96a8, type: 3}
       destinationPosition: {x: -5.205, y: 2.715, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest10
+      destinationName: dest11
       isSolved: 0
