@@ -62,6 +62,7 @@ public class Player2DMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
             Debug.Log("Collided with block: " + collision.gameObject.name);

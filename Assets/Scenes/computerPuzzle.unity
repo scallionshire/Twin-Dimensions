@@ -1496,7 +1496,12 @@ MonoBehaviour:
   correctBlocks: []
   currentPuzzleId: 0
   puzzlesSolved: 
-  levelPuzzles: {fileID: 11400000, guid: 35690d967d3c44fbdab6de18a5f1d9bf, type: 2}
+  levelPuzzles:
+    level: 0
+    destinationPrefab: {fileID: 0}
+    blockPrefab: {fileID: 0}
+    circuitPrefab: {fileID: 0}
+    puzzles: []
 --- !u!4 &713982315
 Transform:
   m_ObjectHideFlags: 0
@@ -2380,7 +2385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1449107167
 Transform:
   m_ObjectHideFlags: 0

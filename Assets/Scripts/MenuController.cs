@@ -4,6 +4,6 @@ public class MenuController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("updated3dtut");
+        SceneManager.LoadScene("fbx3dtut");
     }
 }

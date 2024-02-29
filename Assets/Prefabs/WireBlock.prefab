@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2823045472101474195}
   - component: {fileID: 11794040740623017}
   - component: {fileID: 6118442590765453463}
+  - component: {fileID: 3900549157272600532}
   m_Layer: 0
   m_Name: WireBlock
   m_TagString: Block
@@ -130,3 +131,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.7015257, y: 1.9069741}
   m_EdgeRadius: 0
+--- !u!114 &3900549157272600532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192464661413001736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -810469144
+      Data2: 1145649827
+      Data3: 1732243896
+      Data4: 706326937
+    Path: event:/SFX2D/2DSuccess
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

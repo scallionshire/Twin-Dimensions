@@ -27,15 +27,3 @@ public class PuzzleList {
     public List<CircuitSet> circuitSprites;
     public List<PuzzleSet> puzzleBlocks;
 }
-
-[System.Serializable]
-[CreateAssetMenu(menuName = "ScriptableObjects/BlockPuzzleScriptableObject")]
-public class BlockPuzzles : ScriptableObject
-{
-    // Level that this 2d block puzzle belongs to
-    public Level level;
-    public GameObject destinationPrefab; // destination prefab to instantiate
-    public GameObject blockPrefab; // block prefab to instantiate
-    public GameObject circuitPrefab; // circuit environment prefab to instantiate
-    public List<PuzzleList> puzzles;
-}
