@@ -15,7 +15,7 @@ public class PuzzleManager : MonoBehaviour
     private GameManager gameManager;
     public int currentPuzzleId;
     public bool[] puzzlesSolved;
-    public BlockPuzzles levelPuzzles;
+    public PuzzleDataScriptable levelPuzzles;
 
     void Start()
     {
@@ -25,14 +25,13 @@ public class PuzzleManager : MonoBehaviour
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
         
-        if (gameManager != null) {
-            currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
-        } else {
-            currentPuzzleId = 0;
-        }
-        
+        // if (gameManager != null) {
+        //     currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
+        // } else {
+        //     currentPuzzleId = 0; // TODO: this should be -1 in the real game
+        // }
 
-        if (currentPuzzleId == -1) {
+        if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
             Debug.Log("No puzzle selected");
             return;
         }
