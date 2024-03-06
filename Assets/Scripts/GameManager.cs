@@ -396,8 +396,8 @@ public class GameState
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
 
-        PlayerPosition3D = new Vector3(-0.73f,3.877926f,27.88f);
-        PlayerRotation3D = new Vector3(0f,90f,0f);
+        PlayerPosition3D = new Vector3(1.95f,4.28f,24.2f);
+        PlayerRotation3D = new Vector3(0f,180f,0f);
         CameraPosition3D = Vector3.zero;
         CameraRotation3D = Vector3.zero;
 
