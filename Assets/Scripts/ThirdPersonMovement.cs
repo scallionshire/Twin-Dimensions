@@ -24,7 +24,9 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         // audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
-        animator = GetComponent<Animator>();
+        if (GetComponent<Animator>() != null) {
+            animator = GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -39,7 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical"); // W, S, Up, Down
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
     
-        animator.SetFloat("Speed", direction.sqrMagnitude);
+        animator?.SetFloat("Speed", direction.sqrMagnitude);
 
         if (direction.magnitude >= 0.1f)
         {

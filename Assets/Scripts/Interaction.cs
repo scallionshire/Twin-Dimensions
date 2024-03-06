@@ -22,13 +22,12 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, interactDistance, layers))
         {   
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
             Debug.Log(hit.collider.name);
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
             if (interactable != null)
             {   
-                interactable.LookAt();
+                interactable.Highlight();
                 if (Input.GetKeyDown("e")) // "e" is the key to interact with objects
                 {   
                     interactable.Interact();
