@@ -6,12 +6,13 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {   
     public UnityEvent interactionEvent;
-
     public Material highlightMaterial;
+    [HideInInspector]
+    public bool wasHighlighted = false;
+
     private List<Material> originalMaterials = new List<Material>();
     private List<Renderer> renderers = new List<Renderer>();
-
-    private bool wasHighlighted = false;
+    private PlayerFader playerFader;
 
     void Start()
     {
@@ -22,6 +23,14 @@ public class Interactable : MonoBehaviour
         foreach (Renderer rend in renderers)
         {
             originalMaterials.Add(rend.material);
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>() != null)
+            {
+                playerFader = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>();
+            }
         }
     }
 
@@ -44,6 +53,11 @@ public class Interactable : MonoBehaviour
             rend.material = highlightMaterial;
         }
         wasHighlighted = true;
+
+        if (playerFader != null && !playerFader.isFaded)
+        {
+            playerFader.Fade();
+        }
     }
 
     public void RemoveHighlight()
@@ -55,17 +69,15 @@ public class Interactable : MonoBehaviour
                 renderers[i].material = originalMaterials[i];
             }
         }
+        
+        if (playerFader != null && playerFader.isFaded)
+        {
+            playerFader.ResetFade();
+        }
     }
 
     public void Interact()
     {
-        Debug.Log("Interacting with " + gameObject.name);
         interactionEvent.Invoke();
-        Debug.Log("Interacted with " + gameObject.name);
-    }
-
-    public void LookAt()
-    {   
-        Highlight();
     }
 }
