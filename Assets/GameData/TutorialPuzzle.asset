@@ -15,20 +15,20 @@ MonoBehaviour:
   level: 0
   destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
   blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
-  circuitPrefab: {fileID: 6973451946996186604, guid: c4ccaa72ae45349eab8facd80f377298, type: 3}
+  circuitPrefab: {fileID: 6973451946996186604, guid: 5c46802f32e602a48aab772578f00695, type: 3}
   puzzles:
   - circuitSprites:
-    - circuitInitPosition: {x: -2.78, y: -1.74, z: 0}
-      circuitSprite: {fileID: 21300000, guid: 00465aa3c20584dc3b20221946674d02, type: 3}
-      circuitName: elevator
+    - circuitInitPosition: {x: -6.92, y: -0.55, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
+      circuitName: firstpuzzlewire
     puzzleBlocks:
-    - blockInitPosition: {x: 0.0525, y: 0.7875, z: 0}
-      blockSprite: {fileID: 21300000, guid: f01150ace07a04147b66071f463c3aa5, type: 3}
-      blockName: elevator
-      correctSprite: {fileID: 21300000, guid: 5ecb48e4af1b64259a155ab17b9c375a, type: 3}
-      destinationPosition: {x: -4.48, y: -1.58, z: 0}
-      destinationSprite: {fileID: 21300000, guid: a48e2df7fddbd47719fbd09ef49b59e5, type: 3}
-      destinationName: elevatorTrigger
+    - blockInitPosition: {x: -3.32, y: -2.73, z: 0}
+      blockSprite: {fileID: 21300000, guid: 2b678c6c673169445a909d0b8d743dee, type: 3}
+      blockName: black_square_metal_box
+      correctSprite: {fileID: 21300000, guid: 9f7167011a531fa4e9f9c7711f345a4b, type: 3}
+      destinationPosition: {x: -7.94, y: -0.53, z: 0}
+      destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
+      destinationName: BlockSlot
       isSolved: 0
   - circuitSprites:
     - circuitInitPosition: {x: -5.09, y: -0.83, z: 0}
