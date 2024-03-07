@@ -34,7 +34,9 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
     {
         if (monitorCube != null)
         {
-            monitorCube.SetActive(isActive);
+            foreach (Transform child in transform) {
+                child.gameObject.SetActive(isActive);
+            }
         }
     }
 }
