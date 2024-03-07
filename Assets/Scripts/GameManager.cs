@@ -210,11 +210,15 @@ public class GameManager : MonoBehaviour
 
     public void GetUSB() {
         gameState.PlayerHasUSB = true;
-        GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
+        GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
     public void InsertUSB() {
-        gameState.USBInserted = true;
+        if (gameState.PlayerHasUSB) {
+            gameState.USBInserted = true;
+        } else {
+            print("Player does not have USB");
+        }
     }
 
     public void UpdateExtrudables(int extrudableId) {
