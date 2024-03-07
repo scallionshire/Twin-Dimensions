@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 public class Player2DMovement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Player2DMovement : MonoBehaviour
     private Vector2 movement;
     private Animator _animator;
     private Rigidbody2D rb;
+    private FMOD.Studio.EventInstance footstepsSound;
 
     [HideInInspector]
     public GameObject collidedBlock;
@@ -14,6 +16,8 @@ public class Player2DMovement : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+
+        footstepsSound = RuntimeManager.CreateInstance("event:/SFX2D/2DFootsteps");
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -23,6 +27,8 @@ public class Player2DMovement : MonoBehaviour
         // Gives a value between -1 and 1
         movement.x = Input.GetAxisRaw("Horizontal"); // -1 is left
         movement.y = Input.GetAxisRaw("Vertical"); // -1 is down
+
+        HandleFootstepsSound();
 
         // If player is pressing space and they aren't currently holding a block
         if (Input.GetKey(KeyCode.Space) && transform.childCount < 2)
@@ -53,6 +59,21 @@ public class Player2DMovement : MonoBehaviour
         _animator.SetFloat("Horizontal", movement.x);
         _animator.SetFloat("Vertical", movement.y);
         _animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
+
+    void HandleFootstepsSound()
+    {
+        if (movement.sqrMagnitude > 0)
+        {
+            if (footstepsSound.getPlaybackState(out var playbackState) != FMOD.RESULT.OK || playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            {
+                footstepsSound.start(); 
+            }
+        }
+        else
+        {
+            footstepsSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE); 
+        }
     }
 
     void FixedUpdate()

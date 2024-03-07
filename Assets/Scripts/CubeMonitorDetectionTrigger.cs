@@ -1,8 +1,11 @@
 using UnityEngine;
+using FMODUnity;
+
 public class CubeMonitorDetectionTrigger : MonoBehaviour
 {
     public GameObject monitorCube; 
     private bool isMonitoringActive = true;
+    public string eventName = "event:/SFX3D/MonitorBeep";
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,6 +13,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
         {   
             isMonitoringActive = false;
             SetMonitorCubeActive(false); 
+            RuntimeManager.PlayOneShot(eventName, transform.position);
             Debug.Log("Monitoring blocked by an extrudable object.");
         }
         if (isMonitoringActive && other.CompareTag("Player"))
@@ -26,6 +30,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
             Debug.Log("hi im exiting");
             isMonitoringActive = true;
             SetMonitorCubeActive(true); 
+            RuntimeManager.PlayOneShot(eventName, transform.position);
             Debug.Log("Monitoring unblocked.");
         }
     }

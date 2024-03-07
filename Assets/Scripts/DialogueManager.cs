@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using FMODUnity;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -105,6 +105,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(true, Twin.Twin_20);
                 ToggleActive(false, Twin.Twin_02);
                 TMP_Text target20 = dialogue20.GetComponentInChildren<TMP_Text>();
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/DialogStartSound");
                 StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
         }
