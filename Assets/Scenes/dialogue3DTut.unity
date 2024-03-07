@@ -1402,12 +1402,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121982668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 4.06, y: 6.33, z: -10.83}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 145824983}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &121982671
 MonoBehaviour:
@@ -1423,8 +1423,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionEvent:
     m_PersistentCalls:
-      m_Calls: []
-  highlightMaterial: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 121982672}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
   wasHighlighted: 0
 --- !u!114 &121982672
 MonoBehaviour:
@@ -1698,6 +1710,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 121982670}
   - {fileID: 71094323}
   - {fileID: 1467422206}
   - {fileID: 375215726}
@@ -1706,7 +1719,6 @@ Transform:
   - {fileID: 76532826}
   - {fileID: 693434520}
   - {fileID: 2089493520}
-  - {fileID: 1025793028}
   - {fileID: 936964055}
   - {fileID: 1810358737}
   - {fileID: 2048625919}
@@ -7169,80 +7181,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7857590630482128698, guid: 3da07c817e0120a41a83236ea6b24e8e, type: 3}
---- !u!1001 &1025793027
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 145824983}
-    m_Modifications:
-    - target: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_Name
-      value: USB Port (Elevator)
-      objectReference: {fileID: 0}
-    - target: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlugInUSB
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206532739060150223, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      propertyPath: puzzleId
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 49a614843c6994a949480afbce80149c, type: 3}
---- !u!4 &1025793028 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
-  m_PrefabInstance: {fileID: 1025793027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1041068214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16017,11 +15955,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000002698722
+      value: 0.000000026999542
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000005092621
+      value: -0.0000000050949462
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -29841,7 +29779,7 @@ MonoBehaviour:
     - text: eugh, i hated being in these... >.>
       twin: 1
     - text: I know. It won't happen again.
-      twin: 1
+      twin: 0
 --- !u!114 &8797806405273166462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30901,7 +30839,6 @@ SceneRoots:
   - {fileID: 2009619842}
   - {fileID: 112309382}
   - {fileID: 862622442}
-  - {fileID: 121982670}
   - {fileID: 1515859141}
   - {fileID: 74410894}
   - {fileID: 824080322}
