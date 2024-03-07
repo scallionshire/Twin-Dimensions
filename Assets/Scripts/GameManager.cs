@@ -7,9 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {   
     public GameState gameState = new GameState();
+    public GameObject popupMenu;
     public static GameManager instance;
     private bool sceneLoaded = true;
 
+    public float MusicVolume = 100f;
+    public float DialogueVolume = 100f;
+    public float SFXVolume = 100f;
+    public InventorySystem inventorySystem;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initChemicalPuzzle;
@@ -206,6 +211,10 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerPosition(Vector3 position) {
         gameState.PlayerPosition3D = position;
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePauseMenu();
+        }
     }
 
     public void GetUSB() {
@@ -311,6 +320,20 @@ public class GameManager : MonoBehaviour
     //     sceneLoaded = false;
     //     SceneManager.LoadScene("computerPuzzle");
     // }
+
+    public void TogglePauseMenu()
+    {
+        if (popupMenu.activeSelf)
+        {
+            popupMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            popupMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
 }
 
 public class GameState
