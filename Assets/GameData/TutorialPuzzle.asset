@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462d7f447acaf425cb6e77786b2c29b6, type: 3}
+  m_Name: TutorialPuzzle
+  m_EditorClassIdentifier: 
+  level: 0
+  destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+  blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
+  circuitPrefab: {fileID: 6973451946996186604, guid: 5c46802f32e602a48aab772578f00695, type: 3}
+  puzzles:
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.92, y: -0.55, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
+      circuitName: firstpuzzlewire
+    puzzleBlocks:
+    - blockInitPosition: {x: -4.78, y: -2.73, z: 0}
+      blockSprite: {fileID: 21300000, guid: 2b678c6c673169445a909d0b8d743dee, type: 3}
+      blockName: GreenBlock
+      correctSprite: {fileID: 21300000, guid: 9f7167011a531fa4e9f9c7711f345a4b, type: 3}
+      destinationPosition: {x: -7.94, y: -0.53, z: 0}
+      destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
+      destinationName: BlockSlot
+      isSolved: 0
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.61, y: -0.55, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
+      circuitName: greenWire
+    - circuitInitPosition: {x: -6.53, y: -0.44, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 7e4dd9b0027b63e46af46a96dba0a34d, type: 3}
+      circuitName: pinkWire
+    - circuitInitPosition: {x: -6.64, y: -0.49, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 3d80e0f1a90b9164f963b42b08b04f48, type: 3}
+      circuitName: yellowWire
+    puzzleBlocks:
+    - blockInitPosition: {x: -9.75, y: 0.75, z: 0}
+      blockSprite: {fileID: 21300000, guid: 7686c1468a3d3834c8bd6f9712abf1f6, type: 3}
+      blockName: green
+      correctSprite: {fileID: 21300000, guid: 1ec195c2d07094f5487a606685f3e50b, type: 3}
+      destinationPosition: {x: -7.66, y: -0.57, z: 0}
+      destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
+      destinationName: greenTrigger
+      isSolved: 0
+    - blockInitPosition: {x: -3.93, y: -0.53, z: 0}
+      blockSprite: {fileID: 21300000, guid: aab65e77e2e14bd42b425e28b9480511, type: 3}
+      blockName: pink
+      correctSprite: {fileID: 21300000, guid: f8616c8a4100140ca965d4117ee0541c, type: 3}
+      destinationPosition: {x: -7.68, y: -3.65, z: 0}
+      destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
+      destinationName: pinkTrigger
+      isSolved: 0
+    - blockInitPosition: {x: -3.85, y: -3.48, z: 0}
+      blockSprite: {fileID: 21300000, guid: 472cc3c879fb99341943b1ae7fe7144f, type: 3}
+      blockName: yellow
+      correctSprite: {fileID: 21300000, guid: f3b546128b8534fc5b808af4d5b68398, type: 3}
+      destinationPosition: {x: -4.97, y: 2.64, z: 0}
+      destinationSprite: {fileID: 21300000, guid: dbbea8a8bc6d5434c9055763c515be22, type: 3}
+      destinationName: yellowTrigger
+      isSolved: 0

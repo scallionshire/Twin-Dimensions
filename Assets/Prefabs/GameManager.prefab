@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 812115896519696071}
   - component: {fileID: 7516719043319510648}
-  - component: {fileID: 2820990776697252143}
+  - component: {fileID: 4317013614151246269}
+  - component: {fileID: 530273347719653553}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ea68e9e56d145218644060be364139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {x: 0, y: 0, z: 0}
-  doorUnlocked: 0
---- !u!114 &2820990776697252143
+  initTutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
+  initComputerPuzzle: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
+  initChemicalPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
+--- !u!114 &4317013614151246269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,49 +58,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 3478488515786829688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd245d546bda84fe891c5f13a5cfdcf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: BGM
-    clip: {fileID: 8300000, guid: 3c3dbeb4ce5bf41beb84b79e7b5c2ab0, type: 3}
-    volume: 0.2
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Success
-    clip: {fileID: 8300000, guid: 8f760e49e0b484e438245ab2db2b8130, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Walking
-    clip: {fileID: 8300000, guid: 76127ad238110436f82bbf8e3285321e, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Pickup
-    clip: {fileID: 8300000, guid: 6c804c68941f44543ad1e6a8c6fc3a03, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: USB
-    clip: {fileID: 8300000, guid: 271af3f06db034972a4b5913f540a8d8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: BoxSliding
-    clip: {fileID: 8300000, guid: 59f477b24707946f5b2443f3e10f4e8a, type: 3}
-    volume: 0.1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: DoorOpen
-    clip: {fileID: 8300000, guid: 3b5c663d1277e47b2b354ae035bb86a8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 592655338
+      Data2: 1198825115
+      Data3: 477814425
+      Data4: -978435724
+    Path: event:/Music/MainMusic
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &530273347719653553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478488515786829688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de51629a067594c77b6e38cb7ce38e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCanvas: {fileID: 0}
+  dialogueBox_02: {fileID: 0}
+  dialogueBox_20: {fileID: 0}
+  dialogueText_02: {fileID: 0}
+  dialogueText_20: {fileID: 0}
