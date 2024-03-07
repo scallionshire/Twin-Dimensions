@@ -5,24 +5,28 @@ using UnityEngine.AI;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
-    public bool wasVisited = false;
+    public Dialogue noUSBDialogue;
+    public Dialogue withUSBDialogue;
+    private bool noUSBWasVisited = false;
+    private bool withUSBWasVisited = false;
 
     public void TriggerDialogue()
-    {
-        if (wasVisited)
-        {
-            Debug.Log("Dialogue already visited!");
-            return;
-        }
-        
+    {        
         if (GameObject.Find("DialogueCanvas") != null && GameObject.Find("DialogueCanvas").activeSelf)
         {
             Debug.Log("Dialogue already active!");
             return;
         }
 
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        wasVisited = true;
+        if (FindObjectOfType<GameManager>().gameState.USBInserted && !withUSBWasVisited)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(withUSBDialogue);
+            withUSBWasVisited = true;
+        }
+        else if (!noUSBWasVisited)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(noUSBDialogue);
+            noUSBWasVisited = true;
+        }
     }
 }
