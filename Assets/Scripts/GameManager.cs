@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
-
+    public InventorySystem inventorySystem;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initChemicalPuzzle;
@@ -261,6 +261,7 @@ public class GameManager : MonoBehaviour
 
     public void GetUSB() {
         gameState.PlayerHasUSB = true;
+        inventorySystem.AddObjectToInventory();
         GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
     }
 
