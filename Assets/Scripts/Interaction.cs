@@ -5,6 +5,8 @@ public class Interaction : MonoBehaviour
     public Camera playerCamera; 
     public float interactDistance = 5f;
     public LayerMask layers;
+    public bool prevHit = false;
+    public GameObject prevInteractable;
 
     void Start()
     {
@@ -27,12 +29,22 @@ public class Interaction : MonoBehaviour
 
             if (interactable != null)
             {   
+                prevHit = true;
+                prevInteractable = hit.collider.gameObject;
                 interactable.Highlight();
                 if (Input.GetKeyDown("e")) // "e" is the key to interact with objects
                 {   
                     interactable.Interact();
                 }
             }
+        } else if (prevHit == true)
+        {
+            Debug.Log("Removing highlight");
+            prevHit = false;
+            prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+        } else {
+            Debug.Log("no hit");
+            prevHit = false;
         }
     
     }

@@ -219,6 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void GetUSB() {
         gameState.PlayerHasUSB = true;
+        inventorySystem.AddObjectToInventory();
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
