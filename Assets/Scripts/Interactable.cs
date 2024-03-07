@@ -36,14 +36,14 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (!wasHighlighted)
-        {
-            RemoveHighlight();
-        }
-        else 
-        {
-            wasHighlighted = false;
-        }
+        // if (!wasHighlighted)
+        // {
+        //     RemoveHighlight();
+        // }
+        // else 
+        // {
+        //     wasHighlighted = false;
+        // }
     }
 
     public void Highlight()
