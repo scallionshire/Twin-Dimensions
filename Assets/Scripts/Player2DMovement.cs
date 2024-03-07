@@ -25,7 +25,7 @@ public class Player2DMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical"); // -1 is down
 
         // If player is pressing space and they aren't currently holding a block
-        if (Input.GetKey(KeyCode.E) && transform.childCount < 2)
+        if (Input.GetKey(KeyCode.Space) && transform.childCount < 2)
         {
             movement = movement * 0.7f; // TODO: find some way to slow down walking anim?
 
@@ -37,10 +37,10 @@ public class Player2DMovement : MonoBehaviour
             }
 
             collidedBlock = null;
-        } else if (Input.GetKey(KeyCode.E) && transform.childCount >= 2) {
+        } else if (Input.GetKey(KeyCode.Space) && transform.childCount >= 2) {
             // We don't care about other collisions while we're already holding a block
             collidedBlock = null;
-        } else if (!Input.GetKey(KeyCode.E) && transform.childCount >= 2) {
+        } else if (!Input.GetKey(KeyCode.Space) && transform.childCount >= 2) {
             // Remove the currently held block from being a child of the player once player lets go of space key
             for (int i = 0; i < transform.childCount; i++)
             {

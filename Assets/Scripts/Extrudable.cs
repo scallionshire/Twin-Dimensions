@@ -49,8 +49,6 @@ public class Extrudable : MonoBehaviour
         initScale = transform.localScale;
         initPosition = transform.position;
 
-        Debug.Log(gameObject.name + " scaleFactor: " + scaleFactor);
-
         // Gives level designers an extra option in case it's not extruding in the right direction
         if (isExtruding) {
             endScale = initScale + extrudeDirection * extrudeAmount;

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3522576034392520649}
   - component: {fileID: 7637230956248810449}
   - component: {fileID: 7148853537979452602}
-  - component: {fileID: 3230718801234383521}
   m_Layer: 0
   m_Name: DialogueTrigger3D
   m_TagString: Untagged
@@ -89,7 +88,7 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3230718801234383521}
+      - m_Target: {fileID: 3522576034392520649}
         m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
         m_MethodName: TriggerDialogue
         m_Mode: 1
@@ -101,26 +100,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3230718801234383521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7332408809525082626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noUSBDialogue:
-    dialogueName: 
-    sentences:
-    - text: What a storm... Seems like the power got cut off. Did everyone evacuate?
-      twin: 0
-    - text: Finally, a chance to escape! Tonight's the night to move. Gotta boot
-        up 20.
-      twin: 0
-  withUSBDialogue:
-    dialogueName: 
-    sentences: []
