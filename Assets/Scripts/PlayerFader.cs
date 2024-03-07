@@ -45,8 +45,6 @@ public class PlayerFader : MonoBehaviour
 
                 if (Mathf.Abs(currentColor.a - fadeAmount) < 0.01f)
                 {
-                    Debug.Log("Original Color: " + originalColors[i]);
-                    Debug.Log("Current Color: " + currentColor);
                     renderers[i].material.color = targetColor;
                     stop = true;
                 } else {
@@ -61,7 +59,6 @@ public class PlayerFader : MonoBehaviour
 
     public void ResetFade()
     {
-        Debug.Log("Resetting Fade");
         isFaded = false;
         StartCoroutine(FadeIn());
     }
