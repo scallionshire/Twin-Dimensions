@@ -396,7 +396,7 @@ public class GameState
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
-        TutorialExtrudables = new List<bool> { false, false };
+        TutorialExtrudables = new List<bool> { false, false, false };
         BioLabExtrudables = new List<bool> { false, false, false, false, false };
         ComputerLabExtrudables = new List<bool> { false, false, false };
 
