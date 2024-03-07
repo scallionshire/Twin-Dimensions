@@ -14,4 +14,12 @@ public class CollisionInteractable : MonoBehaviour
             interactionEvent.Invoke();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            interactionEvent.Invoke();
+        }
+    }
 }

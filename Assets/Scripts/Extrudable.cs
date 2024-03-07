@@ -42,15 +42,12 @@ public class Extrudable : MonoBehaviour
 
             // Only take the value we want
             Vector3 meshSize = Vector3.Scale(mesh.bounds.size, extrudeDirection);
-            Debug.Log(gameObject.name + " meshSize: " + meshSize);
 
             scaleFactor = Mathf.Max(Mathf.Abs(meshSize.x), Mathf.Abs(meshSize.y), Mathf.Abs(meshSize.z));
         }
         
         initScale = transform.localScale;
         initPosition = transform.position;
-
-        Debug.Log(gameObject.name + " scaleFactor: " + scaleFactor);
 
         // Gives level designers an extra option in case it's not extruding in the right direction
         if (isExtruding) {

@@ -18,8 +18,7 @@ public class USBPorts : MonoBehaviour
     {
         if (gameManager.gameState.USBInserted) {
             gameManager.SetCurrentPuzzle(puzzleId);
-        } else {
-            Debug.Log("Player did not unlock USB yet!");
+            gameManager.SwitchToPuzzle(puzzleId);
         }
     }
 }

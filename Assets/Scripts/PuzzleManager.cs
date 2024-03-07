@@ -25,11 +25,11 @@ public class PuzzleManager : MonoBehaviour
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
         
-        // if (gameManager != null) {
-        //     currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
-        // } else {
-        //     currentPuzzleId = 0; // TODO: this should be -1 in the real game
-        // }
+        if (gameManager != null) {
+            currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
+        } else {
+            currentPuzzleId = 0; // TODO: this should be -1 in the real game
+        }
 
         if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
             Debug.Log("No puzzle selected");
@@ -114,6 +114,11 @@ public class PuzzleManager : MonoBehaviour
                 isSolved = false;
             } else 
             {
+                string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
+
+                // Update game state
+                gameManager?.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
+
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
                     if (go.GetComponent<BlockScript>().blockName == levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName) {
@@ -138,8 +143,7 @@ public class PuzzleManager : MonoBehaviour
                     }
                 }
 
-                // Update game state
-                gameManager?.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
+                Destroy(GameObject.Find(blockName));
             }
 
             index++;
