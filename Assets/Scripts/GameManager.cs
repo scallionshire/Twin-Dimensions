@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState = new GameState();
     public static GameManager instance;
     private bool sceneLoaded = true;
-
+    public InventorySystem inventorySystem;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initChemicalPuzzle;
@@ -252,6 +252,7 @@ public class GameManager : MonoBehaviour
 
     public void GetUSB() {
         gameState.PlayerHasUSB = true;
+        inventorySystem.AddObjectToInventory();
         GameObject.FindGameObjectsWithTag("USB")[0].SetActive(false);
     }
 
