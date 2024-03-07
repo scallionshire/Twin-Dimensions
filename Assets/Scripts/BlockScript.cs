@@ -20,8 +20,6 @@ public class BlockScript : MonoBehaviour
         if (collision.gameObject.tag == "Block" && collision.gameObject.name == blockName)
         {
             puzzleManager.correctBlocks[blockId] = new PuzzlePiece { destinationObject = puzzleManager.correctBlocks[blockId].destinationObject, correctSprite = puzzleManager.correctBlocks[blockId].correctSprite, isCorrect = true };
-
-            Destroy(collision.gameObject);
         }
     }
 }

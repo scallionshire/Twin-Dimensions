@@ -42,7 +42,6 @@ public class Extrudable : MonoBehaviour
 
             // Only take the value we want
             Vector3 meshSize = Vector3.Scale(mesh.bounds.size, extrudeDirection);
-            Debug.Log(gameObject.name + " meshSize: " + meshSize);
 
             scaleFactor = Mathf.Max(Mathf.Abs(meshSize.x), Mathf.Abs(meshSize.y), Mathf.Abs(meshSize.z));
         }

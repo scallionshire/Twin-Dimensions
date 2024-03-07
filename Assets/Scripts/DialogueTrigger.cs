@@ -11,8 +11,10 @@ public class DialogueTrigger : MonoBehaviour
     private bool withUSBWasVisited = false;
 
     public void TriggerDialogue()
-    {        
-        if (GameObject.Find("DialogueCanvas") != null && GameObject.Find("DialogueCanvas").activeSelf)
+    {
+        GameObject dc = GameObject.Find("DialogueCanvas");
+        GameObject gm = GameObject.Find("GameManager");
+        if (dc != null && gm.GetComponent<DialogueManager>().dialogueActive)
         {
             Debug.Log("Dialogue already active!");
             return;
