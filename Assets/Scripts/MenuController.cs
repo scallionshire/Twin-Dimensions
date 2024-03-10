@@ -4,7 +4,7 @@ public class MenuController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("fbx3dtut");
+        SceneManager.LoadScene(1); // scene at index 1 is the main game scene
     }
 
     public void OpenSettings()

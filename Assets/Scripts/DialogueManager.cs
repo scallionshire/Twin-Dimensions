@@ -13,10 +13,31 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogue02;
     public GameObject dialogue20;
     public bool dialogueActive = false;
+    public bool noDialogueCanvas = false;
 
-    void Awake()
-    {   
-        DontDestroyOnLoad(gameObject);
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        dialogueCanvas = GameObject.Find("DialogueCanvas");
+
+        if (dialogueCanvas == null)
+        {
+            // No dialogue canvas found
+            noDialogueCanvas = true;
+        } else {
+            noDialogueCanvas = false;
+            
+            dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
+            dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
+
+            ToggleActive(false);
+        }
     }
 
     // Start is called before the first frame update
@@ -25,15 +46,21 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<Sentence>();
         dialogueCanvas = GameObject.Find("DialogueCanvas");
 
-        dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
-        dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
+        if (dialogueCanvas == null)
+        {
+            // No dialogue canvas found
+            noDialogueCanvas = true;
+        } else {
+            dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
+            dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
 
-        ToggleActive(false);
+            ToggleActive(false);
+        }
     }
 
     void Update()
     {
-        if (dialogueCanvas == null)
+        if (dialogueCanvas == null && !noDialogueCanvas)
         {
             ReloadCanvas();
         }
