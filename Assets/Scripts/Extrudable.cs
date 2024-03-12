@@ -91,5 +91,10 @@ public class Extrudable : MonoBehaviour
     public void Extrude() {
         isMoving = true;
     }
+
+    public void MakeAlreadyExtruded() {
+        transform.localScale = targetScale;
+        transform.position = targetPosition;
+    }
 }
 

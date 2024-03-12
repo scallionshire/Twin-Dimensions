@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
-    public InventorySystem inventorySystem;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initChemicalPuzzle;
@@ -39,6 +38,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Doing this prevents losing reference to the popup menu
+        TogglePauseMenu();
+        TogglePauseMenu();
 
         // Load in initial puzzle game data
         gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
@@ -180,54 +183,44 @@ public class GameManager : MonoBehaviour
                     }
                     break;
             }
+        } else if (Input.GetKeyDown(KeyCode.Q)) {
+            Debug.Log("USB not inserted");
         }
-
-        // // C is a cheat code to try out the computer puzzle
-        // if (Input.GetKeyDown(KeyCode.C)) {
-        //     gameState.CurrentLevel = Level.computerlab;
-        //     sceneLoaded = false;
-        //     gameState.CurrentPuzzleId = 0;
-        //     SceneManager.LoadScene("computerPuzzle");
-        // }
-
-        // // V is a cheat code to view the monitor room
-        // if (Input.GetKeyDown(KeyCode.V) && SceneManager.GetActiveScene().name == "fbx3dmain") {
-        //     GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(2.90f,11.88f,-11.48f);
-        // }
-
-        // // X is a cheat code to extrude everything
-        // if (Input.GetKeyDown(KeyCode.X)) {
-        //     foreach (GameObject ext in GameObject.FindGameObjectsWithTag("Extrudable")) {
-        //         ext.GetComponent<Extrudable>().Extrude();
-        //     }
-        // }
-    }
-
-    public void SwitchToPuzzle(int puzzleId) {
-        gameState.CurrentPuzzleId = puzzleId;
-        sceneLoaded = false;
-        SceneManager.LoadScene("mainPuzzle");
-    }
-
-    public void SetPlayerPosition(Vector3 position) {
-        gameState.PlayerPosition3D = position;
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePauseMenu();
         }
     }
 
+    public void SwitchToPuzzle(int puzzleId) {
+        instance.gameState.CurrentPuzzleId = puzzleId;
+        sceneLoaded = false;
+        SceneManager.LoadScene("mainPuzzle");
+    }
+
+    public void SetPlayerPosition(Vector3 position) {
+        gameState.PlayerPosition3D = position;
+    }
+
     public void GetUSB() {
+        instance.gameState.PlayerHasUSB = true;
         gameState.PlayerHasUSB = true;
-        inventorySystem.AddObjectToInventory();
+        if (GameObject.Find("InventorySystem") != null) {
+            Debug.Log("Adding USB to inventory");
+            InventorySystem inventorySystem = GameObject.Find("InventorySystem").GetComponent<InventorySystem>();
+            inventorySystem.AddObjectToInventory();
+        }
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
     public void InsertUSB() {
+        Debug.Log("Inserting USB");
         if (gameState.PlayerHasUSB) {
+            instance.gameState.USBInserted = true;
             gameState.USBInserted = true;
+            Debug.Log("Game state, USB inserted: " + gameState.USBInserted);
         } else {
-            print("Player does not have USB");
+            Debug.Log("Player does not have USB");
         }
     }
 
@@ -303,24 +296,6 @@ public class GameManager : MonoBehaviour
             //     break;
         }
     }
-
-    // public void ActivateChemPuzzle() {
-    //     gameState.ChemPuzzleUnlocked = true;
-    //     gameState.CurrentPuzzleId = 0;
-    //     gameState.CurrentLevel = Level.biolab;
-
-    //     sceneLoaded = false;
-    //     SceneManager.LoadScene("chemicalPuzzle");
-    // }
-
-    // public void ActivateComputerPuzzle() {
-    //     gameState.ComputerPuzzleUnlocked = true;
-    //     gameState.CurrentPuzzleId = 0;
-    //     gameState.CurrentLevel = Level.computerlab;
-
-    //     sceneLoaded = false;
-    //     SceneManager.LoadScene("computerPuzzle");
-    // }
 
     public void TogglePauseMenu()
     {
