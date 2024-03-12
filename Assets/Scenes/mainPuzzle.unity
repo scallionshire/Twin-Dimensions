@@ -308,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 250396362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7913, y: -0.48280007, z: 0}
+  m_LocalPosition: {x: -6.7905, y: -0.5332, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 16.968916, y: 15.717313}
+  m_Size: {x: 16.77362, y: 15.51563}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctBlocks: []
-  currentPuzzleId: 0
+  currentPuzzleId: 1
   puzzlesSolved: 
   levelPuzzles: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
 --- !u!4 &713982315
@@ -799,6 +799,10 @@ PrefabInstance:
     - target: {fileID: 2953939987320327243, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953939987320327243, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2954693487713978451, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Pivot.x
@@ -1285,6 +1289,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18888736, y: 8.150662}
   m_EdgeRadius: 0
+--- !u!114 &1705733904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
+  m_PrefabInstance: {fileID: 4114986963674152914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1800848289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6927260782682471436, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
@@ -1470,9 +1485,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2321738333957444938, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1705733904}
     - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_Name
       value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1550,6 +1573,10 @@ PrefabInstance:
     - target: {fileID: 2212335383699475769, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271539266429613597, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4752709608934943549, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_Sprite

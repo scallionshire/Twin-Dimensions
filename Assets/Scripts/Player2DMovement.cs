@@ -30,32 +30,6 @@ public class Player2DMovement : MonoBehaviour
 
         HandleFootstepsSound();
 
-        // If player is pressing space and they aren't currently holding a block
-        if (Input.GetKey(KeyCode.Space) && transform.childCount < 2)
-        {
-            movement = movement * 0.7f; // TODO: find some way to slow down walking anim?
-
-            // Interact with whatever block we last collided into
-            if (collidedBlock != null && collidedBlock.tag == "Block") {
-                collidedBlock.transform.parent = transform;
-            } else if (collidedBlock != null && collidedBlock.tag == "Extrudable") {
-                collidedBlock.GetComponent<Extrudable>().Extrude();
-            }
-
-            collidedBlock = null;
-        } else if (Input.GetKey(KeyCode.Space) && transform.childCount >= 2) {
-            // We don't care about other collisions while we're already holding a block
-            collidedBlock = null;
-        } else if (!Input.GetKey(KeyCode.Space) && transform.childCount >= 2) {
-            // Remove the currently held block from being a child of the player once player lets go of space key
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                if (transform.GetChild(i).tag == "Block") {
-                    transform.GetChild(i).transform.parent = GameObject.Find("Blocks").transform;
-                }
-            }
-        }
-
         _animator.SetFloat("Horizontal", movement.x);
         _animator.SetFloat("Vertical", movement.y);
         _animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -78,6 +52,20 @@ public class Player2DMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // If player is pressing space and they aren't currently holding a block
+        if (Input.GetKey(KeyCode.Space) && collidedBlock != null)
+        {
+            movement = movement * 0.7f; // Slow down movement while holding a block
+
+            // Interact with whatever block we last collided into
+            if (collidedBlock != null && collidedBlock.tag == "Block") {
+                Vector3 distance = transform.position - collidedBlock.transform.position;
+                collidedBlock.GetComponent<Rigidbody2D>().MovePosition(collidedBlock.GetComponent<Rigidbody2D>().position + movement * moveSpeed * Time.fixedDeltaTime);
+            } else if (collidedBlock != null && collidedBlock.tag == "Extrudable") {
+                collidedBlock.GetComponent<Extrudable>().Extrude();
+            }
+        }
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -88,6 +76,15 @@ public class Player2DMovement : MonoBehaviour
         {
             Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("Left collision with: " + collision.gameObject.name);
+        if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
+        {
+            collidedBlock = null;
         }
     }
 }
