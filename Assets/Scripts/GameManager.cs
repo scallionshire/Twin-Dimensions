@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        TogglePauseMenu();
+        TogglePauseMenu();
 
         // Load in initial puzzle game data
         gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
