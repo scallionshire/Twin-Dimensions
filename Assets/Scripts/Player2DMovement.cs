@@ -74,6 +74,10 @@ public class Player2DMovement : MonoBehaviour
         Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
+            if (GameObject.Find("TooltipCanvas") != null)
+            {
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowSpaceTooltip();
+            }
             Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
         }

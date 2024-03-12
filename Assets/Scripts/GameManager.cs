@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
+
+    public ExtrudableDataScriptable initTutorialExtrudables;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initChemicalPuzzle;
@@ -47,11 +49,13 @@ public class GameManager : MonoBehaviour
         gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
         gameState.CurrComputerPuzzle = Instantiate(initComputerPuzzle);
         gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
+        gameState.CurrTutorialExtrudables = Instantiate(initTutorialExtrudables);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {   
         Debug.Log("Scene loaded: " + scene.name);
+
         if (scene.name == "new3Dtut") {
             GameObject ThirdPersonCamera = GameObject.Find("Third Person Camera");
             ThirdPersonCamera.transform.position = gameState.CameraPosition3D;
@@ -74,11 +78,14 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("Door1").GetComponent<Animator>().SetBool("isOpen", true);
             }
 
-            for (int i = 0; i < gameState.TutorialExtrudables.Count; i++) {
-                if (gameState.TutorialExtrudables[i]) {
-                    GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
-                }
-            }
+            // for (int i = 0; i < gameState.TutorialExtrudables.Count; i++) {
+            //     Debug.Log("Checking extrudable: " + i + gameState.TutorialExtrudables[i]);
+            //     if (gameState.TutorialExtrudables[i]) {
+            //         GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().MakeAlreadyExtruded();
+            //     }
+            // }
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (scene.name == "mainPuzzle") {
@@ -97,13 +104,17 @@ public class GameManager : MonoBehaviour
             GameObject Player2D = GameObject.Find("2D Player");
             Player2D.transform.position = gameState.PlayerPosition2D;
 
+            ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
+            extrudableManager.currentExtrudableSetId = gameState.CurrentExtrudableSetId;
+            extrudableManager.extrudableData = gameState.CurrTutorialExtrudables;
+
             // Handle extrusion states
-            foreach (GameObject extrudable in GameObject.FindGameObjectsWithTag("Extrudable")) {
-                Extrudable ext = extrudable.GetComponent<Extrudable>();
-                if (ext != null && gameState.TutorialExtrudables[ext.extrudableId]) {
-                    ext.isMoving = true;
-                }
-            }
+            // foreach (GameObject extrudable in GameObject.FindGameObjectsWithTag("Extrudable")) {
+            //     Extrudable ext = extrudable.GetComponent<Extrudable>();
+            //     if (ext != null && gameState.TutorialExtrudables[ext.extrudableId]) {
+            //         ext.MakeAlreadyExtruded();
+            //     }
+            // }
         }
 
         sceneLoaded = true;
@@ -114,6 +125,10 @@ public class GameManager : MonoBehaviour
     {   
         if (!sceneLoaded) {
             return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "StartMenu") {
+            Cursor.lockState = CursorLockMode.None;
         }
 
         // Player State Persistence
@@ -135,6 +150,17 @@ public class GameManager : MonoBehaviour
             GameObject Player2D = GameObject.Find("2D Player");
             if (Player2D != null) {
                 gameState.PlayerPosition2D = Player2D.transform.position;
+            }
+
+            if (gameState.CurrentExtrudableSetId >= 0) {
+                for (int i = 0; i < gameState.CurrTutorialExtrudables.extrudableDataList[gameState.CurrentExtrudableSetId].extrudableSets.Count; i++) {
+                    ExtrudableData temp = gameState.CurrTutorialExtrudables.extrudableDataList[gameState.CurrentExtrudableSetId].extrudableSets[i];
+                    if (gameState.TutorialExtrudables[temp.id]) {
+                        Debug.Log("Setting extrudable to already extruded: " + temp.id);
+                        temp.alreadyExtruded = true;
+                        gameState.CurrTutorialExtrudables.extrudableDataList[gameState.CurrentExtrudableSetId].extrudableSets[i] = temp;
+                    }
+                }
             }
         }
 
@@ -196,6 +222,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("mainPuzzle");
     }
 
+    public void SwitchToMap(int setId) {
+        instance.gameState.CurrentExtrudableSetId = setId;
+        sceneLoaded = false;
+        SceneManager.LoadScene("new2dtut");
+    }
+
     public void SetPlayerPosition(Vector3 position) {
         instance.gameState.PlayerPosition3D = position;
     }
@@ -219,11 +251,16 @@ public class GameManager : MonoBehaviour
         } else {
             Debug.Log("Player does not have USB");
         }
+        if (GameObject.Find("TooltipCanvas") != null)
+        {
+            GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+        }
     }
 
     public void UpdateExtrudables(int extrudableId) {
         switch (gameState.CurrentLevel) {
             case Level.tutorial:
+                Debug.Log("Updating extrudable: " + extrudableId);
                 instance.gameState.TutorialExtrudables[extrudableId] = true;
                 break;
             case Level.biolab:
@@ -300,9 +337,11 @@ public class GameManager : MonoBehaviour
         {
             popupMenu.SetActive(false);
             Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
             popupMenu.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -342,6 +381,9 @@ public class GameState
     public PuzzleDataScriptable CurrComputerPuzzle { get; set; }
 
     // Lists of bools indicating whether or not the corresponding extrudable block in that level has been extruded
+    public int CurrentExtrudableSetId { get; set; }
+
+    public ExtrudableDataScriptable CurrTutorialExtrudables { get; set; }
     public List<bool> TutorialExtrudables { get; set; }
     public List<bool> BioLabExtrudables { get; set; }
     public List<bool> ComputerLabExtrudables { get; set; }
@@ -372,6 +414,7 @@ public class GameState
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
+        CurrentExtrudableSetId = -1;
         TutorialExtrudables = new List<bool> { false, false, false };
         BioLabExtrudables = new List<bool> { false, false, false, false, false };
         ComputerLabExtrudables = new List<bool> { false, false, false };

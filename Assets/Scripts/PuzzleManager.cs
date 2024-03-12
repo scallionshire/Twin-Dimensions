@@ -98,6 +98,11 @@ public class PuzzleManager : MonoBehaviour
             Debug.Log("Puzzle solved");
             puzzlesSolved[currentPuzzleId] = true;
             gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
+            
+            if (GameObject.Find("TooltipCanvas") != null)
+            {
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+            }
         }
     }
 

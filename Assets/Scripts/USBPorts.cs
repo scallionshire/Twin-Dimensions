@@ -5,7 +5,8 @@ using FMODUnity;
 
 public class USBPorts : MonoBehaviour
 {
-    public int puzzleId;
+    public bool isPuzzlePort = true; // if true, this port will trigger a puzzle; otherwise, trigger the map with extrudables
+    public int id;
     public string eventName = "event:/SFX3D/USBInsert";
     private GameManager gameManager;
 
@@ -19,8 +20,11 @@ public class USBPorts : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(eventName, transform.position);
         if (gameManager.gameState.USBInserted) {
-            gameManager.SetCurrentPuzzle(puzzleId);
-            gameManager.SwitchToPuzzle(puzzleId);
+            if (isPuzzlePort) {
+                gameManager.SwitchToPuzzle(id);
+            } else {
+                gameManager.SwitchToMap(id);
+            }
         }
     }
 }
