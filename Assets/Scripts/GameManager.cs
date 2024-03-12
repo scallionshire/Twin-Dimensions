@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        // Doing this prevents losing reference to the popup menu
+        TogglePauseMenu();
+        TogglePauseMenu();
+
         // Load in initial puzzle game data
         gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
         gameState.CurrComputerPuzzle = Instantiate(initComputerPuzzle);
