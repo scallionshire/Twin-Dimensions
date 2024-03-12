@@ -32,7 +32,7 @@ public class Interaction : MonoBehaviour
                 prevHit = true;
                 prevInteractable = hit.collider.gameObject;
                 interactable.Highlight();
-                if (Input.GetKeyDown("e")) // "e" is the key to interact with objects
+                if (Input.GetMouseButtonDown(0)) // "e" is the key to interact with objects
                 {   
                     interactable.Interact();
                 }
