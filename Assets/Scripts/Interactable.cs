@@ -34,18 +34,6 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // if (!wasHighlighted)
-        // {
-        //     RemoveHighlight();
-        // }
-        // else 
-        // {
-        //     wasHighlighted = false;
-        // }
-    }
-
     public void Highlight()
     {
         foreach (Renderer rend in renderers)
