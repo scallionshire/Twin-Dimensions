@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
 
