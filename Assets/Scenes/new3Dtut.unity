@@ -1715,7 +1715,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 60f373f9da29d41b7bbff1f936b88b13, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
   wasHighlighted: 0
 --- !u!1 &81911271
 GameObject:
@@ -2897,6 +2897,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132232356}
   m_Mesh: {fileID: -7244966762881372308, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
+--- !u!1 &133340885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7080048335351276422, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+  m_PrefabInstance: {fileID: 1054906985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &135566290
 GameObject:
   m_ObjectHideFlags: 0
@@ -20962,6 +20967,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 145824983}
     m_Modifications:
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 133340885}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DialogueTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018926470835371075, guid: 691048f2f530346aab604d759281a8c8, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5235650237892069892, guid: 691048f2f530346aab604d759281a8c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.29
