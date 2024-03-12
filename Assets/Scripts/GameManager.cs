@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {   
         Debug.Log("Scene loaded: " + scene.name);
-        if (scene.name == "dialogue3DTut") {
+        if (scene.name == "new3Dtut") {
             GameObject ThirdPersonCamera = GameObject.Find("Third Person Camera");
             ThirdPersonCamera.transform.position = gameState.CameraPosition3D;
             ThirdPersonCamera.transform.eulerAngles = gameState.CameraRotation3D;
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Player State Persistence
-        if (SceneManager.GetActiveScene().name == "dialogue3DTut") {
+        if (SceneManager.GetActiveScene().name == "new3Dtut") {
             GameObject Player3D = GameObject.Find("3D Player");
             if (Player3D != null) {
                 gameState.PlayerPosition3D = Player3D.transform.position;
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
             switch (gameState.CurrentLevel) {
                 case Level.tutorial:
 
-                    if (SceneManager.GetActiveScene().name == "dialogue3DTut")
+                    if (SceneManager.GetActiveScene().name == "new3Dtut")
                     {
                         sceneLoaded = false;
                         SceneManager.LoadScene("new2dtut");
@@ -174,17 +174,15 @@ public class GameManager : MonoBehaviour
                     else if (SceneManager.GetActiveScene().name == "new2dtut")
                     {
                         sceneLoaded = false;
-                        SceneManager.LoadScene("dialogue3DTut");
+                        SceneManager.LoadScene("new3Dtut");
                     }
                     else if (SceneManager.GetActiveScene().name == "mainPuzzle")
                     {
                         sceneLoaded = false;
-                        SceneManager.LoadScene("dialogue3DTut");
+                        SceneManager.LoadScene("new3Dtut");
                     }
                     break;
             }
-        } else if (Input.GetKeyDown(KeyCode.Q)) {
-            Debug.Log("USB not inserted");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -199,12 +197,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetPlayerPosition(Vector3 position) {
-        gameState.PlayerPosition3D = position;
+        instance.gameState.PlayerPosition3D = position;
     }
 
     public void GetUSB() {
         instance.gameState.PlayerHasUSB = true;
-        gameState.PlayerHasUSB = true;
+        // gameState.PlayerHasUSB = true;
         if (GameObject.Find("InventorySystem") != null) {
             Debug.Log("Adding USB to inventory");
             InventorySystem inventorySystem = GameObject.Find("InventorySystem").GetComponent<InventorySystem>();
@@ -214,11 +212,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void InsertUSB() {
-        Debug.Log("Inserting USB");
-        if (gameState.PlayerHasUSB) {
+        if (instance.gameState.PlayerHasUSB) {
             instance.gameState.USBInserted = true;
-            gameState.USBInserted = true;
-            Debug.Log("Game state, USB inserted: " + gameState.USBInserted);
+            // gameState.USBInserted = true;
+            Debug.Log("Game state, USB inserted: " + instance.gameState.USBInserted);
         } else {
             Debug.Log("Player does not have USB");
         }
@@ -227,13 +224,13 @@ public class GameManager : MonoBehaviour
     public void UpdateExtrudables(int extrudableId) {
         switch (gameState.CurrentLevel) {
             case Level.tutorial:
-                gameState.TutorialExtrudables[extrudableId] = true;
+                instance.gameState.TutorialExtrudables[extrudableId] = true;
                 break;
             case Level.biolab:
-                gameState.BioLabExtrudables[extrudableId] = true;
+                instance.gameState.BioLabExtrudables[extrudableId] = true;
                 break;
             case Level.computerlab:
-                gameState.ComputerLabExtrudables[extrudableId] = true;
+                instance.gameState.ComputerLabExtrudables[extrudableId] = true;
                 break;
         }
     }
@@ -241,19 +238,19 @@ public class GameManager : MonoBehaviour
     public void SolvePuzzleBlock(int puzzleId, int blockId, Level level) {
         switch (level) {
             case Level.tutorial:
-                PuzzleSet x = gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                PuzzleSet x = instance.gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
                 x.isSolved = true;
-                gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = x;
+                instance.gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = x;
                 break;
             case Level.biolab:
-                PuzzleSet y = gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                PuzzleSet y = instance.gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
                 y.isSolved = true;
-                gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = y;
+                instance.gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = y;
                 break;
             case Level.computerlab:
-                PuzzleSet z = gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
+                PuzzleSet z = instance.gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
                 z.isSolved = true;
-                gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = z;
+                instance.gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = z;
                 break;
         }
     }
@@ -263,10 +260,10 @@ public class GameManager : MonoBehaviour
             case Level.tutorial:
                 switch (puzzleId) {
                     case 0: 
-                        gameState.Door0Unlocked = true;
+                        instance.gameState.Door0Unlocked = true;
                         break;
                     case 1:
-                        gameState.Door1Unlocked = true;
+                        instance.gameState.Door1Unlocked = true;
                         break;
                 }
                 break;
@@ -278,16 +275,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetCurrentPuzzle(int puzzleId) {
-        gameState.CurrentPuzzleId = puzzleId;
+        instance.gameState.CurrentPuzzleId = puzzleId;
     }
 
     // Set to new level and switch scene if need be
     public void SetCurrentLevel(Level level) {
-        gameState.CurrentLevel = level;
-        gameState.CurrentPuzzleId = 0;
+        instance.gameState.CurrentLevel = level;
+        instance.gameState.CurrentPuzzleId = 0;
 
         switch (level) {
-            case Level.biolab:
+            case Level.tutorial:
                 sceneLoaded = false;
                 SceneManager.LoadScene("fbx3dmain");
                 break;
@@ -382,6 +379,6 @@ public class GameState
         PressETooltipShown = false;
         PressQTooltipShown = false;
 
-        SceneName = "dialogue3DTut";
+        SceneName = "new3Dtut";
     }
 }
