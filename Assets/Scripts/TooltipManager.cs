@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour
 {
-    public GameObject pressE;
+    public GameObject leftClick;
     public GameObject pressQ;
+    public GameObject pressSpace;
 
     private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        pressE = transform.Find("PressE").gameObject;
+        leftClick = transform.Find("LeftClick").gameObject;
         pressQ = transform.Find("PressQ").gameObject;
+        pressSpace = transform.Find("PressSpace").gameObject;
 
-        pressE.SetActive(false);
+        leftClick.SetActive(false);
         pressQ.SetActive(false);
+        pressSpace.SetActive(false);
 
         if (GameObject.Find("GameManager") != null)
         {
@@ -25,30 +28,32 @@ public class TooltipManager : MonoBehaviour
         }
     }
 
-    public void ShowETooltip()
+    public void ShowClickTooltip()
     {
-        if (gameManager.gameState.PressETooltipShown)
-        {
-            return;
-        }
-        StartCoroutine(ShowTooltip(pressE.GetComponent<Image>()));
-        gameManager.gameState.PressETooltipShown = true;
+        if (leftClick.activeSelf) return;
+        StartCoroutine(ShowTooltip(leftClick));
     }
 
     public void ShowQTooltip()
     {
-        if (gameManager.gameState.PressQTooltipShown || !gameManager.gameState.USBInserted)
-        {
-            return;
-        }
-        StartCoroutine(ShowTooltip(pressQ.GetComponent<Image>()));
-        gameManager.gameState.PressQTooltipShown = true;
+        if (pressQ.activeSelf) return;
+        StartCoroutine(ShowTooltip(pressQ));
     }
 
-    IEnumerator ShowTooltip(Image tooltip)
+    public void ShowSpaceTooltip()
     {
-        tooltip.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        tooltip.gameObject.SetActive(false);
+        if (pressSpace.activeSelf) return;
+        StartCoroutine(ShowTooltip(pressSpace));
+    }
+
+    IEnumerator ShowTooltip(GameObject tooltip)
+    {
+        tooltip.SetActive(true);
+        if (tooltip.name == "PressQ") {
+            yield return new WaitForSeconds(2f);
+        } else {
+            yield return new WaitForSeconds(1f);
+        }
+        tooltip.SetActive(false);
     }
 }

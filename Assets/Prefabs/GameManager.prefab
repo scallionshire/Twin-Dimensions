@@ -46,6 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ea68e9e56d145218644060be364139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupMenu: {fileID: 0}
+  MusicVolume: 100
+  DialogueVolume: 100
+  SFXVolume: 100
+  initTutorialExtrudables: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
   initTutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
   initComputerPuzzle: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
   initChemicalPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
@@ -93,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 0}
-  dialogueBox_02: {fileID: 0}
-  dialogueBox_20: {fileID: 0}
-  dialogueText_02: {fileID: 0}
-  dialogueText_20: {fileID: 0}
+  dialogue02: {fileID: 0}
+  dialogue20: {fileID: 0}
+  dialogueActive: 0
+  noDialogueCanvas: 0

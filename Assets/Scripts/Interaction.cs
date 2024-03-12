@@ -29,6 +29,10 @@ public class Interaction : MonoBehaviour
 
             if (interactable != null)
             {   
+                if (GameObject.Find("TooltipCanvas") != null)
+                {
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowClickTooltip();
+                }
                 prevHit = true;
                 prevInteractable = hit.collider.gameObject;
                 interactable.Highlight();
