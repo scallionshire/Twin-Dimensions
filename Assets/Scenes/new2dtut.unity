@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 243417670}
   - component: {fileID: 243417669}
   - component: {fileID: 243417668}
+  - component: {fileID: 243417672}
   m_Layer: 6
   m_Name: Extrudable0
   m_TagString: Extrudable
@@ -488,7 +489,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.39635, g: 0.97735846, b: 0.23604135, a: 1}
+  m_Color: {r: 0.4431373, g: 0.43137258, b: 0.95294124, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -513,6 +514,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243417672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243417667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e75330e4fe5eff4aac78f56c691308e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 0.43529415, g: 0.41960788, b: 0.9176471, a: 1}
+  endColor: {r: 0.16862746, g: 0.1137255, b: 0.24705884, a: 1}
+  speed: 1
 --- !u!1 &250396362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1148,7 @@ GameObject:
   - component: {fileID: 507510438}
   - component: {fileID: 507510437}
   - component: {fileID: 507510436}
+  - component: {fileID: 507510440}
   m_Layer: 6
   m_Name: Extrudable2
   m_TagString: Extrudable
@@ -1247,7 +1264,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.39635, g: 0.97735846, b: 0.23604135, a: 1}
+  m_Color: {r: 0.4431373, g: 0.43137258, b: 0.95294124, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1272,6 +1289,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507510440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507510434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e75330e4fe5eff4aac78f56c691308e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 0.43529415, g: 0.41960788, b: 0.9176471, a: 1}
+  endColor: {r: 0.16862746, g: 0.1137255, b: 0.24705884, a: 1}
+  speed: 1
 --- !u!1 &559991495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,6 +2269,7 @@ GameObject:
   - component: {fileID: 1781656578}
   - component: {fileID: 1781656581}
   - component: {fileID: 1781656580}
+  - component: {fileID: 1781656582}
   m_Layer: 6
   m_Name: Extrudable1
   m_TagString: Extrudable
@@ -2286,7 +2319,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.39635, g: 0.97735846, b: 0.23604135, a: 1}
+  m_Color: {r: 0.4431373, g: 0.43137258, b: 0.95294124, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2377,6 +2410,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1781656582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781656577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e75330e4fe5eff4aac78f56c691308e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 0.43529415, g: 0.41960788, b: 0.9176471, a: 1}
+  endColor: {r: 0.16862746, g: 0.1137255, b: 0.24705884, a: 1}
+  speed: 1
 --- !u!1001 &1813490957
 PrefabInstance:
   m_ObjectHideFlags: 0
