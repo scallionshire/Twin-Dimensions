@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FMODUnity;
 using TMPro;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogue20;
     public bool dialogueActive = false;
     public bool noDialogueCanvas = false;
+    public bool finishedDisplayingText = false;
 
     void OnEnable()
     {
@@ -64,6 +66,11 @@ public class DialogueManager : MonoBehaviour
         {
             ReloadCanvas();
         }
+
+        if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
+        {
+            DisplayNextSentence();
+        }
     }
 
     private void ToggleActive(bool active)
@@ -112,6 +119,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        finishedDisplayingText = false;
+
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -140,20 +149,25 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
         ToggleActive(false);
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)
     {
         targetText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+
+        while (targetText.text.Length < sentence.Length)
         {
-            targetText.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                targetText.text = sentence;
+                finishedDisplayingText = true;
+                yield break;
+            }
+            targetText.text += sentence[targetText.text.Length];
+            yield return null;
         }
 
-        yield return new WaitForSeconds(2);
-        DisplayNextSentence();
+        finishedDisplayingText = true;
     }
 }
