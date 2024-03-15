@@ -25,7 +25,6 @@ public class DialogueManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
         dialogueCanvas = GameObject.Find("DialogueCanvas");
 
         if (dialogueCanvas == null)
@@ -46,18 +45,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<Sentence>();
-        dialogueCanvas = GameObject.Find("DialogueCanvas");
-
-        if (dialogueCanvas == null)
-        {
-            // No dialogue canvas found
-            noDialogueCanvas = true;
-        } else {
-            dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
-            dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
-
-            ToggleActive(false);
-        }
     }
 
     void Update()
@@ -69,7 +56,6 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
         {
-            Debug.Log("Pressed enter");
             DisplayNextSentence();
         }
     }
@@ -135,13 +121,15 @@ public class DialogueManager : MonoBehaviour
             case Twin.Twin_02:
                 ToggleActive(true, Twin.Twin_02);
                 ToggleActive(false, Twin.Twin_20);
-                TMP_Text target02 = dialogue02.GetComponentInChildren<TMP_Text>();
+
+                TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 StartCoroutine(TypeSentence(target02, sentence.text));
                 break;
             case Twin.Twin_20:
                 ToggleActive(true, Twin.Twin_20);
                 ToggleActive(false, Twin.Twin_02);
-                TMP_Text target20 = dialogue20.GetComponentInChildren<TMP_Text>();
+                
+                TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/DialogStartSound");
                 StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
@@ -166,6 +154,8 @@ public class DialogueManager : MonoBehaviour
                 finishedDisplayingText = true;
                 yield break;
             }
+
+            // Otherwise, continue typing
             targetText.text += sentence[targetText.text.Length];
             yield return null;
         }

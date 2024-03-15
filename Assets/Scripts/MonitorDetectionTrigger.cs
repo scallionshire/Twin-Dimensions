@@ -23,7 +23,6 @@ public class MonitorDetectionTrigger : MonoBehaviour
     {
         if (other.CompareTag("Extrudable"))
         {
-            Debug.Log("hi im exiting");
             isMonitoringActive = true;
             SetPointLightsActive(true);
             Debug.Log("Monitoring unblocked.");
