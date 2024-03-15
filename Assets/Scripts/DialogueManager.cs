@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FMODUnity;
 using TMPro;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogue20;
     public bool dialogueActive = false;
     public bool noDialogueCanvas = false;
+    public bool finishedDisplayingText = false;
 
     void OnEnable()
     {
@@ -23,7 +25,6 @@ public class DialogueManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
         dialogueCanvas = GameObject.Find("DialogueCanvas");
 
         if (dialogueCanvas == null)
@@ -44,18 +45,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<Sentence>();
-        dialogueCanvas = GameObject.Find("DialogueCanvas");
-
-        if (dialogueCanvas == null)
-        {
-            // No dialogue canvas found
-            noDialogueCanvas = true;
-        } else {
-            dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
-            dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
-
-            ToggleActive(false);
-        }
     }
 
     void Update()
@@ -63,6 +52,11 @@ public class DialogueManager : MonoBehaviour
         if (dialogueCanvas == null && !noDialogueCanvas)
         {
             ReloadCanvas();
+        }
+
+        if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
+        {
+            DisplayNextSentence();
         }
     }
 
@@ -112,6 +106,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        finishedDisplayingText = false;
+
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -125,13 +121,15 @@ public class DialogueManager : MonoBehaviour
             case Twin.Twin_02:
                 ToggleActive(true, Twin.Twin_02);
                 ToggleActive(false, Twin.Twin_20);
-                TMP_Text target02 = dialogue02.GetComponentInChildren<TMP_Text>();
+
+                TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 StartCoroutine(TypeSentence(target02, sentence.text));
                 break;
             case Twin.Twin_20:
                 ToggleActive(true, Twin.Twin_20);
                 ToggleActive(false, Twin.Twin_02);
-                TMP_Text target20 = dialogue20.GetComponentInChildren<TMP_Text>();
+                
+                TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/DialogStartSound");
                 StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
@@ -140,20 +138,28 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
         ToggleActive(false);
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)
     {
         targetText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+
+        while (targetText.text.Length < sentence.Length)
         {
-            targetText.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            // Skip to the end of the sentence
+            if (Input.GetKeyDown(KeyCode.Return) && targetText.text.Length > 1)
+            {
+                targetText.text = sentence;
+                finishedDisplayingText = true;
+                yield break;
+            }
+
+            // Otherwise, continue typing
+            targetText.text += sentence[targetText.text.Length];
+            yield return null;
         }
 
-        yield return new WaitForSeconds(2);
-        DisplayNextSentence();
+        finishedDisplayingText = true;
     }
 }

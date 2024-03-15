@@ -14,9 +14,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         GameObject dc = GameObject.Find("DialogueCanvas");
         GameObject gm = GameObject.Find("GameManager");
+
         if (dc != null && gm.GetComponent<DialogueManager>().dialogueActive)
         {
-            Debug.Log("Dialogue already active!");
             return;
         }
 
@@ -30,5 +30,11 @@ public class DialogueTrigger : MonoBehaviour
             FindObjectOfType<DialogueManager>().StartDialogue(noUSBDialogue);
             noUSBWasVisited = true;
         }
+    }
+
+    public void MakeVisited()
+    {
+        noUSBWasVisited = true;
+        withUSBWasVisited = true;
     }
 }

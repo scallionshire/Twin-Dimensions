@@ -24,7 +24,6 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, interactDistance, layers))
         {   
-            Debug.Log(hit.collider.name);
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
             if (interactable != null)
@@ -47,7 +46,6 @@ public class Interaction : MonoBehaviour
             prevHit = false;
             prevInteractable.GetComponent<Interactable>().RemoveHighlight();
         } else {
-            Debug.Log("no hit");
             prevHit = false;
         }
     
