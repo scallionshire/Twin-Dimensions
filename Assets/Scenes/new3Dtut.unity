@@ -15400,6 +15400,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6807573836294922318, guid: 3da07c817e0120a41a83236ea6b24e8e, type: 3}
+--- !u!1 &756636973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
+  m_PrefabInstance: {fileID: 277728218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &764508707
 GameObject:
   m_ObjectHideFlags: 0
@@ -23890,7 +23895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[0].text
@@ -23898,7 +23903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].text
-      value: It's been a while, 20. I missed you.
+      value: It's been a while, 20. I missed you. Let's get out of here.
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].twin
@@ -23906,7 +23911,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[2].text
-      value: OH right! Is today the day? I totally lost my schedule haha ^^
+      value: i hacked into the lab's map for us! plug me into your visor and check
+        it out!
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[2].twin
@@ -29328,6 +29334,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465692935}
   m_Mesh: {fileID: 7740328545829680722, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
+--- !u!1001 &1465758753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5871488
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.024952
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.0047817
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812115896519696071, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478488515786829688, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: popupMenu
+      value: 
+      objectReference: {fileID: 756636973}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
 --- !u!1 &1466287799
 GameObject:
   m_ObjectHideFlags: 0
@@ -67006,3 +67073,4 @@ SceneRoots:
   - {fileID: 1160174525}
   - {fileID: 1934939107}
   - {fileID: 277728218}
+  - {fileID: 1465758753}
