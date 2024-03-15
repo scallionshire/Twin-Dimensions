@@ -69,6 +69,7 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
         {
+            Debug.Log("Pressed enter");
             DisplayNextSentence();
         }
     }
@@ -158,7 +159,8 @@ public class DialogueManager : MonoBehaviour
 
         while (targetText.text.Length < sentence.Length)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            // Skip to the end of the sentence
+            if (Input.GetKeyDown(KeyCode.Return) && targetText.text.Length > 1)
             {
                 targetText.text = sentence;
                 finishedDisplayingText = true;
