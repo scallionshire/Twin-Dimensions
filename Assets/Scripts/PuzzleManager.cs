@@ -17,8 +17,9 @@ public class PuzzleManager : MonoBehaviour
     public bool[] puzzlesSolved;
     public PuzzleDataScriptable levelPuzzles;
 
-    void Start()
-    {
+    public void LoadPuzzle()
+    {   
+        correctBlocks.Clear();
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
@@ -26,9 +27,10 @@ public class PuzzleManager : MonoBehaviour
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
         
         if (gameManager != null) {
+            Debug.Log("Setting current puzzle id to " + gameManager.gameState.CurrentPuzzleId);
             currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
         } else {
-            currentPuzzleId = 0; // TODO: this should be -1 in the real game
+            currentPuzzleId = -1; // TODO: this should be -1 in the real game
         }
 
         if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
@@ -95,7 +97,6 @@ public class PuzzleManager : MonoBehaviour
         if (currentPuzzleId >= 0 && IsPuzzleSolved())
         {
             // Puzzle is solved, provide feedback and handle progression
-            Debug.Log("Puzzle solved");
             puzzlesSolved[currentPuzzleId] = true;
             gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
             
@@ -153,7 +154,6 @@ public class PuzzleManager : MonoBehaviour
 
             index++;
         }
-
         return isSolved;
     }
 }

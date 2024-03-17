@@ -42,7 +42,7 @@ public class Interaction : MonoBehaviour
             }
         } else if (prevHit == true)
         {
-            Debug.Log("Removing highlight");
+            // Debug.Log("Removing highlight");
             prevHit = false;
             prevInteractable.GetComponent<Interactable>().RemoveHighlight();
         } else {
