@@ -164,6 +164,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PickUpBattery(GameObject battery) {
+        instance.gameState.BatteriesCollected++;
+        Debug.Log($"Battery collected: {instance.gameState.BatteriesCollected}/{instance.gameState.TotalBatteries}");
+
+        if (instance.gameState.BatteriesCollected == instance.gameState.TotalBatteries)
+        {
+            Debug.Log("All batteries collected!");
+        }
+
+        Destroy(battery); 
+    }
+
     public void UpdateExtrudables(int extrudableId) {
         switch (gameState.CurrentLevel) {
             case Level.tutorial:
@@ -352,6 +364,10 @@ public class GameState
     // Biolab
     // public bool ChemPuzzleUnlocked { get; set; }
     // public bool ComputerPuzzleUnlocked { get; set; }
+
+    // ComputerLab
+    public int BatteriesCollected { get; set; }
+    public int TotalBatteries { get; } = 5;
     
     // 2D Character State
     public Vector2 PlayerPosition2D { get; set; }
@@ -392,7 +408,6 @@ public class GameState
         Door1Unlocked = false;
         PlayerHasUSB = false;
         USBInserted = false;
-
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
