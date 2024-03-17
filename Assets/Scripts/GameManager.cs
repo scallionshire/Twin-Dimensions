@@ -92,17 +92,17 @@ public class GameManager : MonoBehaviour
 
             switch (gameState.CurrentLevel) {
                 case Level.tutorial:
-                    if (ActiveSceneName == "dialogue3DTut")
+                    if (ActiveSceneName == "new3Dtut")
                     {
                         switchToScene("new2dtut");
                     }
                     else if (ActiveSceneName == "new2dtut")
                     {
-                        switchToScene("dialogue3DTut");
+                        switchToScene("new3Dtut");
                     }
                     else if (ActiveSceneName == "mainPuzzle")
                     {
-                        switchToScene("dialogue3DTut");
+                        switchToScene("new3Dtut");
                     }
                     break;
             }
