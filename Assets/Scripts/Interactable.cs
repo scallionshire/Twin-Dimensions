@@ -66,6 +66,13 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        interactionEvent.Invoke();
+        if (gameObject.CompareTag("Battery"))
+        {
+            GameManager.instance.PickUpBattery(gameObject);
+        }
+        else
+        {
+            interactionEvent.Invoke();
+        }
     }
 }
