@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -20,28 +21,42 @@ public class PuzzleManager : MonoBehaviour
     public void LoadPuzzle()
     {   
         correctBlocks.Clear();
+
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        }
 
-        puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
-        
-        if (gameManager != null) {
-            Debug.Log("Setting current puzzle id to " + gameManager.gameState.CurrentPuzzleId);
             currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
         } else {
             currentPuzzleId = -1; // TODO: this should be -1 in the real game
         }
+
+        puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
 
         if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
             Debug.Log("No puzzle selected");
             return;
         }
 
+        GameObject background = GameObject.Find("Background");
+        background.GetComponent<SpriteRenderer>().sprite = levelPuzzles.backgroundSprite;
+        background.transform.localScale = levelPuzzles.backgroundScale;
+        background.transform.position = levelPuzzles.backgroundPosition;
+        background.GetComponent<SpriteRenderer>().color = levelPuzzles.backgroundColor;
+
+        GameObject rec = GameObject.Find("Rec");
+        rec.transform.localScale = levelPuzzles.recScale;
+        rec.transform.position = levelPuzzles.recPosition;
+
+        for (int i = 0; i < levelPuzzles.wallPositions.Count; i++) {
+            GameObject wall = GameObject.Find("Wall" + i);
+            wall.transform.position = levelPuzzles.wallPositions[i];
+        }
+
         // Load in puzzle
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             // Instantiate destination blocks
             GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationPosition, Quaternion.identity);
+            newDestination.AddComponent<BoxCollider2D>();
 
             PuzzlePiece piece = new PuzzlePiece() {
                 destinationObject = newDestination,
@@ -130,7 +145,6 @@ public class PuzzleManager : MonoBehaviour
                     if (go.GetComponent<BlockScript>().blockName == levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName) {
                         // Replace trigger block with the correct sprite
                         piece.destinationObject.GetComponent<SpriteRenderer>().sprite = piece.correctSprite;
-                        piece.destinationObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
                         break;
                     }

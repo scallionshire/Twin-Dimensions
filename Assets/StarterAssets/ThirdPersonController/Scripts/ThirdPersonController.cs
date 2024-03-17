@@ -394,12 +394,12 @@ namespace StarterAssets
         }
 
         void OnEnable() {
-            GameManager gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             GameManager.OnSwitch += HandleOnSwitch;
         }
 
         void OnDisable() {
-            GameManager gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             GameManager.OnSwitch -= HandleOnSwitch;
         }
 

@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("dialogue3DTut", LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
         StartCoroutine(LoadAndDeactivate(scenesToLoad));
@@ -32,8 +32,8 @@ public class MenuController : MonoBehaviour
         gameManager.DeactivateScene("new2dtut");
         gameManager.DeactivateScene("mainPuzzle");
         gameManager.DeactivateScene("StartMenu");
-        gameManager.ActiveSceneName = "dialogue3DTut";
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("dialogue3DTut"));
+        gameManager.ActiveSceneName = "new3Dtut";
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
         gameManager.gameStarted = true;
     }
 

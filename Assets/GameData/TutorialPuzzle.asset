@@ -16,6 +16,17 @@ MonoBehaviour:
   destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
   blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
   circuitPrefab: {fileID: 6973451946996186604, guid: 5c46802f32e602a48aab772578f00695, type: 3}
+  backgroundSprite: {fileID: 21300000, guid: bab9458741aac1f44b40ad9e036cee3a, type: 3}
+  backgroundScale: {x: 0.38780707, y: 0.3548408, z: 1}
+  backgroundPosition: {x: -6.7901998, y: -0.5066001, z: 0}
+  backgroundColor: {r: 0.25882354, g: 0.20784314, b: 0.36862746, a: 1}
+  recScale: {x: 0.5, y: 0.5, z: 1}
+  recPosition: {x: -6.7905, y: -0.5332, z: 0}
+  wallPositions:
+  - {x: -2.55, y: 1.69, z: 0}
+  - {x: -10.91, y: 1.74, z: 0}
+  - {x: 2.14, y: -4.44, z: 0}
+  - {x: 2.14, y: 3.21, z: 0}
   puzzles:
   - circuitSprites:
     - circuitInitPosition: {x: -6.92, y: -0.55, z: 0}
