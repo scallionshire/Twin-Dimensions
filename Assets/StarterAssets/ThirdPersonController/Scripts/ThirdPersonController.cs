@@ -98,13 +98,13 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
-#if ENABLE_INPUT_SYSTEM 
-        private PlayerInput _playerInput;
-#endif
+        #if ENABLE_INPUT_SYSTEM 
+                private PlayerInput _playerInput;
+        #endif
         private Animator _animator;
         private CharacterController _controller;
-        private StarterAssetsInputs _input;
-        private GameObject _mainCamera;
+        public StarterAssetsInputs _input;
+        public GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
 
@@ -114,11 +114,11 @@ namespace StarterAssets
         {
             get
             {
-#if ENABLE_INPUT_SYSTEM
-                return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
+                #if ENABLE_INPUT_SYSTEM
+                                return _playerInput.currentControlScheme == "KeyboardMouse";
+                #else
+                                return false;
+                #endif
             }
         }
 
@@ -221,7 +221,8 @@ namespace StarterAssets
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-
+            Debug.Log("Input Move: " + _input.move + " | Target Speed: " + targetSpeed);
+            
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -254,7 +255,7 @@ namespace StarterAssets
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
-            {
+            {   
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   _mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
@@ -277,6 +278,9 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+
+            // log every factor involved in moving the player
+            Debug.Log("Speed: " + _speed + " | Animation Blend: " + _animationBlend + " | Input Magnitude: " + inputMagnitude);
         }
 
         private void JumpAndGravity()
@@ -387,6 +391,20 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        void OnEnable() {
+            GameManager gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GameManager.OnSwitch += HandleOnSwitch;
+        }
+
+        void OnDisable() {
+            GameManager gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GameManager.OnSwitch -= HandleOnSwitch;
+        }
+
+        private void HandleOnSwitch() {
+            _input.move = Vector2.zero;
         }
     }
 }

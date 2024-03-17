@@ -30,7 +30,7 @@ public class PlayerFader : MonoBehaviour
 
     public void Fade()
     {
-        Debug.Log("Fading");
+        // Debug.Log("Fading");
         isFaded = true;
         for (int i = 0; i < renderers.Count; i++)
         {
@@ -67,7 +67,7 @@ public class PlayerFader : MonoBehaviour
 
     public void ResetFade()
     {
-        Debug.Log("Resetting fade");
+        // Debug.Log("Resetting fade");
         isFaded = false;
         for (int i = 0; i < renderers.Count; i++)
         {
