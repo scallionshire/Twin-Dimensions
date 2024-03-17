@@ -61,9 +61,9 @@ public class Extrudable : MonoBehaviour
         targetScale = endScale;
         targetPosition = endPosition;
 
-        if (extrudableId < gameManager.gameState.TutorialExtrudables.Count && gameManager.gameState.TutorialExtrudables[extrudableId]) {
-            MakeAlreadyExtruded();
-        }
+        // if (extrudableId < gameManager.gameState.TutorialExtrudables.Count && gameManager.gameState.TutorialExtrudables[extrudableId]) {
+        //     MakeAlreadyExtruded();
+        // }
     }
 
     // Update is called once per frame

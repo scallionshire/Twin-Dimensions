@@ -49,14 +49,13 @@ public class PuzzleManager : MonoBehaviour
 
         for (int i = 0; i < levelPuzzles.wallPositions.Count; i++) {
             GameObject wall = GameObject.Find("Wall" + i);
-            wall.transform.position = levelPuzzles.wallPositions[i];
+            wall.transform.localPosition = levelPuzzles.wallPositions[i];
         }
 
         // Load in puzzle
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
             // Instantiate destination blocks
             GameObject newDestination = Instantiate(levelPuzzles.destinationPrefab, levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[i].destinationPosition, Quaternion.identity);
-            newDestination.AddComponent<BoxCollider2D>();
 
             PuzzlePiece piece = new PuzzlePiece() {
                 destinationObject = newDestination,

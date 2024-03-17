@@ -12,11 +12,8 @@ public class ExtrudableManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("GameManager") != null) {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        }
-        
-        // if (gameManager != null) {
+        // if (GameObject.Find("GameManager") != null) {
+        //     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //     currentExtrudableSetId = gameManager.gameState.CurrentExtrudableSetId;
         // } else {
         //     currentExtrudableSetId = -1; // TODO: this should be -1 in the real game
