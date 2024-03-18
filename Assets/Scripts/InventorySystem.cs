@@ -1,26 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
-    public bool hasObject = false;
-    public GameObject inventoryImage; 
+    public GameObject inventoryBackground; 
+    public Text itemCountText;
+    public GameObject batteryImage;
+     private float originalHeight;
 
-    public void AddObjectToInventory()
+    private void Start()
     {
-        hasObject = true;
+        originalHeight = inventoryBackground.GetComponent<RectTransform>().sizeDelta.y; // Store the original height
         UpdateInventoryUI();
     }
 
-    private void UpdateInventoryUI()
+    public void UpdateInventoryUI()
     {
-        if (hasObject)
+        bool hasUSB = GameManager.instance.gameState.PlayerHasUSB;
+        int batteryCount = GameManager.instance.gameState.BatteriesCollected;
+
+        inventoryBackground.SetActive(hasUSB);
+
+        if (hasUSB)
         {
             Debug.Log("USB is in the inventory");
-            inventoryImage.SetActive(true);
         }
-        else
-        {
-            inventoryImage.SetActive(false);
+
+        if (batteryCount > 0) {
+            RectTransform inventoryBackgroundRect = inventoryBackground.GetComponent<RectTransform>();
+            inventoryBackgroundRect.sizeDelta = new Vector2(inventoryBackgroundRect.sizeDelta.x, 130);
+            batteryImage.SetActive(true);
+            Debug.Log($"Batteries in the inventory: {batteryCount}");
+            itemCountText.text = $"x{batteryCount}";
+
+        }
+        else {
+            RectTransform inventoryBackgroundRect = inventoryBackground.GetComponent<RectTransform>();
+            inventoryBackgroundRect.sizeDelta = new Vector2(inventoryBackgroundRect.sizeDelta.x, originalHeight);
+            batteryImage.SetActive(false);
+            itemCountText.text = ""; 
         }
     }
 }
