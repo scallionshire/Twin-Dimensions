@@ -592,9 +592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctBlocks: []
-  currentPuzzleId: 0
+  currentPuzzleId: -1
   puzzlesSolved: 
-  levelPuzzles: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
+  levelPuzzles: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
 --- !u!4 &713982315
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953939987320327243, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2954693487713978451, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Pivot.x
@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.x

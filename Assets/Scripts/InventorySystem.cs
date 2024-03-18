@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventorySystem : MonoBehaviour
 {
     public GameObject inventoryBackground; 
-    public Text itemCountText;
+    public TextMeshProUGUI itemCountText;
     public GameObject batteryImage;
      private float originalHeight;
 

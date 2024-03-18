@@ -592,8 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cfb25f1e414480b6209f946cf5576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentExtrudableSetId: 0
-  extrudableData: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
+  currentExtrudableSetId: -1
+  extrudableData: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
 --- !u!4 &665747924
 Transform:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalScale.x
@@ -984,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953939987320327243, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2954693487713978451, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Pivot.x
@@ -1125,7 +1125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.x

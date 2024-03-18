@@ -64,6 +64,7 @@ public class Extrudable : MonoBehaviour
         initPosition = transform.position;
 
         Vector3 scaleDirection = transform.rotation * extrudeDirection;
+        Debug.Log("Extrudable " + extrudableId + "Scale direction: " + scaleDirection);
         if (isExtruding) {
             endScale = initScale + scaleDirection * extrudeAmount;
         } else {
@@ -77,7 +78,7 @@ public class Extrudable : MonoBehaviour
         targetPosition = endPosition;
 
         if (gameManager != null) {
-            if (extrudableId < gameManager.gameState.TutorialExtrudables.Count && gameManager.gameState.TutorialExtrudables[extrudableId]) {
+            if (extrudableId < gameManager.gameState.Extrudables.Count && gameManager.gameState.Extrudables[extrudableId]) {
                 MakeAlreadyExtruded();
             }
         }

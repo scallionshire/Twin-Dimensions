@@ -26,15 +26,16 @@ public class PuzzleManager : MonoBehaviour
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
             currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
+            switch (gameManager.gameState.CurrentLevel) {
+                case Level.tutorial:
+                    levelPuzzles = gameManager.initTutorialPuzzle;
+                    break;
+                case Level.computerlab:
+                    levelPuzzles = gameManager.initComputerPuzzle;
+                    break;
+            }
         } else {
-            currentPuzzleId = -1; // TODO: this should be -1 in the real game
-        }
-
-        puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
-
-        if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
-            Debug.Log("No puzzle selected");
-            return;
+            currentPuzzleId = -1;
         }
 
         GameObject background = GameObject.Find("Background");
@@ -51,6 +52,13 @@ public class PuzzleManager : MonoBehaviour
             GameObject wall = GameObject.Find("Wall" + i);
             wall.transform.localPosition = levelPuzzles.wallPositions[i];
         }
+
+        if (currentPuzzleId == -1) { // map should be blank, no puzzles loaded in
+            Debug.Log("No puzzle selected");
+            return;
+        }
+
+        puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
 
         // Load in puzzle
         for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks.Count; i++) {
@@ -135,9 +143,6 @@ public class PuzzleManager : MonoBehaviour
             } else 
             {
                 string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
-
-                // Update game state
-                gameManager?.SolvePuzzleBlock(currentPuzzleId, index, levelPuzzles.level);
 
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {

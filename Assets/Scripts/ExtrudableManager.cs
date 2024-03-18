@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ExtrudableManager : MonoBehaviour
 {
@@ -11,16 +10,21 @@ public class ExtrudableManager : MonoBehaviour
     private GameManager gameManager;
 
     // Start is called before the first frame update
-    void Start()
+    public void LoadMap()
     {
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             currentExtrudableSetId = gameManager.gameState.CurrentExtrudableSetId;
-        }
-
-        if (currentExtrudableSetId == -1) { // map should be blank, no puzzles loaded in
-            Debug.Log("No extrudables selected");
-            return;
+            switch (gameManager.gameState.CurrentLevel) {
+                case Level.tutorial:
+                    extrudableData = gameManager.initTutorialExtrudables;
+                    break;
+                case Level.computerlab:
+                    extrudableData = gameManager.initComputerLabExtrudables;
+                    break;
+            }
+        } else {
+            currentExtrudableSetId = -1;
         }
 
         GameObject background = GameObject.Find("Background");
@@ -37,6 +41,11 @@ public class ExtrudableManager : MonoBehaviour
             wall.transform.localPosition = extrudableData.wallPositions[i];
         }
 
+        if (currentExtrudableSetId == -1) { // map should be blank, no puzzles loaded in
+            Debug.Log("No extrudables selected");
+            return;
+        }
+
         List<ExtrudableData> extrudableSets = extrudableData.extrudableDataList[currentExtrudableSetId].extrudableSets;
         for (int i = 0; i < extrudableSets.Count; i++) {
             GameObject newExtrudable = Instantiate(extrudableData.extrudable2DPrefab, extrudableSets[i].position, Quaternion.identity);
@@ -51,15 +60,9 @@ public class ExtrudableManager : MonoBehaviour
             newExtrudable.GetComponent<Extrudable>().shouldLoop = extrudableSets[i].shouldLoop;
             newExtrudable.GetComponent<Extrudable>().isExtruding = extrudableSets[i].shouldExtrude;
 
-            if (extrudableSets[i].alreadyExtruded) {
+            if (gameManager != null && gameManager.gameState.Extrudables[extrudableSets[i].id]) {
                 newExtrudable.GetComponent<Extrudable>().MakeAlreadyExtruded();
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
