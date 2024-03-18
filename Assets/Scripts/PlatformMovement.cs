@@ -92,9 +92,6 @@ public class PlatformMovement : MonoBehaviour
             Debug.Log("Player is on the platform");
             isMoving = true;
             collision.transform.parent = transform;
-
-            // Change scene after 3 seconds
-            StartCoroutine(GoToBioLab());
         }
     }
 
@@ -107,11 +104,4 @@ public class PlatformMovement : MonoBehaviour
     //     Gizmos.color = Color.red;
     //     Gizmos.DrawWireCube(transform.position + new Vector3(0f, 1.0f, 0f), new Vector3(transform.localScale.x, 2.0f, transform.localScale.z));
     // }
-
-    IEnumerator GoToBioLab()
-    {
-        yield return new WaitForSeconds(3);
-        isMoving = true;
-        GameObject.Find("GameManager").GetComponent<GameManager>().SetCurrentLevel(Level.biolab);
-    }
 }

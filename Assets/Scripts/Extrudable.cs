@@ -20,6 +20,9 @@ public class Extrudable : MonoBehaviour
     private Vector3 targetPosition;
 
     private Mesh mesh;
+    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider2D;
+    private bool is2D = false;
     private GameManager gameManager;
 
     public Vector3 extrudeDirection;
@@ -44,25 +47,40 @@ public class Extrudable : MonoBehaviour
             Vector3 meshSize = Vector3.Scale(mesh.bounds.size, extrudeDirection);
 
             scaleFactor = Mathf.Max(Mathf.Abs(meshSize.x), Mathf.Abs(meshSize.y), Mathf.Abs(meshSize.z));
+        } else {
+            // This is probably a 2D object
+            is2D = true;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            boxCollider2D = GetComponent<BoxCollider2D>();
         }
         
-        initScale = transform.localScale;
-        initPosition = transform.position;
-
-        // Gives level designers an extra option in case it's not extruding in the right direction
-        if (isExtruding) {
-            endScale = initScale + extrudeDirection * extrudeAmount;
+        if (is2D) {
+            // This is a 2D object
+            initScale = new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f);
         } else {
-            endScale = initScale + extrudeDirection * extrudeAmount * (-1);
+            initScale = transform.localScale;
         }
 
-        endPosition = initPosition + extrudeDirection * scaleFactor * extrudeAmount / 2;
+        initPosition = transform.position;
+
+        Vector3 scaleDirection = transform.rotation * extrudeDirection;
+        Debug.Log("Extrudable " + extrudableId + "Scale direction: " + scaleDirection);
+        if (isExtruding) {
+            endScale = initScale + scaleDirection * extrudeAmount;
+        } else {
+            // Gives level designers an extra option in case it's not extruding in the right direction
+            endScale = initScale + scaleDirection * extrudeAmount * (-1);
+        }
+
+        endPosition = initPosition + extrudeDirection * scaleFactor * extrudeAmount * 0.5f;
 
         targetScale = endScale;
         targetPosition = endPosition;
 
-        if (extrudableId < gameManager.gameState.TutorialExtrudables.Count && gameManager.gameState.TutorialExtrudables[extrudableId]) {
-            MakeAlreadyExtruded();
+        if (gameManager != null) {
+            if (extrudableId < gameManager.gameState.Extrudables.Count && gameManager.gameState.Extrudables[extrudableId]) {
+                MakeAlreadyExtruded();
+            }
         }
     }
 
@@ -75,20 +93,38 @@ public class Extrudable : MonoBehaviour
                 gameManager?.UpdateExtrudables(extrudableId);
             }
 
-            if ((targetScale - transform.localScale).sqrMagnitude < 0.05f) {
-                if (shouldLoop && targetScale == endScale) {
-                    targetScale = initScale;
-                    targetPosition = initPosition;
-                } else if (shouldLoop && targetScale == initScale) {
-                    targetScale = endScale;
-                    targetPosition = endPosition;
-                } else {
-                    isMoving = false;
+            if (is2D) {
+                if ((targetScale - new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f)).sqrMagnitude < 0.05f) {
+                    if (shouldLoop && targetScale == endScale) {
+                        targetScale = initScale;
+                        targetPosition = initPosition;
+                    } else if (shouldLoop && targetScale == initScale) {
+                        targetScale = endScale;
+                        targetPosition = endPosition;
+                    } else {
+                        isMoving = false;
+                    }
                 }
-            }
 
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * extrudeSpeed);
-            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * extrudeSpeed);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * extrudeSpeed);
+                spriteRenderer.size = Vector2.Lerp(spriteRenderer.size, new Vector2(targetScale.x, targetScale.y), Time.deltaTime * extrudeSpeed);
+                boxCollider2D.size = Vector2.Lerp(boxCollider2D.size, new Vector2(targetScale.x, targetScale.y), Time.deltaTime * extrudeSpeed);
+            } else {
+                if ((targetScale - transform.localScale).sqrMagnitude < 0.05f) {
+                    if (shouldLoop && targetScale == endScale) {
+                        targetScale = initScale;
+                        targetPosition = initPosition;
+                    } else if (shouldLoop && targetScale == initScale) {
+                        targetScale = endScale;
+                        targetPosition = endPosition;
+                    } else {
+                        isMoving = false;
+                    }
+                }
+
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * extrudeSpeed);
+                transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * extrudeSpeed);
+            }
         }
     }
 
@@ -97,8 +133,14 @@ public class Extrudable : MonoBehaviour
     }
 
     public void MakeAlreadyExtruded() {
-        transform.localScale = targetScale;
-        transform.position = targetPosition;
+        if (is2D) {
+            spriteRenderer.size = new Vector2(endScale.x, endScale.y);
+            boxCollider2D.size = new Vector2(endScale.x, endScale.y);
+            transform.position = endPosition;
+        } else {
+            transform.localScale = endScale;
+            transform.position = endPosition;
+        }
     }
 }
 

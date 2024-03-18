@@ -7,6 +7,7 @@ public class USBPorts : MonoBehaviour
 {
     public bool isPuzzlePort = true; // if true, this port will trigger a puzzle; otherwise, trigger the map with extrudables
     public int id;
+    public Level level;
     public string eventName = "event:/SFX3D/USBInsert";
     private GameManager gameManager;
 
@@ -23,9 +24,9 @@ public class USBPorts : MonoBehaviour
         if (gameManager.gameState.USBInserted) {
             if (isPuzzlePort) {
                 Debug.Log("Switching to puzzle " + id);
-                gameManager.SwitchToPuzzle(id);
+                gameManager.SwitchToPuzzle(id, level);
             } else {
-                gameManager.SwitchToMap(id);
+                gameManager.SwitchToMap(id, level);
             }
         }
     }

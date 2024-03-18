@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     public float SFXVolume = 100f;
 
     public ExtrudableDataScriptable initTutorialExtrudables;
+    public ExtrudableDataScriptable initComputerLabExtrudables;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
-    public PuzzleDataScriptable initChemicalPuzzle;
 
     public string ActiveSceneName;
 
@@ -47,26 +47,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
-
-        // Load in initial puzzle game data
-        gameState.CurrTutorialPuzzle = Instantiate(initTutorialPuzzle);
-        gameState.CurrComputerPuzzle = Instantiate(initComputerPuzzle);
-        gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
-        gameState.CurrTutorialExtrudables = Instantiate(initTutorialExtrudables);
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {   
-        if (scene.name == "new2dtut") {
-            ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
-            extrudableManager.currentExtrudableSetId = gameState.CurrentExtrudableSetId;
-            extrudableManager.extrudableData = gameState.CurrTutorialExtrudables;
-        }
     }
 
     void Update()
@@ -74,40 +58,23 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "StartMenu") {
             Cursor.lockState = CursorLockMode.None;
         }
-
-        // if (ActiveSceneName != "StartMenu" && gameStarted && !menuUnloaded){
-
-        //     Debug.Log("Unloading StartMenu");
-        //     bool unloaded = SceneManager.UnloadScene("StartMenu");
-        //     if (unloaded)
-        //     {
-        //         menuUnloaded = true;
-        //     }
-        // }
         
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
             Debug.Log("Switching scenes for level " + gameState.CurrentLevel);
-
-            switch (gameState.CurrentLevel) {
-                case Level.tutorial:
-                    if (ActiveSceneName == "new3Dtut")
-                    {
-                        switchToScene("new2dtut");
-                    }
-                    else if (ActiveSceneName == "new2dtut")
-                    {
-                        switchToScene("new3Dtut");
-                    }
-                    else if (ActiveSceneName == "mainPuzzle")
-                    {
-                        switchToScene("new3Dtut");
-                    }
-                    break;
+            if (ActiveSceneName == "new3Dtut")
+            {
+                SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
             }
-        } else if (Input.GetKeyDown(KeyCode.Q)) {
-            Debug.Log("USB not inserted");
+            else if (ActiveSceneName == "new2dtut")
+            {
+                switchToScene("new3Dtut");
+            }
+            else if (ActiveSceneName == "mainPuzzle")
+            {
+                switchToScene("new3Dtut");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -115,13 +82,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchToPuzzle(int puzzleId) 
+    public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
         Debug.Log("Switching to puzzle: " + puzzleId);
         switchToScene("mainPuzzle");
 
-        if (instance.gameState.CurrentPuzzleId != puzzleId) {
+        if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
             instance.gameState.CurrentPuzzleId = puzzleId;
+            instance.gameState.CurrentLevel = level;
             wipePuzzle();
             // Find PuzzleManager and load the puzzle
             PuzzleManager puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
@@ -129,25 +97,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchToMap(int setId) {
-        instance.gameState.CurrentExtrudableSetId = setId;
-        // sceneLoaded = false;
-        SceneManager.LoadScene("new2dtut");
-    }
+    public void SwitchToMap(int extId, Level level) {
+        switchToScene("new2dtut");
 
-    public void SetPlayerPosition(Vector3 position) {
-        instance.gameState.PlayerPosition3D = position;
+        // Find ExtrudableManager and load the map
+        if (extId == -1 || extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
+            instance.gameState.CurrentExtrudableSetId = extId;
+            instance.gameState.CurrentLevel = level;
+            wipeExtrudables();
+
+            ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
+            extrudableManager.LoadMap();
+        }
     }
 
     private void UpdateInventoryUI() {
         InventorySystem inventorySystem = FindObjectOfType<InventorySystem>();
         if (inventorySystem != null) {
+            Debug.Log("Updating inventory UI");
             inventorySystem.UpdateInventoryUI();
         }
     }
 
     public void GetUSB() {
-        gameState.PlayerHasUSB = true;
+        instance.gameState.PlayerHasUSB = true;
         Debug.Log("Adding USB to inventory");
         UpdateInventoryUI();
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
@@ -161,6 +134,8 @@ public class GameManager : MonoBehaviour
         } else {
             Debug.Log("Player does not have USB");
         }
+        
+        // TODO: only do this after dialogue is done
         if (GameObject.Find("TooltipCanvas") != null)
         {
             GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
@@ -191,48 +166,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void UpdateExtrudables(int extrudableId) {
-        switch (gameState.CurrentLevel) {
-            case Level.tutorial:
-                Debug.Log("Updating extrudable: " + extrudableId);
-                instance.gameState.TutorialExtrudables[extrudableId] = true;
-                break;
-            case Level.biolab:
-                instance.gameState.BioLabExtrudables[extrudableId] = true;
-                break;
-            case Level.computerlab:
-                instance.gameState.ComputerLabExtrudables[extrudableId] = true;
-                break;
-        }
-    }
-
-    public void SolvePuzzleBlock(int puzzleId, int blockId, Level level) {
-        switch (level) {
-            case Level.tutorial:
-                PuzzleSet x = instance.gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
-                x.isSolved = true;
-                instance.gameState.CurrTutorialPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = x;
-                break;
-            case Level.biolab:
-                PuzzleSet y = instance.gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
-                y.isSolved = true;
-                instance.gameState.CurrComputerPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = y;
-                break;
-            case Level.computerlab:
-                PuzzleSet z = instance.gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId];
-                z.isSolved = true;
-                instance.gameState.CurrChemicalPuzzle.puzzles[puzzleId].puzzleBlocks[blockId] = z;
-                break;
-        }
+        instance.gameState.Extrudables[extrudableId] = true;
     }
 
     public void SolvePuzzle(Level level, int puzzleId) {
         switch (level) {
             case Level.tutorial:
                 switch (puzzleId) {
-                    case 0: 
-                        Debug.Log("Door 0 unlocked");
+                    case 0:
                         instance.gameState.Door0Unlocked = true;
                         break;
                     case 1:
@@ -245,27 +187,10 @@ public class GameManager : MonoBehaviour
             case Level.computerlab:
                 break;
         }
-        
     }
 
     public void SetCurrentPuzzle(int puzzleId) {
         instance.gameState.CurrentPuzzleId = puzzleId;
-    }
-
-    // Set to new level and switch scene if need be
-    public void SetCurrentLevel(Level level) {
-        instance.gameState.CurrentLevel = level;
-        instance.gameState.CurrentPuzzleId = 0;
-
-        switch (level) {
-            case Level.tutorial:
-                // sceneLoaded = false;
-                SceneManager.LoadScene("fbx3dmain");
-                break;
-            // case Level.computerlab:
-            //     gameState.CurrChemicalPuzzle = Instantiate(initChemicalPuzzle);
-            //     break;
-        }
     }
 
     public void TogglePauseMenu()
@@ -322,6 +247,28 @@ public class GameManager : MonoBehaviour
         if (instance.gameState.Door1Unlocked) {
             if (GameObject.Find("Door1") != null) {
                 GameObject.Find("Door1").GetComponent<Animator>().SetBool("isOpen", true);
+            }
+        }
+
+        for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
+            if (instance.gameState.Extrudables[i]) {
+                if (GameObject.Find("Extrudable" + i) != null) {
+                    GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
+                }
+            }
+        }
+    }
+
+    private void wipeExtrudables()
+    {
+        // Delete all gameobjects with tag: Extrudable
+        GameObject[] extrudables = GameObject.FindGameObjectsWithTag("Extrudable");
+
+        foreach (GameObject extrudable in extrudables)
+        {
+            if (extrudable.GetComponent<SpriteRenderer>() != null) {
+                // Only destroy if 2D
+                Destroy(extrudable);
             }
         }
     }
@@ -389,18 +336,10 @@ public class GameState
     public Vector2 PlayerPosition2D { get; set; }
     public Vector2 PlayerPuzzlePosition2D { get; set; }
 
-    // 2D Game State
-    public PuzzleDataScriptable CurrTutorialPuzzle { get; set; }
-    public PuzzleDataScriptable CurrChemicalPuzzle { get; set; }
-    public PuzzleDataScriptable CurrComputerPuzzle { get; set; }
-
     // Lists of bools indicating whether or not the corresponding extrudable block in that level has been extruded
     public int CurrentExtrudableSetId { get; set; }
 
-    public ExtrudableDataScriptable CurrTutorialExtrudables { get; set; }
-    public List<bool> TutorialExtrudables { get; set; }
-    public List<bool> BioLabExtrudables { get; set; }
-    public List<bool> ComputerLabExtrudables { get; set; }
+    public List<bool> Extrudables { get; set; }
 
     // Tooltip Trackers
     public bool PressETooltipShown { get; set; }
@@ -428,9 +367,7 @@ public class GameState
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
         CurrentExtrudableSetId = -1;
-        TutorialExtrudables = new List<bool> { false, false, false };
-        BioLabExtrudables = new List<bool> { false, false, false, false, false };
-        ComputerLabExtrudables = new List<bool> { false, false, false };
+        Extrudables = new List<bool> { false, false, false, false, false };
 
         PressETooltipShown = false;
         PressQTooltipShown = false;

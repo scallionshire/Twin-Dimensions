@@ -7,7 +7,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
     private bool isMonitoringActive = true;
     public string eventName = "event:/SFX3D/MonitorBeep";
 
-    private void OnTriggerEnter(Collider other)
+    public void OnChildTriggerEntered(Collider other)
     {
         if (other.CompareTag("Extrudable"))
         {   
@@ -23,7 +23,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnChildTriggerExited(Collider other)
     {
         if (other.CompareTag("Extrudable"))
         {

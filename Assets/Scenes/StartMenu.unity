@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: popupMenu
       value: 
       objectReference: {fileID: 1491478769}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: initComputerLabExtrudables
+      value: 
+      objectReference: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockInitPosition.y
       value: -1.7655
