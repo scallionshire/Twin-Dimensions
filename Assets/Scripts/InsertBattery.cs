@@ -7,8 +7,8 @@ public class InsertBattery : MonoBehaviour
     [SerializeField] private List<GameObject> batteries;
     [SerializeField] private List<GameObject> batteryLights;
     [SerializeField] private List<GameObject> monitorScreens;
-    private List<Renderer> batteryLightRenderers;
-    private List<Renderer> monitorScreenRenderers;
+    private List<MeshRenderer> batteryLightRenderers = new List<MeshRenderer>();
+    private List<MeshRenderer> monitorScreenRenderers = new List<MeshRenderer>();
     private int batteriesIn = 0;
     [SerializeField] private Material batteryPanelLitMaterial;
     [SerializeField] private Material monitorScreenLitMaterial;
@@ -19,8 +19,16 @@ public class InsertBattery : MonoBehaviour
         for (int i = 0; i < batteries.Count; i++)
         {
             batteries[i].SetActive(false);
-            batteryLightRenderers.Add(batteryLights[i].GetComponent<Renderer>());
-            monitorScreenRenderers.Add(monitorScreens[i].GetComponent<Renderer>());
+            if (batteryLights[i] == null)
+            {
+                Debug.Log("Battery light " + i + " is null");
+            }
+            if (batteryLights[i].GetComponent<MeshRenderer>() == null)
+            {
+                Debug.Log("Battery light " + i + " has no mesh renderer");
+            }
+            batteryLightRenderers.Add(batteryLights[i].GetComponent<MeshRenderer>());
+            monitorScreenRenderers.Add(monitorScreens[i].GetComponent<MeshRenderer>());
         }
     }
 
