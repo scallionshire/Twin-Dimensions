@@ -139,14 +139,17 @@ public class GameManager : MonoBehaviour
         instance.gameState.PlayerPosition3D = position;
     }
 
-    public void GetUSB() {
-        instance.gameState.PlayerHasUSB = true;
-        // gameState.PlayerHasUSB = true;
-        if (GameObject.Find("InventorySystem") != null) {
-            Debug.Log("Adding USB to inventory");
-            InventorySystem inventorySystem = GameObject.Find("InventorySystem").GetComponent<InventorySystem>();
-            inventorySystem.AddObjectToInventory();
+    private void UpdateInventoryUI() {
+        InventorySystem inventorySystem = FindObjectOfType<InventorySystem>();
+        if (inventorySystem != null) {
+            inventorySystem.UpdateInventoryUI();
         }
+    }
+
+    public void GetUSB() {
+        gameState.PlayerHasUSB = true;
+        Debug.Log("Adding USB to inventory");
+        UpdateInventoryUI();
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
@@ -173,8 +176,21 @@ public class GameManager : MonoBehaviour
             Debug.Log("All batteries collected!");
         }
 
+        UpdateInventoryUI();
         Destroy(battery); 
     }
+
+    public void UseBattery() {
+        if (gameState.BatteriesCollected > 0) {
+            gameState.BatteriesCollected--;
+            Debug.Log($"Battery used: Now {gameState.BatteriesCollected}/{gameState.TotalBatteries} remaining.");
+            UpdateInventoryUI(); 
+        }
+        else {
+            Debug.Log("No batteries to use.");
+        }
+    }
+
 
     public void UpdateExtrudables(int extrudableId) {
         switch (gameState.CurrentLevel) {
