@@ -29,7 +29,6 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogueCanvas == null)
         {
-            // No dialogue canvas found
             noDialogueCanvas = true;
         } else {
             noDialogueCanvas = false;
@@ -49,11 +48,6 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueCanvas == null && !noDialogueCanvas)
-        {
-            ReloadCanvas();
-        }
-
         if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
         {
             DisplayNextSentence();
@@ -78,16 +72,6 @@ public class DialogueManager : MonoBehaviour
                 dialogue20.transform.Find("20Dialogue").gameObject.SetActive(active);
                 break;
         }
-    }
-
-    private void ReloadCanvas()
-    {
-        dialogueCanvas = GameObject.Find("DialogueCanvas");
-
-        dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
-        dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
-
-        ToggleActive(false);
     }
 
     public void StartDialogue(Dialogue dialogue)

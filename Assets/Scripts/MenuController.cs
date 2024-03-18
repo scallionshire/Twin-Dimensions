@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("GUI", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
@@ -29,10 +30,12 @@ public class MenuController : MonoBehaviour
         Debug.Log("Scenes finished loading");
 
         var gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
         gameManager.DeactivateScene("new2dtut");
         gameManager.DeactivateScene("mainPuzzle");
         gameManager.DeactivateScene("StartMenu");
         gameManager.ActiveSceneName = "new3Dtut";
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
         gameManager.gameStarted = true;
     }
