@@ -5,7 +5,8 @@ using UnityEngine;
 public struct ExtrudableData {
     public int id;
     public Vector3 position;
-    public Vector3 scale;
+    public Vector3 rotation;
+    public Vector2 size;
     public Vector3 direction;
     public float amount;
     public bool shouldExtrude;
