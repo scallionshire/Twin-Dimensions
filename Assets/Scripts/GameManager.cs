@@ -345,6 +345,19 @@ public class GameManager : MonoBehaviour
             // TriggerSwitch(); // freeze player input
             ToggleBokeh(freeze);
         }
+
+        if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
+            Player2DMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2DMovement>();
+            player.enabled = !freeze;
+
+            Light2D sceneLight = GameObject.Find("Light 2D").GetComponent<Light2D>();
+
+            if (freeze) {
+                sceneLight.intensity = 0.5f;
+            } else {
+                sceneLight.intensity = 1.0f;
+            }
+        }
     }
 
     public void ToggleBokeh(bool enableBokeh)
@@ -432,7 +445,7 @@ public class GameState
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
         CurrentExtrudableSetId = -1;
-        Extrudables = new List<bool> { false, false, false, false, false };
+        Extrudables = new List<bool> { false, false, false, false, false, false };
 
         PressETooltipShown = false;
         PressQTooltipShown = false;

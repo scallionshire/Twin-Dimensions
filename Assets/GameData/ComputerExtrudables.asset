@@ -46,3 +46,23 @@ MonoBehaviour:
       shouldLoop: 0
       alreadyExtruded: 0
     dialogues: []
+  - extrudableSets:
+    - id: 5
+      position: {x: 2.698, y: 2.326, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      size: {x: 0.2826622, y: 0.1652799}
+      direction: {x: 0, y: -1, z: 0}
+      amount: 0.8
+      shouldExtrude: 0
+      shouldLoop: 0
+      alreadyExtruded: 0
+    dialogues:
+    - position: {x: 2.687, y: 1.354, z: 0}
+      scale: {x: 2.14, y: 1.54, z: 1}
+      dialogue:
+        dialogueName: PushOffExtrudable
+        sentences:
+        - text: Huh?! You can extrude the wall there?
+          twin: 0
+        - text: i think it can help us push off that battery we can't reach!
+          twin: 1
