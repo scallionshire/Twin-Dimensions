@@ -1,10 +1,40 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; 
+using System.Collections.Generic;
+
 public class MenuController : MonoBehaviour
 {
+    List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+
     public void StartGame()
     {
-        SceneManager.LoadScene(1); // scene at index 1 is the main game scene
+        Cursor.lockState = CursorLockMode.Locked;
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+        StartCoroutine(LoadAndDeactivate(scenesToLoad));
+    }
+
+    private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
+    {
+        Debug.Log("Loading scenes");
+        foreach (var loadOp in loadOperations)
+        {   
+            while (!loadOp.isDone)
+            {
+                yield return null; 
+            }
+        }
+
+        Debug.Log("Scenes finished loading");
+
+        var gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.DeactivateScene("new2dtut");
+        gameManager.DeactivateScene("mainPuzzle");
+        gameManager.DeactivateScene("StartMenu");
+        gameManager.ActiveSceneName = "new3Dtut";
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
+        gameManager.gameStarted = true;
     }
 
     public void OpenSettings()

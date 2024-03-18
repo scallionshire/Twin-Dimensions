@@ -15,103 +15,51 @@ MonoBehaviour:
   level: 2
   destinationPrefab: {fileID: 6192464661413001736, guid: 4137e1b2184a94c22a2f605eca9fa46a, type: 3}
   blockPrefab: {fileID: 6192464661413001736, guid: c42f8ae76016a4f83992cadc49083122, type: 3}
-  circuitPrefab: {fileID: 0}
+  circuitPrefab: {fileID: 6973451946996186604, guid: e310a457c91f043a78e03c3a3064f0b1, type: 3}
+  backgroundSprite: {fileID: 21300000, guid: 9519e407b9d5148da8efce6cc0a38a2a, type: 3}
+  backgroundScale: {x: 0.75, y: 0.75, z: 1}
+  backgroundPosition: {x: -6.58, y: -0.54, z: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  recScale: {x: 0.5, y: 0.5, z: 1}
+  recPosition: {x: -6.5571, y: -0.54, z: 0}
+  wallPositions:
+  - {x: -1.27, y: 1.69, z: 0}
+  - {x: -11.74, y: 1.74, z: 0}
+  - {x: 2.14, y: -3.76, z: 0}
+  - {x: 2.14, y: 2.38, z: 0}
   puzzles:
-  - circuitSprites: []
+  - circuitSprites:
+    - circuitInitPosition: {x: -4.465, y: -2.251, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 6ebb4b57c99be4e83893f3e7bc1c6510, type: 3}
+      circuitName: screen-group-0
+    - circuitInitPosition: {x: -7.86, y: -1.39, z: 0}
+      circuitSprite: {fileID: 21300000, guid: dafe21d5d8f5145ed90f3207e37574ed, type: 3}
+      circuitName: screen-group-1
+    - circuitInitPosition: {x: -9.55, y: -2.26, z: 0}
+      circuitSprite: {fileID: 21300000, guid: ee9e91877f18e4e46b498af4bcfd5a16, type: 3}
+      circuitName: screen-group-2
     puzzleBlocks:
-    - blockInitPosition: {x: -7.68, y: -3.02, z: 0}
-      blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertical
-      correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
-      destinationPosition: {x: -6.9750004, y: -2.685, z: 0}
+    - blockInitPosition: {x: -4.47, y: -3.11, z: 0}
+      blockSprite: {fileID: 21300000, guid: d9c3c3ea499614c2dba2c6756cc1c378, type: 3}
+      blockName: block0
+      correctSprite: {fileID: 21300000, guid: 1075d3eac59874727b35809ecc680034, type: 3}
+      destinationPosition: {x: -2.72, y: -2.27, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest0
+      destinationName: block0trigger
       isSolved: 0
-    - blockInitPosition: {x: -10.29, y: -0.83, z: 0}
-      blockSprite: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
-      blockName: horizontal
-      correctSprite: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
-      destinationPosition: {x: -7.815, y: -0.85649997, z: 0}
+    - blockInitPosition: {x: -8.73, y: 0.29, z: 0}
+      blockSprite: {fileID: 21300000, guid: 125ae5ba7dacf430285a04f7d04cebd2, type: 3}
+      blockName: block1
+      correctSprite: {fileID: 21300000, guid: a729e9cc9eb6249b9ad1e90fab4e210a, type: 3}
+      destinationPosition: {x: -8.7, y: -2.255, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest1
+      destinationName: block1trigger
       isSolved: 0
-    - blockInitPosition: {x: -8.99, y: -0.11, z: 0}
-      blockSprite: {fileID: 21300000, guid: d101137c5a96b420680f35415a9362bb, type: 3}
-      blockName: cornerSW
-      correctSprite: {fileID: 21300000, guid: 8b45b700c2fec4adf94540cae98d96a8, type: 3}
-      destinationPosition: {x: -7.0950003, y: -0.525, z: 0}
+    - blockInitPosition: {x: -9.52, y: -1.414, z: 0}
+      blockSprite: {fileID: 21300000, guid: 6b9b7fb02536b4347ad2309c9f6824c7, type: 3}
+      blockName: block2
+      correctSprite: {fileID: 21300000, guid: 131f07c46078a44468adf53d3677e1a6, type: 3}
+      destinationPosition: {x: -10.426, y: -2.24, z: 0}
       destinationSprite: {fileID: 0}
-      destinationName: dest2
-      isSolved: 0
-    - blockInitPosition: {x: -5.1, y: -3.11, z: 0}
-      blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertical
-      correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
-      destinationPosition: {x: -5.73, y: -1.935, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest3
-      isSolved: 0
-    - blockInitPosition: {x: -4.45, y: -2.74, z: 0}
-      blockSprite: {fileID: 21300000, guid: 819fd9980fdf32f4b90538d927826193, type: 3}
-      blockName: cornerNE
-      correctSprite: {fileID: 21300000, guid: bba3e127a95806d4bb3f5c21682d3029, type: 3}
-      destinationPosition: {x: -5.07, y: -2.31, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest4
-      isSolved: 0
-    - blockInitPosition: {x: -8.31, y: 1.03, z: 0}
-      blockSprite: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
-      blockName: horizontal
-      correctSprite: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
-      destinationPosition: {x: -7.0199995, y: 0.375, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest5
-      isSolved: 0
-    - blockInitPosition: {x: -5.23, y: -0.17, z: 0}
-      blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertical
-      correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
-      destinationPosition: {x: -4.3650002, y: 0.16499999, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest6
-      isSolved: 0
-    - blockInitPosition: {x: -3.83, y: 0.62, z: 0}
-      blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertical
-      correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
-      destinationPosition: {x: -3.8, y: -0.14, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest7
-      isSolved: 0
-    - blockInitPosition: {x: -3.82, y: 1.36, z: 0}
-      blockSprite: {fileID: 21300000, guid: 6d279a2db3d19494998b14e15e9f9a1e, type: 3}
-      blockName: vertica
-      correctSprite: {fileID: 21300000, guid: 79b972946b53f4b6caa62a8bdb13d25a, type: 3}
-      destinationPosition: {x: -2.9850001, y: -0.615, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest8
-      isSolved: 0
-    - blockInitPosition: {x: -3.5, y: -1.2, z: 0}
-      blockSprite: {fileID: 21300000, guid: abebea63e94c2e74b87181985915f1e4, type: 3}
-      blockName: cornerNW
-      correctSprite: {fileID: 21300000, guid: 0504316e859a8864cb35fa0c098181e1, type: 3}
-      destinationPosition: {x: -2.2649999, y: -1.17, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest9
-      isSolved: 0
-    - blockInitPosition: {x: -7.45, y: 1.52, z: 0}
-      blockSprite: {fileID: 21300000, guid: b63650d0a6c76f74a9e1a743005bde43, type: 3}
-      blockName: horizontal
-      correctSprite: {fileID: 21300000, guid: 15e8137c9e012f14493adbd5054f1a1d, type: 3}
-      destinationPosition: {x: -5.9700003, y: 2.415, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest10
-      isSolved: 0
-    - blockInitPosition: {x: -5.87, y: 1.55, z: 0}
-      blockSprite: {fileID: 21300000, guid: d101137c5a96b420680f35415a9362bb, type: 3}
-      blockName: cornerSW
-      correctSprite: {fileID: 21300000, guid: 8b45b700c2fec4adf94540cae98d96a8, type: 3}
-      destinationPosition: {x: -5.205, y: 2.715, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: dest11
+      destinationName: block2trigger
       isSolved: 0
