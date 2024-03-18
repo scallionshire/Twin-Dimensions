@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         switchToScene("new2dtut");
 
         // Find ExtrudableManager and load the map
-        if (extId == -1 || extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
+        if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
             instance.gameState.CurrentExtrudableSetId = extId;
             instance.gameState.CurrentLevel = level;
             wipeExtrudables();
@@ -218,7 +218,8 @@ public class GameManager : MonoBehaviour
         {
             obj.SetActive(false);
         }
-        
+        DialogueManager dialogueManager = gameObject.GetComponent<DialogueManager>();
+        dialogueManager.EndDialogue();
     }
 
     public void ActivateScene(string sceneName)
@@ -263,6 +264,7 @@ public class GameManager : MonoBehaviour
     {
         // Delete all gameobjects with tag: Extrudable
         GameObject[] extrudables = GameObject.FindGameObjectsWithTag("Extrudable");
+        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
 
         foreach (GameObject extrudable in extrudables)
         {
@@ -270,6 +272,11 @@ public class GameManager : MonoBehaviour
                 // Only destroy if 2D
                 Destroy(extrudable);
             }
+        }
+
+        foreach (GameObject dialogueTrigger in dialogueTriggers)
+        {
+            Destroy(dialogueTrigger);
         }
     }
 
@@ -279,6 +286,7 @@ public class GameManager : MonoBehaviour
         GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
         GameObject[] blockTriggers = GameObject.FindGameObjectsWithTag("BlockTrigger");
         GameObject[] connectors = GameObject.FindGameObjectsWithTag("Connector");
+        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
 
         foreach (GameObject block in blocks)
         {
@@ -293,6 +301,11 @@ public class GameManager : MonoBehaviour
         foreach (GameObject connector in connectors)
         {
             Destroy(connector);
+        }
+
+        foreach (GameObject dialogueTrigger in dialogueTriggers)
+        {
+            Destroy(dialogueTrigger);
         }
     }
 

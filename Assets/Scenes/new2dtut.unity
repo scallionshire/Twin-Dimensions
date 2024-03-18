@@ -357,7 +357,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70cc4d7656c64405f89ff9d4c16c8dc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c545dd535c5894d3e8e829742be5c5ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -609,112 +609,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1147641113
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_Size.x
-      value: 0.44754505
-      objectReference: {fileID: 0}
-    - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.33765292
-      objectReference: {fileID: 0}
-    - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.0036238432
-      objectReference: {fileID: 0}
-    - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.404765
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: withUSBDialogue.dialogueName
-      value: 2DMap
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: withUSBDialogue.sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: withUSBDialogue.sentences.Array.data[0].text
-      value: hmm... i think those flashing blocks can help me manipulate the walls
-        in the lab...
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: withUSBDialogue.sentences.Array.data[1].text
-      value: let's check it out!
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: withUSBDialogue.sentences.Array.data[1].twin
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_Name
-      value: ExtrudableDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
 --- !u!1 &1371122207
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,19 +773,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_Size.x
-      value: 0.39267042
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_Size.y
-      value: 1.147183
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_Offset.x
-      value: 0.2059773
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 33760344377343771, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_Offset.y
-      value: 0.9178636
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: withUSBDialogue.dialogueName
@@ -907,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].text
-      value: maybe i can even do a few special things later...
+      value: let's get to the next floor through that white vent at the end!
       objectReference: {fileID: 0}
     - target: {fileID: 3740654991630256585, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].twin
@@ -922,12 +816,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.81
+      value: 2.73
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 8565468883608264247, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1288,11 +1190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6927260782682471436, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13
+      value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 6927260782682471436, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 6927260782682471436, guid: 8165b8cea731640a08a6481af3d459dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1342,6 +1244,5 @@ SceneRoots:
   - {fileID: 250396363}
   - {fileID: 2145193927}
   - {fileID: 1813490957}
-  - {fileID: 1147641113}
   - {fileID: 665747924}
   - {fileID: 1999835824}

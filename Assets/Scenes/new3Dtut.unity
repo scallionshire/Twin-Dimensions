@@ -39612,11 +39612,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495157993}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1495546756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-  m_PrefabInstance: {fileID: 1827895997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498875066
 GameObject:
   m_ObjectHideFlags: 0
@@ -50813,7 +50808,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -50822,7 +50817,7 @@ PrefabInstance:
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2089493524}
+      objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -50849,10 +50844,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1721602049}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2089493524}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49a614843c6994a949480afbce80149c, type: 3}
 --- !u!64 &1827962073
 MeshCollider:
@@ -57194,28 +57186,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
   m_PrefabInstance: {fileID: 1827895997}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2089493524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495546756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noUSBDialogue:
-    dialogueName: Door Port
-    sentences:
-    - text: I can't hack into this stuff like 20... I need them!
-      twin: 0
-  withUSBDialogue:
-    dialogueName: Door Port
-    sentences:
-    - text: We're in the mainframe now, fellas! I'll crack this door!
-      twin: 1
 --- !u!1 &2090255322
 GameObject:
   m_ObjectHideFlags: 0

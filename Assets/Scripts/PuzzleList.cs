@@ -26,4 +26,5 @@ public struct CircuitSet {
 public class PuzzleList {
     public List<CircuitSet> circuitSprites;
     public List<PuzzleSet> puzzleBlocks;
+    public List<DialogueObject> dialogues;
 }

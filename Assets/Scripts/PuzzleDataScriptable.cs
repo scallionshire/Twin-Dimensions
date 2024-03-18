@@ -10,6 +10,7 @@ public class PuzzleDataScriptable : ScriptableObject
     public GameObject destinationPrefab; // destination prefab to instantiate
     public GameObject blockPrefab; // block prefab to instantiate
     public GameObject circuitPrefab; // circuit environment prefab to instantiate
+    public GameObject dialogueTriggerPrefab; // dialogue trigger prefabs to instantiate
 
     public Sprite backgroundSprite;
     public Vector3 backgroundScale;

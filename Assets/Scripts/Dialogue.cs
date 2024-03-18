@@ -8,3 +8,11 @@ public class Dialogue
     public string dialogueName;
     public Sentence[] sentences;
 }
+
+[System.Serializable]
+public class DialogueObject
+{
+    public Vector3 position;
+    public Vector3 scale;
+    public Dialogue dialogue;
+}

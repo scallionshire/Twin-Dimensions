@@ -58,6 +58,12 @@ public class PuzzleManager : MonoBehaviour
             return;
         }
 
+        for (int i = 0; i < levelPuzzles.puzzles[currentPuzzleId].dialogues.Count; i++) {
+            GameObject newDialogueTrigger = Instantiate(levelPuzzles.dialogueTriggerPrefab, levelPuzzles.puzzles[currentPuzzleId].dialogues[i].position, Quaternion.identity);
+            newDialogueTrigger.transform.localScale = levelPuzzles.puzzles[currentPuzzleId].dialogues[i].scale;
+            newDialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue = levelPuzzles.puzzles[currentPuzzleId].dialogues[i].dialogue;
+        }
+
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
 
         // Load in puzzle
