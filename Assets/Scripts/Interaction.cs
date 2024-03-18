@@ -44,7 +44,10 @@ public class Interaction : MonoBehaviour
         {
             // Debug.Log("Removing highlight");
             prevHit = false;
-            prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+            if (prevInteractable != null)
+            {
+                prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+            }
         } else {
             prevHit = false;
         }

@@ -64,7 +64,6 @@ public class Extrudable : MonoBehaviour
         initPosition = transform.position;
 
         Vector3 scaleDirection = transform.rotation * extrudeDirection;
-        Debug.Log("Extrudable " + extrudableId + "Scale direction: " + scaleDirection);
         if (isExtruding) {
             endScale = initScale + scaleDirection * extrudeAmount;
         } else {
