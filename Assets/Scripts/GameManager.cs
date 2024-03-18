@@ -1,7 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Cinemachine.PostFX;
+using StarterAssets;
+using UnityEditor.Performance.ProfileAnalyzer;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -21,6 +28,9 @@ public class GameManager : MonoBehaviour
     public ExtrudableDataScriptable initComputerLabExtrudables;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
     public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+
+    [SerializeField]
+    private VolumeProfile globalVolumeProfile;
 
     public string ActiveSceneName;
 
@@ -47,7 +57,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
@@ -211,6 +220,9 @@ public class GameManager : MonoBehaviour
 
     public void DeactivateScene(string sceneName)
     {   
+        DialogueManager dialogueManager = gameObject.GetComponent<DialogueManager>();
+        dialogueManager.EndDialogue();
+
         Scene scene = SceneManager.GetSceneByName(sceneName);
         TriggerSwitch(); // Trigger switch that removes player input
         GameObject[] rootObjects = scene.GetRootGameObjects();
@@ -218,8 +230,6 @@ public class GameManager : MonoBehaviour
         {
             obj.SetActive(false);
         }
-        DialogueManager dialogueManager = gameObject.GetComponent<DialogueManager>();
-        dialogueManager.EndDialogue();
     }
 
     public void ActivateScene(string sceneName)
@@ -316,6 +326,48 @@ public class GameManager : MonoBehaviour
         ActiveSceneName = sceneName;
         OnSceneSwitch();
     }
+
+    public void ToggleDialogueFreeze(bool freeze)
+    {
+        if (ActiveSceneName == "new3Dtut") {
+            CinemachineFreeLook playerCamera = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
+            if (freeze) {
+                playerCamera.m_YAxis.m_MaxSpeed = 0;
+                playerCamera.m_XAxis.m_MaxSpeed = 0;
+            } else {
+                playerCamera.m_YAxis.m_MaxSpeed = 4;
+                playerCamera.m_XAxis.m_MaxSpeed = 450;
+            }
+
+            ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
+            player.enabled = !freeze;
+
+            // TriggerSwitch(); // freeze player input
+            ToggleBokeh(freeze);
+        }
+    }
+
+    public void ToggleBokeh(bool enableBokeh)
+    {
+        if (enableBokeh) {
+            StartCoroutine(EaseBokeh(0.1f));
+        } else {
+            StartCoroutine(EaseBokeh(10.0f));
+        }
+    }
+
+    IEnumerator EaseBokeh(float target)
+    {
+        globalVolumeProfile.TryGet(out DepthOfField depthOfField);
+        float start = depthOfField.focusDistance.value;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / 0.5f;
+            depthOfField.focusDistance.value = Mathf.Lerp(start, target, t);
+            yield return null;
+        }
+    }
 }
 
 public class GameState
@@ -367,7 +419,7 @@ public class GameState
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
 
-        PlayerPosition3D = new Vector3(-2.38f,3.26f,24.57f);
+        PlayerPosition3D = new Vector3(-4.05f,3.25f,28.57f);
         PlayerRotation3D = new Vector3(0f,180f,0f);
         CameraPosition3D = Vector3.zero;
         CameraRotation3D = Vector3.zero;

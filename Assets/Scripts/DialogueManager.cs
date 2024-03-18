@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     public bool noDialogueCanvas = false;
     public bool finishedDisplayingText = false;
 
+    private GameManager gameManager;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -44,6 +46,8 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<Sentence>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -77,6 +81,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         ToggleActive(true);
+        gameManager.ToggleDialogueFreeze(true);
 
         sentences.Clear();
 
@@ -122,6 +127,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        gameManager.ToggleDialogueFreeze(false);
         ToggleActive(false);
     }
 
