@@ -4,44 +4,43 @@ using UnityEngine;
 
 public class InsertBattery : MonoBehaviour
 {
-    [SerializeField] private GameObject battery;
-    [SerializeField] private GameObject batterylight;
-    [SerializeField] private Material batInMaterial;
-    [SerializeField] private Material litMaterial;
-    private List<Renderer> batRenderer = new List<Renderer>();
-    private Renderer batlightRenderer;
-    public bool hasBattery;
+    [SerializeField] private List<GameObject> batteries;
+    [SerializeField] private List<GameObject> batteryLights;
+    [SerializeField] private List<GameObject> monitorScreens;
+    private List<Renderer> batteryLightRenderers;
+    private List<Renderer> monitorScreenRenderers;
+    private int batteriesIn = 0;
+    [SerializeField] private Material batteryPanelLitMaterial;
+    [SerializeField] private Material monitorScreenLitMaterial;
+
     // // Start is called before the first frame update
     public void Start()
     {
-        batRenderer.AddRange(GetComponentsInChildren<Renderer>());
-        batlightRenderer=batterylight.GetComponent<Renderer>();
-        
-        // batteryTexture= GetTexture("Battery"+batID);
+        for (int i = 0; i < batteries.Count; i++)
+        {
+            batteries[i].SetActive(false);
+            batteryLightRenderers.Add(batteryLights[i].GetComponent<Renderer>());
+            monitorScreenRenderers.Add(monitorScreens[i].GetComponent<Renderer>());
+        }
     }
 
     // Update is called once per frame
     public void insert()
     {
         int batteryCount = GameManager.instance.gameState.BatteriesCollected;
-        Debug.Log(batteryCount);
-        if (batteryCount==0){
-            Debug.Log("go collect battery");
+        Debug.Log("Current batteryCount: " + batteryCount);
+        if (batteryCount > 0)
+        {
+            batteries[batteriesIn].SetActive(true);
+            batteryLightRenderers[batteriesIn].material = batteryPanelLitMaterial;
+            monitorScreenRenderers[batteriesIn].material = monitorScreenLitMaterial;
+            batteriesIn++;
+            GameManager.instance.gameState.BatteriesCollected--;
         }
-        else{
-            if(hasBattery){
-                Debug.Log("already have battery");
-            }
-            if(hasBattery==false){
-                hasBattery=true;
-                GameManager.instance.gameState.BatteriesCollected--;
-                // GameManager.UseBattery();
-                foreach (Renderer rend in batRenderer)
-                {
-                    rend.material = batInMaterial;
-                }
-                batlightRenderer.material=litMaterial;
-            }
+
+        if (batteryCount == 5)
+        {
+            // TODO: update level success state in gamemanager
         }
     }
 }
