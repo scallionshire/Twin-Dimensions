@@ -9,6 +9,7 @@ public class Player2DMovement : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D rb;
     private FMOD.Studio.EventInstance footstepsSound;
+    private FMOD.Studio.EventInstance blockMovingSound;
 
     [HideInInspector]
     public GameObject collidedBlock;
@@ -18,6 +19,7 @@ public class Player2DMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         footstepsSound = RuntimeManager.CreateInstance("event:/SFX2D/2DFootsteps");
+        blockMovingSound = RuntimeManager.CreateInstance("event:/SFX3D/BoxPushV2");
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -57,6 +59,11 @@ public class Player2DMovement : MonoBehaviour
         {
             movement = movement * 0.7f; // Slow down movement while holding a block
 
+            if (blockMovingSound.getPlaybackState(out var playbackState) != FMOD.RESULT.OK || playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            {
+                blockMovingSound.start();
+            }
+
             // Interact with whatever block we last collided into
             if (collidedBlock != null && collidedBlock.tag == "Block") {
                 Vector3 distance = transform.position - collidedBlock.transform.position;
@@ -64,6 +71,9 @@ public class Player2DMovement : MonoBehaviour
             } else if (collidedBlock != null && collidedBlock.tag == "Extrudable") {
                 collidedBlock.GetComponent<Extrudable>().Extrude();
             }
+        }
+        else {
+            blockMovingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);

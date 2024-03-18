@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
         instance.gameState.PlayerHasUSB = true;
         Debug.Log("Adding USB to inventory");
         UpdateInventoryUI();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/Pickup");
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
@@ -131,6 +132,7 @@ public class GameManager : MonoBehaviour
             instance.gameState.USBInserted = true;
             // gameState.USBInserted = true;
             Debug.Log("Game state, USB inserted: " + instance.gameState.USBInserted);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/USBInsert");
         } else {
             Debug.Log("Player does not have USB");
         }
@@ -152,6 +154,7 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateInventoryUI();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/Pickup");
         Destroy(battery); 
     }
 
