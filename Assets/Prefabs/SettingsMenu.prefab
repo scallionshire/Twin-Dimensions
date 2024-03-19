@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7842700425161193060}
   - component: {fileID: 683186892015125992}
   m_Layer: 5
-  m_Name: Music
+  m_Name: MusicTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2750722335813969065}
-  - {fileID: 771489023715061967}
+  - {fileID: 1955839479685788976}
   m_Father: {fileID: 5303545734537166110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -488,17 +488,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3993315503740246166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5997059142410397151}
-  m_Father: {fileID: 771489023715061967}
+  m_Father: {fileID: 3327752629266340341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: 6, y: -231}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2271460401919596989
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8929956508755227611}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -595,64 +595,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &5410216835163924345
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 771489023715061967}
-  - component: {fileID: 1892133088352123482}
-  - component: {fileID: 8929956508755227611}
-  m_Layer: 5
-  m_Name: QUIT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &771489023715061967
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5410216835163924345}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1955839479685788976}
-  m_Father: {fileID: 3327752629266340341}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6, y: -304}
-  m_SizeDelta: {x: 0, y: -800}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1892133088352123482
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5410216835163924345}
-  m_CullTransparentMesh: 1
---- !u!114 &8929956508755227611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5410216835163924345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6189ba980abdd4c9cf0c562aeb9df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5664977821457678347
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.098000005, y: 0.13373242}
   m_AnchorMax: {x: 0.897, y: 0.8274307}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 24}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5410782272335726462
@@ -717,14 +659,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -746,7 +688,7 @@ GameObject:
   - component: {fileID: 3703077356147080249}
   - component: {fileID: 9219846166722984961}
   m_Layer: 5
-  m_Name: Music (1)
+  m_Name: DialogueTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -880,7 +822,7 @@ GameObject:
   - component: {fileID: 5939266036304846809}
   - component: {fileID: 5411942997270267059}
   m_Layer: 5
-  m_Name: Music (2)
+  m_Name: SFXTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,7 +954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Name
-      value: Slider (2)
+      value: SFX
       objectReference: {fileID: 0}
     - target: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Pivot.x
@@ -1126,7 +1068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Name
-      value: Slider (1)
+      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Pivot.x
@@ -1240,7 +1182,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Name
-      value: Slider
+      value: Music
       objectReference: {fileID: 0}
     - target: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
       propertyPath: m_Pivot.x

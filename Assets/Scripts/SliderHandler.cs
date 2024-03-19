@@ -25,8 +25,8 @@ public class SliderHandler : MonoBehaviour
     
     void Start()
     {
-        GameObject music = GameObject.Find("MUSIC");
-        GameObject dialogue = GameObject.Find("DIALOGUE");
+        GameObject music = GameObject.Find("Music");
+        GameObject dialogue = GameObject.Find("Dialogue");
         GameObject sfx = GameObject.Find("SFX");
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
