@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cinemachine;
 using Cinemachine.PostFX;
 using StarterAssets;
-using UnityEditor.Performance.ProfileAnalyzer;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
