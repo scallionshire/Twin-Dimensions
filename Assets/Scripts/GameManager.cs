@@ -15,9 +15,13 @@ public class GameManager : MonoBehaviour
     public GameState gameState = new GameState();
     public GameObject popupMenu;
     public static GameManager instance;
+    private CutsceneManager cutsceneManager;
+
     private bool sceneLoaded = true;
     public bool gameStarted = false;   
     private bool menuUnloaded = false;
+    private bool cutscenePlaying = false;
+    private bool hasPlayedSwitchCutscene = false;
 
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
@@ -56,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
@@ -72,7 +78,12 @@ public class GameManager : MonoBehaviour
         {   
             Debug.Log("Switching scenes for level " + gameState.CurrentLevel);
             if (ActiveSceneName == "new3Dtut")
-            {
+            {   
+                if (hasPlayedSwitchCutscene == false)
+                {
+                    cutsceneManager.PlayCutscene("switch");
+                    hasPlayedSwitchCutscene = true;
+                }
                 SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
             }
             else if (ActiveSceneName == "new2dtut")

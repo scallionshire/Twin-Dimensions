@@ -13,6 +13,14 @@ public class MenuController : MonoBehaviour
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+
+        var cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+        cutsceneManager.PlayCutscene("intro");
+
+        while(cutsceneManager.IsPlaying())
+        {
+        }
+
         StartCoroutine(LoadAndDeactivate(scenesToLoad));
     }
 

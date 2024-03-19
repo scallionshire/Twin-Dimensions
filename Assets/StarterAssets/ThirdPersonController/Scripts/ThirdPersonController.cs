@@ -139,11 +139,11 @@ namespace StarterAssets
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM 
-            _playerInput = GetComponent<PlayerInput>();
-#else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
+            #if ENABLE_INPUT_SYSTEM 
+                        _playerInput = GetComponent<PlayerInput>();
+            #else
+                        Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+            #endif
 
             AssignAnimationIDs();
 
@@ -153,7 +153,13 @@ namespace StarterAssets
         }
 
         private void Update()
-        {
+        {   
+            CutsceneManager cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+            
+            if (cutsceneManager.IsPlaying()) {
+                return;
+            }
+
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -221,7 +227,6 @@ namespace StarterAssets
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-            Debug.Log("Input Move: " + _input.move + " | Target Speed: " + targetSpeed);
             
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -278,9 +283,6 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
-
-            // log every factor involved in moving the player
-            Debug.Log("Speed: " + _speed + " | Animation Blend: " + _animationBlend + " | Input Magnitude: " + inputMagnitude);
         }
 
         private void JumpAndGravity()
@@ -394,12 +396,10 @@ namespace StarterAssets
         }
 
         void OnEnable() {
-            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             GameManager.OnSwitch += HandleOnSwitch;
         }
 
         void OnDisable() {
-            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             GameManager.OnSwitch -= HandleOnSwitch;
         }
 
