@@ -94,8 +94,8 @@ public class DialogueManager : MonoBehaviour
             tooltipManager.ToggleClickTooltip(false);
         }
 
-        gameManager.ToggleDialogueFreeze(true);
         ToggleActive(true);
+        gameManager?.ToggleDialogueFreeze(true);
 
         currentDialogueName = dialogue.dialogueName;
 

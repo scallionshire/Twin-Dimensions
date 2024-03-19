@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public struct PuzzlePiece {
@@ -149,6 +150,11 @@ public class PuzzleManager : MonoBehaviour
             } else 
             {
                 string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
+
+                // TODO: clean this up
+                if (levelPuzzles.level == Level.computerlab) {
+                    gameManager?.SolvePuzzleBlock(levelPuzzles.level, index);
+                }
 
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {

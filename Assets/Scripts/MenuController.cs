@@ -6,6 +6,11 @@ public class MenuController : MonoBehaviour
 {
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void StartGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
