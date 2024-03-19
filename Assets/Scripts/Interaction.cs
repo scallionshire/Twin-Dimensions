@@ -9,6 +9,7 @@ public class Interaction : MonoBehaviour
     public GameObject prevInteractable;
 
     private DialogueManager dialogueManager;
+    private PlayerFader playerFader;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class Interaction : MonoBehaviour
         }
 
         dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
+        playerFader = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>();
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class Interaction : MonoBehaviour
             {   
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
-                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowClickTooltip();
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleClickTooltip(true);
                 }
                 prevHit = true;
                 prevInteractable = hit.collider.gameObject;
@@ -51,6 +53,14 @@ public class Interaction : MonoBehaviour
             if (prevInteractable != null)
             {
                 prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+            } else {
+                // Handle case where object is destroyed
+                playerFader.ResetFade();
+            }
+
+            if (GameObject.Find("TooltipCanvas") != null)
+            {
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleClickTooltip(false);
             }
         } else {
             prevHit = false;

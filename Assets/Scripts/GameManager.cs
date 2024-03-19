@@ -155,12 +155,6 @@ public class GameManager : MonoBehaviour
         } else {
             Debug.Log("Player does not have USB");
         }
-        
-        // TODO: only do this after dialogue is done
-        if (GameObject.Find("TooltipCanvas") != null)
-        {
-            GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
-        }
     }
 
     public void PickUpBattery(GameObject battery) {
@@ -356,7 +350,7 @@ public class GameManager : MonoBehaviour
                 playerCamera.m_XAxis.m_MaxSpeed = 0;
             } else {
                 playerCamera.m_YAxis.m_MaxSpeed = 4;
-                playerCamera.m_XAxis.m_MaxSpeed = 450;
+                playerCamera.m_XAxis.m_MaxSpeed = 350;
             }
 
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();

@@ -86,7 +86,7 @@ public class Player2DMovement : MonoBehaviour
         {
             if (GameObject.Find("TooltipCanvas") != null)
             {
-                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowSpaceTooltip();
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleSpaceTooltip(true);
             }
             Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
@@ -99,6 +99,10 @@ public class Player2DMovement : MonoBehaviour
         if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
             collidedBlock = null;
+            if (GameObject.Find("TooltipCanvas") != null)
+            {
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleSpaceTooltip(false);
+            }
         }
     }
 }
