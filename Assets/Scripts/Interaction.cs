@@ -8,12 +8,16 @@ public class Interaction : MonoBehaviour
     public bool prevHit = false;
     public GameObject prevInteractable;
 
+    private DialogueManager dialogueManager;
+
     void Start()
     {
         if (playerCamera == null)
         {
             playerCamera = Camera.main; 
         }
+
+        dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
     }
 
     void Update()

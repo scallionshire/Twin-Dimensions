@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     public bool noDialogueCanvas = false;
     public bool finishedDisplayingText = false;
 
+    private GameManager gameManager;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -29,7 +31,6 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogueCanvas == null)
         {
-            // No dialogue canvas found
             noDialogueCanvas = true;
         } else {
             noDialogueCanvas = false;
@@ -45,15 +46,12 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<Sentence>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if (dialogueCanvas == null && !noDialogueCanvas)
-        {
-            ReloadCanvas();
-        }
-
         if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
         {
             DisplayNextSentence();
@@ -80,19 +78,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void ReloadCanvas()
-    {
-        dialogueCanvas = GameObject.Find("DialogueCanvas");
-
-        dialogue02 = dialogueCanvas.transform.Find("02").gameObject;
-        dialogue20 = dialogueCanvas.transform.Find("20").gameObject;
-
-        ToggleActive(false);
-    }
-
     public void StartDialogue(Dialogue dialogue)
     {
         ToggleActive(true);
+        gameManager.ToggleDialogueFreeze(true);
 
         sentences.Clear();
 
@@ -136,8 +125,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
+        gameManager.ToggleDialogueFreeze(false);
         ToggleActive(false);
     }
 

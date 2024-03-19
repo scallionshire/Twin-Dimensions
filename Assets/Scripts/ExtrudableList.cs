@@ -17,4 +17,5 @@ public struct ExtrudableData {
 [System.Serializable]
 public class ExtrudableList {
     public List<ExtrudableData> extrudableSets;
+    public List<DialogueObject> dialogues;
 }
