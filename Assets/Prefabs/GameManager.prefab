@@ -47,13 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupMenu: {fileID: 0}
+  gameStarted: 0
   MusicVolume: 100
   DialogueVolume: 100
   SFXVolume: 100
   initTutorialExtrudables: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
+  initComputerLabExtrudables: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
   initTutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
   initComputerPuzzle: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
-  initChemicalPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
+  globalVolumeProfile: {fileID: 11400000, guid: 01266eb8650ac4451b15130b7ffb92bc, type: 2}
+  ActiveSceneName: 
 --- !u!114 &4317013614151246269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +105,4 @@ MonoBehaviour:
   dialogue20: {fileID: 0}
   dialogueActive: 0
   noDialogueCanvas: 0
+  finishedDisplayingText: 0

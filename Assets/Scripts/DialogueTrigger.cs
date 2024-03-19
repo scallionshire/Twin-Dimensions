@@ -13,6 +13,11 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
         GameObject dc = GameObject.Find("DialogueCanvas");
+
+        if (dc == null) {
+            Debug.Log("harro????");
+        }
+        
         GameObject gm = GameObject.Find("GameManager");
 
         if (dc != null && gm.GetComponent<DialogueManager>().dialogueActive)

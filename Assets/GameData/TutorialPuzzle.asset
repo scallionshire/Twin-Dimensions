@@ -16,6 +16,7 @@ MonoBehaviour:
   destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
   blockPrefab: {fileID: 4073186856996417480, guid: 09753212cfc1448228d839225dbe32f2, type: 3}
   circuitPrefab: {fileID: 6973451946996186604, guid: 5c46802f32e602a48aab772578f00695, type: 3}
+  dialogueTriggerPrefab: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
   backgroundSprite: {fileID: 21300000, guid: bab9458741aac1f44b40ad9e036cee3a, type: 3}
   backgroundScale: {x: 0.38780707, y: 0.3548408, z: 1}
   backgroundPosition: {x: -6.7901998, y: -0.5066001, z: 0}
@@ -29,7 +30,7 @@ MonoBehaviour:
   - {x: 2.14, y: 3.21, z: 0}
   puzzles:
   - circuitSprites:
-    - circuitInitPosition: {x: -6.92, y: -0.55, z: 0}
+    - circuitInitPosition: {x: -6.76, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
       circuitName: firstpuzzlewire
     puzzleBlocks:
@@ -37,18 +38,28 @@ MonoBehaviour:
       blockSprite: {fileID: 21300000, guid: 2b678c6c673169445a909d0b8d743dee, type: 3}
       blockName: GreenBlock
       correctSprite: {fileID: 21300000, guid: 9f7167011a531fa4e9f9c7711f345a4b, type: 3}
-      destinationPosition: {x: -7.94, y: -0.53, z: 0}
+      destinationPosition: {x: -7.66, y: -0.57, z: 0}
       destinationSprite: {fileID: 21300000, guid: 26b65c34521565740828075da02a8409, type: 3}
       destinationName: BlockSlot
       isSolved: 0
+    dialogues:
+    - position: {x: -6.64, y: -1.8, z: 0}
+      scale: {x: 3.81, y: 2.05, z: 1}
+      dialogue:
+        dialogueName: BlockPuzzleIntro
+        sentences:
+        - text: we're in the mainframe now, fellas!
+          twin: 1
+        - text: if i connect these wires, i can hack into the door...
+          twin: 1
   - circuitSprites:
-    - circuitInitPosition: {x: -6.61, y: -0.55, z: 0}
+    - circuitInitPosition: {x: -6.76, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
       circuitName: greenWire
-    - circuitInitPosition: {x: -6.53, y: -0.44, z: 0}
+    - circuitInitPosition: {x: -7.81, y: -0.44, z: 0}
       circuitSprite: {fileID: 21300000, guid: 7e4dd9b0027b63e46af46a96dba0a34d, type: 3}
       circuitName: pinkWire
-    - circuitInitPosition: {x: -6.64, y: -0.49, z: 0}
+    - circuitInitPosition: {x: -6.79, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 3d80e0f1a90b9164f963b42b08b04f48, type: 3}
       circuitName: yellowWire
     puzzleBlocks:
@@ -64,7 +75,7 @@ MonoBehaviour:
       blockSprite: {fileID: 21300000, guid: aab65e77e2e14bd42b425e28b9480511, type: 3}
       blockName: pink
       correctSprite: {fileID: 21300000, guid: f8616c8a4100140ca965d4117ee0541c, type: 3}
-      destinationPosition: {x: -7.68, y: -3.65, z: 0}
+      destinationPosition: {x: -8.959999, y: -3.65, z: 0}
       destinationSprite: {fileID: 21300000, guid: 4a91c2c29ea7bc54ea592c68b5e615a0, type: 3}
       destinationName: pinkTrigger
       isSolved: 0
@@ -72,7 +83,17 @@ MonoBehaviour:
       blockSprite: {fileID: 21300000, guid: 472cc3c879fb99341943b1ae7fe7144f, type: 3}
       blockName: yellow
       correctSprite: {fileID: 21300000, guid: f3b546128b8534fc5b808af4d5b68398, type: 3}
-      destinationPosition: {x: -4.97, y: 2.64, z: 0}
+      destinationPosition: {x: -5.13, y: 2.64, z: 0}
       destinationSprite: {fileID: 21300000, guid: dbbea8a8bc6d5434c9055763c515be22, type: 3}
       destinationName: yellowTrigger
       isSolved: 0
+    dialogues:
+    - position: {x: -6.64, y: -1.8, z: 0}
+      scale: {x: 3.81, y: 2.05, z: 1}
+      dialogue:
+        dialogueName: BlockPuzzleIntro
+        sentences:
+        - text: leave it to me! this'll be easy peasy!
+          twin: 1
+        - text: just gotta connect the wires to open the door...
+          twin: 1

@@ -46,6 +46,13 @@ public class ExtrudableManager : MonoBehaviour
             return;
         }
 
+        for (int i = 0; i < extrudableData.extrudableDataList[currentExtrudableSetId].dialogues.Count; i++) {
+            GameObject newDialogueTrigger = Instantiate(extrudableData.dialogueTriggerPrefab, extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].position, Quaternion.identity);
+            newDialogueTrigger.transform.localScale = extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].scale;
+
+            newDialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue = extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].dialogue;
+        }
+
         List<ExtrudableData> extrudableSets = extrudableData.extrudableDataList[currentExtrudableSetId].extrudableSets;
         for (int i = 0; i < extrudableSets.Count; i++) {
             GameObject newExtrudable = Instantiate(extrudableData.extrudable2DPrefab, extrudableSets[i].position, Quaternion.identity);

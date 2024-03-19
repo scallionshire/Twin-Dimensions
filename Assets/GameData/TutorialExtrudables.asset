@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd57bf894afc48b7afb8f409049bcff, type: 3}
   m_Name: TutorialExtrudables
   m_EditorClassIdentifier: 
+  level: 0
   extrudable2DPrefab: {fileID: 4049955810353424624, guid: 89204b977a2624b86b1afab262ae5809, type: 3}
+  dialogueTriggerPrefab: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
   mapSprite: {fileID: 21300000, guid: c545dd535c5894d3e8e829742be5c5ac, type: 3}
   mapPosition: {x: 0, y: 0.0315, z: 0}
   mapScale: {x: 0.6, y: 0.6, z: 1}
@@ -43,6 +45,15 @@ MonoBehaviour:
       shouldExtrude: 1
       shouldLoop: 0
       alreadyExtruded: 0
+    dialogues:
+    - position: {x: -2.81, y: 1.2, z: 0}
+      scale: {x: 3.56, y: 2.37, z: 1}
+      dialogue:
+        dialogueName: ExtrudableIntro
+        sentences:
+        - text: hmm... i think i can interact with the walls at the places where
+            it's flashing...
+          twin: 1
   - extrudableSets:
     - id: 2
       position: {x: -0.401, y: 1.494, z: 0}
@@ -53,3 +64,12 @@ MonoBehaviour:
       shouldExtrude: 0
       shouldLoop: 0
       alreadyExtruded: 0
+    dialogues:
+    - position: {x: -2.81, y: 1.2, z: 0}
+      scale: {x: 3.56, y: 2.37, z: 1}
+      dialogue:
+        dialogueName: ExtrudableIntro
+        sentences:
+        - text: a CCTV was blocking the vent! maybe this bit can help us block the
+            camera?
+          twin: 1
