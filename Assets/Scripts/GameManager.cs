@@ -70,10 +70,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {   
-        if (SceneManager.GetActiveScene().name == "StartMenu") {
-            Cursor.lockState = CursorLockMode.None;
-        }
-        
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
@@ -207,7 +203,30 @@ public class GameManager : MonoBehaviour
                         instance.gameState.BlueOverlayOn = true;
                         break;
                     case 1:
-                        instance.gameState.RedOverlayOn = true;
+                        instance.gameState.PinkOverlayOn = true;
+                        break;
+                }
+                break;
+        }
+    }
+
+    // TODO: clean this up
+    public void SolvePuzzleBlock(Level level, int blockId) {
+        switch (level) {
+            case Level.tutorial:
+                break;
+            case Level.biolab:
+                break;
+            case Level.computerlab:
+                switch (blockId) {
+                    case 0:
+                        instance.gameState.BlueGroup0On = true;
+                        break;
+                    case 1:
+                        instance.gameState.BlueGroup1On = true;
+                        break;
+                    case 2:
+                        instance.gameState.BlueGroup2On = true;
                         break;
                 }
                 break;
@@ -292,14 +311,21 @@ public class GameManager : MonoBehaviour
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
         }
 
+        if (instance.gameState.BlueGroup0On) {
+            GameObject.Find("BlueGroup0")?.GetComponent<ToggleScreen>().Toggle();
+        }
+        if (instance.gameState.BlueGroup1On) {
+            GameObject.Find("BlueGroup1")?.GetComponent<ToggleScreen>().Toggle();
+        }
+        if (instance.gameState.BlueGroup2On) {
+            GameObject.Find("BlueGroup2")?.GetComponent<ToggleScreen>().Toggle();
+        }
+
         if (instance.gameState.BlueOverlayOn) {
             GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
         }
-        if (instance.gameState.RedOverlayOn) {
-            GameObject.Find("RedOverlay").GetComponent<SpriteRenderer>().enabled = true;
-        }
 
-        if (instance.gameState.BlueOverlayOn && instance.gameState.RedOverlayOn) {
+        if (instance.gameState.BlueOverlayOn && instance.gameState.PinkOverlayOn) {
             if (GameObject.Find("Door2") != null) {
                 GameObject.Find("Door2").GetComponent<Animator>().SetBool("isOpen", true);
             }
@@ -458,7 +484,11 @@ public class GameState
     public List<bool> Extrudables { get; set; }
 
     public bool BlueOverlayOn { get; set; }
-    public bool RedOverlayOn { get; set; }
+    public bool PinkOverlayOn { get; set; }
+
+    public bool BlueGroup0On { get; set; }
+    public bool BlueGroup1On { get; set; }
+    public bool BlueGroup2On { get; set; }
 
     // Scene State
     public string SceneName { get; set; }
@@ -469,7 +499,7 @@ public class GameState
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
 
-        PlayerPosition3D = new Vector3(-4.05f,3.25f,28.57f);
+        PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);
         PlayerRotation3D = new Vector3(0f,180f,0f);
         CameraPosition3D = Vector3.zero;
         CameraRotation3D = Vector3.zero;
@@ -485,7 +515,11 @@ public class GameState
         Extrudables = new List<bool> { false, false, false, false, false, false };
 
         BlueOverlayOn = false;
-        RedOverlayOn = false;
+        PinkOverlayOn = false;
+
+        BlueGroup0On = false;
+        BlueGroup1On = false;
+        BlueGroup2On = false;
 
         SceneName = "new3Dtut";
     }

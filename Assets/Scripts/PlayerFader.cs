@@ -10,7 +10,8 @@ public class PlayerFader : MonoBehaviour
     public Material fadeMaterial;
     public bool isFaded = false;
 
-    private List<Material> originalMaterials = new List<Material>();
+    private Dictionary<Renderer, Material[]> originalMaterials = new Dictionary<Renderer, Material[]>();
+
     private List<Color> originalColors = new List<Color>();
     private List<Renderer> renderers = new List<Renderer>();
 
@@ -23,7 +24,7 @@ public class PlayerFader : MonoBehaviour
         // Store the original materials for each renderer
         foreach (Renderer rend in renderers)
         {
-            originalMaterials.Add(rend.material);
+            originalMaterials.Add(rend, rend.materials);
             originalColors.Add(rend.material.color);
         }
     }
@@ -34,7 +35,7 @@ public class PlayerFader : MonoBehaviour
         isFaded = true;
         for (int i = 0; i < renderers.Count; i++)
         {
-            renderers[i].material = fadeMaterial;
+            renderers[i].materials = new Material[] { fadeMaterial };
         }
         // StartCoroutine(FadeOut());
     }
@@ -71,7 +72,7 @@ public class PlayerFader : MonoBehaviour
         isFaded = false;
         for (int i = 0; i < renderers.Count; i++)
         {
-            renderers[i].material = originalMaterials[i];
+            renderers[i].materials = originalMaterials[renderers[i]];
         }
         // StartCoroutine(FadeIn());
     }

@@ -46,9 +46,11 @@ public class InsertBattery : MonoBehaviour
             GameManager.instance.gameState.BatteriesCollected--;
         }
 
-        if (batteryCount == 5)
+        if (batteriesIn == 5)
         {
             // TODO: update level success state in gamemanager
+            GameManager.instance.SolvePuzzle(Level.computerlab, 1);
+            GameObject.Find("PinkOverlay").GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }
