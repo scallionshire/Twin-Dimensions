@@ -327,19 +327,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99380845
+      value: 0.99053174
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11110769
+      value: 0.1372841
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000022056332
+      value: -0.000000021849766
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000010278088
+      value: 0.000000010892329
       objectReference: {fileID: 0}
     - target: {fileID: 1190895659366208828, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_BindingMode
@@ -407,11 +407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9916291
+      value: 0.9878782
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12911853
+      value: 0.15523116
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -471,19 +471,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98911655
+      value: 0.9848912
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14713436
+      value: 0.17317446
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015321866
+      value: 0.000000015110004
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000007829428
+      value: -0.0000000082308675
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -9059580956105317691, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
@@ -2315,8 +2315,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30509526, y: -0.000000032772025, z: 0.00000001049917, w: 0.9523219}
-  m_LocalPosition: {x: 1.95, y: 12.185, z: 17.193945}
+  m_LocalRotation: {x: 0.33010978, y: 0.000000032483673, z: -0.0000000113599885, w: 0.9439426}
+  m_LocalPosition: {x: 1.95, y: 12.185, z: 17.194614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7104,11 +7104,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f8867e16a7e4b98afd46420e03dabb, type: 3}
---- !u!1 &1192394360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8762211409716996350, guid: 65f8867e16a7e4b98afd46420e03dabb, type: 3}
-  m_PrefabInstance: {fileID: 1192394359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1192429080
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13053,6 +13048,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7313592970829369191, guid: 2d96b900b1cab4ce3ae346a960f72b97, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13087,8 +13086,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba9eca991873a429a96852195a770f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasObject: 0
-  inventoryImage: {fileID: 1192394360}
+  inventoryBackground: {fileID: 0}
+  itemCountText: {fileID: 0}
+  batteryImage: {fileID: 0}
 --- !u!4 &1712421557
 Transform:
   m_ObjectHideFlags: 0
