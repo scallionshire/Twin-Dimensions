@@ -32,10 +32,14 @@ public class Extrudable : MonoBehaviour
     public bool isExtruding = false;
     public float extrudeSpeed = 1.0f;
 
+    private FMOD.Studio.EventInstance extrudableSoundInstance;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager")?.GetComponent<GameManager>();
+
+         extrudableSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX3D/Extrudable");
 
         float scaleFactor = 1.0f;
 
@@ -125,10 +129,14 @@ public class Extrudable : MonoBehaviour
                 transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * extrudeSpeed);
             }
         }
+        if (!isMoving) {
+            extrudableSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     public void Extrude() {
         isMoving = true;
+        extrudableSoundInstance.start();
     }
 
     public void MakeAlreadyExtruded() {

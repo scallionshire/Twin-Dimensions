@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -377,7 +377,8 @@ PrefabInstance:
       propertyPath: initChemicalPuzzle.puzzles.Array.data[0].puzzleBlocks.Array.data[5].blockInitPosition.y
       value: -1.7655
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4317013614151246269, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1171,11 +1172,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1318652051
-      Data2: 1203644877
-      Data3: -44713819
-      Data4: 420710074
-    Path: event:/Music/EndingMusic
+      Data1: -1040606291
+      Data2: 1213706086
+      Data3: -1703126351
+      Data4: 1221590581
+    Path: event:/Music/MenuMusic
   Event: 
   PlayEvent: 11
   StopEvent: 12
