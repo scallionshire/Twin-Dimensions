@@ -30,6 +30,7 @@ public class TooltipManager : MonoBehaviour
 
     public void ToggleClickTooltip(bool toggle)
     {
+        if (leftClick.activeSelf == toggle) return;
         leftClick.SetActive(toggle);
     }
 
@@ -41,6 +42,7 @@ public class TooltipManager : MonoBehaviour
 
     public void ToggleSpaceTooltip(bool toggle)
     {
+        if (pressSpace.activeSelf == toggle) return;
         pressSpace.SetActive(toggle);
     }
 

@@ -51,16 +51,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<Sentence>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        if (GameObject.Find("TooltipCanvas") != null)
-        {
-            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
-        }
     }
 
     void Update()
     {
-        if (dialogueActive && Input.GetKeyDown(KeyCode.Return) && finishedDisplayingText)
+        if (dialogueActive && Input.GetKeyDown(KeyCode.Space) && finishedDisplayingText)
         {
             DisplayNextSentence();
         }
@@ -89,8 +84,9 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         // Turn off tooltips
-        if (tooltipManager != null)
+        if (GameObject.Find("TooltipCanvas") != null)
         {
+            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
             tooltipManager.ToggleClickTooltip(false);
         }
 
@@ -162,7 +158,7 @@ public class DialogueManager : MonoBehaviour
         while (targetText.text.Length < sentence.Length)
         {
             // Skip to the end of the sentence
-            if (Input.GetKeyDown(KeyCode.Return) && targetText.text.Length > 1)
+            if (Input.GetKeyDown(KeyCode.Space) && targetText.text.Length > 1)
             {
                 targetText.text = sentence;
                 finishedDisplayingText = true;

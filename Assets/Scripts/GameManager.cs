@@ -96,6 +96,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePauseMenu();
         }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            if (ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
+                GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
+            }
+        }
     }
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
@@ -307,6 +313,7 @@ public class GameManager : MonoBehaviour
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = true;
+            GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleClickTooltip(false);
         } else {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
         }
