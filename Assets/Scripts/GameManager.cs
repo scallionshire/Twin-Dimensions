@@ -238,6 +238,7 @@ public class GameManager : MonoBehaviour
     public void ActivateScene(string sceneName)
     {
         Scene scene = SceneManager.GetSceneByName(sceneName);
+        ActiveSceneName = sceneName;
         if (scene.isLoaded)
         {   
             SceneManager.SetActiveScene(scene);
@@ -272,7 +273,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (instance.gameState.SceneName == "new2dtut" || instance.gameState.SceneName == "mainPuzzle") {
+        if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = true;
         } else {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
