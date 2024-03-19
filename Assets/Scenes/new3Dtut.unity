@@ -8256,8 +8256,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0005210657, y: 0.9982474, z: -0.058505613, w: -0.008890642}
-  m_LocalPosition: {x: -4.017407, y: 5.8637757, z: 30.971}
+  m_LocalRotation: {x: 0, y: 0.9982864, z: -0.058517117, w: 0}
+  m_LocalPosition: {x: -4.06, y: 5.8637757, z: 30.971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13783,7 +13783,7 @@ GameObject:
   - component: {fileID: 626779807}
   - component: {fileID: 626779806}
   - component: {fileID: 626779805}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3dBackwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18644,7 +18644,7 @@ GameObject:
   - component: {fileID: 847837596}
   - component: {fileID: 847837595}
   - component: {fileID: 847837594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3dBackwall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21896,7 +21896,7 @@ GameObject:
   - component: {fileID: 1015489120}
   - component: {fileID: 1015489119}
   - component: {fileID: 1015489118}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: '3dLeftwall '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22948,7 +22948,7 @@ GameObject:
   - component: {fileID: 1054315806}
   - component: {fileID: 1054315805}
   - component: {fileID: 1054315804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: celing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27991,7 +27991,7 @@ GameObject:
   - component: {fileID: 1301748679}
   - component: {fileID: 1301748678}
   - component: {fileID: 1301748677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3dLeftwall  (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28096,7 +28096,7 @@ GameObject:
   - component: {fileID: 1303481392}
   - component: {fileID: 1303481391}
   - component: {fileID: 1303481390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bothroomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32106,7 +32106,7 @@ GameObject:
   - component: {fileID: 1485297158}
   - component: {fileID: 1485297157}
   - component: {fileID: 1485297156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3dLeftwall  (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38425,19 +38425,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9756608
+      value: 0.97569746
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21910419
+      value: -0.21912186
       objectReference: {fileID: 0}
     - target: {fileID: 1190895659366208828, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_BindingMode
@@ -38533,19 +38533,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857942
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00092297187
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9756608
+      value: 0.97569746
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21910419
+      value: -0.21912186
       objectReference: {fileID: 0}
     - target: {fileID: 7786381001790821031, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalScale.x
@@ -38609,19 +38609,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: -2.254464e-39
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: 4.42573e-40
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9756608
+      value: 0.97569746
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21910419
+      value: -0.21912186
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -9059580956105317691, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
@@ -38662,7 +38662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 640
   m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
@@ -38674,7 +38674,7 @@ MonoBehaviour:
   m_CameraRadius: 0.1
   m_Strategy: 0
   m_MaximumEffort: 4
-  m_SmoothingTime: 0
+  m_SmoothingTime: 0.29
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
@@ -45616,7 +45616,7 @@ GameObject:
   - component: {fileID: 2098594114}
   - component: {fileID: 2098594113}
   - component: {fileID: 2098594112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 2dfrontwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49006,7 +49006,7 @@ GameObject:
   - component: {fileID: 1048495739806129206}
   - component: {fileID: 6977160758967376364}
   - component: {fileID: 283126832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube154
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50390,7 +50390,7 @@ GameObject:
   - component: {fileID: 3096089247893376127}
   - component: {fileID: 4731291575630145934}
   - component: {fileID: 1791021200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube151
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50898,7 +50898,7 @@ GameObject:
   - component: {fileID: 7270810949629905159}
   - component: {fileID: 532307575028112808}
   - component: {fileID: 1659265283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube84
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50950,7 +50950,7 @@ GameObject:
   - component: {fileID: 1092046439604621045}
   - component: {fileID: 8635619612670931753}
   - component: {fileID: 1531285831}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube162
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52727,7 +52727,7 @@ GameObject:
   - component: {fileID: 1935752673707099012}
   - component: {fileID: 2221718534294550350}
   - component: {fileID: 1826250774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55348,7 +55348,7 @@ GameObject:
   - component: {fileID: 29580531357856033}
   - component: {fileID: 2622324609419281878}
   - component: {fileID: 1945543653}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube98
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59877,7 +59877,7 @@ GameObject:
   - component: {fileID: 106372223173197923}
   - component: {fileID: 3306772967320663033}
   - component: {fileID: 1259917760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube160
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61922,7 +61922,7 @@ GameObject:
   - component: {fileID: 1099363257333045616}
   - component: {fileID: 2377871906529736909}
   - component: {fileID: 1180552181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64088,7 +64088,7 @@ GameObject:
   - component: {fileID: 4705349636102456039}
   - component: {fileID: 3674114565521701876}
   - component: {fileID: 870666244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64881,7 +64881,7 @@ GameObject:
   - component: {fileID: 9146458675380447824}
   - component: {fileID: 7775735011872640079}
   - component: {fileID: 446718456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube155
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70253,7 +70253,7 @@ GameObject:
   - component: {fileID: 4174126728963713800}
   - component: {fileID: 3250093626925968462}
   - component: {fileID: 1742239998}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube152
   m_TagString: Untagged
   m_Icon: {fileID: 0}
