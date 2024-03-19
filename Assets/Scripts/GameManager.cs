@@ -4,6 +4,7 @@ using Cinemachine;
 using Cinemachine.PostFX;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -201,6 +202,14 @@ public class GameManager : MonoBehaviour
             case Level.biolab:
                 break;
             case Level.computerlab:
+                switch (puzzleId) {
+                    case 0:
+                        instance.gameState.BlueOverlayOn = true;
+                        break;
+                    case 1:
+                        instance.gameState.RedOverlayOn = true;
+                        break;
+                }
                 break;
         }
     }
@@ -281,6 +290,19 @@ public class GameManager : MonoBehaviour
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = true;
         } else {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
+        }
+
+        if (instance.gameState.BlueOverlayOn) {
+            GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (instance.gameState.RedOverlayOn) {
+            GameObject.Find("RedOverlay").GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        if (instance.gameState.BlueOverlayOn && instance.gameState.RedOverlayOn) {
+            if (GameObject.Find("Door2") != null) {
+                GameObject.Find("Door2").GetComponent<Animator>().SetBool("isOpen", true);
+            }
         }
     }
 
@@ -435,9 +457,8 @@ public class GameState
 
     public List<bool> Extrudables { get; set; }
 
-    // Tooltip Trackers
-    public bool PressETooltipShown { get; set; }
-    public bool PressQTooltipShown { get; set; }
+    public bool BlueOverlayOn { get; set; }
+    public bool RedOverlayOn { get; set; }
 
     // Scene State
     public string SceneName { get; set; }
@@ -463,8 +484,8 @@ public class GameState
         CurrentExtrudableSetId = -1;
         Extrudables = new List<bool> { false, false, false, false, false, false };
 
-        PressETooltipShown = false;
-        PressQTooltipShown = false;
+        BlueOverlayOn = false;
+        RedOverlayOn = false;
 
         SceneName = "new3Dtut";
     }
