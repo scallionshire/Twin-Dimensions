@@ -8,6 +8,7 @@ public class Player2DMovement : MonoBehaviour
     private Vector2 movement;
     private Animator _animator;
     private Rigidbody2D rb;
+    private TooltipManager tooltipManager;
     private FMOD.Studio.EventInstance footstepsSound;
     private FMOD.Studio.EventInstance blockMovingSound;
 
@@ -22,6 +23,11 @@ public class Player2DMovement : MonoBehaviour
         blockMovingSound = RuntimeManager.CreateInstance("event:/SFX3D/BoxPushV2");
 
         rb = GetComponent<Rigidbody2D>();
+
+        if (GameObject.Find("TooltipCanvas") != null)
+        {
+            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+        }
     }
 
     void Update()
@@ -84,9 +90,9 @@ public class Player2DMovement : MonoBehaviour
         Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
-            if (GameObject.Find("TooltipCanvas") != null)
+            if (tooltipManager != null)
             {
-                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowSpaceTooltip();
+                tooltipManager.ToggleSpaceTooltip(true);
             }
             Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
@@ -99,6 +105,10 @@ public class Player2DMovement : MonoBehaviour
         if (collision.gameObject.tag == "Block" || collision.gameObject.tag == "Extrudable")
         {
             collidedBlock = null;
+            if (tooltipManager != null)
+            {
+                tooltipManager.ToggleSpaceTooltip(false);
+            }
         }
     }
 }

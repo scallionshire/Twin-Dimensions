@@ -17,7 +17,10 @@ public class DialogueManager : MonoBehaviour
     public bool noDialogueCanvas = false;
     public bool finishedDisplayingText = false;
 
+    private string currentDialogueName;
+
     private GameManager gameManager;
+    private TooltipManager tooltipManager;
 
     void OnEnable()
     {
@@ -48,6 +51,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<Sentence>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        if (GameObject.Find("TooltipCanvas") != null)
+        {
+            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+        }
     }
 
     void Update()
@@ -80,8 +88,16 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        ToggleActive(true);
+        // Turn off tooltips
+        if (tooltipManager != null)
+        {
+            tooltipManager.ToggleClickTooltip(false);
+        }
+
         gameManager.ToggleDialogueFreeze(true);
+        ToggleActive(true);
+
+        currentDialogueName = dialogue.dialogueName;
 
         sentences.Clear();
 
@@ -99,6 +115,12 @@ public class DialogueManager : MonoBehaviour
 
         if (sentences.Count == 0)
         {
+            if (currentDialogueName == "ComputerFirstPlug") {
+                if (GameObject.Find("TooltipCanvas") != null)
+                {
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+                }
+            }
             EndDialogue();
             return;
         }
@@ -129,6 +151,8 @@ public class DialogueManager : MonoBehaviour
     {
         gameManager.ToggleDialogueFreeze(false);
         ToggleActive(false);
+
+        currentDialogueName = "";
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)

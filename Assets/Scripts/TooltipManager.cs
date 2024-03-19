@@ -28,10 +28,9 @@ public class TooltipManager : MonoBehaviour
         }
     }
 
-    public void ShowClickTooltip()
+    public void ToggleClickTooltip(bool toggle)
     {
-        if (leftClick.activeSelf) return;
-        StartCoroutine(ShowTooltip(leftClick));
+        leftClick.SetActive(toggle);
     }
 
     public void ShowQTooltip()
@@ -40,20 +39,15 @@ public class TooltipManager : MonoBehaviour
         StartCoroutine(ShowTooltip(pressQ));
     }
 
-    public void ShowSpaceTooltip()
+    public void ToggleSpaceTooltip(bool toggle)
     {
-        if (pressSpace.activeSelf) return;
-        StartCoroutine(ShowTooltip(pressSpace));
+        pressSpace.SetActive(toggle);
     }
 
     IEnumerator ShowTooltip(GameObject tooltip)
     {
         tooltip.SetActive(true);
-        if (tooltip.name == "PressQ") {
-            yield return new WaitForSeconds(2f);
-        } else {
-            yield return new WaitForSeconds(1f);
-        }
+        yield return new WaitForSeconds(3f);
         tooltip.SetActive(false);
     }
 }
