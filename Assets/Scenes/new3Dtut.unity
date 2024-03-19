@@ -6014,52 +6014,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3408225304365398435, guid: cff9174e6ca118645a4a2c1ad7270fa0, type: 3}
---- !u!114 &248580879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2828387406159512123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be93e6bdab21634b972ecbcd3c5a06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteries: []
-  batteryLights: []
-  monitorScreens: []
-  batteryPanelLitMaterial: {fileID: 0}
-  monitorScreenLitMaterial: {fileID: 0}
---- !u!114 &248580880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2828387406159512123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 248580879}
-        m_TargetAssemblyTypeName: InsertBattery, Assembly-CSharp
-        m_MethodName: insert
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
-  wasHighlighted: 0
 --- !u!1 &251343241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6915,52 +6869,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4329652213334752105, guid: cff9174e6ca118645a4a2c1ad7270fa0, type: 3}
---- !u!114 &307748694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8571442980764322107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 307748697}
-        m_TargetAssemblyTypeName: InsertBattery, Assembly-CSharp
-        m_MethodName: insert
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
-  wasHighlighted: 0
---- !u!114 &307748697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8571442980764322107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be93e6bdab21634b972ecbcd3c5a06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteries: []
-  batteryLights: []
-  monitorScreens: []
-  batteryPanelLitMaterial: {fileID: 0}
-  monitorScreenLitMaterial: {fileID: 0}
 --- !u!1 &309741441
 GameObject:
   m_ObjectHideFlags: 0
@@ -20201,52 +20109,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6760174623245736120, guid: cff9174e6ca118645a4a2c1ad7270fa0, type: 3}
---- !u!114 &925330826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992171620861366705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925330827}
-        m_TargetAssemblyTypeName: InsertBattery, Assembly-CSharp
-        m_MethodName: insert
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
-  wasHighlighted: 0
---- !u!114 &925330827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992171620861366705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be93e6bdab21634b972ecbcd3c5a06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteries: []
-  batteryLights: []
-  monitorScreens: []
-  batteryPanelLitMaterial: {fileID: 0}
-  monitorScreenLitMaterial: {fileID: 0}
 --- !u!1 &937117643
 GameObject:
   m_ObjectHideFlags: 0
@@ -22291,52 +22153,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8910081009434493359, guid: cff9174e6ca118645a4a2c1ad7270fa0, type: 3}
---- !u!114 &1024239632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780418037437924198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1024239634}
-        m_TargetAssemblyTypeName: InsertBattery, Assembly-CSharp
-        m_MethodName: insert
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
-  wasHighlighted: 0
---- !u!114 &1024239634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780418037437924198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be93e6bdab21634b972ecbcd3c5a06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteries: []
-  batteryLights: []
-  monitorScreens: []
-  batteryPanelLitMaterial: {fileID: 0}
-  monitorScreenLitMaterial: {fileID: 0}
 --- !u!1 &1024511020
 GameObject:
   m_ObjectHideFlags: 0
@@ -38609,11 +38425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857942
+      value: -0.008857907
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00092297187
+      value: 0.0009229682
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -38793,11 +38609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: -0.008857942
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: 0.00092297187
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -42165,52 +41981,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1139678261893277710, guid: cff9174e6ca118645a4a2c1ad7270fa0, type: 3}
---- !u!114 &1951388344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372006915762535546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522f817f4677c429e90537ef529a12a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1951388345}
-        m_TargetAssemblyTypeName: InsertBattery, Assembly-CSharp
-        m_MethodName: insert
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
-  wasHighlighted: 0
---- !u!114 &1951388345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372006915762535546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be93e6bdab21634b972ecbcd3c5a06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteries: []
-  batteryLights: []
-  monitorScreens: []
-  batteryPanelLitMaterial: {fileID: 0}
-  monitorScreenLitMaterial: {fileID: 0}
 --- !u!1 &1954123083
 GameObject:
   m_ObjectHideFlags: 0
@@ -49419,9 +49189,7 @@ GameObject:
   - component: {fileID: 6361184615676583757}
   - component: {fileID: 5775610164023256801}
   - component: {fileID: 1024239629}
-  - component: {fileID: 1024239632}
-  - component: {fileID: 1024239634}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Battery3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50822,7 +50590,7 @@ GameObject:
   - component: {fileID: 399779873411746524}
   - component: {fileID: 937181016}
   - component: {fileID: 937181015}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51052,9 +50820,7 @@ GameObject:
   - component: {fileID: 6025669943308156096}
   - component: {fileID: 615831553083852601}
   - component: {fileID: 1951388341}
-  - component: {fileID: 1951388344}
-  - component: {fileID: 1951388345}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Battery4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53767,7 +53533,7 @@ GameObject:
   - component: {fileID: 3236790137491822398}
   - component: {fileID: 5238669733482698727}
   - component: {fileID: 3937537687834102637}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54759,9 +54525,7 @@ GameObject:
   - component: {fileID: 6945626108366287492}
   - component: {fileID: 6021175168276957807}
   - component: {fileID: 248580875}
-  - component: {fileID: 248580879}
-  - component: {fileID: 248580880}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Battery5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56442,7 +56206,7 @@ GameObject:
   - component: {fileID: 6024226847800944549}
   - component: {fileID: 8980833952873588025}
   - component: {fileID: 2542391636316180839}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59282,7 +59046,7 @@ GameObject:
   - component: {fileID: 7809887772744808398}
   - component: {fileID: 5061957131325346388}
   - component: {fileID: 4940478991904719013}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59802,7 +59566,7 @@ GameObject:
   - component: {fileID: 3341512746025052502}
   - component: {fileID: 3403346758930279876}
   - component: {fileID: 900325203947378802}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60821,9 +60585,7 @@ GameObject:
   - component: {fileID: 4512611803454676454}
   - component: {fileID: 6326238042734048328}
   - component: {fileID: 925330823}
-  - component: {fileID: 925330826}
-  - component: {fileID: 925330827}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Battery2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61582,7 +61344,7 @@ GameObject:
   - component: {fileID: 7477230777227503514}
   - component: {fileID: 1172167763}
   - component: {fileID: 1172167762}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63975,7 +63737,7 @@ GameObject:
   - component: {fileID: 5874320235765957847}
   - component: {fileID: 2864937190621965664}
   - component: {fileID: 2151484341608123723}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64241,7 +64003,7 @@ GameObject:
   - component: {fileID: 2127066889332381030}
   - component: {fileID: 2186613018837083818}
   - component: {fileID: 3280737032842983445}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69928,7 +69690,7 @@ GameObject:
   - component: {fileID: 6889667255278736694}
   - component: {fileID: 6274670149754126520}
   - component: {fileID: 430105246861267243}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70576,7 +70338,7 @@ GameObject:
   - component: {fileID: 576571927673496890}
   - component: {fileID: 829007549472820430}
   - component: {fileID: 6504039424476817612}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71030,10 +70792,8 @@ GameObject:
   - component: {fileID: 4444683142759663615}
   - component: {fileID: 897981108962972521}
   - component: {fileID: 4720325796140447207}
-  - component: {fileID: 307748694}
   - component: {fileID: 307748692}
-  - component: {fileID: 307748697}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Battery1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

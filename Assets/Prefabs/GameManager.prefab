@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 812115896519696071}
   - component: {fileID: 7516719043319510648}
-  - component: {fileID: 4317013614151246269}
   - component: {fileID: 530273347719653553}
   m_Layer: 0
   m_Name: GameManager
@@ -54,40 +53,9 @@ MonoBehaviour:
   initTutorialExtrudables: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
   initComputerLabExtrudables: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
   initTutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
-  initComputerPuzzle: {fileID: 11400000, guid: 990291e5dbe6a42818b4b011a7960971, type: 2}
+  initComputerPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
   globalVolumeProfile: {fileID: 11400000, guid: 01266eb8650ac4451b15130b7ffb92bc, type: 2}
   ActiveSceneName: 
---- !u!114 &4317013614151246269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3478488515786829688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 592655338
-      Data2: 1198825115
-      Data3: 477814425
-      Data4: -978435724
-    Path: event:/Music/MainMusic
-  Event: 
-  PlayEvent: 11
-  StopEvent: 12
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &530273347719653553
 MonoBehaviour:
   m_ObjectHideFlags: 0
