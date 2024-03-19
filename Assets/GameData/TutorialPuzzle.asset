@@ -59,7 +59,7 @@ MonoBehaviour:
     - circuitInitPosition: {x: -7.81, y: -0.44, z: 0}
       circuitSprite: {fileID: 21300000, guid: 7e4dd9b0027b63e46af46a96dba0a34d, type: 3}
       circuitName: pinkWire
-    - circuitInitPosition: {x: -6.64, y: -0.55, z: 0}
+    - circuitInitPosition: {x: -6.79, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 3d80e0f1a90b9164f963b42b08b04f48, type: 3}
       circuitName: yellowWire
     puzzleBlocks:
@@ -83,7 +83,7 @@ MonoBehaviour:
       blockSprite: {fileID: 21300000, guid: 472cc3c879fb99341943b1ae7fe7144f, type: 3}
       blockName: yellow
       correctSprite: {fileID: 21300000, guid: f3b546128b8534fc5b808af4d5b68398, type: 3}
-      destinationPosition: {x: -4.75, y: 2.64, z: 0}
+      destinationPosition: {x: -5.13, y: 2.64, z: 0}
       destinationSprite: {fileID: 21300000, guid: dbbea8a8bc6d5434c9055763c515be22, type: 3}
       destinationName: yellowTrigger
       isSolved: 0
@@ -93,5 +93,7 @@ MonoBehaviour:
       dialogue:
         dialogueName: BlockPuzzleIntro
         sentences:
-        - text: if i connect these wires, i can hack into the door...
+        - text: leave it to me! this'll be easy peasy!
+          twin: 1
+        - text: just gotta connect the wires to open the door...
           twin: 1

@@ -4378,7 +4378,6 @@ Transform:
   - {fileID: 1187202226}
   - {fileID: 5220279180068533818}
   - {fileID: 1974118205}
-  - {fileID: 1055908630}
   - {fileID: 972199435}
   - {fileID: 1922838640}
   - {fileID: 2048625919}
@@ -10082,7 +10081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00052106363, y: 0.9982474, z: -0.058505613, w: -0.008890606}
+  m_LocalRotation: {x: -0.0005210657, y: 0.9982474, z: -0.058505613, w: -0.008890642}
   m_LocalPosition: {x: -4.017407, y: 5.8637757, z: 30.971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12717,11 +12716,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &502625857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-  m_PrefabInstance: {fileID: 1282550123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &503353492
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14801,6 +14795,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4597107667637640440, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
     - target: {fileID: 8206532739060150223, guid: 49a614843c6994a949480afbce80149c, type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206532739060150223, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: puzzleId
       value: 1
       objectReference: {fileID: 0}
@@ -16870,11 +16868,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7825289430055562144, guid: cdec2b2cb3d55cc4d9a66db69a6ed4da, type: 3}
---- !u!1 &631078857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-  m_PrefabInstance: {fileID: 693434519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &632836372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18969,7 +18962,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -18978,7 +18971,7 @@ PrefabInstance:
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 693434524}
+      objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -19025,36 +19018,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581428624}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 693434524}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49a614843c6994a949480afbce80149c, type: 3}
 --- !u!4 &693434520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
   m_PrefabInstance: {fileID: 693434519}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &693434524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631078857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noUSBDialogue:
-    dialogueName: 
-    sentences: []
-  withUSBDialogue:
-    dialogueName: 'Extrudableblock monitor DialogueTrigger '
-    sentences:
-    - text: "Again?!?! Eugh if only I can block them somehow\u2026"
-      twin: 1
 --- !u!64 &699728340
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22286,14 +22256,16 @@ PrefabInstance:
       value: Door port main
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: noUSBDialogue.sentences.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[0].text
-      value: 'Leave it to me! Easy peasy!
-
-'
+      value: hm... nothing to hack into here...
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].text
@@ -28216,146 +28188,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5235650237892069892, guid: 691048f2f530346aab604d759281a8c8, type: 3}
   m_PrefabInstance: {fileID: 1054906985}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1055908629
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1055908630}
-  - component: {fileID: 1055908633}
-  - component: {fileID: 1055908632}
-  - component: {fileID: 1055908631}
-  m_Layer: 0
-  m_Name: port2light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1055908630
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055908629}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.744, y: 5.152, z: -1.292}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 145824983}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1055908631
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055908629}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02b1d910bc918d243940c672f285c41a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1055908632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055908629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
---- !u!108 &1055908633
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055908629}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 2
-  m_Shape: 0
-  m_Color: {r: 0.34509805, g: 0.73333335, b: 0.9960785, a: 1}
-  m_Intensity: 1
-  m_Range: 0.05
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &1060997603
 GameObject:
   m_ObjectHideFlags: 0
@@ -29831,26 +29663,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
   m_PrefabInstance: {fileID: 1282550123}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1139542040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502625857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noUSBDialogue:
-    dialogueName: 
-    sentences: []
-  withUSBDialogue:
-    dialogueName: Door Port main
-    sentences:
-    - text: leave it to me! easy peasy! >.0
-      twin: 1
 --- !u!1 &1145731031
 GameObject:
   m_ObjectHideFlags: 0
@@ -31372,7 +31184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370363443316964306, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.86
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 3370363443316964306, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33559,7 +33371,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -33568,7 +33380,7 @@ PrefabInstance:
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1139542040}
+      objectReference: {fileID: 0}
     - target: {fileID: 1064852980050956728, guid: 49a614843c6994a949480afbce80149c, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -33611,10 +33423,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1009533016043786169, guid: 49a614843c6994a949480afbce80149c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 392414643}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 380910691346928899, guid: 49a614843c6994a949480afbce80149c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1139542040}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49a614843c6994a949480afbce80149c, type: 3}
 --- !u!1 &1286038664
 GameObject:
@@ -42739,6 +42548,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 919132148430422186}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
   wasHighlighted: 0
 --- !u!65 &1557888508
@@ -48980,11 +48801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: -0.008857942
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: 0.00092297187
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -49088,11 +48909,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: -0.008857942
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: 0.00092297187
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -49164,11 +48985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.008857907
+      value: -0.008857942
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0009229682
+      value: 0.00092297187
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -64411,7 +64232,7 @@ MonoBehaviour:
   withUSBDialogue:
     dialogueName: 
     sentences:
-    - text: 02, look up at the screens! one of them just lit up!!!
+    - text: 02, 02!!! look up at the screens! one of them just lit up!!!
       twin: 1
 --- !u!1 &919132148663674690
 GameObject:
@@ -67143,7 +66964,7 @@ GameObject:
   - component: {fileID: 1640941582}
   - component: {fileID: 8797806405273166462}
   - component: {fileID: 8797806405273166461}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VesselInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94623,9 +94444,9 @@ MonoBehaviour:
   withUSBDialogue:
     dialogueName: 
     sentences:
-    - text: Oof, that one got me sweating a bit.
+    - text: Oof, this one's getting me sweating a little.
       twin: 0
-    - text: she's a runner, she's a trackstar! 0v0
+    - text: she's a runner, she's a trackstar~
       twin: 1
 --- !u!1001 &6751713250557341799
 PrefabInstance:
@@ -94805,8 +94626,8 @@ MonoBehaviour:
   withUSBDialogue:
     dialogueName: 
     sentences:
-    - text: isn't this kinda fun? it's like a scavenger hunt!
-      twin: 0
+    - text: isn't this kinda fun? it's like a scavenger hunt! :D
+      twin: 1
 --- !u!4 &6754115880232812355
 Transform:
   m_ObjectHideFlags: 0
@@ -104423,7 +104244,7 @@ MonoBehaviour:
   withUSBDialogue:
     dialogueName: Cylinder Vessel
     sentences:
-    - text: eugh, i hated being in these... >.>
+    - text: you hated being in these, didn't you, 02?
       twin: 1
     - text: ' I know. It won''t happen again.'
       twin: 0

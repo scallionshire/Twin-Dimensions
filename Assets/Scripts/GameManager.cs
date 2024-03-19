@@ -268,6 +268,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (instance.gameState.SceneName == "new2dtut" || instance.gameState.SceneName == "mainPuzzle") {
+            GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = true;
+        } else {
+            GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
+        }
     }
 
     private void wipeExtrudables()
@@ -351,6 +357,8 @@ public class GameManager : MonoBehaviour
             player.enabled = !freeze;
 
             Light2D sceneLight = GameObject.Find("Light 2D").GetComponent<Light2D>();
+
+            sceneLight.enabled = true;
 
             if (freeze) {
                 sceneLight.intensity = 0.5f;
