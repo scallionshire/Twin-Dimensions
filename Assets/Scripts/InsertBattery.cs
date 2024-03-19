@@ -43,7 +43,8 @@ public class InsertBattery : MonoBehaviour
             batteryLightRenderers[batteriesIn].material = batteryPanelLitMaterial;
             monitorScreenRenderers[batteriesIn].material = monitorScreenLitMaterial;
             batteriesIn++;
-            GameManager.instance.gameState.BatteriesCollected--;
+            //GameManager.instance.gameState.BatteriesCollected--;\
+            GameManager.instance.UseBattery();
         }
 
         if (batteryCount == 5)
