@@ -30,7 +30,6 @@ public class TooltipManager : MonoBehaviour
 
     public void ToggleClickTooltip(bool toggle)
     {
-        if (leftClick.activeSelf) return;
         leftClick.SetActive(toggle);
     }
 
@@ -42,18 +41,13 @@ public class TooltipManager : MonoBehaviour
 
     public void ToggleSpaceTooltip(bool toggle)
     {
-        if (pressSpace.activeSelf) return;
         pressSpace.SetActive(toggle);
     }
 
     IEnumerator ShowTooltip(GameObject tooltip)
     {
         tooltip.SetActive(true);
-        if (tooltip.name == "PressQ") {
-            yield return new WaitForSeconds(2f);
-        } else {
-            yield return new WaitForSeconds(1f);
-        }
+        yield return new WaitForSeconds(3f);
         tooltip.SetActive(false);
     }
 }

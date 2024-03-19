@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     private string currentDialogueName;
 
     private GameManager gameManager;
+    private TooltipManager tooltipManager;
 
     void OnEnable()
     {
@@ -50,6 +51,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<Sentence>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        if (GameObject.Find("TooltipCanvas") != null)
+        {
+            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+        }
     }
 
     void Update()
@@ -83,11 +89,11 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         // Turn off tooltips
-        if (GameObject.Find("TooltipCanvas") != null)
+        if (tooltipManager != null)
         {
-            GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleSpaceTooltip(false);
+            tooltipManager.ToggleClickTooltip(false);
         }
-        
+
         gameManager.ToggleDialogueFreeze(true);
         ToggleActive(true);
 
