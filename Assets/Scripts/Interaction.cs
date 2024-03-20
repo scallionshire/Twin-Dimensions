@@ -37,11 +37,13 @@ public class Interaction : MonoBehaviour
 
             if (interactable != null)
             {   
-                if (tooltipManager != null)
+                if (tooltipManager != null && !dialogueManager.dialogueActive)
                 {
                     tooltipManager.ToggleClickTooltip(true);
-                    Debug.Log("hi :D");
+                } else if (dialogueManager.dialogueActive) {
+                    tooltipManager.ToggleClickTooltip(false);
                 }
+                
                 prevHit = true;
                 prevInteractable = hit.collider.gameObject;
                 interactable.Highlight();
@@ -64,7 +66,6 @@ public class Interaction : MonoBehaviour
 
             if (tooltipManager != null)
             {
-                Debug.Log("why r u ignoring me...");
                 tooltipManager.GetComponent<TooltipManager>().ToggleClickTooltip(false);
             }
         } else {
