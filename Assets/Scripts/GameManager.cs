@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P)) {
             if (ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
-                GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
+                GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find("Background").transform.position;
             }
         }
     }
@@ -249,7 +249,9 @@ public class GameManager : MonoBehaviour
         {
             popupMenu.SetActive(false);
             Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
         else
         {
@@ -411,7 +413,6 @@ public class GameManager : MonoBehaviour
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
 
-            // TriggerSwitch(); // freeze player input
             ToggleBokeh(freeze);
         }
 

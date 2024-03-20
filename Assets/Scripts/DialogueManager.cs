@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueActive && Input.GetKeyDown(KeyCode.Space) && finishedDisplayingText)
+        if (dialogueActive && Input.GetKeyDown(KeyCode.E) && finishedDisplayingText)
         {
             DisplayNextSentence();
         }
@@ -145,10 +145,11 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        gameManager.ToggleDialogueFreeze(false);
         ToggleActive(false);
 
         currentDialogueName = "";
+
+        gameManager.ToggleDialogueFreeze(false);
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)
@@ -158,7 +159,7 @@ public class DialogueManager : MonoBehaviour
         while (targetText.text.Length < sentence.Length)
         {
             // Skip to the end of the sentence
-            if (Input.GetKeyDown(KeyCode.Space) && targetText.text.Length > 1)
+            if (Input.GetKeyDown(KeyCode.E) && targetText.text.Length > 1)
             {
                 targetText.text = sentence;
                 finishedDisplayingText = true;

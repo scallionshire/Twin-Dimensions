@@ -5,14 +5,18 @@ using System.Collections.Generic;
 public class MenuController : MonoBehaviour
 {
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+    private bool gameStarted = false;
 
-    void Start()
+    void Update()
     {
-        Cursor.lockState = CursorLockMode.None;
+        if (!gameStarted) {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void StartGame()
     {
+        gameStarted = true;
         Cursor.lockState = CursorLockMode.Locked;
         scenesToLoad.Add(SceneManager.LoadSceneAsync("GUI", LoadSceneMode.Additive));
         scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));

@@ -71,4 +71,9 @@ public class SliderHandler : MonoBehaviour
     {
         GameManager.TogglePauseMenu();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
