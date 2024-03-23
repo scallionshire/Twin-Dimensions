@@ -172,6 +172,8 @@ public class GameManager : MonoBehaviour
         UpdateInventoryUI();
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/Pickup");
         Destroy(battery); 
+        RotateDetectionZone rotatingMonitor = GameObject.Find("MonitorCylinder").GetComponent<RotateDetectionZone>();
+        rotatingMonitor.IncreaseRotationSpeed();
     }
 
     public void UseBattery() {
