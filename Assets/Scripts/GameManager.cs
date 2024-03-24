@@ -292,21 +292,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnSceneSwitch()
+    public void OnSceneSwitch()
     {
         // Utility function to handle effects that need to be checked when switching scenes
         if (instance.gameState.Door0Unlocked) {
-            if (GameObject.Find("Door0") != null) {
-                GameObject.Find("Door0").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door0 = GameObject.Find("Door0");
+            if (Door0 != null && Door0.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door0.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
         
         if (instance.gameState.Door1Unlocked) {
-            if (GameObject.Find("Door1") != null) {
-                GameObject.Find("Door1").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door1 = GameObject.Find("Door1");
+            if (Door1 != null && Door1.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door1.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
 
+        // TODO: Add variables to check if extrudables are already extruded
         for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
             if (instance.gameState.Extrudables[i]) {
                 if (GameObject.Find("Extrudable" + i) != null) {
@@ -322,6 +325,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
         }
 
+        // Lighting up the blue screens in the computer lab
         if (instance.gameState.BlueGroup0On) {
             GameObject.Find("BlueGroup0")?.GetComponent<ToggleScreen>().Toggle();
         }
@@ -332,13 +336,15 @@ public class GameManager : MonoBehaviour
             GameObject.Find("BlueGroup2")?.GetComponent<ToggleScreen>().Toggle();
         }
 
+        // Lighting up the blue overlay on the final TV
         if (instance.gameState.BlueOverlayOn) {
             GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if (instance.gameState.BlueOverlayOn && instance.gameState.PinkOverlayOn) {
-            if (GameObject.Find("Door2") != null) {
-                GameObject.Find("Door2").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door2 = GameObject.Find("Door2");
+            if (Door2 != null && Door2.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door2.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
     }
