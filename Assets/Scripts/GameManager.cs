@@ -409,6 +409,7 @@ public class GameManager : MonoBehaviour
     public void ToggleDialogueFreeze(bool freeze)
     {
         if (ActiveSceneName == "new3Dtut") {
+            // Disable camera
             CinemachineFreeLook playerCamera = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
             if (freeze) {
                 playerCamera.m_YAxis.m_MaxSpeed = 0;
@@ -418,6 +419,7 @@ public class GameManager : MonoBehaviour
                 playerCamera.m_XAxis.m_MaxSpeed = 350;
             }
 
+            // Disable player movement
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
 
@@ -425,9 +427,11 @@ public class GameManager : MonoBehaviour
         }
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
+            // Disable player movement
             Player2DMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2DMovement>();
             player.enabled = !freeze;
 
+            // Dim light if frozen
             Light2D sceneLight = GameObject.Find("Light 2D").GetComponent<Light2D>();
 
             sceneLight.enabled = true;
