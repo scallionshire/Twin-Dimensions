@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class Interaction : MonoBehaviour
                 prevHit = true;
                 prevInteractable = hit.collider.gameObject;
                 interactable.Highlight();
-                if (Input.GetMouseButtonDown(0)) // "e" is the key to interact with objects
+                if (Input.GetButtonDown("Fire1")) // click/b to interact
                 {   
                     interactable.Interact();
                 }

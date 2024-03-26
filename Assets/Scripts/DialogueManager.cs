@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueActive && Input.GetKeyDown(KeyCode.E) && finishedDisplayingText)
+        if (dialogueActive && Input.GetButtonDown("Fire1") && finishedDisplayingText)
         {
             DisplayNextSentence();
         }
@@ -159,7 +159,7 @@ public class DialogueManager : MonoBehaviour
         while (targetText.text.Length < sentence.Length)
         {
             // Skip to the end of the sentence
-            if (Input.GetKeyDown(KeyCode.E) && targetText.text.Length > 1)
+            if (Input.GetButtonDown("Fire1") && targetText.text.Length > 1)
             {
                 targetText.text = sentence;
                 finishedDisplayingText = true;
