@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
+        Debug.Log("Current puzzle ID and level: " + instance.gameState.CurrentPuzzleId + " " + instance.gameState.CurrentLevel);
         Debug.Log("Switching to puzzle: " + puzzleId);
         switchToScene("mainPuzzle");
 
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchToMap(int extId, Level level) {
+        Debug.Log("Switching to map: " + extId + " " + level);
         switchToScene("new2dtut");
 
         // Find ExtrudableManager and load the map
@@ -292,21 +294,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnSceneSwitch()
+    public void OnSceneSwitch()
     {
         // Utility function to handle effects that need to be checked when switching scenes
         if (instance.gameState.Door0Unlocked) {
-            if (GameObject.Find("Door0") != null) {
-                GameObject.Find("Door0").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door0 = GameObject.Find("Door0");
+            if (Door0 != null && Door0.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door0.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
         
         if (instance.gameState.Door1Unlocked) {
-            if (GameObject.Find("Door1") != null) {
-                GameObject.Find("Door1").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door1 = GameObject.Find("Door1");
+            if (Door1 != null && Door1.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door1.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
 
+        // TODO: Add variables to check if extrudables are already extruded
         for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
             if (instance.gameState.Extrudables[i]) {
                 if (GameObject.Find("Extrudable" + i) != null) {
@@ -322,23 +327,38 @@ public class GameManager : MonoBehaviour
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
         }
 
+        // Lighting up the blue screens in the computer lab
         if (instance.gameState.BlueGroup0On) {
-            GameObject.Find("BlueGroup0")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup0 = GameObject.Find("BlueGroup0");
+            if (blueGroup0 != null) {
+                blueGroup0.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
         if (instance.gameState.BlueGroup1On) {
-            GameObject.Find("BlueGroup1")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup1 = GameObject.Find("BlueGroup1");
+            if (blueGroup1 != null) {
+                blueGroup1.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
         if (instance.gameState.BlueGroup2On) {
-            GameObject.Find("BlueGroup2")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup2 = GameObject.Find("BlueGroup2");
+            if (blueGroup2 != null) {
+                blueGroup2.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
 
+        // Lighting up the blue overlay on the final TV
         if (instance.gameState.BlueOverlayOn) {
-            GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
+            GameObject blueOverlay = GameObject.Find("BlueOverlay");
+            if (blueOverlay != null) {
+                GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
+            }
         }
 
         if (instance.gameState.BlueOverlayOn && instance.gameState.PinkOverlayOn) {
-            if (GameObject.Find("Door2") != null) {
-                GameObject.Find("Door2").GetComponent<Animator>().SetBool("isOpen", true);
+            GameObject Door2 = GameObject.Find("Door2");
+            if (Door2 != null && Door2.GetComponent<Animator>().GetBool("isOpen") == false) {
+                Door2.GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
     }
@@ -403,6 +423,7 @@ public class GameManager : MonoBehaviour
     public void ToggleDialogueFreeze(bool freeze)
     {
         if (ActiveSceneName == "new3Dtut") {
+            // Disable camera
             CinemachineFreeLook playerCamera = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
             if (freeze) {
                 playerCamera.m_YAxis.m_MaxSpeed = 0;
@@ -412,6 +433,7 @@ public class GameManager : MonoBehaviour
                 playerCamera.m_XAxis.m_MaxSpeed = 350;
             }
 
+            // Disable player movement
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
 
@@ -419,9 +441,11 @@ public class GameManager : MonoBehaviour
         }
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
+            // Disable player movement
             Player2DMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2DMovement>();
             player.enabled = !freeze;
 
+            // Dim light if frozen
             Light2D sceneLight = GameObject.Find("Light 2D").GetComponent<Light2D>();
 
             sceneLight.enabled = true;

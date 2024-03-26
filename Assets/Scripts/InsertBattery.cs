@@ -52,6 +52,7 @@ public class InsertBattery : MonoBehaviour
             // TODO: update level success state in gamemanager
             GameManager.instance.SolvePuzzle(Level.computerlab, 1);
             GameObject.Find("PinkOverlay").GetComponent<SpriteRenderer>().enabled = true;
+            GameManager.instance.OnSceneSwitch();
         }
     }
 }

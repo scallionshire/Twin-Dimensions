@@ -61,11 +61,12 @@ public class ExtrudableManager : MonoBehaviour
             newExtrudable.transform.rotation = Quaternion.Euler(extrudableSets[i].rotation);
             newExtrudable.name = "Extrudable" + extrudableSets[i].id;
 
-            newExtrudable.GetComponent<Extrudable>().extrudableId = extrudableSets[i].id;
-            newExtrudable.GetComponent<Extrudable>().extrudeDirection = extrudableSets[i].direction;
-            newExtrudable.GetComponent<Extrudable>().extrudeAmount = extrudableSets[i].amount;
-            newExtrudable.GetComponent<Extrudable>().shouldLoop = extrudableSets[i].shouldLoop;
-            newExtrudable.GetComponent<Extrudable>().isExtruding = extrudableSets[i].shouldExtrude;
+            Extrudable newExtrudableScript = newExtrudable.GetComponent<Extrudable>();
+            newExtrudableScript.extrudableId = extrudableSets[i].id;
+            newExtrudableScript.extrudeDirection = extrudableSets[i].direction;
+            newExtrudableScript.extrudeAmount = extrudableSets[i].amount;
+            newExtrudableScript.shouldLoop = extrudableSets[i].shouldLoop;
+            newExtrudableScript.isExtruding = extrudableSets[i].shouldExtrude;
 
             if (gameManager != null && gameManager.gameState.Extrudables[extrudableSets[i].id]) {
                 newExtrudable.GetComponent<Extrudable>().MakeAlreadyExtruded();

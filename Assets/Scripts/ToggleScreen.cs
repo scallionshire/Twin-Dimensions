@@ -15,7 +15,7 @@ public class ToggleScreen : MonoBehaviour
         renderers.AddRange(GetComponentsInChildren<Renderer>());
     }
 
-    public void Toggle()
+    public void TurnOnScreen()
     {
         for (int i = 0; i < renderers.Count; i++)
         {
