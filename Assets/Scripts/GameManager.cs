@@ -218,6 +218,9 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+
+        // switch back to 3D
+        switchToScene("new3Dtut");
     }
 
     // TODO: clean this up

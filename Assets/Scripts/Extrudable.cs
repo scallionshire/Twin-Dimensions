@@ -31,6 +31,7 @@ public class Extrudable : MonoBehaviour
     public bool isMoving = false;
     public bool isExtruding = false;
     public float extrudeSpeed = 1.0f;
+    public bool finishedExtruding = false;
 
     private FMOD.Studio.EventInstance extrudableSoundInstance;
 
@@ -89,7 +90,7 @@ public class Extrudable : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (isMoving) {
             if (!gameStateUpdated) {
                 gameStateUpdated = true;
@@ -98,6 +99,8 @@ public class Extrudable : MonoBehaviour
 
             if (is2D) {
                 if ((targetScale - new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f)).sqrMagnitude < 0.05f) {
+                    // Debug.Log("The target scale is: " + targetScale);
+                    // Debug.Log("The current scale is: " + new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f));
                     if (shouldLoop && targetScale == endScale) {
                         targetScale = initScale;
                         targetPosition = initPosition;
@@ -131,6 +134,15 @@ public class Extrudable : MonoBehaviour
         }
         if (!isMoving) {
             extrudableSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+            
+        }
+
+        if(is2D) {
+            if ((targetScale - new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f)).sqrMagnitude < 0.05f)
+            {
+                finishedExtruding = true;
+            }
         }
     }
 
