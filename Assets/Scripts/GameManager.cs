@@ -27,11 +27,11 @@ public class GameManager : MonoBehaviour
     private bool sceneLoaded = true;
     [HideInInspector]
     public bool gameStarted = false;   
-
-    public bool firstSwitch = true;   
     private bool menuUnloaded = false;
     private bool cutscenePlaying = false;
     private bool hasPlayedSwitchCutscene = false;
+
+    public bool firstSwitch = true;   
 
     [Header("Game Variables")]
     public float MusicVolume = 100f;
@@ -132,8 +132,9 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
-            if (hasPlayedSwitchCutscene && firstSwitch) {
+            if (firstSwitch) {
                 ToggleDialogueFreeze(false);
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
             }
             if (ActiveSceneName == "new3Dtut")
             {   

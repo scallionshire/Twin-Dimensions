@@ -114,7 +114,7 @@ public class DialogueManager : MonoBehaviour
             if (currentDialogueName == "ComputerFirstPlug") {
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
-                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltipPermanently();
                 }
                 ToggleActive(false);
                 currentDialogueName = "";
