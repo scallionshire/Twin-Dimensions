@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
+        Debug.Log("Current puzzle ID and level: " + instance.gameState.CurrentPuzzleId + " " + instance.gameState.CurrentLevel);
         Debug.Log("Switching to puzzle: " + puzzleId);
         switchToScene("mainPuzzle");
 
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchToMap(int extId, Level level) {
+        Debug.Log("Switching to map: " + extId + " " + level);
         switchToScene("new2dtut");
 
         // Find ExtrudableManager and load the map
@@ -327,18 +329,30 @@ public class GameManager : MonoBehaviour
 
         // Lighting up the blue screens in the computer lab
         if (instance.gameState.BlueGroup0On) {
-            GameObject.Find("BlueGroup0")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup0 = GameObject.Find("BlueGroup0");
+            if (blueGroup0 != null) {
+                blueGroup0.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
         if (instance.gameState.BlueGroup1On) {
-            GameObject.Find("BlueGroup1")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup1 = GameObject.Find("BlueGroup1");
+            if (blueGroup1 != null) {
+                blueGroup1.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
         if (instance.gameState.BlueGroup2On) {
-            GameObject.Find("BlueGroup2")?.GetComponent<ToggleScreen>().Toggle();
+            GameObject blueGroup2 = GameObject.Find("BlueGroup2");
+            if (blueGroup2 != null) {
+                blueGroup2.GetComponent<ToggleScreen>().TurnOnScreen();
+            }
         }
 
         // Lighting up the blue overlay on the final TV
         if (instance.gameState.BlueOverlayOn) {
-            GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
+            GameObject blueOverlay = GameObject.Find("BlueOverlay");
+            if (blueOverlay != null) {
+                GameObject.Find("BlueOverlay").GetComponent<SpriteRenderer>().enabled = true;
+            }
         }
 
         if (instance.gameState.BlueOverlayOn && instance.gameState.PinkOverlayOn) {
