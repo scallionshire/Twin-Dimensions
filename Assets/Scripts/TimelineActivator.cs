@@ -8,8 +8,9 @@ public class TimelineActivator : MonoBehaviour
     private PlayableDirector director;
     private DialogueManager dialogueManager;
     private bool timelinePlayed = false;
+    private bool timelineComplete = false;
 
-    public bool timelineComplete = false;
+    public bool checkUSBInserted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,11 @@ public class TimelineActivator : MonoBehaviour
 
     public void PlayTimeline()
     {
+        if (checkUSBInserted && !GameManager.instance.gameState.USBInserted)
+        {
+            return;
+        }
+        
         if (!timelinePlayed)
         {
             timelineComplete = false;
@@ -49,7 +55,6 @@ public class TimelineActivator : MonoBehaviour
     public void StopTimeline()
     {
         director.Stop();
-        timelinePlayed = false;
 
         GameManager.instance.ToggleCutsceneFreeze(false);
     }

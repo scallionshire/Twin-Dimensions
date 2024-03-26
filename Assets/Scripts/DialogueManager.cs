@@ -99,7 +99,7 @@ public class DialogueManager : MonoBehaviour
         if (!isCutscene)
         {
             gameManager?.ToggleDialogueFreeze(true);
-            gameManager?.ToggleBokeh(false);
+            gameManager?.ToggleBokeh(true);
         }
 
         currentDialogueName = dialogue.dialogueName;

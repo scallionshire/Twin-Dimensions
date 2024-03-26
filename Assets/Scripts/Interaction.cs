@@ -45,20 +45,25 @@ public class Interaction : MonoBehaviour
                 }
                 
                 prevHit = true;
-                prevInteractable = hit.collider.gameObject;
-                interactable.Highlight();
+    
                 if (Input.GetMouseButtonDown(0)) // "e" is the key to interact with objects
                 {   
                     interactable.Interact();
+                    interactable.RemoveHighlight();
+                } else if (prevInteractable != hit.collider.gameObject || !dialogueManager.dialogueActive) {
+                    interactable.Highlight();
                 }
+
+                prevInteractable = hit.collider.gameObject;
             }
         } else if (prevHit == true)
         {
-            // Debug.Log("Removing highlight");
             prevHit = false;
+            
             if (prevInteractable != null)
             {
                 prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+                prevInteractable = null;
             } else {
                 // Handle case where object is destroyed
                 playerFader.ResetFade();

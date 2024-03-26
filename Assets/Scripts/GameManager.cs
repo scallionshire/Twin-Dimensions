@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     private bool cutscenePlaying = false;
     private bool hasPlayedSwitchCutscene = false;
 
-    public bool firstSwitch = true;   
-
     [Header("Game Variables")]
+    public bool firstSwitch = true;   
+    
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
