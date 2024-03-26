@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private bool cutscenePlaying = false;
     private bool hasPlayedSwitchCutscene = false;
 
+    public bool firstSwitch = true;   
+
     [Header("Game Variables")]
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
@@ -130,6 +132,10 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
+            if (firstSwitch) {
+                ToggleDialogueFreeze(false);
+                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
+            }
             if (ActiveSceneName == "new3Dtut")
             {   
                 SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
@@ -142,6 +148,7 @@ public class GameManager : MonoBehaviour
             {
                 switchToScene("new3Dtut");
             }
+            firstSwitch = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {

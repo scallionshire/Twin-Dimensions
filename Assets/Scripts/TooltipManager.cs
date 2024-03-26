@@ -40,6 +40,15 @@ public class TooltipManager : MonoBehaviour
         StartCoroutine(ShowTooltip(pressQ));
     }
 
+    public void ShowQTooltipPermanently() {
+        if (pressQ.activeSelf) return;
+        pressQ.SetActive(true);
+    }
+
+    public void RemoveQTooltip() {
+        pressQ.SetActive(false);
+    }
+
     public void ToggleSpaceTooltip(bool toggle)
     {
         if (pressSpace.activeSelf == toggle) return;
