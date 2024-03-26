@@ -73,14 +73,8 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
-            Debug.Log("Switching scenes for level " + gameState.CurrentLevel);
             if (ActiveSceneName == "new3Dtut")
             {   
-                if (hasPlayedSwitchCutscene == false)
-                {
-                    cutsceneManager.PlayCutscene("switch");
-                    hasPlayedSwitchCutscene = true;
-                }
                 SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
             }
             else if (ActiveSceneName == "new2dtut")
@@ -397,6 +391,11 @@ public class GameManager : MonoBehaviour
 
     public void switchToScene(string sceneName)
     {
+        if (hasPlayedSwitchCutscene == false && ActiveSceneName == "new3Dtut")
+        {
+            cutsceneManager.PlayCutscene("switch");
+            hasPlayedSwitchCutscene = true;
+        }
         DeactivateScene(ActiveSceneName);
         ActivateScene(sceneName);
         ActiveSceneName = sceneName;
