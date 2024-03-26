@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     private GameManager gameManager;
     private TooltipManager tooltipManager;
 
+    private bool isCutsceneDialogue = false;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -81,8 +83,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool isCutscene)
     {
+        isCutsceneDialogue = isCutscene;
+
         // Turn off tooltips
         if (GameObject.Find("TooltipCanvas") != null)
         {
@@ -91,7 +95,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         ToggleActive(true);
-        gameManager?.ToggleDialogueFreeze(true);
+
+        if (!isCutscene)
+        {
+            gameManager?.ToggleDialogueFreeze(true);
+            gameManager?.ToggleBokeh(false);
+        }
 
         currentDialogueName = dialogue.dialogueName;
 
@@ -117,6 +126,7 @@ public class DialogueManager : MonoBehaviour
                     GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
                 }
             }
+
             EndDialogue();
             return;
         }
@@ -130,6 +140,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(false, Twin.Twin_20);
 
                 TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
+
                 StartCoroutine(TypeSentence(target02, sentence.text));
                 break;
             case Twin.Twin_20:
@@ -138,6 +149,7 @@ public class DialogueManager : MonoBehaviour
                 
                 TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/DialogStartSound");
+
                 StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
         }
@@ -145,11 +157,15 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (!isCutsceneDialogue)
+        {
+            gameManager.ToggleBokeh(false);
+            gameManager.ToggleDialogueFreeze(false);
+        }
+
         ToggleActive(false);
 
         currentDialogueName = "";
-
-        gameManager.ToggleDialogueFreeze(false);
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)

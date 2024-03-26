@@ -282,6 +282,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3410,6 +3414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -17779,6 +17784,65 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775002483}
   m_Mesh: {fileID: 6571670193265823467, guid: 5d43b61f060ce644cb049fba9dde5e7e, type: 3}
+--- !u!1 &777033297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777033299}
+  - component: {fileID: 777033298}
+  m_Layer: 0
+  m_Name: Dolly Track
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &777033298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777033297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: -2.3392055, y: 0.59422445, z: -1.1888142}
+    roll: 0
+  - position: {x: -2.588629, y: 0.01772499, z: -2.204094}
+    roll: 0
+  - position: {x: 1.3622776, y: -0.2789111, z: -3.710781}
+    roll: 0
+  - position: {x: 2.2648008, y: 0.34055758, z: -0.003211975}
+    roll: 0
+--- !u!4 &777033299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777033297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7355669, y: 5.771488, z: 28.038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779176754
 GameObject:
   m_ObjectHideFlags: 0
@@ -29443,6 +29507,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -30661,8 +30729,8 @@ Transform:
   m_GameObject: {fileID: 1349507362}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2729993}
-  m_LocalScale: {x: 1.2674522, y: 1, z: 0.3694}
+  m_LocalPosition: {x: -0.4371, y: 0, z: -0.2729993}
+  m_LocalScale: {x: 1.179998, y: 1, z: 0.3694}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1698600540}
@@ -30817,6 +30885,107 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6681389572530111971, guid: cdec2b2cb3d55cc4d9a66db69a6ed4da, type: 3}
+--- !u!1 &1365277734
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365277735}
+  - component: {fileID: 1365277738}
+  - component: {fileID: 1365277737}
+  - component: {fileID: 1365277736}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365277735
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365277734}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2133714179}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1365277736
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365277734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418e42c7d0405cc48a7b83f63ea53bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Path: {fileID: 777033298}
+  m_PathPosition: 0
+  m_PositionUnits: 0
+  m_PathOffset: {x: 0, y: 0, z: 0}
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 1
+  m_CameraUp: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AutoDolly:
+    m_Enabled: 0
+    m_PositionOffset: 0
+    m_SearchRadius: 2
+    m_SearchResolution: 5
+--- !u!114 &1365277737
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365277734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &1365277738
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365277734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365678557
 GameObject:
   m_ObjectHideFlags: 0
@@ -30890,6 +31059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -33068,7 +33238,7 @@ PrefabInstance:
       objectReference: {fileID: 756636973}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: debugLevel
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: rotatingMonitor
@@ -36509,6 +36679,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: withUSBDialogue.dialogueName
       value: Puzzle0DialogueTrigger
       objectReference: {fileID: 0}
@@ -36563,6 +36737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: USB
     sentences:
@@ -37085,8 +37260,8 @@ Transform:
   m_GameObject: {fileID: 1641802088}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -5.8}
-  m_LocalScale: {x: 1.2674522, y: 1, z: 0.3694}
+  m_LocalPosition: {x: -0.4371, y: 0, z: -5.8}
+  m_LocalScale: {x: 1.179998, y: 1, z: 0.3694}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1698600540}
@@ -39723,11 +39898,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -39757,6 +39932,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1171422262}
+    - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
+      propertyPath: m_Priority
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1872155076569970847, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_YAxis.Value
       value: 0.5
@@ -39911,11 +40090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -41143,6 +41322,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -42159,6 +42342,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8593475864613347257, guid: a243d6013a33a48ed93859046c118a01, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4838933450186888610, guid: cdec2b2cb3d55cc4d9a66db69a6ed4da, type: 3}
+    - target: {fileID: 8593475864613347257, guid: a243d6013a33a48ed93859046c118a01, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: c38fb016ade5648cfa139fc2d86f398b, type: 2}
@@ -42649,6 +42836,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: withUSBDialogue.dialogueName
       value: ComputerLabIntro
       objectReference: {fileID: 0}
@@ -42837,6 +43028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: Window
     sentences:
@@ -43304,6 +43496,45 @@ Transform:
   - {fileID: 1649426426}
   m_Father: {fileID: 377300011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1950747627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7332408809525082626, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+  m_PrefabInstance: {fileID: 2128333444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950747631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950747627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timelineComplete: 0
+--- !u!320 &1950747632
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950747627}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: db0dd6ff8362148a2b97c60826bd252e, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 0
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7814931403136212048, guid: db0dd6ff8362148a2b97c60826bd252e, type: 2}
+    value: {fileID: 2133714177}
+  - key: {fileID: -148919008928151264, guid: db0dd6ff8362148a2b97c60826bd252e, type: 2}
+    value: {fileID: 2133714180}
+  m_ExposedReferences:
+    m_References: []
 --- !u!64 &1951388341
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46239,8 +46470,8 @@ Transform:
   m_GameObject: {fileID: 2076309789}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 4.8129997}
-  m_LocalScale: {x: 1.2674522, y: 1, z: 0.3694}
+  m_LocalPosition: {x: -0.4371, y: 0, z: 4.813}
+  m_LocalScale: {x: 1.179998, y: 1, z: 0.3694}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1698600540}
@@ -46806,6 +47037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: PuzzlePort0
     sentences:
@@ -47906,6 +48138,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: isCutsceneDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522576034392520649, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: noUSBDialogue.dialogueName
       value: IntroDialogueTrigger
       objectReference: {fileID: 0}
@@ -47925,6 +48161,34 @@ PrefabInstance:
       propertyPath: noUSBDialogue.sentences.Array.data[2].text
       value: "Hopefully she\u2019s still in the USB under the emergency blue light"
       objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1950747631}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayTimeline
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TimelineActivator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148853537979452602, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7332408809525082626, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
       propertyPath: m_Name
       value: IntroDialogueTrigger
@@ -47932,7 +48196,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7332408809525082626, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950747632}
+    - targetCorrespondingSourceObject: {fileID: 7332408809525082626, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950747631}
   m_SourcePrefab: {fileID: 100100000, guid: 320c4fdc9eb0646fcafb3629400f1579, type: 3}
 --- !u!1 &2130743899
 GameObject:
@@ -48049,6 +48319,100 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &2133714177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2133714179}
+  - component: {fileID: 2133714178}
+  - component: {fileID: 2133714180}
+  m_Layer: 0
+  m_Name: USBCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2133714178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133714177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 2
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 1628981764}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 60.000004
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 1365277735}
+--- !u!4 &2133714179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133714177}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.14769875, y: -0.27688435, z: 0.04311572, w: 0.94850475}
+  m_LocalPosition: {x: -6.724925, y: 6.970293, z: 26.693108}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1365277735}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2133714180
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133714177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &2137425689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51070,6 +51434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -54227,7 +54592,7 @@ Transform:
   m_GameObject: {fileID: 5842886700643288529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06857626, y: 0.041395824, z: -0.06185327}
+  m_LocalPosition: {x: -0.06857626, y: 0.0399, z: -0.06185327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54562,7 +54927,7 @@ Transform:
   m_GameObject: {fileID: 8685655141000763292}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06930074, y: 0.037154153, z: -0.03622922}
+  m_LocalPosition: {x: -0.06930074, y: 0.0357, z: -0.03622922}
   m_LocalScale: {x: 2.3953583, y: 2.3953583, z: 2.3953583}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56122,6 +56487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: Fishtank
     sentences:
@@ -57195,8 +57561,8 @@ Transform:
   m_GameObject: {fileID: 4104270164785286845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0394, y: 0.030017747, z: 0.022915414}
-  m_LocalScale: {x: 4.029049, y: 4.029049, z: 4.029049}
+  m_LocalPosition: {x: 0.0394, y: 0.0391, z: 0.022915414}
+  m_LocalScale: {x: 4.99, y: 5.11, z: 4.029049}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653456929352}
@@ -60476,6 +60842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -63491,6 +63858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: BlueVessel
     sentences:
@@ -64085,8 +64453,8 @@ Transform:
   m_GameObject: {fileID: 5568789175701497578}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0388, y: 0.041251697, z: 0.023223976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0397, y: 0.0511, z: 0.023223976}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653456929352}
@@ -65181,6 +65549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: BathroomDoor
     sentences:
@@ -65810,6 +66179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: ServerRack
     sentences:
@@ -65883,6 +66253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -67065,6 +67436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -67240,6 +67612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -67449,6 +67822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -67631,6 +68005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -68501,6 +68876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: Bookshelf
     sentences:
@@ -68728,6 +69104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -69041,7 +69418,7 @@ Transform:
   m_GameObject: {fileID: 7861557727337866769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02378629, y: 0.0037437351, z: 0.007832441}
+  m_LocalPosition: {x: 0.02378629, y: 0.0173, z: 0.007832441}
   m_LocalScale: {x: 0.7169004, y: 0.7169004, z: 0.7169004}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70870,6 +71247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: YellowVessel
     sentences:
@@ -71346,6 +71724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: WaterFountain
     sentences:
@@ -73396,6 +73775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -74092,6 +74472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutsceneDialogue: 0
   noUSBDialogue:
     dialogueName: Nightstand
     sentences:
@@ -74346,7 +74727,7 @@ Transform:
   m_GameObject: {fileID: 8257167910622737086}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1258, y: 0.0201, z: -0.14413927}
+  m_LocalPosition: {x: 0.1258, y: 0.0211, z: -0.14413927}
   m_LocalScale: {x: 1.2137102, y: 1.2137102, z: 1.2137102}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -74674,3 +75055,5 @@ SceneRoots:
   - {fileID: 1237174282}
   - {fileID: 1956114966}
   - {fileID: 893991803}
+  - {fileID: 777033299}
+  - {fileID: 2133714179}

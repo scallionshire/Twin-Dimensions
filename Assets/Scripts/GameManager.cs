@@ -487,6 +487,18 @@ public class GameManager : MonoBehaviour
         OnSceneSwitch();
     }
 
+    public void ToggleCutsceneFreeze(bool freeze)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // Disable player movement
+        ThirdPersonController playerController = player.GetComponent<ThirdPersonController>();
+        playerController.enabled = !freeze;
+
+        // Disable player interaction
+        Interaction playerInteraction = player.GetComponent<Interaction>();
+        playerInteraction.enabled = !freeze;
+    }
+
     public void ToggleDialogueFreeze(bool freeze)
     {
         if (ActiveSceneName == "new3Dtut") {
@@ -503,8 +515,6 @@ public class GameManager : MonoBehaviour
             // Disable player movement
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
-
-            ToggleBokeh(freeze);
         }
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {

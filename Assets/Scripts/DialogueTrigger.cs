@@ -5,19 +5,15 @@ using UnityEngine.AI;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public bool isCutsceneDialogue = false;
+    private bool cutsceneWasVisited = false;
+
     public Dialogue noUSBDialogue;
     public Dialogue withUSBDialogue;
-    private bool noUSBWasVisited = false;
-    private bool withUSBWasVisited = false;
 
     public void TriggerDialogue()
     {
         GameObject dc = GameObject.Find("DialogueCanvas");
-
-        if (dc == null) {
-            Debug.Log("harro????");
-        }
-        
         GameObject gm = GameObject.Find("GameManager");
 
         if (dc != null && gm.GetComponent<DialogueManager>().dialogueActive)
@@ -25,21 +21,26 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (FindObjectOfType<GameManager>().gameState.USBInserted && !withUSBWasVisited)
+        if ((isCutsceneDialogue && !cutsceneWasVisited) || !isCutsceneDialogue)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(withUSBDialogue);
-            withUSBWasVisited = true;
-        }
-        else if (!noUSBWasVisited)
-        {
-            FindObjectOfType<DialogueManager>().StartDialogue(noUSBDialogue);
-            noUSBWasVisited = true;
-        }
-    }
+            if (GameManager.instance.gameState.USBInserted)
+            {
+                gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, isCutsceneDialogue);
 
-    public void MakeVisited()
-    {
-        noUSBWasVisited = true;
-        withUSBWasVisited = true;
+                // We don't want to play cutscene dialogues more than once
+                if (isCutsceneDialogue)
+                {
+                    cutsceneWasVisited = true;
+                }
+            }
+            else
+            {
+                gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, isCutsceneDialogue);
+                if (isCutsceneDialogue)
+                {
+                    cutsceneWasVisited = true;
+                }
+            }
+        }
     }
 }
