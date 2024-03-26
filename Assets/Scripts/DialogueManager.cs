@@ -116,8 +116,12 @@ public class DialogueManager : MonoBehaviour
                 {
                     GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
                 }
+                ToggleActive(false);
+                currentDialogueName = "";
             }
-            EndDialogue();
+            else {
+                EndDialogue();
+            }
             return;
         }
 

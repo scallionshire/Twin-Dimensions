@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private bool sceneLoaded = true;
     [HideInInspector]
     public bool gameStarted = false;   
+
+    public bool firstSwitch = true;   
     private bool menuUnloaded = false;
     private bool cutscenePlaying = false;
     private bool hasPlayedSwitchCutscene = false;
@@ -130,6 +132,9 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
+            if (hasPlayedSwitchCutscene && firstSwitch) {
+                ToggleDialogueFreeze(false);
+            }
             if (ActiveSceneName == "new3Dtut")
             {   
                 SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
@@ -142,6 +147,7 @@ public class GameManager : MonoBehaviour
             {
                 switchToScene("new3Dtut");
             }
+            firstSwitch = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
