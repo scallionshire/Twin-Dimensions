@@ -7926,6 +7926,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 1
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!65 &365074680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13205,6 +13206,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 0
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!65 &584843249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18403,6 +18405,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 0
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!65 &796681781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28487,6 +28490,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 1
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!64 &1259917760
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33055,9 +33059,17 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: popupMenu
       value: 
       objectReference: {fileID: 756636973}
+    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
+      propertyPath: debugLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: rotatingMonitor
       value: 
@@ -34851,6 +34863,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 1
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!65 &1567367498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39710,11 +39723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957549
+      value: -0.011957585
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00086760614
+      value: 0.0008676087
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -44942,6 +44955,7 @@ MonoBehaviour:
   isMoving: 0
   isExtruding: 1
   extrudeSpeed: 1
+  finishedExtruding: 0
 --- !u!64 &2031879400
 MeshCollider:
   m_ObjectHideFlags: 0
