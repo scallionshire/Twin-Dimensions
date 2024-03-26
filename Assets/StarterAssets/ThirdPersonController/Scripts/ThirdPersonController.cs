@@ -154,12 +154,6 @@ namespace StarterAssets
 
         private void Update()
         {   
-            CutsceneManager cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
-            
-            if (cutsceneManager.IsPlaying()) {
-                return;
-            }
-
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
