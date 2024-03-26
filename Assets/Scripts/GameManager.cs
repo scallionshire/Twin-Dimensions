@@ -4,7 +4,6 @@ using Cinemachine;
 using Cinemachine.PostFX;
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -13,21 +12,31 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {   
+    [SerializeField]
     public GameState gameState = new GameState();
-    public GameObject popupMenu;
+
+     // --------------- DEBUG FUNCTIONS ---------------
+    [Header("Debug-Only Variables")]
+    public bool debugMode = false;
+    public Level debugLevel = Level.tutorial;
+    List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+    // -----------------------------------------------
+
     public static GameManager instance;
     private CutsceneManager cutsceneManager;
-
     private bool sceneLoaded = true;
+    [HideInInspector]
     public bool gameStarted = false;   
     private bool menuUnloaded = false;
     private bool cutscenePlaying = false;
     private bool hasPlayedSwitchCutscene = false;
 
+    [Header("Game Variables")]
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
 
+    public GameObject popupMenu;
     public ExtrudableDataScriptable initTutorialExtrudables;
     public ExtrudableDataScriptable initComputerLabExtrudables;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
@@ -40,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public delegate void SwitchEventHandler();
     public static event SwitchEventHandler OnSwitch;
+
 
     public void TriggerSwitch() {
         OnSwitch?.Invoke();
@@ -57,15 +67,62 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+
+        if (debugMode) {
+            Cursor.lockState = CursorLockMode.Locked;
+            scenesToLoad.Add(SceneManager.LoadSceneAsync("GUI", LoadSceneMode.Additive));
+            scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
+            scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+
+            gameStarted = true;
+
+            StartCoroutine(LoadAndDeactivate(scenesToLoad));
+        }
     }
 
     void Start()
     {
-        cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+        if (!debugMode) {
+            cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+        }
+    
+        // // Doing this prevents losing reference to the popup menu
+        // TogglePauseMenu();
+        // TogglePauseMenu();
+    }
 
-        // Doing this prevents losing reference to the popup menu
-        TogglePauseMenu();
-        TogglePauseMenu();
+    private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
+    {
+        Debug.Log("Loading scenes");
+        foreach (var loadOp in loadOperations)
+        {   
+            while (!loadOp.isDone)
+            {
+                yield return null; 
+            }
+        }
+
+        Debug.Log("Scenes finished loading");
+        
+        DeactivateScene("new2dtut");
+        DeactivateScene("mainPuzzle");
+        ActiveSceneName = "new3Dtut";
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
+
+        instance.gameState.CurrentLevel = debugLevel;
+
+        if (debugLevel == Level.computerlab) {
+            GameObject Player3D = GameObject.Find("3D Player");
+            Player3D.transform.position = new Vector3(-0.85f,-6.05f,7.03f);
+            instance.gameState.PlayerPosition3D = new Vector3(-0.85f,-6.05f,7.03f);
+
+            instance.gameState.Door0Unlocked = true;
+            instance.gameState.Door1Unlocked = true;
+
+            instance.gameState.PlayerHasUSB = true;
+            instance.gameState.USBInserted = true;
+        }
     }
 
     void Update()
@@ -95,6 +152,14 @@ public class GameManager : MonoBehaviour
             if (ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find("Background").transform.position;
             }
+        }
+
+        if (cutsceneManager != null && cutsceneManager.IsPlaying() && !cutscenePlaying) {
+            cutscenePlaying = true;
+            ToggleDialogueFreeze(true);
+        } else if (cutsceneManager != null && cutsceneManager.IsPlaying() == false && cutscenePlaying) {
+            cutscenePlaying = false;
+            ToggleDialogueFreeze(false);
         }
     }
 
@@ -411,7 +476,7 @@ public class GameManager : MonoBehaviour
 
     public void switchToScene(string sceneName)
     {
-        if (hasPlayedSwitchCutscene == false && ActiveSceneName == "new3Dtut")
+        if (hasPlayedSwitchCutscene == false && ActiveSceneName == "new3Dtut" && cutsceneManager != null)
         {
             cutsceneManager.PlayCutscene("switch");
             hasPlayedSwitchCutscene = true;
@@ -483,6 +548,7 @@ public class GameManager : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class GameState
 {
     // Current level
