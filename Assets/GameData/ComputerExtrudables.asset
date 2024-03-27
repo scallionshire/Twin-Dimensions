@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: ComputerExtrudables
   m_EditorClassIdentifier: 
   level: 2
+  destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+  blockPrefab: {fileID: 4073186856996417480, guid: d7bfc4b663b7ff647bb86d01759fc8f6, type: 3}
+  circuitPrefab: {fileID: 6973451946996186604, guid: b68074b31029c214c8b66fcb9b8ee75d, type: 3}
   extrudable2DPrefab: {fileID: 4049955810353424624, guid: 89204b977a2624b86b1afab262ae5809, type: 3}
   dialogueTriggerPrefab: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
-  mapSprite: {fileID: 21300000, guid: 70cc4d7656c64405f89ff9d4c16c8dc8, type: 3}
+  mapSprite: {fileID: 21300000, guid: 16d687ed8112ae34aa5f4b46139a9e80, type: 3}
   mapPosition: {x: 0, y: 0.0315, z: 0}
   mapScale: {x: 0.6, y: 0.6, z: 1}
   recPosition: {x: 0, y: 0, z: 0}
@@ -46,6 +49,32 @@ MonoBehaviour:
       shouldLoop: 0
       alreadyExtruded: 0
     dialogues: []
+    puzzle:
+      circuitSprites:
+      - circuitInitPosition: {x: -0.57, y: 0.38, z: 0}
+        circuitSprite: {fileID: 21300000, guid: e3cb913ac81ace74b9511960b5c3c625, type: 3}
+        circuitName: extrude11
+      - circuitInitPosition: {x: -0.57, y: 0.38, z: 0}
+        circuitSprite: {fileID: 21300000, guid: f96279e4550e49f41b6bb9166350cae4, type: 3}
+        circuitName: extrude12
+      puzzleBlocks:
+      - blockInitPosition: {x: -0.45, y: -0.89, z: 0}
+        blockSprite: {fileID: 21300000, guid: 46ad7b139300bb142bc1d72a9f04db00, type: 3}
+        blockName: extrude11
+        correctSprite: {fileID: 21300000, guid: c136e2a17dc29774c8958d69ff9db899, type: 3}
+        destinationPosition: {x: -3.09, y: 1.07, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: dest11
+        isSolved: 0
+      - blockInitPosition: {x: 1.02, y: 1.07, z: 0}
+        blockSprite: {fileID: 21300000, guid: 168d5218c666199458107916c7859a73, type: 3}
+        blockName: extrud12
+        correctSprite: {fileID: 21300000, guid: bae6d73d33d267b4587334cecb669a73, type: 3}
+        destinationPosition: {x: -2.39, y: 0.36, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: dest12
+        isSolved: 0
+      dialogues: []
   - extrudableSets:
     - id: 5
       position: {x: 2.698, y: 2.326, z: 0}
@@ -66,3 +95,18 @@ MonoBehaviour:
           twin: 0
         - text: i think it can help us push off that battery we can't reach!
           twin: 1
+    puzzle:
+      circuitSprites:
+      - circuitInitPosition: {x: 0.46, y: 0.4, z: 0}
+        circuitSprite: {fileID: 21300000, guid: 44194dbfc9c131346ba1a0e19aedae82, type: 3}
+        circuitName: push
+      puzzleBlocks:
+      - blockInitPosition: {x: 0.38, y: 1.68, z: 0}
+        blockSprite: {fileID: 21300000, guid: c7488732567bf5642802fbb45360656b, type: 3}
+        blockName: push
+        correctSprite: {fileID: 21300000, guid: 848dc56f79472a0499118e40312befae, type: 3}
+        destinationPosition: {x: 2.41, y: 0.19999999, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: pushdest
+        isSolved: 0
+      dialogues: []

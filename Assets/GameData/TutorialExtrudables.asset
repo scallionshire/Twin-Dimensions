@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: TutorialExtrudables
   m_EditorClassIdentifier: 
   level: 0
+  destinationPrefab: {fileID: 5303438541758785292, guid: 001a1d93e2efc4e43a92d9a8e25457c1, type: 3}
+  blockPrefab: {fileID: 4073186856996417480, guid: d7bfc4b663b7ff647bb86d01759fc8f6, type: 3}
+  circuitPrefab: {fileID: 6973451946996186604, guid: b68074b31029c214c8b66fcb9b8ee75d, type: 3}
   extrudable2DPrefab: {fileID: 4049955810353424624, guid: 89204b977a2624b86b1afab262ae5809, type: 3}
   dialogueTriggerPrefab: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
   mapSprite: {fileID: 21300000, guid: c545dd535c5894d3e8e829742be5c5ac, type: 3}
@@ -54,6 +57,32 @@ MonoBehaviour:
         - text: hmm... i think i can interact with the walls at the places where
             it's flashing...
           twin: 1
+    puzzle:
+      circuitSprites:
+      - circuitInitPosition: {x: -0.26, y: 0.23, z: 0}
+        circuitSprite: {fileID: 21300000, guid: 1d49735655ccac249af539f39e708c73, type: 3}
+        circuitName: extrude1
+      - circuitInitPosition: {x: -0.26, y: 0.23, z: 0}
+        circuitSprite: {fileID: 21300000, guid: 2575e88a51ddbaa4482aaf089e4bbec9, type: 3}
+        circuitName: extrude2
+      puzzleBlocks:
+      - blockInitPosition: {x: -4.33, y: 0.18, z: 0}
+        blockSprite: {fileID: 21300000, guid: 42bf6fcb31035194199c973c6bd6c264, type: 3}
+        blockName: extrude1
+        correctSprite: {fileID: 21300000, guid: d0378106de2b1cb4d998d3253e7f07e0, type: 3}
+        destinationPosition: {x: -2.07, y: 0.53, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: extrude1dest
+        isSolved: 0
+      - blockInitPosition: {x: -3.41, y: 1.9, z: 0}
+        blockSprite: {fileID: 21300000, guid: 267146ea27f50bc42aa2e8cf81ecd0c0, type: 3}
+        blockName: extrude2
+        correctSprite: {fileID: 21300000, guid: 5fcedc75d1f999242a503227ef2ecee2, type: 3}
+        destinationPosition: {x: -2.07, y: 1.45, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: extrude2dest
+        isSolved: 0
+      dialogues: []
   - extrudableSets:
     - id: 2
       position: {x: -0.401, y: 1.494, z: 0}
@@ -73,3 +102,18 @@ MonoBehaviour:
         - text: a CCTV was blocking the vent! maybe this bit can help us block the
             camera?
           twin: 1
+    puzzle:
+      circuitSprites:
+      - circuitInitPosition: {x: 0, y: 0, z: 0}
+        circuitSprite: {fileID: 21300000, guid: 52b920eeb04492841a642a820b10e51b, type: 3}
+        circuitName: block
+      puzzleBlocks:
+      - blockInitPosition: {x: 0, y: 0, z: 0}
+        blockSprite: {fileID: 21300000, guid: 267146ea27f50bc42aa2e8cf81ecd0c0, type: 3}
+        blockName: block
+        correctSprite: {fileID: 21300000, guid: 5fcedc75d1f999242a503227ef2ecee2, type: 3}
+        destinationPosition: {x: 0.35, y: 2.03, z: 0}
+        destinationSprite: {fileID: 0}
+        destinationName: blockdest
+        isSolved: 0
+      dialogues: []

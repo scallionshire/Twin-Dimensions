@@ -18,4 +18,5 @@ public struct ExtrudableData {
 public class ExtrudableList {
     public List<ExtrudableData> extrudableSets;
     public List<DialogueObject> dialogues;
+    public PuzzleList puzzle;
 }
