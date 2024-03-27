@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public bool isCutsceneDialogue = false;
-    private bool cutsceneWasVisited = false;
+    public bool doNotRepeat = false;
+    public bool isCutscene = false;
+    private bool dialogueWasVisited = false;
 
     public Dialogue noUSBDialogue;
     public Dialogue withUSBDialogue;
@@ -21,24 +22,37 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        if ((isCutsceneDialogue && !cutsceneWasVisited) || !isCutsceneDialogue)
+        if ((doNotRepeat && !dialogueWasVisited) || !doNotRepeat)
         {
             if (GameManager.instance.gameState.USBInserted)
             {
-                gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, isCutsceneDialogue);
+                if (GameManager.instance.ActiveSceneName == "new3Dtut")
+                {
+                    gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, isCutscene);
+                } else {
+                    // We don't have camera transition cutscenes in the 2d scenes, so leave them be
+                    gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, false);
+                }
 
                 // We don't want to play cutscene dialogues more than once
-                if (isCutsceneDialogue)
+                if (doNotRepeat)
                 {
-                    cutsceneWasVisited = true;
+                    dialogueWasVisited = true;
                 }
             }
             else
             {
-                gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, isCutsceneDialogue);
-                if (isCutsceneDialogue)
+                if (GameManager.instance.ActiveSceneName == "new3Dtut")
                 {
-                    cutsceneWasVisited = true;
+                    gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, isCutscene);
+                } else {
+                    // We don't want the fancy stuff for the 2D scenes
+                    gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, false);
+                }
+                
+                if (doNotRepeat)
+                {
+                    dialogueWasVisited = true;
                 }
             }
         }

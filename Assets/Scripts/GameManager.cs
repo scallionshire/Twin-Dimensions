@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -89,8 +90,6 @@ public class GameManager : MonoBehaviour
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
-
-        eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
     
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
@@ -188,7 +187,7 @@ public class GameManager : MonoBehaviour
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
         if (eventEmitter.EventInstance.isValid()) {
-                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
+            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
         }
         switchToScene("mainPuzzle");
 
@@ -205,7 +204,7 @@ public class GameManager : MonoBehaviour
     public void SwitchToMap(int extId, Level level) {
         switchToScene("new2dtut");
         if (eventEmitter.EventInstance.isValid()) {
-                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
+            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
         }
         // Find ExtrudableManager and load the map
         if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
@@ -302,7 +301,7 @@ public class GameManager : MonoBehaviour
 
         // switch back to 3D
         if (eventEmitter.EventInstance.isValid()) {
-                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
+            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
         }
         switchToScene("new3Dtut");
     }
@@ -443,9 +442,28 @@ public class GameManager : MonoBehaviour
         }
 
         if (instance.gameState.BlueOverlayOn && instance.gameState.PinkOverlayOn) {
+            // Play final cutscene; priority over group cutscenes
+            GameObject ComputerLabDoneTrigger = GameObject.Find("ComputerLabDoneTrigger");
+            if (ComputerLabDoneTrigger != null) {
+                ComputerLabDoneTrigger.GetComponent<Interactable>().Interact();
+            }
+
+            // Open the door
             GameObject Door2 = GameObject.Find("Door2");
             if (Door2 != null && Door2.GetComponent<Animator>().GetBool("isOpen") == false) {
                 Door2.GetComponent<Animator>().SetBool("isOpen", true);
+            }
+        } else if (instance.gameState.BlueOverlayOn || instance.gameState.PinkOverlayOn) {
+            // Play overlay cutscene
+            GameObject LookAtOverlayTrigger = GameObject.Find("LookAtOverlayTrigger");
+            if (LookAtOverlayTrigger != null) {
+                LookAtOverlayTrigger.GetComponent<Interactable>().Interact();
+            }
+        } else if (instance.gameState.BlueGroup0On || instance.gameState.BlueGroup1On || instance.gameState.BlueGroup2On) {
+            // Play group cutscene
+            GameObject BlueWallDoneTrigger = GameObject.Find("BlueWallDoneTrigger");
+            if (BlueWallDoneTrigger != null) {
+                BlueWallDoneTrigger.GetComponent<Interactable>().Interact();
             }
         }
     }
@@ -501,6 +519,14 @@ public class GameManager : MonoBehaviour
 
     public void switchToScene(string sceneName)
     {
+        if (eventEmitter == null) {
+            Debug.Log("Event emitter not found");
+            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+
+            // Ensure cursor is focused when you first start the game
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         DeactivateScene(ActiveSceneName);
         ActivateScene(sceneName);
         ActiveSceneName = sceneName;
@@ -535,6 +561,10 @@ public class GameManager : MonoBehaviour
             // Disable player movement
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
+
+            // Disable player interaction
+            Interaction playerInteraction = player.GetComponent<Interaction>();
+            playerInteraction.enabled = !freeze;
         }
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
