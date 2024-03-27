@@ -1,6 +1,5 @@
 using UnityEngine;
 using FMODUnity;
-using UnityEngine.InputSystem;
 
 public class Player2DMovement : MonoBehaviour
 {
@@ -62,7 +61,7 @@ public class Player2DMovement : MonoBehaviour
     void FixedUpdate()
     {
         // If player is pressing space and they aren't currently holding a block
-        if (Input.GetButtonDown("Drag") && collidedBlock != null)
+        if ((Input.GetKeyDown(KeyCode.Space) ||Input.GetKeyDown(KeyCode.Joystick1Button1))&& collidedBlock != null)
         {
             movement = movement * 0.7f; // Slow down movement while holding a block
 
