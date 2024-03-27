@@ -18,8 +18,5 @@ public struct ExtrudableData {
 public class ExtrudableList {
     public List<ExtrudableData> extrudableSets;
     public List<DialogueObject> dialogues;
-    public List<PuzzleList> puzzles;
-    public GameObject destinationPrefab; // destination prefab to instantiate
-    public GameObject blockPrefab; // block prefab to instantiate
-    public GameObject circuitPrefab; // circuit environment prefab to instantiate
+    public PuzzleList puzzle;
 }

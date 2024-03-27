@@ -6,7 +6,10 @@ using UnityEngine;
 public class ExtrudableDataScriptable : ScriptableObject
 {
     public Level level;
-    
+    public GameObject destinationPrefab; // destination prefab to instantiate
+    public GameObject blockPrefab; // block prefab to instantiate
+    public GameObject circuitPrefab; // circuit environment prefab to instantiate
+
     public GameObject extrudable2DPrefab; // 2D extrudable prefab to instantiate
     public GameObject dialogueTriggerPrefab; // dialogue trigger prefabs to instantiate
 
