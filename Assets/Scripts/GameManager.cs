@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {   
         // Scene Switch Logic
-        if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
+        if (Input.GetButtonDown("SwitchDim") && gameState.USBInserted) // M is cheat code to switch scenes
         {   
             if (firstSwitch && ActiveSceneName == "new3Dtut") {
                 ToggleCutsceneFreeze(false);
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetButtonDown("Cancel")) {
             TogglePauseMenu();
         }
 

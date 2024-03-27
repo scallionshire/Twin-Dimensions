@@ -41896,6 +41896,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4024504732289224791, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1757371635}
+    - targetCorrespondingSourceObject: {fileID: 4024504732289224791, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1757371636}
     - targetCorrespondingSourceObject: {fileID: 625529893726071959, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1443398172}
@@ -41941,6 +41944,22 @@ MonoBehaviour:
   m_Damping: 0.2
   m_DampingWhenOccluded: 0.1
   m_OptimalTargetDistance: 0
+--- !u!114 &1757371636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757371634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: -5630151704836100654, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &1759459800
 GameObject:
   m_ObjectHideFlags: 0
