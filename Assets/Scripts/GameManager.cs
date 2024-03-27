@@ -132,10 +132,15 @@ public class GameManager : MonoBehaviour
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
-            if (firstSwitch) {
-                ToggleDialogueFreeze(false);
+            if (firstSwitch && ActiveSceneName == "new3Dtut") {
+                Debug.Log("harro");
+                ToggleCutsceneFreeze(false);
+                ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
                 firstSwitch = false;
+                if (cutsceneManager != null) {
+                    cutsceneManager.PlayCutscene("switch");
+                }
             }
             
             if (ActiveSceneName == "new3Dtut")
@@ -173,8 +178,6 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
-        Debug.Log("Current puzzle ID and level: " + instance.gameState.CurrentPuzzleId + " " + instance.gameState.CurrentLevel);
-        Debug.Log("Switching to puzzle: " + puzzleId);
         switchToScene("mainPuzzle");
 
         if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
@@ -188,7 +191,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchToMap(int extId, Level level) {
-        Debug.Log("Switching to map: " + extId + " " + level);
         switchToScene("new2dtut");
 
         // Find ExtrudableManager and load the map
@@ -484,11 +486,6 @@ public class GameManager : MonoBehaviour
 
     public void switchToScene(string sceneName)
     {
-        if (hasPlayedSwitchCutscene == false && ActiveSceneName == "new3Dtut" && cutsceneManager != null)
-        {
-            cutsceneManager.PlayCutscene("switch");
-            hasPlayedSwitchCutscene = true;
-        }
         DeactivateScene(ActiveSceneName);
         ActivateScene(sceneName);
         ActiveSceneName = sceneName;

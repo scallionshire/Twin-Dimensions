@@ -11,6 +11,7 @@ public class TimelineActivator : MonoBehaviour
     private bool timelineComplete = false;
 
     public bool checkUSBInserted = false;
+    public bool doNotUnfreeze = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +27,11 @@ public class TimelineActivator : MonoBehaviour
             {
                 timelineComplete = true;
             }
-        }
 
-        if (timelineComplete && !dialogueManager.dialogueActive)
-        {
-            StopTimeline();
+            if (timelineComplete && !dialogueManager.dialogueActive)
+            {
+                StopTimeline();
+            }
         }
     }
 
@@ -56,8 +57,7 @@ public class TimelineActivator : MonoBehaviour
     {
         director.Stop();
 
-        if (dialogueManager.currentDialogueName != "ComputerFirstPlug") {
-            Debug.Log("Toggling Cutscene Freeze");
+        if (!doNotUnfreeze) {
             GameManager.instance.ToggleCutsceneFreeze(false);
         }
     }
