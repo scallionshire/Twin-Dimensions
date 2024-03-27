@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     private GameManager gameManager;
     private TooltipManager tooltipManager;
 
+    private bool isCutsceneDialogue = false;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -81,8 +83,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool isCutscene)
     {
+        isCutsceneDialogue = isCutscene;
+
         // Turn off tooltips
         if (GameObject.Find("TooltipCanvas") != null)
         {
@@ -91,7 +95,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         ToggleActive(true);
-        gameManager?.ToggleDialogueFreeze(true);
+
+        if (!isCutscene)
+        {
+            gameManager?.ToggleDialogueFreeze(true);
+            gameManager?.ToggleBokeh(true);
+        }
 
         currentDialogueName = dialogue.dialogueName;
 
@@ -112,16 +121,18 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             if (currentDialogueName == "ComputerFirstPlug") {
+                gameManager.ToggleBokeh(true);
+                
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
                     GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltipPermanently();
                 }
                 ToggleActive(false);
                 currentDialogueName = "";
-            }
-            else {
+            } else {
                 EndDialogue();
             }
+            
             return;
         }
 
@@ -150,11 +161,15 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (!isCutsceneDialogue)
+        {
+            gameManager.ToggleBokeh(false);
+            gameManager.ToggleDialogueFreeze(false);
+        }
+
         ToggleActive(false);
 
         currentDialogueName = "";
-
-        gameManager.ToggleDialogueFreeze(false);
     }
 
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)
