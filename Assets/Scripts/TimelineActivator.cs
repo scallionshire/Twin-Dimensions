@@ -40,7 +40,7 @@ public class TimelineActivator : MonoBehaviour
         {
             return;
         }
-        
+
         if (!timelinePlayed)
         {
             timelineComplete = false;
@@ -56,6 +56,9 @@ public class TimelineActivator : MonoBehaviour
     {
         director.Stop();
 
-        GameManager.instance.ToggleCutsceneFreeze(false);
+        if (dialogueManager.currentDialogueName != "ComputerFirstPlug") {
+            Debug.Log("Toggling Cutscene Freeze");
+            GameManager.instance.ToggleCutsceneFreeze(false);
+        }
     }
 }

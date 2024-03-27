@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     public bool noDialogueCanvas = false;
     public bool finishedDisplayingText = false;
 
-    private string currentDialogueName;
+    public string currentDialogueName;
 
     private GameManager gameManager;
     private TooltipManager tooltipManager;
@@ -121,15 +121,22 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             if (currentDialogueName == "ComputerFirstPlug") {
+                gameManager.ToggleBokeh(true);
+
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
                     GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltipPermanently();
                 }
+
                 ToggleActive(false);
                 currentDialogueName = "";
+
+                Debug.Log("Toggling Dialogue Freeze");
+                gameManager.ToggleDialogueFreeze(true);
+            } else {
+                EndDialogue();
             }
 
-            EndDialogue();
             return;
         }
 

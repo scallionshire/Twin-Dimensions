@@ -135,7 +135,9 @@ public class GameManager : MonoBehaviour
             if (firstSwitch) {
                 ToggleDialogueFreeze(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
+                firstSwitch = false;
             }
+            
             if (ActiveSceneName == "new3Dtut")
             {   
                 SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
@@ -148,7 +150,6 @@ public class GameManager : MonoBehaviour
             {
                 switchToScene("new3Dtut");
             }
-            firstSwitch = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
