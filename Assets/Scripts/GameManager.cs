@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
 
         eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
     
-        // // Doing this prevents losing reference to the popup menu
-        // TogglePauseMenu();
-        // TogglePauseMenu();
+        // Doing this prevents losing reference to the popup menu
+        TogglePauseMenu();
+        TogglePauseMenu();
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
