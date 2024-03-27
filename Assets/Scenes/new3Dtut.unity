@@ -8095,7 +8095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0010767622, y: 0.99588716, z: -0.0898059, w: -0.011940569}
+  m_LocalRotation: {x: -0.001076759, y: 0.99588716, z: -0.08980591, w: -0.011940532}
   m_LocalPosition: {x: -4.0225005, y: 6.2868896, z: 30.958572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12878,13 +12878,13 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1751084935
+      Data2: 1249503165
+      Data3: -1357653107
+      Data4: 609920886
+    Path: event:/SFX3D/MonitorDrone
   Event: 
-  PlayEvent: 0
+  PlayEvent: 1
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -12892,8 +12892,8 @@ MonoBehaviour:
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &589899933
 GameObject:
   m_ObjectHideFlags: 0
@@ -35570,13 +35570,13 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1751084935
+      Data2: 1249503165
+      Data3: -1357653107
+      Data4: 609920886
+    Path: event:/SFX3D/MonitorDrone
   Event: 
-  PlayEvent: 0
+  PlayEvent: 1
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -35584,8 +35584,8 @@ MonoBehaviour:
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1617365395
 GameObject:
   m_ObjectHideFlags: 0
@@ -36326,11 +36326,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1798004368
-      Data2: 1180172335
-      Data3: 858552250
-      Data4: 594110573
-    Path: event:/SFX3D/FishTank
+      Data1: 1667044788
+      Data2: 1268571915
+      Data3: -1921294437
+      Data4: 699247447
+    Path: event:/SFX3D/TubeBubbles
   Event: 
   PlayEvent: 1
   StopEvent: 0
@@ -39175,11 +39175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -39287,11 +39287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -48001,6 +48001,7 @@ GameObject:
   - component: {fileID: 1004670277}
   - component: {fileID: 7754709856810785956}
   - component: {fileID: 7754709856810785955}
+  - component: {fileID: 7754709856810785957}
   m_Layer: 6
   m_Name: YellowVessel
   m_TagString: Untagged
@@ -48135,6 +48136,7 @@ GameObject:
   - component: {fileID: 5606373946122243311}
   - component: {fileID: 7819813459615293287}
   - component: {fileID: 9114721602149101767}
+  - component: {fileID: 9114721602149101768}
   m_Layer: 9
   m_Name: pCube121
   m_TagString: Untagged
@@ -55588,6 +55590,7 @@ GameObject:
   - component: {fileID: 1357986669}
   - component: {fileID: 5522308297616353942}
   - component: {fileID: 5522308297616353941}
+  - component: {fileID: 5522308297616353943}
   m_Layer: 6
   m_Name: BlueVessel
   m_TagString: Untagged
@@ -62813,6 +62816,37 @@ MonoBehaviour:
         m_CallState: 2
   highlightMaterial: {fileID: 2100000, guid: 42809d62d3eed4b8d992f386a26a46c2, type: 2}
   wasHighlighted: 0
+--- !u!114 &5522308297616353943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903893172810610798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1667044788
+      Data2: 1268571915
+      Data3: -1921294437
+      Data4: 699247447
+    Path: event:/SFX3D/TubeBubbles
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!33 &5543175640511264535
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70155,6 +70189,37 @@ MonoBehaviour:
     sentences:
     - text: just looking at these things gives me the heebie jeebies! >_<
       twin: 1
+--- !u!114 &7754709856810785957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152623066863336678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1667044788
+      Data2: 1268571915
+      Data3: -1921294437
+      Data4: 699247447
+    Path: event:/SFX3D/TubeBubbles
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &7768146139789719432
 GameObject:
   m_ObjectHideFlags: 0
@@ -70836,6 +70901,7 @@ GameObject:
   - component: {fileID: 2694803052525181343}
   - component: {fileID: 951033149150983436}
   - component: {fileID: 4137167836732543434}
+  - component: {fileID: 8001789297700009516}
   m_Layer: 9
   m_Name: pCube121
   m_TagString: Untagged
@@ -70843,6 +70909,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &8001789297700009516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001789297700009515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -232734368
+      Data2: 1118756704
+      Data3: -1918711126
+      Data4: -535004317
+    Path: event:/SFX3D/ElectricHum
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8006341739865348086
 GameObject:
   m_ObjectHideFlags: 0
@@ -73639,6 +73736,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9114721602149101768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219588019858669716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -232734368
+      Data2: 1118756704
+      Data3: -1918711126
+      Data4: -535004317
+    Path: event:/SFX3D/ElectricHum
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &9125591782926930128
 GameObject:
   m_ObjectHideFlags: 0
@@ -73650,6 +73778,7 @@ GameObject:
   - component: {fileID: 5138211840418818493}
   - component: {fileID: 5425099975055597709}
   - component: {fileID: 2971193251604736019}
+  - component: {fileID: 9125591782926930129}
   m_Layer: 9
   m_Name: pCube121
   m_TagString: Untagged
@@ -73657,6 +73786,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &9125591782926930129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125591782926930128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -232734368
+      Data2: 1118756704
+      Data3: -1918711126
+      Data4: -535004317
+    Path: event:/SFX3D/ElectricHum
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &9127717400816516316
 Transform:
   m_ObjectHideFlags: 0
