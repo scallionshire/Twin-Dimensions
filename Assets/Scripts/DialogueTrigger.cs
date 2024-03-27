@@ -5,19 +5,16 @@ using UnityEngine.AI;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public bool doNotRepeat = false;
+    public bool isCutscene = false;
+    private bool dialogueWasVisited = false;
+
     public Dialogue noUSBDialogue;
     public Dialogue withUSBDialogue;
-    private bool noUSBWasVisited = false;
-    private bool withUSBWasVisited = false;
 
     public void TriggerDialogue()
     {
         GameObject dc = GameObject.Find("DialogueCanvas");
-
-        if (dc == null) {
-            Debug.Log("harro????");
-        }
-        
         GameObject gm = GameObject.Find("GameManager");
 
         if (dc != null && gm.GetComponent<DialogueManager>().dialogueActive)
@@ -25,21 +22,39 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (FindObjectOfType<GameManager>().gameState.USBInserted && !withUSBWasVisited)
+        if ((doNotRepeat && !dialogueWasVisited) || !doNotRepeat)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(withUSBDialogue);
-            withUSBWasVisited = true;
-        }
-        else if (!noUSBWasVisited)
-        {
-            FindObjectOfType<DialogueManager>().StartDialogue(noUSBDialogue);
-            noUSBWasVisited = true;
-        }
-    }
+            if (GameManager.instance.gameState.USBInserted)
+            {
+                if (GameManager.instance.ActiveSceneName == "new3Dtut")
+                {
+                    gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, isCutscene);
+                } else {
+                    // We don't have camera transition cutscenes in the 2d scenes, so leave them be
+                    gm.GetComponent<DialogueManager>().StartDialogue(withUSBDialogue, false);
+                }
 
-    public void MakeVisited()
-    {
-        noUSBWasVisited = true;
-        withUSBWasVisited = true;
+                // We don't want to play cutscene dialogues more than once
+                if (doNotRepeat)
+                {
+                    dialogueWasVisited = true;
+                }
+            }
+            else
+            {
+                if (GameManager.instance.ActiveSceneName == "new3Dtut")
+                {
+                    gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, isCutscene);
+                } else {
+                    // We don't want the fancy stuff for the 2D scenes
+                    gm.GetComponent<DialogueManager>().StartDialogue(noUSBDialogue, false);
+                }
+                
+                if (doNotRepeat)
+                {
+                    dialogueWasVisited = true;
+                }
+            }
+        }
     }
 }
