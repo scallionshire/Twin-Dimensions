@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
         {   
             if (firstSwitch && ActiveSceneName == "new3Dtut") {
-                Debug.Log("harro");
                 ToggleCutsceneFreeze(false);
                 ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
