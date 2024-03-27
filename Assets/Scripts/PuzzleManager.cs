@@ -24,6 +24,10 @@ public class PuzzleManager : MonoBehaviour
     {   
         correctBlocks.Clear();
 
+        // Set player to center of screen
+        GameObject player = GameObject.Find("2D Player");
+        player.transform.position = GameObject.Find("Background").transform.position;
+
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
