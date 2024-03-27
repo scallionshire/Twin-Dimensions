@@ -8,6 +8,7 @@ public class Player2DMovement : MonoBehaviour
     private Vector2 movement;
     private Animator _animator;
     private Rigidbody2D rb;
+    private TooltipManager tooltipManager;
     private FMOD.Studio.EventInstance footstepsSound;
     private FMOD.Studio.EventInstance blockMovingSound;
 
@@ -22,6 +23,11 @@ public class Player2DMovement : MonoBehaviour
         blockMovingSound = RuntimeManager.CreateInstance("event:/SFX3D/BoxPushV2");
 
         rb = GetComponent<Rigidbody2D>();
+
+        if (GameObject.Find("TooltipCanvas") != null)
+        {
+            tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+        }
     }
 
     void Update()
@@ -55,9 +61,9 @@ public class Player2DMovement : MonoBehaviour
     void FixedUpdate()
     {
         // If player is pressing space and they aren't currently holding a block
-
         if (Input.GetButton("Drag") && collidedBlock != null)
         {
+            Debug.Log("hi");
             movement = movement * 0.7f; // Slow down movement while holding a block
 
             if (blockMovingSound.getPlaybackState(out var playbackState) != FMOD.RESULT.OK || playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
@@ -80,10 +86,37 @@ public class Player2DMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+        if (collision.gameObject.tag == "Extrudable")
+        {
+            if (tooltipManager != null)
+            {
+                tooltipManager.ToggleSpaceTooltip(true);
+            }
+            Debug.Log("Collided with block: " + collision.gameObject.name);
+            collidedBlock = collision.gameObject;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("Left collision with: " + collision.gameObject.name);
+        if (collision.gameObject.tag == "Extrudable")
+        {
+            collidedBlock = null;
+            if (tooltipManager != null)
+            {
+                tooltipManager.ToggleSpaceTooltip(false);
+            }
+        }
+    }
+
     public void OnChildTriggerEntered2D(Collider2D collider)
     {
         Debug.Log("Collided with: " + collider.gameObject.name);
-        if (collider.gameObject.tag == "Block" || collider.gameObject.tag == "Extrudable")
+        if (collider.gameObject.tag == "Block")
         {
             Debug.Log("Collided with block: " + collider.gameObject.name);
             collidedBlock = collider.gameObject;
@@ -93,7 +126,7 @@ public class Player2DMovement : MonoBehaviour
     public void OnChildTriggerExited2D(Collider2D collider)
     {
         Debug.Log("Left collision with: " + collider.gameObject.name);
-        if (collider.gameObject.tag == "Block" || collider.gameObject.tag == "Extrudable")
+        if (collider.gameObject.tag == "Block")
         {
             collidedBlock = null;
         }
