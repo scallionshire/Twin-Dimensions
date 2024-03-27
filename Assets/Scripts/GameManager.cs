@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Variables")]
     public bool firstSwitch = true;   
+    public bool isFrozen = false;
     
     public float MusicVolume = 100f;
     public float DialogueVolume = 100f;
@@ -527,6 +528,8 @@ public class GameManager : MonoBehaviour
 
     public void ToggleCutsceneFreeze(bool freeze)
     {
+        isFrozen = freeze;
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         // Disable player movement
         ThirdPersonController playerController = player.GetComponent<ThirdPersonController>();
@@ -539,6 +542,8 @@ public class GameManager : MonoBehaviour
 
     public void ToggleDialogueFreeze(bool freeze)
     {
+        isFrozen = freeze;
+        
         if (ActiveSceneName == "new3Dtut") {
             // Disable camera
             CinemachineFreeLook playerCamera = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
