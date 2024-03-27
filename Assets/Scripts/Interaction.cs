@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
-    public Camera playerCamera; 
-    public float interactDistance = 5f;
+    public Transform interactionCenter;
+    public float interactRadius = 5f;
     public LayerMask layers;
     public bool prevHit = false;
     public GameObject prevInteractable;
@@ -14,13 +14,11 @@ public class Interaction : MonoBehaviour
     private PlayerFader playerFader;
     private TooltipManager tooltipManager;
 
+    private Collider[] hitColliders =  new Collider[3];
+    private int numColliders;
+
     void Start()
     {
-        if (playerCamera == null)
-        {
-            playerCamera = Camera.main; 
-        }
-
         dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
         playerFader = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>();
         tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
@@ -28,13 +26,30 @@ public class Interaction : MonoBehaviour
 
     void Update()
     {   
-        // Constantly detect ray
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.green);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactDistance, layers))
-        {   
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
+        numColliders = Physics.OverlapSphereNonAlloc(interactionCenter.position, interactRadius, hitColliders, layers);
+
+        if (numColliders > 0)
+        {
+            Interactable interactable;
+
+            if (numColliders > 1)
+            {
+                float minDist = Mathf.Infinity;
+                Collider closest = null;
+                foreach (Collider c in hitColliders)
+                {
+                    if (c == null) continue;
+                    float dist = (interactionCenter.position - c.transform.position).sqrMagnitude;
+                    if (dist < minDist)
+                    {
+                        closest = c;
+                        minDist = dist;
+                    }
+                }
+                interactable = closest.GetComponent<Interactable>();
+            } else {
+                interactable = hitColliders[0].GetComponent<Interactable>();
+            }
 
             if (interactable != null)
             {   
@@ -46,20 +61,30 @@ public class Interaction : MonoBehaviour
                 }
                 
                 prevHit = true;
-                prevInteractable = hit.collider.gameObject;
-                interactable.Highlight();
+
                 if (Input.GetButtonDown("Fire1")) // click/b to interact
                 {   
                     interactable.Interact();
+                    interactable.RemoveHighlight();
+                } else if (prevInteractable != interactable.gameObject) {
+                    if (prevInteractable != null)
+                    {
+                        prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+                    }
+                    interactable.Highlight();
                 }
+
+                prevInteractable = interactable.gameObject;
             }
         } else if (prevHit == true)
         {
-            // Debug.Log("Removing highlight");
+            // If we're no longer interacting with anything
             prevHit = false;
+            
             if (prevInteractable != null)
             {
                 prevInteractable.GetComponent<Interactable>().RemoveHighlight();
+                prevInteractable = null;
             } else {
                 // Handle case where object is destroyed
                 playerFader.ResetFade();
@@ -70,8 +95,15 @@ public class Interaction : MonoBehaviour
                 tooltipManager.GetComponent<TooltipManager>().ToggleClickTooltip(false);
             }
         } else {
+            // We were never interacting with anything
             prevHit = false;
         }
-    
+    }
+
+    // Draw the sphere in the scene view
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+        Gizmos.DrawWireSphere(interactionCenter.position, interactRadius);
     }
 }
