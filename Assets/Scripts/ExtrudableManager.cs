@@ -17,7 +17,7 @@ public class ExtrudableManager : MonoBehaviour
         currentExtrudables.Clear();
 
         GameObject player = GameObject.Find("2D Player");
-        player.transform.position = new Vector3(0, 0, 0);
+        player.transform.position = GameObject.Find("Background").transform.position;
 
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -101,7 +101,7 @@ public class ExtrudableManager : MonoBehaviour
 
     IEnumerator ExtrudableCompletionReturn()
     {
-        yield return new WaitForSeconds(0.5);
+        yield return new WaitForSeconds(0.5f);
         gameManager?.switchToScene("new3Dtut");
     }
 }
