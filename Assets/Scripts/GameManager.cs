@@ -188,8 +188,6 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
-        Debug.Log("Current puzzle ID and level: " + instance.gameState.CurrentPuzzleId + " " + instance.gameState.CurrentLevel);
-        Debug.Log("Switching to puzzle: " + puzzleId);
         if (eventEmitter.EventInstance.isValid()) {
                    eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
         }
