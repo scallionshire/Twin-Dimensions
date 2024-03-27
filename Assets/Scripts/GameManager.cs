@@ -152,16 +152,10 @@ public class GameManager : MonoBehaviour
             else if (ActiveSceneName == "new2dtut")
             {
                 switchToScene("new3Dtut");
-                if (eventEmitter.EventInstance.isValid()) {
-                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
-                }
             }
             else if (ActiveSceneName == "mainPuzzle")
             {
                 switchToScene("new3Dtut");
-                if (eventEmitter.EventInstance.isValid()) {
-                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
-                }
             }
         }
 
@@ -186,9 +180,6 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
     {   
-        if (eventEmitter.EventInstance.isValid()) {
-            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
-        }
         switchToScene("mainPuzzle");
 
         if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
@@ -203,9 +194,6 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToMap(int extId, Level level) {
         switchToScene("new2dtut");
-        if (eventEmitter.EventInstance.isValid()) {
-            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
-        }
         // Find ExtrudableManager and load the map
         if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
             instance.gameState.CurrentExtrudableSetId = extId;
@@ -299,10 +287,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        // switch back to 3D
-        if (eventEmitter.EventInstance.isValid()) {
-            eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
-        }
         switchToScene("new3Dtut");
     }
 
@@ -527,6 +511,14 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        if (eventEmitter.EventInstance.isValid()) {
+            if (sceneName == "new3Dtut") {
+                eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
+            } else {
+                eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
+            }
+        }
+        
         DeactivateScene(ActiveSceneName);
         ActivateScene(sceneName);
         ActiveSceneName = sceneName;
