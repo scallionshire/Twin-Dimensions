@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public float DialogueVolume = 100f;
     public float SFXVolume = 100f;
 
+    private FMODUnity.StudioEventEmitter eventEmitter;
+
     public GameObject popupMenu;
     public ExtrudableDataScriptable initTutorialExtrudables;
     public ExtrudableDataScriptable initComputerLabExtrudables;
@@ -87,6 +89,8 @@ public class GameManager : MonoBehaviour
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
+
+        eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
     
         // // Doing this prevents losing reference to the popup menu
         // TogglePauseMenu();
@@ -131,7 +135,7 @@ public class GameManager : MonoBehaviour
     {   
         // Scene Switch Logic
         if (Input.GetKeyDown(KeyCode.Q) && gameState.USBInserted) // M is cheat code to switch scenes
-        {   
+        {  
             if (firstSwitch) {
                 ToggleDialogueFreeze(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
@@ -143,10 +147,16 @@ public class GameManager : MonoBehaviour
             else if (ActiveSceneName == "new2dtut")
             {
                 switchToScene("new3Dtut");
+                if (eventEmitter.EventInstance.isValid()) {
+                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
+                }
             }
             else if (ActiveSceneName == "mainPuzzle")
             {
                 switchToScene("new3Dtut");
+                if (eventEmitter.EventInstance.isValid()) {
+                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
+                }
             }
             firstSwitch = false;
         }
@@ -174,6 +184,9 @@ public class GameManager : MonoBehaviour
     {   
         Debug.Log("Current puzzle ID and level: " + instance.gameState.CurrentPuzzleId + " " + instance.gameState.CurrentLevel);
         Debug.Log("Switching to puzzle: " + puzzleId);
+        if (eventEmitter.EventInstance.isValid()) {
+                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
+        }
         switchToScene("mainPuzzle");
 
         if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
@@ -189,7 +202,9 @@ public class GameManager : MonoBehaviour
     public void SwitchToMap(int extId, Level level) {
         Debug.Log("Switching to map: " + extId + " " + level);
         switchToScene("new2dtut");
-
+        if (eventEmitter.EventInstance.isValid()) {
+                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 1);
+        }
         // Find ExtrudableManager and load the map
         if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
             instance.gameState.CurrentExtrudableSetId = extId;
@@ -286,6 +301,9 @@ public class GameManager : MonoBehaviour
         }
 
         // switch back to 3D
+        if (eventEmitter.EventInstance.isValid()) {
+                   eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
+        }
         switchToScene("new3Dtut");
     }
 
