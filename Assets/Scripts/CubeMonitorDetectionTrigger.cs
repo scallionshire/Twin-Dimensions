@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using System.Collections;
 
 public class CubeMonitorDetectionTrigger : MonoBehaviour
 {
@@ -19,8 +20,21 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
         if (isMonitoringActive && other.CompareTag("Player"))
         {
             Debug.Log("The player has entered the detection zone.");
-            GetComponent<ResetToCheckpoint>().Reset();
+            RuntimeManager.PlayOneShot(eventName, transform.position);
+            ScreenFade fadeEffect = FindObjectOfType<ScreenFade>(); 
+            if (fadeEffect != null)
+            {
+                fadeEffect.TriggerCaughtEffect(); 
+                StartCoroutine(WaitToFadeBack(fadeEffect));
+            }
         }
+    }
+
+    IEnumerator WaitToFadeBack(ScreenFade fadeEffect)
+    {
+        yield return new WaitForSeconds(3f); 
+        GetComponent<ResetToCheckpoint>().Reset();
+        fadeEffect.TriggerReturnEffect();
     }
 
     public void OnChildTriggerExited(Collider other)
