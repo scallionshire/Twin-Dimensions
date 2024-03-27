@@ -31,9 +31,9 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
 
     IEnumerator WaitToFadeBack(ScreenFade fadeEffect)
     {
-        yield return new WaitForSeconds(2f); 
-        fadeEffect.TriggerReturnEffect();
+        yield return new WaitForSeconds(3f); 
         GetComponent<ResetToCheckpoint>().Reset();
+        fadeEffect.TriggerReturnEffect();
     }
 
     public void OnChildTriggerExited(Collider other)
