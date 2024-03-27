@@ -228,7 +228,6 @@ public class GameManager : MonoBehaviour
         instance.gameState.PlayerHasUSB = true;
         Debug.Log("Adding USB to inventory");
         UpdateInventoryUI();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/Pickup");
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
 
@@ -253,7 +252,6 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateInventoryUI();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/Pickup");
         Destroy(battery); 
         RotateDetectionZone rotatingMonitor = GameObject.Find("MonitorCylinder").GetComponent<RotateDetectionZone>();
         rotatingMonitor.IncreaseRotationSpeed();

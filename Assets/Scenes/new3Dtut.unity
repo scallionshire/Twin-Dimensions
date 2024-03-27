@@ -7977,7 +7977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0010767622, y: 0.99588716, z: -0.0898059, w: -0.011940569}
+  m_LocalRotation: {x: -0.001076759, y: 0.99588716, z: -0.08980591, w: -0.011940532}
   m_LocalPosition: {x: -4.0225005, y: 6.2868896, z: 30.958572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18869,6 +18869,7 @@ Transform:
   - {fileID: 6751713250253541565}
   - {fileID: 6751713249161437963}
   - {fileID: 6751713250557341800}
+  - {fileID: 6751713250138717361}
   m_Father: {fileID: 670601341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &908624256
@@ -28114,6 +28115,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1628981768}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1628981769}
   m_SourcePrefab: {fileID: 100100000, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
 --- !u!1 &1315414928
 GameObject:
@@ -35282,6 +35286,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.1
   frequency: 1
+--- !u!114 &1628981769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628981763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 12
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1630124671
 GameObject:
   m_ObjectHideFlags: 0
@@ -38466,11 +38501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -38542,11 +38577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957585
+      value: -0.011957549
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0008676087
+      value: 0.00086760614
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -56032,6 +56067,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4497378049218882974}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4497378049218882975}
   m_SourcePrefab: {fileID: 100100000, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
 --- !u!4 &3405271010082776757 stripped
 Transform:
@@ -58986,6 +59024,37 @@ MonoBehaviour:
     - text: Forget pretty, I just hope those stupid screens are useful for getting
         out of here.
       twin: 0
+--- !u!114 &4497378049218882975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405271010082776758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4510359179621179344
 GameObject:
   m_ObjectHideFlags: 0
@@ -65499,6 +65568,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6751713249161437966}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6751713249161437967}
   m_SourcePrefab: {fileID: 100100000, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
 --- !u!4 &6751713249161437963 stripped
 Transform:
@@ -65571,17 +65643,48 @@ MonoBehaviour:
     sentences:
     - text: Why did they just leave all these batteries lying around?
       twin: 0
+--- !u!114 &6751713249161437967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751713249161437964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6751713250138717355
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 905855392}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalScale.z
@@ -65589,15 +65692,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.7020006
+      value: -5.951
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: 3.3000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.365
+      value: 5.785
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65679,6 +65782,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6751713250138717360}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6751713250138717362}
   m_SourcePrefab: {fileID: 100100000, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
 --- !u!1 &6751713250138717357 stripped
 GameObject:
@@ -65775,6 +65881,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &6751713250138717361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+  m_PrefabInstance: {fileID: 6751713250138717355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6751713250138717362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751713250138717357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6751713250253541564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65883,6 +66025,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6751713250253541568}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6751713250253541569}
   m_SourcePrefab: {fileID: 100100000, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
 --- !u!4 &6751713250253541565 stripped
 Transform:
@@ -65957,6 +66102,37 @@ MonoBehaviour:
       twin: 0
     - text: she's a runner, she's a trackstar~
       twin: 1
+--- !u!114 &6751713250253541569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751713250253541566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6751713250557341799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66065,6 +66241,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6751713250557341803}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6751713250557341804}
   m_SourcePrefab: {fileID: 100100000, guid: c0dced37f62d3c747a2483ecb2da916f, type: 3}
 --- !u!4 &6751713250557341800 stripped
 Transform:
@@ -66137,6 +66316,37 @@ MonoBehaviour:
     sentences:
     - text: it's like a scavenger hunt! :D except we're running for our lives! :D
       twin: 1
+--- !u!114 &6751713250557341804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751713250557341801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -254167324
+      Data2: 1316357381
+      Data3: -941350979
+      Data4: -1372098060
+    Path: event:/SFX3D/Pickup
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &6754115880232812355
 Transform:
   m_ObjectHideFlags: 0
@@ -73151,7 +73361,6 @@ SceneRoots:
   - {fileID: 121982670}
   - {fileID: 870497653}
   - {fileID: 670601341}
-  - {fileID: 6751713250138717355}
   - {fileID: 588547456}
   - {fileID: 1612420953}
   - {fileID: 852272249}
