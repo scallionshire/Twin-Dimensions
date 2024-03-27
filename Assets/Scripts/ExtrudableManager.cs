@@ -9,9 +9,13 @@ public class ExtrudableManager : MonoBehaviour
 
     private GameManager gameManager;
 
+    private List<GameObject> currentExtrudables = new List<GameObject>();
+
     // Start is called before the first frame update
     public void LoadMap()
     {
+        currentExtrudables.Clear();
+
         if (GameObject.Find("GameManager") != null) {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             currentExtrudableSetId = gameManager.gameState.CurrentExtrudableSetId;
@@ -61,15 +65,40 @@ public class ExtrudableManager : MonoBehaviour
             newExtrudable.transform.rotation = Quaternion.Euler(extrudableSets[i].rotation);
             newExtrudable.name = "Extrudable" + extrudableSets[i].id;
 
-            newExtrudable.GetComponent<Extrudable>().extrudableId = extrudableSets[i].id;
-            newExtrudable.GetComponent<Extrudable>().extrudeDirection = extrudableSets[i].direction;
-            newExtrudable.GetComponent<Extrudable>().extrudeAmount = extrudableSets[i].amount;
-            newExtrudable.GetComponent<Extrudable>().shouldLoop = extrudableSets[i].shouldLoop;
-            newExtrudable.GetComponent<Extrudable>().isExtruding = extrudableSets[i].shouldExtrude;
+            Extrudable newExtrudableScript = newExtrudable.GetComponent<Extrudable>();
+            newExtrudableScript.extrudableId = extrudableSets[i].id;
+            newExtrudableScript.extrudeDirection = extrudableSets[i].direction;
+            newExtrudableScript.extrudeAmount = extrudableSets[i].amount;
+            newExtrudableScript.shouldLoop = extrudableSets[i].shouldLoop;
+            newExtrudableScript.isExtruding = extrudableSets[i].shouldExtrude;
 
             if (gameManager != null && gameManager.gameState.Extrudables[extrudableSets[i].id]) {
                 newExtrudable.GetComponent<Extrudable>().MakeAlreadyExtruded();
             }
+
+            currentExtrudables.Add(newExtrudable);
         }
+    }
+
+    void Update()
+    {
+        // If all extrudables are in their final state for current id (all isExtruding), return to the 3D scene
+        bool allExtrudablesExtruded = true;
+        foreach (GameObject extrudable in currentExtrudables) {
+            if (!extrudable.GetComponent<Extrudable>().finishedExtruding) {
+                allExtrudablesExtruded = false;
+                break;
+            }
+        }
+
+        if (allExtrudablesExtruded) {
+           StartCoroutine(ExtrudableCompletionReturn());
+        }
+    }
+
+    IEnumerator ExtrudableCompletionReturn()
+    {
+        yield return new WaitForSeconds(1);
+        gameManager?.switchToScene("new3Dtut");
     }
 }

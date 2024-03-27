@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [System.Serializable]
 public struct PuzzlePiece {
@@ -127,13 +128,14 @@ public class PuzzleManager : MonoBehaviour
         {
             // Puzzle is solved, provide feedback and handle progression
             puzzlesSolved[currentPuzzleId] = true;
-            gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
-            
-            if (GameObject.Find("TooltipCanvas") != null)
-            {
-                GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
-            }
+            StartCoroutine(PuzzleCompletionReturn());
         }
+    }
+
+    IEnumerator PuzzleCompletionReturn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
     }
 
     bool IsPuzzleSolved()

@@ -114,10 +114,14 @@ public class DialogueManager : MonoBehaviour
             if (currentDialogueName == "ComputerFirstPlug") {
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
-                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltipPermanently();
                 }
+                ToggleActive(false);
+                currentDialogueName = "";
             }
-            EndDialogue();
+            else {
+                EndDialogue();
+            }
             return;
         }
 
@@ -130,6 +134,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(false, Twin.Twin_20);
 
                 TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/3DDialogStartSound");
                 StartCoroutine(TypeSentence(target02, sentence.text));
                 break;
             case Twin.Twin_20:
@@ -137,7 +142,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(false, Twin.Twin_02);
                 
                 TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/DialogStartSound");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/2DDialogStartSound");
                 StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
         }
