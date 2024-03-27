@@ -20,6 +20,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
         if (isMonitoringActive && other.CompareTag("Player"))
         {
             Debug.Log("The player has entered the detection zone.");
+            RuntimeManager.PlayOneShot(eventName, transform.position);
             ScreenFade fadeEffect = FindObjectOfType<ScreenFade>(); 
             if (fadeEffect != null)
             {
