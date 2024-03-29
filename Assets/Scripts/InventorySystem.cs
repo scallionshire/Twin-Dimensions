@@ -22,16 +22,10 @@ public class InventorySystem : MonoBehaviour
 
         inventoryBackground.SetActive(hasUSB);
 
-        if (hasUSB)
-        {
-            Debug.Log("USB is in the inventory");
-        }
-
         if (batteryCount > 0) {
             RectTransform inventoryBackgroundRect = inventoryBackground.GetComponent<RectTransform>();
             inventoryBackgroundRect.sizeDelta = new Vector2(inventoryBackgroundRect.sizeDelta.x, 130);
             batteryImage.SetActive(true);
-            Debug.Log($"Batteries in the inventory: {batteryCount}");
             itemCountText.text = $"x{batteryCount}";
 
         }

@@ -96,6 +96,7 @@ public class DialogueManager : MonoBehaviour
 
         ToggleActive(true);
 
+        // Don't mess with freezing if it's a cutscene, TimelineActivator will handle that
         if (!isCutscene)
         {
             GameManager.instance.ToggleDialogueFreeze(true);
@@ -164,8 +165,10 @@ public class DialogueManager : MonoBehaviour
         if (!isCutsceneDialogue)
         {
             GameManager.instance.ToggleBokeh(false);
+            // This will make it so that the interaction to end the dialogue doesn't automatically trigger another one again
             StartCoroutine(WaitBeforeUnFreezing());
         } else {
+            // If it's a cutscene dialogue, just turn off the dialogue canvas first
             ToggleActive(false);
         }
 
