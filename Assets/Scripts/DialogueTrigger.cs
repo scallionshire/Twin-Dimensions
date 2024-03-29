@@ -34,8 +34,6 @@ public class DialogueTrigger : MonoBehaviour
                 break;
         }
 
-        Debug.Log("Has condition been met? " + conditionMet);
-
         GameObject dc = GameObject.Find("DialogueCanvas");
         GameObject gm = GameObject.Find("GameManager");
 
