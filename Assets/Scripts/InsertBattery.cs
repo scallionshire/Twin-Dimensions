@@ -29,6 +29,7 @@ public class InsertBattery : MonoBehaviour
     public void insert()
     {
         int batteryCount = GameManager.instance.gameState.BatteriesCollected;
+        
         if (batteryCount > 0)
         {
             batteries[batteriesIn].SetActive(true);
