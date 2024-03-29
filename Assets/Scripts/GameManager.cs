@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
 
         if (debugLevel == Level.computerlab) {
             GameObject Player3D = GameObject.Find("3D Player");
-            Player3D.transform.position = new Vector3(-0.85f,-6.05f,7.03f);
+            Player3D.transform.position = new Vector3(-0.85f,-4.05f,7.03f);
             instance.gameState.PlayerPosition3D = new Vector3(-0.85f,-6.05f,7.03f);
 
             instance.gameState.Door0Unlocked = true;
@@ -125,12 +125,14 @@ public class GameManager : MonoBehaviour
 
             instance.gameState.PlayerHasUSB = true;
             instance.gameState.USBInserted = true;
+
+            instance.firstSwitch = false;
         }
     }
 
     void Update()
     {   
-        // Scene Switch Logic
+        // Only allow player to switch dimensions if they have inserted the USB, and a cutscene isn't playing
         if (Input.GetButtonDown("SwitchDim") && gameState.USBInserted && (!isFrozen || firstSwitch))
         {   
             if (firstSwitch && ActiveSceneName == "new3Dtut") {
@@ -207,8 +209,11 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToMap(int extId, Level level) {
         switchToScene("new2dtut");
-        // Find ExtrudableManager and load the map
-        if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel) {
+        // Find ExtrudableManager and load the map if:
+        //  - extrudable set id is different
+        //  - level is different
+        //  - extrudable set id is -1 (meaning no extrudables have been loaded yet, so we don't care about map state)
+        if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel || extId == -1) {
             instance.gameState.CurrentExtrudableSetId = extId;
             instance.gameState.CurrentLevel = level;
             wipeExtrudables();
@@ -218,17 +223,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // --------------- GAME STATE FUNCTIONS ---------------
     private void UpdateInventoryUI() {
         InventorySystem inventorySystem = FindObjectOfType<InventorySystem>();
         if (inventorySystem != null) {
-            Debug.Log("Updating inventory UI");
             inventorySystem.UpdateInventoryUI();
         }
     }
 
     public void GetUSB() {
         instance.gameState.PlayerHasUSB = true;
-        Debug.Log("Adding USB to inventory");
         UpdateInventoryUI();
         GameObject.FindGameObjectWithTag("USB").SetActive(false);
     }
@@ -237,21 +241,12 @@ public class GameManager : MonoBehaviour
         if (instance.gameState.PlayerHasUSB) {
             instance.gameState.USBInserted = true;
             // gameState.USBInserted = true;
-            Debug.Log("Game state, USB inserted: " + instance.gameState.USBInserted);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/USBInsert");
-        } else {
-            Debug.Log("Player does not have USB");
         }
     }
 
     public void PickUpBattery(GameObject battery) {
         instance.gameState.BatteriesCollected++;
-        Debug.Log($"Battery collected: {instance.gameState.BatteriesCollected}/{instance.gameState.TotalBatteries}");
-
-        if (instance.gameState.BatteriesCollected == instance.gameState.TotalBatteries)
-        {
-            Debug.Log("All batteries collected!");
-        }
 
         UpdateInventoryUI();
         Destroy(battery); 
@@ -262,11 +257,7 @@ public class GameManager : MonoBehaviour
     public void UseBattery() {
         if (gameState.BatteriesCollected > 0) {
             gameState.BatteriesCollected--;
-            Debug.Log($"Battery used: Now {gameState.BatteriesCollected}/{gameState.TotalBatteries} remaining.");
             UpdateInventoryUI(); 
-        }
-        else {
-            Debug.Log("No batteries to use.");
         }
     }
 
@@ -330,6 +321,22 @@ public class GameManager : MonoBehaviour
         instance.gameState.CurrentPuzzleId = puzzleId;
     }
 
+    public void SetCurrentLevel(int level) {
+        // Event invoker can only handle ints as parameters, so we need to do this
+        switch (level) {
+            case 0:
+                instance.gameState.CurrentLevel = Level.tutorial;
+                break;
+            case 1:
+                instance.gameState.CurrentLevel = Level.computerlab;
+                break;
+        }
+
+        // New level, so map should be blank right now
+        instance.gameState.CurrentExtrudableSetId = -1;
+    }
+
+    // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
         if (popupMenu.activeSelf)
@@ -351,7 +358,9 @@ public class GameManager : MonoBehaviour
     public void DeactivateScene(string sceneName)
     {   
         DialogueManager dialogueManager = gameObject.GetComponent<DialogueManager>();
-        dialogueManager.EndDialogue();
+        if (dialogueManager.dialogueActive) {
+            dialogueManager.EndDialogue();
+        }
 
         Scene scene = SceneManager.GetSceneByName(sceneName);
         TriggerSwitch(); // Trigger switch that removes player input
@@ -521,7 +530,6 @@ public class GameManager : MonoBehaviour
     public void switchToScene(string sceneName)
     {
         if (eventEmitter == null) {
-            Debug.Log("Event emitter not found");
             eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
 
             // Ensure cursor is focused when you first start the game
@@ -542,26 +550,11 @@ public class GameManager : MonoBehaviour
         OnSceneSwitch();
     }
 
-    public void ToggleCutsceneFreeze(bool freeze)
-    {
-        isFrozen = freeze;
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        // Disable player movement
-        ThirdPersonController playerController = player.GetComponent<ThirdPersonController>();
-        playerController.enabled = !freeze;
-
-        // Disable player interaction
-        Interaction playerInteraction = player.GetComponent<Interaction>();
-        playerInteraction.enabled = !freeze;
-    }
-
     public void ToggleDialogueFreeze(bool freeze)
     {
         isFrozen = freeze;
         
         if (ActiveSceneName == "new3Dtut") {
-            Debug.Log("Freezing player in 3D scene: " + freeze);
             // Disable camera
             GameObject playerCameraGO = GameObject.Find("Third Person Camera");
             if (playerCameraGO != null) {

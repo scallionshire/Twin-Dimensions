@@ -12,11 +12,9 @@ public class USBPorts : MonoBehaviour
 
     public void PlugInUSB()
     {   
-        Debug.Log("USB inserted");
         RuntimeManager.PlayOneShot(eventName, transform.position);
         if (GameManager.instance.gameState.USBInserted) {
             if (isPuzzlePort) {
-                Debug.Log("Switching to puzzle " + id);
                 GameManager.instance.SwitchToPuzzle(id, level);
             } else {
                 GameManager.instance.SwitchToMap(id, level);
