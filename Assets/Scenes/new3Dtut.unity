@@ -3143,6 +3143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -12369,6 +12370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 1
   isCutscene: 1
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -12433,7 +12435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!320 &573477325
 PlayableDirector:
@@ -27237,6 +27240,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: conditionToCheck
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: isCutsceneDialogue
       value: 1
       objectReference: {fileID: 0}
@@ -27503,7 +27510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 1
+  conditionToCheck: 0
+  checkCondition: 1
   doNotUnfreeze: 1
 --- !u!1 &1165958827
 GameObject:
@@ -28059,7 +28067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!1 &1192814778
 GameObject:
@@ -30653,7 +30662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!64 &1314342875
 MeshCollider:
@@ -32281,6 +32291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -32846,16 +32857,24 @@ PrefabInstance:
       value: 0.0876
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: conditionToCheck
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.dialogueName
-      value: ComputerFirstPlug
+      value: ShapesPuzzleIntro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: noUSBDialogue.sentences.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[0].text
-      value: woah!!! where am I? ooh, hi 02~ long time no see!
+      value: huh??? what are all these shapes here for?
       objectReference: {fileID: 0}
     - target: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.data[1].text
@@ -32931,12 +32950,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5307215684661812951, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
-      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307215684661812951, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1409180473}
+    - target: {fileID: 5307215684661812951, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 5307215684661812951, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307215684661812951, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+      propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6321746378694866755, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
       propertyPath: m_Name
@@ -32965,6 +32996,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4691716179750681981, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
   m_PrefabInstance: {fileID: 1409180471}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1409180473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4616092623413171478, guid: ccd894f009cba49caaaddc80ab5e47a9, type: 3}
+  m_PrefabInstance: {fileID: 1409180471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cf5c77a716345648421bb8aceee220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411030203
 GameObject:
   m_ObjectHideFlags: 0
@@ -34375,6 +34417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 1
   isCutscene: 1
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -34440,7 +34483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!320 &1448724299
 PlayableDirector:
@@ -34907,7 +34951,7 @@ PrefabInstance:
       objectReference: {fileID: 756636973}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: debugLevel
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: rotatingMonitor
@@ -37360,6 +37404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 1
   isCutscene: 1
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -37442,7 +37487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!1 &1595457787
 GameObject:
@@ -38639,6 +38685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: USB
     sentences:
@@ -42191,11 +42238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.011957549
+      value: -0.0119575495
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00086760614
+      value: 0.00086760626
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -44437,6 +44484,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2831501064382870503, guid: a243d6013a33a48ed93859046c118a01, type: 3}
+      propertyPath: conditionToCheck
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831501064382870503, guid: a243d6013a33a48ed93859046c118a01, type: 3}
       propertyPath: withUSBDialogue.sentences.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -45239,6 +45290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: Window
     sentences:
@@ -45663,7 +45715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!1 &1946261263
 GameObject:
@@ -45798,7 +45851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!320 &1950747632
 PlayableDirector:
@@ -47263,7 +47317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 1
+  checkCondition: 0
   doNotUnfreeze: 0
 --- !u!320 &2008090390
 PlayableDirector:
@@ -49791,6 +49846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: PuzzlePort0
     sentences:
@@ -54287,9 +54343,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 1
   isCutscene: 1
+  conditionToCheck: 2
   noUSBDialogue:
     dialogueName: 
-    sentences: []
+    sentences:
+    - text: hey, i think this is the battery panel for the pink screens!
+      twin: 1
   withUSBDialogue:
     dialogueName: 
     sentences:
@@ -54332,7 +54391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkUSBInserted: 0
+  conditionToCheck: 2
+  checkCondition: 1
   doNotUnfreeze: 0
 --- !u!1 &919132149271054578
 GameObject:
@@ -59288,6 +59348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: Fishtank
     sentences:
@@ -63578,6 +63639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -66539,6 +66601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: BlueVessel
     sentences:
@@ -68264,6 +68327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: BathroomDoor
     sentences:
@@ -68895,6 +68959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: ServerRack
     sentences:
@@ -70024,6 +70089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -70235,6 +70301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -70485,6 +70552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -70703,6 +70771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -71606,6 +71675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: Bookshelf
     sentences:
@@ -71835,6 +71905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -73961,6 +74032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: YellowVessel
     sentences:
@@ -74454,8 +74526,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.020632448, y: 0.03776218, z: 0.012807834}
-  m_Center: {x: 0.07520423, y: 0.040183432, z: 0.018595954}
+  m_Size: {x: 0.020632448, y: 0.03776218, z: 0.022288593}
+  m_Center: {x: 0.07520423, y: 0.040183432, z: 0.013855541}
 --- !u!114 &7861557727337866771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74470,6 +74542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: WaterFountain
     sentences:
@@ -76458,6 +76531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []
@@ -77154,6 +77228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 0
   isCutscene: 0
+  conditionToCheck: 1
   noUSBDialogue:
     dialogueName: Nightstand
     sentences:
