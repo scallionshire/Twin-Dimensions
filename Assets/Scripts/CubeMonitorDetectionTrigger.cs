@@ -25,6 +25,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
             if (fadeEffect != null)
             {
                 fadeEffect.TriggerCaughtEffect(); 
+                GameManager.instance.ToggleDialogueFreeze(true);
                 StartCoroutine(WaitToFadeBack(fadeEffect));
             }
         }
@@ -35,6 +36,7 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
         yield return new WaitForSeconds(3f); 
         GetComponent<ResetToCheckpoint>().Reset();
         fadeEffect.TriggerReturnEffect();
+        GameManager.instance.ToggleDialogueFreeze(false);
     }
 
     public void OnChildTriggerExited(Collider other)
