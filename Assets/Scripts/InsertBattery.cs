@@ -43,13 +43,11 @@ public class InsertBattery : MonoBehaviour
             batteryLightRenderers[batteriesIn].material = batteryPanelLitMaterial;
             monitorScreenRenderers[batteriesIn].material = monitorScreenLitMaterial;
             batteriesIn++;
-            //GameManager.instance.gameState.BatteriesCollected--;\
             GameManager.instance.UseBattery();
         }
 
         if (batteriesIn == 5)
         {
-            // TODO: update level success state in gamemanager
             GameManager.instance.SolvePuzzle(Level.computerlab, 1);
             GameObject.Find("PinkOverlay").GetComponent<SpriteRenderer>().enabled = true;
             GameManager.instance.OnSceneSwitch();

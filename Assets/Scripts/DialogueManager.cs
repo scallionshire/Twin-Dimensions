@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour
 
     private string currentDialogueName;
 
-    private GameManager gameManager;
     private TooltipManager tooltipManager;
 
     private bool isCutsceneDialogue = false;
@@ -51,8 +50,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<Sentence>();
-
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -85,6 +82,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, bool isCutscene)
     {
+        // Don't do anything if there is no dialogue
+        if (dialogue.sentences.Length == 0) return;
+
         isCutsceneDialogue = isCutscene;
 
         // Turn off tooltips
@@ -98,11 +98,13 @@ public class DialogueManager : MonoBehaviour
 
         if (!isCutscene)
         {
-            gameManager?.ToggleDialogueFreeze(true);
-            gameManager?.ToggleBokeh(true);
+            GameManager.instance.ToggleDialogueFreeze(true);
+            GameManager.instance.ToggleBokeh(true);
         }
 
         currentDialogueName = dialogue.dialogueName;
+        Debug.Log("New Dialogue: " + currentDialogueName);
+        Debug.Log("First sentence: " + dialogue.sentences[0].text);
 
         sentences.Clear();
 
@@ -121,7 +123,7 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             if (currentDialogueName == "ComputerFirstPlug") {
-                gameManager.ToggleBokeh(true);
+                GameManager.instance.ToggleBokeh(true);
                 
                 if (GameObject.Find("TooltipCanvas") != null)
                 {
@@ -161,13 +163,14 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        Debug.Log("End of conversation");
         if (!isCutsceneDialogue)
         {
-            gameManager.ToggleBokeh(false);
-            gameManager.ToggleDialogueFreeze(false);
+            GameManager.instance.ToggleBokeh(false);
+            StartCoroutine(WaitBeforeUnFreezing());
+        } else {
+            ToggleActive(false);
         }
-
-        ToggleActive(false);
 
         currentDialogueName = "";
     }
@@ -192,5 +195,12 @@ public class DialogueManager : MonoBehaviour
         }
 
         finishedDisplayingText = true;
+    }
+
+    IEnumerator WaitBeforeUnFreezing() 
+    {
+        ToggleActive(false);
+        yield return new WaitForSeconds(0.1f);
+        GameManager.instance.ToggleDialogueFreeze(false);
     }
 }

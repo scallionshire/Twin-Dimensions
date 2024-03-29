@@ -23,7 +23,6 @@ public class Extrudable : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
     private bool is2D = false;
-    private GameManager gameManager;
 
     public Vector3 extrudeDirection;
     public float extrudeAmount;
@@ -38,9 +37,7 @@ public class Extrudable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager")?.GetComponent<GameManager>();
-
-         extrudableSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX3D/Extrudable");
+        extrudableSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX3D/Extrudable");
 
         float scaleFactor = 1.0f;
 
@@ -81,10 +78,8 @@ public class Extrudable : MonoBehaviour
         targetScale = endScale;
         targetPosition = endPosition;
 
-        if (gameManager != null) {
-            if (extrudableId < gameManager.gameState.Extrudables.Count && gameManager.gameState.Extrudables[extrudableId]) {
-                MakeAlreadyExtruded();
-            }
+        if (extrudableId < GameManager.instance.gameState.Extrudables.Count && GameManager.instance.gameState.Extrudables[extrudableId]) {
+            MakeAlreadyExtruded();
         }
     }
 
@@ -94,7 +89,7 @@ public class Extrudable : MonoBehaviour
         if (isMoving) {
             if (!gameStateUpdated) {
                 gameStateUpdated = true;
-                gameManager?.UpdateExtrudables(extrudableId);
+                GameManager.instance.UpdateExtrudables(extrudableId);
             }
 
             if (is2D) {
