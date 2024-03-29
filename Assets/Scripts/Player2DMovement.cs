@@ -87,21 +87,18 @@ public class Player2DMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.tag == "Extrudable")
         {
             if (tooltipManager != null)
             {
                 tooltipManager.ToggleSpaceTooltip(true);
             }
-            Debug.Log("Collided with block: " + collision.gameObject.name);
             collidedBlock = collision.gameObject;
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Left collision with: " + collision.gameObject.name);
         if (collision.gameObject.tag == "Extrudable")
         {
             collidedBlock = null;
@@ -114,17 +111,14 @@ public class Player2DMovement : MonoBehaviour
 
     public void OnChildTriggerEntered2D(Collider2D collider)
     {
-        Debug.Log("Collided with: " + collider.gameObject.name);
         if (collider.gameObject.tag == "Block")
         {
-            Debug.Log("Collided with block: " + collider.gameObject.name);
             collidedBlock = collider.gameObject;
         }
     }
 
     public void OnChildTriggerExited2D(Collider2D collider)
     {
-        Debug.Log("Left collision with: " + collider.gameObject.name);
         if (collider.gameObject.tag == "Block")
         {
             collidedBlock = null;

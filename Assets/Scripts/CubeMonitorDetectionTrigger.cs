@@ -15,11 +15,9 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
             isMonitoringActive = false;
             SetMonitorCubeActive(false); 
             RuntimeManager.PlayOneShot(eventName, transform.position);
-            Debug.Log("Monitoring blocked by an extrudable object.");
         }
         if (isMonitoringActive && other.CompareTag("Player"))
         {
-            Debug.Log("The player has entered the detection zone.");
             RuntimeManager.PlayOneShot(eventName, transform.position);
             ScreenFade fadeEffect = FindObjectOfType<ScreenFade>(); 
             if (fadeEffect != null)
@@ -43,11 +41,9 @@ public class CubeMonitorDetectionTrigger : MonoBehaviour
     {
         if (other.CompareTag("Extrudable"))
         {
-            Debug.Log("hi im exiting");
             isMonitoringActive = true;
             SetMonitorCubeActive(true); 
             RuntimeManager.PlayOneShot(eventName, transform.position);
-            Debug.Log("Monitoring unblocked.");
         }
     }
 

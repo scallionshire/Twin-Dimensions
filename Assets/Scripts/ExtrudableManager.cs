@@ -45,7 +45,6 @@ public class ExtrudableManager : MonoBehaviour
         }
 
         if (currentExtrudableSetId == -1) { // map should be blank, no puzzles loaded in
-            Debug.Log("No extrudables selected");
             return;
         }
 

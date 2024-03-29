@@ -22,6 +22,5 @@ public class RotateDetectionZone : MonoBehaviour
     public void IncreaseRotationSpeed()
     {
         currentRotationSpeed += rotationSpeedIncrease;
-        Debug.Log("Rotation Speed: " + currentRotationSpeed);
     }
 }
