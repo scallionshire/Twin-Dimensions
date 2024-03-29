@@ -5,33 +5,29 @@ using UnityEngine;
 public class ExtrudableManager : MonoBehaviour
 {
     public int currentExtrudableSetId;
+    public bool firstTimeFinished = false;
     public ExtrudableDataScriptable extrudableData;
-
-    private GameManager gameManager;
 
     private List<GameObject> currentExtrudables = new List<GameObject>();
 
     // Start is called before the first frame update
     public void LoadMap()
     {
+        firstTimeFinished = false;
+
         currentExtrudables.Clear();
 
         GameObject player = GameObject.Find("2D Player");
         player.transform.position = GameObject.Find("Background").transform.position;
 
-        if (GameObject.Find("GameManager") != null) {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-            currentExtrudableSetId = gameManager.gameState.CurrentExtrudableSetId;
-            switch (gameManager.gameState.CurrentLevel) {
-                case Level.tutorial:
-                    extrudableData = gameManager.initTutorialExtrudables;
-                    break;
-                case Level.computerlab:
-                    extrudableData = gameManager.initComputerLabExtrudables;
-                    break;
-            }
-        } else {
-            currentExtrudableSetId = -1;
+        currentExtrudableSetId = GameManager.instance.gameState.CurrentExtrudableSetId;
+        switch (GameManager.instance.gameState.CurrentLevel) {
+            case Level.tutorial:
+                extrudableData = GameManager.instance.initTutorialExtrudables;
+                break;
+            case Level.computerlab:
+                extrudableData = GameManager.instance.initComputerLabExtrudables;
+                break;
         }
 
         GameObject background = GameObject.Find("Background");
@@ -58,6 +54,7 @@ public class ExtrudableManager : MonoBehaviour
             newDialogueTrigger.transform.localScale = extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].scale;
 
             newDialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue = extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].dialogue;
+            newDialogueTrigger.GetComponent<DialogueTrigger>().name = extrudableData.extrudableDataList[currentExtrudableSetId].dialogues[i].dialogue.dialogueName;
         }
 
         List<ExtrudableData> extrudableSets = extrudableData.extrudableDataList[currentExtrudableSetId].extrudableSets;
@@ -75,7 +72,7 @@ public class ExtrudableManager : MonoBehaviour
             newExtrudableScript.shouldLoop = extrudableSets[i].shouldLoop;
             newExtrudableScript.isExtruding = extrudableSets[i].shouldExtrude;
 
-            if (gameManager != null && gameManager.gameState.Extrudables[extrudableSets[i].id]) {
+            if (GameManager.instance.gameState.Extrudables[extrudableSets[i].id]) {
                 newExtrudable.GetComponent<Extrudable>().MakeAlreadyExtruded();
             }
 
@@ -85,8 +82,14 @@ public class ExtrudableManager : MonoBehaviour
 
     void Update()
     {
+        // Don't leave if you already finished the puzzle and just want to check the port, OR if there isn't anything to begin with
+        if (currentExtrudables.Count == 0 || firstTimeFinished) {
+            return;
+        }
+
         // If all extrudables are in their final state for current id (all isExtruding), return to the 3D scene
         bool allExtrudablesExtruded = true;
+
         foreach (GameObject extrudable in currentExtrudables) {
             if (!extrudable.GetComponent<Extrudable>().finishedExtruding) {
                 allExtrudablesExtruded = false;
@@ -101,7 +104,8 @@ public class ExtrudableManager : MonoBehaviour
 
     IEnumerator ExtrudableCompletionReturn()
     {
+        firstTimeFinished = true;
         yield return new WaitForSeconds(0.5f);
-        gameManager?.switchToScene("new3Dtut");
+        GameManager.instance.switchToScene("new3Dtut");
     }
 }

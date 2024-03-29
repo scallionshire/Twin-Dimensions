@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     private bool sceneLoaded = true;
     [HideInInspector]
     public bool gameStarted = false;   
-    private bool menuUnloaded = false;
     private bool cutscenePlaying = false;
+    private bool menuUnloaded = false;
     private bool hasPlayedSwitchCutscene = false;
 
     [Header("Game Variables")]
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
     {
-        Debug.Log("Loading scenes");
         foreach (var loadOp in loadOperations)
         {   
             while (!loadOp.isDone)
@@ -107,8 +106,6 @@ public class GameManager : MonoBehaviour
                 yield return null; 
             }
         }
-
-        Debug.Log("Scenes finished loading");
         
         DeactivateScene("new2dtut");
         DeactivateScene("mainPuzzle");
@@ -134,10 +131,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {   
         // Scene Switch Logic
-        if (Input.GetButtonDown("SwitchDim") && gameState.USBInserted) // M is cheat code to switch scenes
+        if (Input.GetButtonDown("SwitchDim") && gameState.USBInserted && (!isFrozen || firstSwitch))
         {   
             if (firstSwitch && ActiveSceneName == "new3Dtut") {
-                ToggleCutsceneFreeze(false);
+                ToggleDialogueFreeze(false);
                 ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
                 firstSwitch = false;
@@ -148,7 +145,7 @@ public class GameManager : MonoBehaviour
             
             if (ActiveSceneName == "new3Dtut")
             {   
-                SwitchToMap(gameState.CurrentExtrudableSetId, gameState.CurrentLevel);
+                SwitchToMap(gameState.CurrentExtrudableSetId, instance.gameState.CurrentLevel);
             }
             else if (ActiveSceneName == "new2dtut")
             {
@@ -160,23 +157,38 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Cancel")) {
+        // It's fine to toggle pause menu if we're in debug mode
+        if (cutsceneManager == null && Input.GetButtonDown("Cancel") && !isFrozen) {
             TogglePauseMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.P)) {
-            if (ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
-                GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find("Background").transform.position;
+        if (cutsceneManager != null) {
+            // Don't allow pause menu to be opened during cutscenes or dialogue lol
+            if (cutsceneManager.IsPlaying() == false && Input.GetButtonDown("Cancel") && !isFrozen) {
+                TogglePauseMenu();
+            }
+
+            if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
+                ToggleDialogueFreeze(true);
+                ToggleBokeh(true);
+                cutscenePlaying = true;
+            } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
+                cutscenePlaying = false;
+                if (ActiveSceneName == "new3Dtut") {
+                    StartCoroutine(WaitBeforeUnfreezing());
+                } else {
+                    ToggleDialogueFreeze(false);
+                    ToggleBokeh(false);
+                }
             }
         }
+    }
 
-        if (cutsceneManager != null && cutsceneManager.IsPlaying() && !cutscenePlaying) {
-            cutscenePlaying = true;
-            ToggleDialogueFreeze(true);
-        } else if (cutsceneManager != null && cutsceneManager.IsPlaying() == false && cutscenePlaying) {
-            cutscenePlaying = false;
-            ToggleDialogueFreeze(false);
-        }
+    IEnumerator WaitBeforeUnfreezing()
+    {
+        yield return new WaitForSeconds(1.0f);
+        ToggleDialogueFreeze(false);
+        ToggleBokeh(false);
     }
 
     public void SwitchToPuzzle(int puzzleId, Level level) 
@@ -382,6 +394,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (instance.gameState.Extrudables[2]) {
+            instance.gameState.CurrentLevel = Level.computerlab;
+        }
+
         // TODO: Add variables to check if extrudables are already extruded
         for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
             if (instance.gameState.Extrudables[i]) {
@@ -545,14 +561,18 @@ public class GameManager : MonoBehaviour
         isFrozen = freeze;
         
         if (ActiveSceneName == "new3Dtut") {
+            Debug.Log("Freezing player in 3D scene: " + freeze);
             // Disable camera
-            CinemachineFreeLook playerCamera = GameObject.Find("Third Person Camera").GetComponent<CinemachineFreeLook>();
-            if (freeze) {
-                playerCamera.m_YAxis.m_MaxSpeed = 0;
-                playerCamera.m_XAxis.m_MaxSpeed = 0;
-            } else {
-                playerCamera.m_YAxis.m_MaxSpeed = 4;
-                playerCamera.m_XAxis.m_MaxSpeed = 350;
+            GameObject playerCameraGO = GameObject.Find("Third Person Camera");
+            if (playerCameraGO != null) {
+                CinemachineFreeLook playerCamera = playerCameraGO.GetComponent<CinemachineFreeLook>();
+                if (freeze) {
+                    playerCamera.m_YAxis.m_MaxSpeed = 0;
+                    playerCamera.m_XAxis.m_MaxSpeed = 0;
+                } else {
+                    playerCamera.m_YAxis.m_MaxSpeed = 4;
+                    playerCamera.m_XAxis.m_MaxSpeed = 300;
+                }
             }
 
             // Disable player movement

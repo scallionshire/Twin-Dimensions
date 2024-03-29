@@ -9,24 +9,17 @@ public class USBPorts : MonoBehaviour
     public int id;
     public Level level;
     public string eventName = "event:/SFX3D/USBInsert";
-    private GameManager gameManager;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
 
     public void PlugInUSB()
     {   
         Debug.Log("USB inserted");
         RuntimeManager.PlayOneShot(eventName, transform.position);
-        if (gameManager.gameState.USBInserted) {
+        if (GameManager.instance.gameState.USBInserted) {
             if (isPuzzlePort) {
                 Debug.Log("Switching to puzzle " + id);
-                gameManager.SwitchToPuzzle(id, level);
+                GameManager.instance.SwitchToPuzzle(id, level);
             } else {
-                gameManager.SwitchToMap(id, level);
+                GameManager.instance.SwitchToMap(id, level);
             }
         }
     }

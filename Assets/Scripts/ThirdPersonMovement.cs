@@ -23,7 +23,6 @@ public class ThirdPersonMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        // audioManager = GameObject.Find("GameManager").GetComponent<AudioManager>();
         if (GetComponent<Animator>() != null) {
             animator = GetComponent<Animator>();
         }

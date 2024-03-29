@@ -6,7 +6,6 @@ public class SliderHandler : MonoBehaviour
     private Slider musicSlider;
     private Slider dialogueSlider;
     private Slider sfxSlider;
-    private GameManager GameManager;
     public static SliderHandler instance;
 
     void Awake()
@@ -28,48 +27,47 @@ public class SliderHandler : MonoBehaviour
         GameObject music = GameObject.Find("Music");
         GameObject dialogue = GameObject.Find("Dialogue");
         GameObject sfx = GameObject.Find("SFX");
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
         musicSlider = music.GetComponent<Slider>();
         if (musicSlider != null)
         {
-            musicSlider.value = GameManager.MusicVolume;
+            musicSlider.value = GameManager.instance.MusicVolume;
             musicSlider.onValueChanged.AddListener(delegate { MusicValueChangeCheck(); });
         }
 
         dialogueSlider = dialogue.GetComponent<Slider>();
         if (dialogueSlider != null)
         {
-            dialogueSlider.value = GameManager.DialogueVolume;
+            dialogueSlider.value = GameManager.instance.DialogueVolume;
             dialogueSlider.onValueChanged.AddListener(delegate { DialogueValueChangeCheck(); });
         }
 
         sfxSlider = sfx.GetComponent<Slider>();
         if (sfxSlider != null)
         {
-            sfxSlider.value = GameManager.SFXVolume;
+            sfxSlider.value = GameManager.instance.SFXVolume;
             sfxSlider.onValueChanged.AddListener(delegate { SFXValueChangeCheck(); });
         }
     }
 
     public void MusicValueChangeCheck()
     {
-        GameManager.MusicVolume = musicSlider.value;
+        GameManager.instance.MusicVolume = musicSlider.value;
     }
 
     public void DialogueValueChangeCheck()
     {
-        GameManager.DialogueVolume = dialogueSlider.value;
+        GameManager.instance.DialogueVolume = dialogueSlider.value;
     }
 
     public void SFXValueChangeCheck()
     {
-        GameManager.SFXVolume = sfxSlider.value;
+        GameManager.instance.SFXVolume = sfxSlider.value;
     }
 
     public void QuitSettings()
     {
-        GameManager.TogglePauseMenu();
+        GameManager.instance.TogglePauseMenu();
     }
 
     public void QuitGame()

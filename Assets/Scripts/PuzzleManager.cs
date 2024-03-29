@@ -15,33 +15,30 @@ public struct PuzzlePiece {
 public class PuzzleManager : MonoBehaviour
 {
     public List<PuzzlePiece> correctBlocks;
-    private GameManager gameManager;
     public int currentPuzzleId;
     public bool[] puzzlesSolved;
     public PuzzleDataScriptable levelPuzzles;
 
+    private bool firstTimeFinished = false;
+
     public void LoadPuzzle()
     {   
+        firstTimeFinished = false;
+
         correctBlocks.Clear();
 
         // Set player to center of screen
         GameObject player = GameObject.Find("2D Player");
         player.transform.position = GameObject.Find("Background").transform.position;
 
-        if (GameObject.Find("GameManager") != null) {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-            currentPuzzleId = gameManager.gameState.CurrentPuzzleId;
-            switch (gameManager.gameState.CurrentLevel) {
-                case Level.tutorial:
-                    levelPuzzles = gameManager.initTutorialPuzzle;
-                    break;
-                case Level.computerlab:
-                    levelPuzzles = gameManager.initComputerPuzzle;
-                    break;
-            }
-        } else {
-            currentPuzzleId = -1;
+        currentPuzzleId = GameManager.instance.gameState.CurrentPuzzleId;
+        switch (GameManager.instance.gameState.CurrentLevel) {
+            case Level.tutorial:
+                levelPuzzles = GameManager.instance.initTutorialPuzzle;
+                break;
+            case Level.computerlab:
+                levelPuzzles = GameManager.instance.initComputerPuzzle;
+                break;
         }
 
         GameObject background = GameObject.Find("Background");
@@ -68,6 +65,7 @@ public class PuzzleManager : MonoBehaviour
             GameObject newDialogueTrigger = Instantiate(levelPuzzles.dialogueTriggerPrefab, levelPuzzles.puzzles[currentPuzzleId].dialogues[i].position, Quaternion.identity);
             newDialogueTrigger.transform.localScale = levelPuzzles.puzzles[currentPuzzleId].dialogues[i].scale;
             newDialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue = levelPuzzles.puzzles[currentPuzzleId].dialogues[i].dialogue;
+            newDialogueTrigger.GetComponent<DialogueTrigger>().name = levelPuzzles.puzzles[currentPuzzleId].dialogues[i].dialogue.dialogueName;
         }
 
         puzzlesSolved = new bool[levelPuzzles.puzzles.Count];
@@ -132,14 +130,18 @@ public class PuzzleManager : MonoBehaviour
         {
             // Puzzle is solved, provide feedback and handle progression
             puzzlesSolved[currentPuzzleId] = true;
-            StartCoroutine(PuzzleCompletionReturn());
+
+            if (!firstTimeFinished) {
+                StartCoroutine(PuzzleCompletionReturn());
+            }
         }
     }
 
     IEnumerator PuzzleCompletionReturn()
     {
+        firstTimeFinished = true;
         yield return new WaitForSeconds(0.5f);
-        gameManager?.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
+        GameManager.instance.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
     }
 
     bool IsPuzzleSolved()
@@ -159,7 +161,7 @@ public class PuzzleManager : MonoBehaviour
 
                 // TODO: clean this up
                 if (levelPuzzles.level == Level.computerlab) {
-                    gameManager?.SolvePuzzleBlock(levelPuzzles.level, index);
+                    GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, index);
                 }
 
                 // Visual indicator for success state goes here

@@ -9,8 +9,6 @@ public class TooltipManager : MonoBehaviour
     public GameObject pressQ;
     public GameObject pressSpace;
 
-    private GameManager gameManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +19,6 @@ public class TooltipManager : MonoBehaviour
         leftClick.SetActive(false);
         pressQ.SetActive(false);
         pressSpace.SetActive(false);
-
-        if (GameObject.Find("GameManager") != null)
-        {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        }
     }
 
     public void ToggleClickTooltip(bool toggle)

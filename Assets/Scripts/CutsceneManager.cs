@@ -51,11 +51,6 @@ public class CutsceneManager : MonoBehaviour
         Debug.Log("Playing cutscene: " + cutsceneName);
         videoPlayer.clip = cutscenes[index];
         videoPlayer.Play();
-
-        while (videoPlayer.isPlaying)
-        {
-        }
-        Debug.Log("Cutscene done playing.");
     }
 
     void OnCutsceneEnd(VideoPlayer vp)

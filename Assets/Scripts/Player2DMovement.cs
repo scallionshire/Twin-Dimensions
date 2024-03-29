@@ -63,7 +63,6 @@ public class Player2DMovement : MonoBehaviour
         // If player is pressing space and they aren't currently holding a block
         if (Input.GetButton("Drag") && collidedBlock != null)
         {
-            Debug.Log("hi");
             movement = movement * 0.7f; // Slow down movement while holding a block
 
             if (blockMovingSound.getPlaybackState(out var playbackState) != FMOD.RESULT.OK || playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)

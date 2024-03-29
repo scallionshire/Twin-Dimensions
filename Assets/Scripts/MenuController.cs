@@ -45,22 +45,20 @@ public class MenuController : MonoBehaviour
         }
 
         Debug.Log("Scenes finished loading");
-
-        var gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
-        gameManager.DeactivateScene("new2dtut");
-        gameManager.DeactivateScene("mainPuzzle");
-        gameManager.DeactivateScene("StartMenu");
-        gameManager.ActiveSceneName = "new3Dtut";
+        GameManager.instance.DeactivateScene("new2dtut");
+        GameManager.instance.DeactivateScene("mainPuzzle");
+        GameManager.instance.DeactivateScene("StartMenu");
+        GameManager.instance.ActiveSceneName = "new3Dtut";
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
-        gameManager.gameStarted = true;
+        GameManager.instance.gameStarted = true;
     }
 
     public void OpenSettings()
     {
         Debug.Log("OpenSettings");
-        GameObject.Find("GameManager").GetComponent<GameManager>().TogglePauseMenu();
+        GameManager.instance.TogglePauseMenu();
     }
 
     public void OpenCredits()

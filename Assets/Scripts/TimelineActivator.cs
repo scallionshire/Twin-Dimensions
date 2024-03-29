@@ -49,7 +49,7 @@ public class TimelineActivator : MonoBehaviour
             timelinePlayed = true;
             dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
 
-            GameManager.instance.ToggleCutsceneFreeze(true);
+            GameManager.instance.ToggleDialogueFreeze(true);
         }
     }
 
@@ -58,7 +58,7 @@ public class TimelineActivator : MonoBehaviour
         director.Stop();
 
         if (!doNotUnfreeze) {
-            GameManager.instance.ToggleCutsceneFreeze(false);
+            GameManager.instance.ToggleDialogueFreeze(false);
         }
     }
 }
