@@ -103,8 +103,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         currentDialogueName = dialogue.dialogueName;
-        Debug.Log("New Dialogue: " + currentDialogueName);
-        Debug.Log("First sentence: " + dialogue.sentences[0].text);
 
         sentences.Clear();
 
@@ -163,7 +161,6 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("End of conversation");
         if (!isCutsceneDialogue)
         {
             GameManager.instance.ToggleBokeh(false);

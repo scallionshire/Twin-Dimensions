@@ -19,14 +19,7 @@ public class InsertBattery : MonoBehaviour
         for (int i = 0; i < batteries.Count; i++)
         {
             batteries[i].SetActive(false);
-            if (batteryLights[i] == null)
-            {
-                Debug.Log("Battery light " + i + " is null");
-            }
-            if (batteryLights[i].GetComponent<MeshRenderer>() == null)
-            {
-                Debug.Log("Battery light " + i + " has no mesh renderer");
-            }
+
             batteryLightRenderers.Add(batteryLights[i].GetComponent<MeshRenderer>());
             monitorScreenRenderers.Add(monitorScreens[i].GetComponent<MeshRenderer>());
         }
@@ -36,7 +29,7 @@ public class InsertBattery : MonoBehaviour
     public void insert()
     {
         int batteryCount = GameManager.instance.gameState.BatteriesCollected;
-        Debug.Log("Current batteryCount: " + batteryCount);
+        
         if (batteryCount > 0)
         {
             batteries[batteriesIn].SetActive(true);

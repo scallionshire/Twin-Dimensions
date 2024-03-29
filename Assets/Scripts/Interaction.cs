@@ -32,6 +32,7 @@ public class Interaction : MonoBehaviour
         {
             Interactable interactable;
 
+            // If there's more than one nearby object, sort by distance and choose the closest one
             if (numColliders > 1)
             {
                 float minDist = Mathf.Infinity;
@@ -50,7 +51,8 @@ public class Interaction : MonoBehaviour
             } else {
                 interactable = hitColliders[0].GetComponent<Interactable>();
             }
-
+ 
+            // If the object has an interactable component
             if (interactable != null)
             {   
                 if (tooltipManager != null && !dialogueManager.dialogueActive)
