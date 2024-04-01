@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Variables")]
     public bool firstSwitch = true;   
+    [HideInInspector]
     public bool isFrozen = false;
     
     public float MusicVolume = 100f;
@@ -277,8 +278,6 @@ public class GameManager : MonoBehaviour
                         break;
                 }
                 break;
-            case Level.biolab:
-                break;
             case Level.computerlab:
                 switch (puzzleId) {
                     case 0:
@@ -298,8 +297,6 @@ public class GameManager : MonoBehaviour
     public void SolvePuzzleBlock(Level level, int blockId) {
         switch (level) {
             case Level.tutorial:
-                break;
-            case Level.biolab:
                 break;
             case Level.computerlab:
                 switch (blockId) {
@@ -637,10 +634,6 @@ public class GameState
     public bool Door1Unlocked { get; set; }
     public bool PlayerHasUSB { get; set; }
     public bool USBInserted { get; set; }
-
-    // Biolab
-    // public bool ChemPuzzleUnlocked { get; set; }
-    // public bool ComputerPuzzleUnlocked { get; set; }
 
     // ComputerLab
     public int BatteriesCollected { get; set; }

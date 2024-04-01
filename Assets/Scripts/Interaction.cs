@@ -1,6 +1,8 @@
+using Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Interaction : MonoBehaviour
 {
@@ -13,8 +15,11 @@ public class Interaction : MonoBehaviour
     private DialogueManager dialogueManager;
     private PlayerFader playerFader;
     private TooltipManager tooltipManager;
+    private CinemachineBrain cinemachineBrain;
 
     private Collider[] hitColliders =  new Collider[3];
+    private RaycastHit rayHit;
+    private bool blockingInteractable = false;
     private int numColliders;
 
     void Start()
@@ -22,16 +27,36 @@ public class Interaction : MonoBehaviour
         dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
         playerFader = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>();
         tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
     void Update()
     {   
+        bool currentlyBlockingInteractable = false;
+
+        // Don't need to worry about checking current camera since this component is disabled when a cutscene is happening
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 9f, Color.green);
+        
+        currentlyBlockingInteractable = Physics.Raycast(ray, out rayHit, 9f, layers);
+        
         numColliders = Physics.OverlapSphereNonAlloc(interactionCenter.position, interactRadius, hitColliders, layers);
+        
+        if (currentlyBlockingInteractable && !blockingInteractable)
+        {
+            playerFader.Fade();
+            blockingInteractable = currentlyBlockingInteractable;
+        } else if (!currentlyBlockingInteractable && blockingInteractable)
+        {
+            playerFader.ResetFade();
+            blockingInteractable = currentlyBlockingInteractable;
+        }
 
         if (numColliders > 0)
         {
             Interactable interactable;
 
+            // If there's more than one nearby object, sort by distance and choose the closest one
             if (numColliders > 1)
             {
                 float minDist = Mathf.Infinity;
@@ -50,7 +75,8 @@ public class Interaction : MonoBehaviour
             } else {
                 interactable = hitColliders[0].GetComponent<Interactable>();
             }
-
+ 
+            // If the object has an interactable component
             if (interactable != null)
             {   
                 if (tooltipManager != null && !dialogueManager.dialogueActive)

@@ -11,7 +11,11 @@ public class TimelineActivator : MonoBehaviour
     private bool timelinePlayed = false;
     private bool timelineComplete = false;
 
-    public bool checkUSBInserted = false;
+    public DialogueCondition conditionToCheck = DialogueCondition.insertedUSB;
+    public bool checkCondition = false;
+    private bool conditionMet = false;
+
+    [Space(10)]
     public bool doNotUnfreeze = false;
 
     // Start is called before the first frame update
@@ -38,8 +42,21 @@ public class TimelineActivator : MonoBehaviour
 
     public void PlayTimeline()
     {   
+        switch (conditionToCheck)
+        {
+            case DialogueCondition.hasUSB:
+                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
+                break;
+            case DialogueCondition.insertedUSB:
+                conditionMet = GameManager.instance.gameState.USBInserted;
+                break;
+            case DialogueCondition.hasBattery:
+                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
+                break;
+        }
+
         // Handle the PC case
-        if (checkUSBInserted && !GameManager.instance.gameState.USBInserted)
+        if (checkCondition && !conditionMet)
         {
             return;
         }

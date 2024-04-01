@@ -8,14 +8,32 @@ public class DialogueTrigger : MonoBehaviour
     public bool doNotRepeat = false;
     public bool isCutscene = false;
 
+    [Space(10)]
+    public DialogueCondition conditionToCheck = DialogueCondition.insertedUSB;
+    private bool conditionMet = false;
+
     private bool noUSBVisited = false;
     private bool withUSBVisited = false;
 
+    [Space(10)]
     public Dialogue noUSBDialogue;
     public Dialogue withUSBDialogue;
 
     public void TriggerDialogue()
     {
+        switch (conditionToCheck)
+        {
+            case DialogueCondition.hasUSB:
+                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
+                break;
+            case DialogueCondition.insertedUSB:
+                conditionMet = GameManager.instance.gameState.USBInserted;
+                break;
+            case DialogueCondition.hasBattery:
+                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
+                break;
+        }
+
         GameObject dc = GameObject.Find("DialogueCanvas");
         GameObject gm = GameObject.Find("GameManager");
 
@@ -24,7 +42,7 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (GameManager.instance.gameState.USBInserted && ((doNotRepeat && !withUSBVisited) || !doNotRepeat))
+        if (conditionMet && ((doNotRepeat && !withUSBVisited) || !doNotRepeat))
         {
             if (GameManager.instance.ActiveSceneName == "new3Dtut")
             {
@@ -40,7 +58,7 @@ public class DialogueTrigger : MonoBehaviour
                 withUSBVisited = true;
             }
         }
-        else if (!GameManager.instance.gameState.USBInserted && ((doNotRepeat && !noUSBVisited) || !doNotRepeat))
+        else if (!conditionMet && ((doNotRepeat && !noUSBVisited) || !doNotRepeat))
         {
             if (GameManager.instance.ActiveSceneName == "new3Dtut")
             {
