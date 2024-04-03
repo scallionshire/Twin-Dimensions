@@ -12,6 +12,7 @@ public class Player2DMovement : MonoBehaviour
     private TooltipManager tooltipManager;
     private FMOD.Studio.EventInstance footstepsSound;
     private FMOD.Studio.EventInstance blockMovingSound;
+    private Interactable currentInteractable;
 
     [HideInInspector]
     public GameObject collidedBlock;
@@ -68,6 +69,11 @@ public class Player2DMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (currentInteractable != null && Input.GetButtonDown("Fire1"))
+        {
+            currentInteractable.Interact();
+        }
+
         // If player is pressing space and they aren't currently holding a block
         if (Input.GetButton("Drag") && collidedBlock != null)
         {
@@ -123,6 +129,15 @@ public class Player2DMovement : MonoBehaviour
         {
             collidedBlock = collider.gameObject;
         }
+
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            currentInteractable = collider.gameObject.GetComponent<Interactable>();
+            if (tooltipManager != null)
+            {
+                tooltipManager.ToggleClickTooltip(true);
+            }
+        }
     }
 
     public void OnChildTriggerExited2D(Collider2D collider)
@@ -130,6 +145,14 @@ public class Player2DMovement : MonoBehaviour
         if (collider.gameObject.tag == "Block")
         {
             collidedBlock = null;
+        }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+        {
+            currentInteractable = collider.gameObject.GetComponent<Interactable>();
+            if (tooltipManager != null)
+            {
+                tooltipManager.ToggleClickTooltip(false);
+            }
         }
     }
 }
