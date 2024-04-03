@@ -6,6 +6,7 @@ public class Player2DMovement : MonoBehaviour
     public float moveSpeed = 2.5f;
 
     private Vector2 movement;
+    private Vector2 lastMovement;
     private Animator _animator;
     private Rigidbody2D rb;
     private TooltipManager tooltipManager;
@@ -33,6 +34,11 @@ public class Player2DMovement : MonoBehaviour
     void Update()
     {
         // Gives a value between -1 and 1
+        if (movement.sqrMagnitude > 0)
+        {
+            lastMovement = movement;
+        }
+
         movement.x = Input.GetAxisRaw("Horizontal"); // -1 is left
         movement.y = Input.GetAxisRaw("Vertical"); // -1 is down
 
@@ -40,6 +46,8 @@ public class Player2DMovement : MonoBehaviour
 
         _animator.SetFloat("Horizontal", movement.x);
         _animator.SetFloat("Vertical", movement.y);
+        _animator.SetFloat("LastHorizontal", lastMovement.x);
+        _animator.SetFloat("LastVertical", lastMovement.y);
         _animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
