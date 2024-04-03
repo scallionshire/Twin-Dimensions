@@ -219,8 +219,8 @@ public class GameManager : MonoBehaviour
             instance.gameState.CurrentLevel = level;
             wipeExtrudables();
 
-            ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
-            extrudableManager.LoadMap();
+            // ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
+            // extrudableManager.LoadMap();
         }
     }
 

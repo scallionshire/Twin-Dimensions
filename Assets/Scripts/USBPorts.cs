@@ -5,6 +5,7 @@ using FMODUnity;
 
 public class USBPorts : MonoBehaviour
 {
+    // TODO: check if we're in the 3D world or the 2D world
     public bool isPuzzlePort = true; // if true, this port will trigger a puzzle; otherwise, trigger the map with extrudables
     public int id;
     public Level level;
