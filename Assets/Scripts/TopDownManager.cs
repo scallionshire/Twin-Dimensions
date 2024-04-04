@@ -65,7 +65,6 @@ public class TopDownManager : MonoBehaviour
                     postConditionDialogue = obj.GetComponent<DialogueTrigger>().withUSBDialogue
                 } : null,
             };
-            
             newRoom.objects.Add(objectData);
         }
 
