@@ -82,7 +82,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, bool isCutscene)
     {
-        Debug.Log("Starting Dialogue: " + dialogue.dialogueName);
         // Don't do anything if there is no dialogue
         if (dialogue.sentences.Length == 0) return;
 

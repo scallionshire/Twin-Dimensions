@@ -584,7 +584,6 @@ public class GameManager : MonoBehaviour
 
     public void ToggleDialogueFreeze(bool freeze)
     {
-        UnityEngine.Debug.Log("Freeze: " + freeze);
         isFrozen = freeze;
         
         if (ActiveSceneName == "new3Dtut") {
