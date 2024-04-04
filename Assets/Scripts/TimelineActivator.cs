@@ -11,7 +11,7 @@ public class TimelineActivator : MonoBehaviour
     private bool timelinePlayed = false;
     private bool timelineComplete = false;
 
-    public DialogueCondition conditionToCheck = DialogueCondition.insertedUSB;
+    public GameStateCondition conditionToCheck = GameStateCondition.insertedUSB;
     public bool checkCondition = false;
     private bool conditionMet = false;
 
@@ -44,13 +44,13 @@ public class TimelineActivator : MonoBehaviour
     {   
         switch (conditionToCheck)
         {
-            case DialogueCondition.hasUSB:
+            case GameStateCondition.hasUSB:
                 conditionMet = GameManager.instance.gameState.PlayerHasUSB;
                 break;
-            case DialogueCondition.insertedUSB:
+            case GameStateCondition.insertedUSB:
                 conditionMet = GameManager.instance.gameState.USBInserted;
                 break;
-            case DialogueCondition.hasBattery:
+            case GameStateCondition.hasBattery:
                 conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
                 break;
         }

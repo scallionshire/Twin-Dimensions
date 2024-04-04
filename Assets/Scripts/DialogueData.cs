@@ -6,7 +6,7 @@ using UnityEngine;
 public struct DialogueData {
     public bool doNotRepeat;
     public bool isCutscene;
-    public DialogueCondition conditionToCheck;
+    public GameStateCondition conditionToCheck;
     public Dialogue preConditionDialogue;
     public Dialogue postConditionDialogue;
 }

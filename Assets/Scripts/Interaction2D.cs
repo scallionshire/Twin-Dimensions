@@ -110,7 +110,7 @@ public class Interaction2D : MonoBehaviour
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
-            currentInteractable = collider.gameObject.GetComponent<Interactable>();
+            currentInteractable = null;
             if (tooltipManager != null)
             {
                 tooltipManager.ToggleClickTooltip(false);

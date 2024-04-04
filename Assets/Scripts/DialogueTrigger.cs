@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool isCutscene = false;
 
     [Space(10)]
-    public DialogueCondition conditionToCheck = DialogueCondition.insertedUSB;
+    public GameStateCondition conditionToCheck = GameStateCondition.insertedUSB;
     private bool conditionMet = false;
 
     private bool noUSBVisited = false;
@@ -23,13 +23,13 @@ public class DialogueTrigger : MonoBehaviour
     {
         switch (conditionToCheck)
         {
-            case DialogueCondition.hasUSB:
+            case GameStateCondition.hasUSB:
                 conditionMet = GameManager.instance.gameState.PlayerHasUSB;
                 break;
-            case DialogueCondition.insertedUSB:
+            case GameStateCondition.insertedUSB:
                 conditionMet = GameManager.instance.gameState.USBInserted;
                 break;
-            case DialogueCondition.hasBattery:
+            case GameStateCondition.hasBattery:
                 conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
                 break;
         }

@@ -1,4 +1,4 @@
-public enum DialogueCondition {
+public enum GameStateCondition {
   hasUSB,
   insertedUSB,
   hasBattery

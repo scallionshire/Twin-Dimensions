@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Cinemachine.PostFX;
+using FMOD;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -21,16 +22,14 @@ public class GameManager : MonoBehaviour
     public bool debugMode = false;
     public Level debugLevel = Level.tutorial;
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+    public GameStateCondition debugCondition;
     // -----------------------------------------------
 
     public static GameManager instance;
     private CutsceneManager cutsceneManager;
-    private bool sceneLoaded = true;
     [HideInInspector]
     public bool gameStarted = false;   
     private bool cutscenePlaying = false;
-    private bool menuUnloaded = false;
-    private bool hasPlayedSwitchCutscene = false;
 
     [Header("Game Variables")]
     public bool firstSwitch = true;   
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private FMODUnity.StudioEventEmitter eventEmitter;
 
-    public GameObject popupMenu;
+    public GameObject settingsMenu;
     public ExtrudableDataScriptable initTutorialExtrudables;
     public ExtrudableDataScriptable initComputerLabExtrudables;
     public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
@@ -78,8 +77,14 @@ public class GameManager : MonoBehaviour
         if (debugMode) {
             Cursor.lockState = CursorLockMode.Locked;
             scenesToLoad.Add(SceneManager.LoadSceneAsync("GUI", LoadSceneMode.Additive));
+
+            if (SceneManager.GetActiveScene().name == "new3Dtut") {
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+            } else if (SceneManager.GetActiveScene().name == "new2dtut") {
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
+            }
+
             scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
-            scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
 
             gameStarted = true;
 
@@ -92,10 +97,11 @@ public class GameManager : MonoBehaviour
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
-    
-        // Doing this prevents losing reference to the popup menu
-        TogglePauseMenu();
-        TogglePauseMenu();
+
+        if (GameObject.Find("SettingsMenu") != null) {
+            settingsMenu = GameObject.Find("SettingsMenu");
+            settingsMenu.SetActive(false);
+        }
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
@@ -108,14 +114,21 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        DeactivateScene("new2dtut");
-        DeactivateScene("mainPuzzle");
-        ActiveSceneName = "new3Dtut";
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
+        if (SceneManager.GetActiveScene().name == "new3Dtut") {
+            DeactivateScene("new2dtut");
+            DeactivateScene("mainPuzzle");
+            ActiveSceneName = "new3Dtut";
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
+        } else if (SceneManager.GetActiveScene().name == "new2dtut") {
+            DeactivateScene("new3Dtut");
+            DeactivateScene("mainPuzzle");
+            ActiveSceneName = "new2dtut";
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new2dtut"));
+        }
 
         instance.gameState.CurrentLevel = debugLevel;
 
+        // Skip to computer lab level
         if (debugLevel == Level.computerlab) {
             GameObject Player3D = GameObject.Find("3D Player");
             Player3D.transform.position = new Vector3(-0.85f,-4.05f,7.03f);
@@ -128,6 +141,23 @@ public class GameManager : MonoBehaviour
             instance.gameState.USBInserted = true;
 
             instance.firstSwitch = false;
+        }
+
+        // Unlock current conditions
+        switch (debugCondition)
+        {
+            case GameStateCondition.hasUSB:
+                instance.gameState.PlayerHasUSB = true;
+                break;
+            case GameStateCondition.insertedUSB:
+                instance.gameState.PlayerHasUSB = true;
+                instance.gameState.USBInserted = true;
+                break;
+            case GameStateCondition.hasBattery:
+                instance.gameState.PlayerHasUSB = true;
+                instance.gameState.USBInserted = true;
+                instance.gameState.BatteriesCollected = 5;
+                break;
         }
     }
 
@@ -336,9 +366,14 @@ public class GameManager : MonoBehaviour
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
-        if (popupMenu.activeSelf)
+        if (settingsMenu == null) {
+            settingsMenu = GameObject.Find("SettingsMenu");
+            settingsMenu.SetActive(false);
+        }
+
+        if (settingsMenu.activeSelf)
         {
-            popupMenu.SetActive(false);
+            settingsMenu.SetActive(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -347,7 +382,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.None;
-            popupMenu.SetActive(true);
+            settingsMenu.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -549,6 +584,7 @@ public class GameManager : MonoBehaviour
 
     public void ToggleDialogueFreeze(bool freeze)
     {
+        UnityEngine.Debug.Log("Freeze: " + freeze);
         isFrozen = freeze;
         
         if (ActiveSceneName == "new3Dtut") {
@@ -576,8 +612,11 @@ public class GameManager : MonoBehaviour
 
         if (ActiveSceneName == "new2dtut" || ActiveSceneName == "mainPuzzle") {
             // Disable player movement
-            Player2DMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2DMovement>();
-            player.enabled = !freeze;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Player2DMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2DMovement>();
+            playerMovement.enabled = !freeze;
+            Interaction2D playerInteraction = player.GetComponent<Interaction2D>();
+            playerInteraction.enabled = !freeze;
 
             // Dim light if frozen
             Light2D sceneLight = GameObject.Find("Light 2D").GetComponent<Light2D>();
