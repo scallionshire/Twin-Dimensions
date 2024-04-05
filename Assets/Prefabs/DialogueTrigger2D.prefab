@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2321738333957444938}
   - component: {fileID: 3740654991630256585}
   - component: {fileID: 33760344377343771}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DialogueTrigger2D
   m_TagString: DialogueTrigger
   m_Icon: {fileID: 0}
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doNotRepeat: 1
   isCutscene: 0
+  conditionToCheck: 0
   noUSBDialogue:
     dialogueName: 
     sentences: []

@@ -24,15 +24,16 @@ public class Interaction : MonoBehaviour
 
     void Start()
     {
+        playerFader = GetComponent<PlayerFader>();
         dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
-        playerFader = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFader>();
         tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
         cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
     void Update()
     {   
-        bool currentlyBlockingInteractable = false;
+        if (playerFader == null) Debug.Log("omfg");
+        bool currentlyBlockingInteractable;
 
         // Don't need to worry about checking current camera since this component is disabled when a cutscene is happening
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);

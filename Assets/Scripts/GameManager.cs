@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
             }
             else if (ActiveSceneName == "mainPuzzle")
             {
-                switchToScene("new3Dtut");
+                switchToScene("new2dtut");
             }
         }
 
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        switchToScene("new3Dtut");
+        switchToScene("new2dtut");
     }
 
     // TODO: clean this up
@@ -568,7 +568,7 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if (eventEmitter.EventInstance.isValid()) {
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid()) {
             if (sceneName == "new3Dtut") {
                 eventEmitter.EventInstance.setParameterByName("CurrentDimension", 0);
             } else {
