@@ -39049,7 +39049,11 @@ MonoBehaviour:
       twin: 0
   withUSBDialogue:
     dialogueName: 
-    sentences: []
+    sentences:
+    - text: ...
+      twin: 1
+    - text: This won't do. I've got to boot her up at the computer.
+      twin: 0
 --- !u!114 &1628981766
 MonoBehaviour:
   m_ObjectHideFlags: 0
