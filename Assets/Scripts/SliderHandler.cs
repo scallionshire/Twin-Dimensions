@@ -54,7 +54,6 @@ public class SliderHandler : MonoBehaviour
 
     public void MusicValueChangeCheck()
     {
-        Debug.Log(musicSlider.value);
         GameManager.instance.UpdateMusicVolume(musicSlider.value);
     }
 
