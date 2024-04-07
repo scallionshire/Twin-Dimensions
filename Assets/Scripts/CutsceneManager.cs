@@ -11,6 +11,7 @@ public class CutsceneManager : MonoBehaviour
     public RawImage videoImage;
     
     public static CutsceneManager instance;
+    private FMOD.Studio.EventInstance cutsceneMusicInstance;
 
     private Dictionary<string, int> cutsceneIndex = new Dictionary<string, int>
     {   
@@ -46,6 +47,11 @@ public class CutsceneManager : MonoBehaviour
             return;
         }
 
+        GameManager.instance.PauseMainMusic(true);
+
+        cutsceneMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/IntroCutscene");
+        cutsceneMusicInstance.start();
+
         videoImage.color = new Color(1, 1, 1, 1);
         int index = cutsceneIndex[cutsceneName];
         Debug.Log("Playing cutscene: " + cutsceneName);
@@ -55,6 +61,10 @@ public class CutsceneManager : MonoBehaviour
 
     void OnCutsceneEnd(VideoPlayer vp)
     {
+        cutsceneMusicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        cutsceneMusicInstance.release();
+
+        GameManager.instance.PauseMainMusic(false);
         videoImage.color = new Color(0, 0, 0, 0);
         Debug.Log("Cutscene ended.");
         videoPlayer.Stop();

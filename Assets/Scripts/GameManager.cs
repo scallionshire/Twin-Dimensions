@@ -311,6 +311,21 @@ public class GameManager : MonoBehaviour
         sfxBus.setVolume(volume);
     }
 
+    public void PauseMainMusic(bool pause)
+    {
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
+        {
+            if (pause)
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 1);
+            }
+            else
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 0);
+            }
+        }
+    }
+
     // TODO: clean this up
     public void SolvePuzzleBlock(Level level, int blockId) {
         switch (level) {
