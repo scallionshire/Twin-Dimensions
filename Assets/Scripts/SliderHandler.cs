@@ -9,7 +9,7 @@ public class SliderHandler : MonoBehaviour
     public static SliderHandler instance;
 
     void Awake()
-    {   
+    {
         if (instance == null)
         {
             instance = this;
@@ -24,25 +24,27 @@ public class SliderHandler : MonoBehaviour
     
     void Start()
     {
-        GameObject music = GameObject.Find("Music");
-        GameObject dialogue = GameObject.Find("Dialogue");
-        GameObject sfx = GameObject.Find("SFX");
+        InitializeSliders();
+    }
+
+    private void InitializeSliders()
+    {
+        musicSlider = GameObject.Find("Music").GetComponent<Slider>();
+        dialogueSlider = GameObject.Find("Dialogue").GetComponent<Slider>();
+        sfxSlider = GameObject.Find("SFX").GetComponent<Slider>();
         
-        musicSlider = music.GetComponent<Slider>();
         if (musicSlider != null)
         {
             musicSlider.value = GameManager.instance.MusicVolume;
             musicSlider.onValueChanged.AddListener(delegate { MusicValueChangeCheck(); });
         }
 
-        dialogueSlider = dialogue.GetComponent<Slider>();
         if (dialogueSlider != null)
         {
             dialogueSlider.value = GameManager.instance.DialogueVolume;
             dialogueSlider.onValueChanged.AddListener(delegate { DialogueValueChangeCheck(); });
         }
 
-        sfxSlider = sfx.GetComponent<Slider>();
         if (sfxSlider != null)
         {
             sfxSlider.value = GameManager.instance.SFXVolume;
@@ -52,7 +54,8 @@ public class SliderHandler : MonoBehaviour
 
     public void MusicValueChangeCheck()
     {
-        GameManager.instance.MusicVolume = musicSlider.value;
+        Debug.Log(musicSlider.value);
+        GameManager.instance.UpdateMusicVolume(musicSlider.value);
     }
 
     public void DialogueValueChangeCheck()

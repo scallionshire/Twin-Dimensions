@@ -292,6 +292,18 @@ public class GameManager : MonoBehaviour
 
         switchToScene("new3Dtut");
     }
+    public void UpdateMusicVolume(float volume)
+    {
+        Debug.Log(volume);
+        MusicVolume = volume;
+        if (eventEmitter == null) {
+            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter.EventInstance.isValid())
+        {
+            eventEmitter.EventInstance.setVolume(volume);
+        }
+    }
 
     // TODO: clean this up
     public void SolvePuzzleBlock(Level level, int blockId) {
