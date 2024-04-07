@@ -179,6 +179,8 @@ public class DialogueManager : MonoBehaviour
     {
         targetText.text = "";
         FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(soundPath);
+        float dialogueVolume = GameManager.instance.DialogueVolume;
+        dialogueSoundInstance.setVolume(dialogueVolume);
         dialogueSoundInstance.start();
 
         while (targetText.text.Length < sentence.Length)
