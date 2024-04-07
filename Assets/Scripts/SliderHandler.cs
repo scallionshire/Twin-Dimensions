@@ -64,7 +64,7 @@ public class SliderHandler : MonoBehaviour
 
     public void SFXValueChangeCheck()
     {
-        GameManager.instance.SFXVolume = sfxSlider.value;
+        GameManager.instance.UpdateSFXVolume(sfxSlider.value);
     }
 
     public void QuitSettings()

@@ -294,7 +294,6 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateMusicVolume(float volume)
     {
-        Debug.Log(volume);
         MusicVolume = volume;
         if (eventEmitter == null) {
             eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
@@ -303,6 +302,13 @@ public class GameManager : MonoBehaviour
         {
             eventEmitter.EventInstance.setVolume(volume);
         }
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        SFXVolume = volume;
+        FMOD.Studio.Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        sfxBus.setVolume(volume);
     }
 
     // TODO: clean this up
