@@ -178,22 +178,28 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(TMP_Text targetText, string sentence)
     {
         targetText.text = "";
+        //FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(soundPath);
+        //float dialogueVolume = GameManager.instance.DialogueVolume;
+        //dialogueSoundInstance.setVolume(dialogueVolume);
+        //dialogueSoundInstance.start();
 
         while (targetText.text.Length < sentence.Length)
         {
-            // Skip to the end of the sentence
             if (Input.GetButtonDown("Fire1") && targetText.text.Length > 1)
             {
+                //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                //dialogueSoundInstance.release(); 
                 targetText.text = sentence;
                 finishedDisplayingText = true;
                 yield break;
             }
 
-            // Otherwise, continue typing
             targetText.text += sentence[targetText.text.Length];
             yield return null;
         }
 
+        //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //dialogueSoundInstance.release();
         finishedDisplayingText = true;
     }
 

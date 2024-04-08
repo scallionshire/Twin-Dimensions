@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
+
     
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
@@ -175,9 +176,22 @@ public class GameManager : MonoBehaviour
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
+                if (eventEmitter == null) {
+                    eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                }
+                if (eventEmitter.EventInstance.isValid())
+                {
+                    eventEmitter.EventInstance.setPaused(true);
+                }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
+                    if (eventEmitter == null) {
+                        eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                    }
+                    if (eventEmitter.EventInstance.isValid()) {
+                        eventEmitter.EventInstance.setPaused(false);
+                    }
                     StartCoroutine(WaitBeforeUnfreezing());
                 } else {
                     ToggleDialogueFreeze(false);
@@ -292,6 +306,42 @@ public class GameManager : MonoBehaviour
 
         switchToScene("new3Dtut");
     }
+    public void UpdateMusicVolume(float volume)
+    {
+        MusicVolume = volume;
+        if (eventEmitter == null) {
+            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter.EventInstance.isValid())
+        {
+            eventEmitter.EventInstance.setVolume(volume);
+        }
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        SFXVolume = volume;
+        FMOD.Studio.Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        sfxBus.setVolume(volume);
+    }
+
+    public void PauseMainMusic(bool pause)
+    {
+        if (eventEmitter == null && GameObject.Find("Main Camera") != null) {
+            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
+        {
+            if (pause)
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 1);
+            }
+            else
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 0);
+            }
+        }
+    }
 
     // TODO: clean this up
     public void SolvePuzzleBlock(Level level, int blockId) {
@@ -339,6 +389,7 @@ public class GameManager : MonoBehaviour
         if (popupMenu.activeSelf)
         {
             popupMenu.SetActive(false);
+            PauseMainMusic(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -348,6 +399,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             popupMenu.SetActive(true);
+            PauseMainMusic(true);
             Time.timeScale = 0f;
         }
     }
