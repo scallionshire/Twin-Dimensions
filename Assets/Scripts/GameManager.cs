@@ -389,6 +389,7 @@ public class GameManager : MonoBehaviour
         if (popupMenu.activeSelf)
         {
             popupMenu.SetActive(false);
+            PauseMainMusic(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -398,6 +399,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             popupMenu.SetActive(true);
+            PauseMainMusic(true);
             Time.timeScale = 0f;
         }
     }
