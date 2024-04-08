@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
+
     
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
@@ -175,9 +176,22 @@ public class GameManager : MonoBehaviour
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
+                if (eventEmitter == null) {
+                    eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                }
+                if (eventEmitter.EventInstance.isValid())
+                {
+                    eventEmitter.EventInstance.setPaused(true);
+                }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
+                    if (eventEmitter == null) {
+                        eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                    }
+                    if (eventEmitter.EventInstance.isValid()) {
+                        eventEmitter.EventInstance.setPaused(false);
+                    }
                     StartCoroutine(WaitBeforeUnfreezing());
                 } else {
                     ToggleDialogueFreeze(false);
@@ -313,7 +327,10 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
+        if (eventEmitter == null) {
+            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter.EventInstance.isValid())
         {
             if (pause)
             {
