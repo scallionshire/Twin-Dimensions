@@ -5,6 +5,7 @@ public class RotateDetectionZone : MonoBehaviour
     public float baseRotationSpeed = 20.0f;
     private float currentRotationSpeed;
     public float rotationSpeedIncrease = 5.0f;
+    private bool freezeRotation = false;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class RotateDetectionZone : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.instance.isFrozen)
+        if (!GameManager.instance.isFrozen || freezeRotation)
         {
             transform.Rotate(Vector3.up, currentRotationSpeed * Time.deltaTime);
         }
@@ -22,5 +23,10 @@ public class RotateDetectionZone : MonoBehaviour
     public void IncreaseRotationSpeed()
     {
         currentRotationSpeed += rotationSpeedIncrease;
+    }
+    
+    public void FreezeRotation()
+    {
+        freezeRotation = true;
     }
 }
