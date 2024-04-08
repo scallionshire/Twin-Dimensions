@@ -147,7 +147,7 @@ public class DialogueManager : MonoBehaviour
 
                 TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/3DDialogStartSound");
-                StartCoroutine(TypeSentence(target02, sentence.text, "event:/SFX2D/3DDialogSpeech"));
+                StartCoroutine(TypeSentence(target02, sentence.text));
                 break;
             case Twin.Twin_20:
                 ToggleActive(true, Twin.Twin_20);
@@ -155,7 +155,7 @@ public class DialogueManager : MonoBehaviour
                 
                 TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/2DDialogStartSound");
-                StartCoroutine(TypeSentence(target20, sentence.text, "event:/SFX2D/2DDialogSpeech"));
+                StartCoroutine(TypeSentence(target20, sentence.text));
                 break;
         }
     }
@@ -175,20 +175,20 @@ public class DialogueManager : MonoBehaviour
         currentDialogueName = "";
     }
 
-    IEnumerator TypeSentence(TMP_Text targetText, string sentence, string soundPath)
+    IEnumerator TypeSentence(TMP_Text targetText, string sentence)
     {
         targetText.text = "";
-        FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(soundPath);
-        float dialogueVolume = GameManager.instance.DialogueVolume;
-        dialogueSoundInstance.setVolume(dialogueVolume);
-        dialogueSoundInstance.start();
+        //FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(soundPath);
+        //float dialogueVolume = GameManager.instance.DialogueVolume;
+        //dialogueSoundInstance.setVolume(dialogueVolume);
+        //dialogueSoundInstance.start();
 
         while (targetText.text.Length < sentence.Length)
         {
             if (Input.GetButtonDown("Fire1") && targetText.text.Length > 1)
             {
-                dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                dialogueSoundInstance.release(); 
+                //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                //dialogueSoundInstance.release(); 
                 targetText.text = sentence;
                 finishedDisplayingText = true;
                 yield break;
@@ -198,8 +198,8 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
 
-        dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        dialogueSoundInstance.release();
+        //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //dialogueSoundInstance.release();
         finishedDisplayingText = true;
     }
 

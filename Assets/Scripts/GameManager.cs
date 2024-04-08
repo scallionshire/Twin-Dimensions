@@ -327,10 +327,10 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        if (eventEmitter == null) {
+        if (eventEmitter == null && GameObject.Find("Main Camera") != null) {
             eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
         }
-        if (eventEmitter.EventInstance.isValid())
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
         {
             if (pause)
             {
