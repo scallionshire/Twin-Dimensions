@@ -14,7 +14,7 @@ public class RotateDetectionZone : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.instance.isFrozen || freezeRotation)
+        if (!GameManager.instance.isFrozen || !freezeRotation)
         {
             transform.Rotate(Vector3.up, currentRotationSpeed * Time.deltaTime);
         }
