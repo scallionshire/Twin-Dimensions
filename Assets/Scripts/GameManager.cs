@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
 
-    
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
@@ -173,21 +172,25 @@ public class GameManager : MonoBehaviour
             }
 
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
+                PauseMainMusic(true);
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
                 if (eventEmitter == null) {
-                    eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                    var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+                    eventEmitter = eventEmitters[0];
                 }
                 if (eventEmitter.EventInstance.isValid())
                 {
                     eventEmitter.EventInstance.setPaused(true);
                 }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
+                PauseMainMusic(false);
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
                     if (eventEmitter == null) {
-                        eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+                        var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+                        eventEmitter = eventEmitters[0];
                     }
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
@@ -208,11 +211,11 @@ public class GameManager : MonoBehaviour
         ToggleBokeh(false);
     }
 
-    public void SwitchToPuzzle(int puzzleId, Level level) 
+    public void SwitchToPuzzle(int puzzleId, Level level, bool newMap = false) 
     {   
         switchToScene("mainPuzzle");
 
-        if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
+        if (newMap) {
             instance.gameState.CurrentPuzzleId = puzzleId;
             instance.gameState.CurrentLevel = level;
             wipePuzzle();
@@ -222,13 +225,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchToMap(int extId, Level level) {
+    public void SwitchToMap(int extId, Level level, bool newMap = false) {
         switchToScene("new2dtut");
         // Find ExtrudableManager and load the map if:
         //  - extrudable set id is different
         //  - level is different
         //  - extrudable set id is -1 (meaning no extrudables have been loaded yet, so we don't care about map state)
-        if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel || extId == -1) {
+        if (newMap || extId == -1) {
             instance.gameState.CurrentExtrudableSetId = extId;
             instance.gameState.CurrentLevel = level;
             wipeExtrudables();
@@ -309,8 +312,9 @@ public class GameManager : MonoBehaviour
     public void UpdateMusicVolume(float volume)
     {
         MusicVolume = volume;
-        if (eventEmitter == null) {
-            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            eventEmitter = eventEmitters[0];
         }
         if (eventEmitter.EventInstance.isValid())
         {
@@ -327,11 +331,16 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        if (eventEmitter == null && GameObject.Find("Main Camera") != null) {
-            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+        Debug.Log("Pausing music");
+        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            Debug.Log("eventEmitter was null or not valid");
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter != null && eventEmitter.EventInstance.isValid())
         {
+            Debug.Log("Setting isPaused");
             if (pause)
             {
                 eventEmitter.EventInstance.setParameterByName("isPaused", 1);
@@ -389,7 +398,7 @@ public class GameManager : MonoBehaviour
         if (popupMenu.activeSelf)
         {
             popupMenu.SetActive(false);
-            PauseMainMusic(false);
+            // PauseMainMusic(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -399,7 +408,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             popupMenu.SetActive(true);
-            PauseMainMusic(true);
+            // PauseMainMusic(true);
             Time.timeScale = 0f;
         }
     }
@@ -579,7 +588,8 @@ public class GameManager : MonoBehaviour
     public void switchToScene(string sceneName)
     {
         if (eventEmitter == null) {
-            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            eventEmitter = eventEmitters[0];
 
             // Ensure cursor is focused when you first start the game
             Cursor.lockState = CursorLockMode.Locked;

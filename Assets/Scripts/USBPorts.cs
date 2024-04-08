@@ -9,16 +9,18 @@ public class USBPorts : MonoBehaviour
     public int id;
     public Level level;
     public string eventName = "event:/SFX3D/USBInsert";
+    private bool alreadyInserted = false;
 
     public void PlugInUSB()
     {   
         if (GameManager.instance.gameState.USBInserted) {
             RuntimeManager.PlayOneShot(eventName, transform.position);
             if (isPuzzlePort) {
-                GameManager.instance.SwitchToPuzzle(id, level);
+                GameManager.instance.SwitchToPuzzle(id, level, !alreadyInserted);
             } else {
-                GameManager.instance.SwitchToMap(id, level);
+                GameManager.instance.SwitchToMap(id, level, !alreadyInserted);
             }
+            alreadyInserted = true;
         }
     }
 }
