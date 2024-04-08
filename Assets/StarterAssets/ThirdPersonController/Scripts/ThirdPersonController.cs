@@ -136,7 +136,7 @@ namespace StarterAssets
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
-            _hasAnimator = TryGetComponent(out _animator);
+            _hasAnimator = transform.Find("Mesh").gameObject.TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
             #if ENABLE_INPUT_SYSTEM 
@@ -154,7 +154,7 @@ namespace StarterAssets
 
         private void Update()
         {   
-            _hasAnimator = TryGetComponent(out _animator);
+            _hasAnimator = transform.Find("Mesh").gameObject.TryGetComponent(out _animator);
 
             JumpAndGravity();
             GroundedCheck();
