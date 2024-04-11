@@ -96,6 +96,10 @@ public class GameManager : MonoBehaviour
         // Doing this prevents losing reference to the popup menu
         TogglePauseMenu();
         TogglePauseMenu();
+
+        MusicVolume = 1f;
+        DialogueVolume = 1f;
+        SFXVolume = 1f;
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
