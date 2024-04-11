@@ -147,7 +147,7 @@ public class DialogueManager : MonoBehaviour
 
                 TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/3DDialogStartSound");
-                StartCoroutine(TypeSentence(target02, sentence.text));
+                StartCoroutine(TypeSentence(target02, sentence.text, sentence.twin));
                 break;
             case Twin.Twin_20:
                 ToggleActive(true, Twin.Twin_20);
@@ -155,7 +155,7 @@ public class DialogueManager : MonoBehaviour
                 
                 TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/2DDialogStartSound");
-                StartCoroutine(TypeSentence(target20, sentence.text));
+                StartCoroutine(TypeSentence(target20, sentence.text, sentence.twin));
                 break;
         }
     }
@@ -175,31 +175,42 @@ public class DialogueManager : MonoBehaviour
         currentDialogueName = "";
     }
 
-    IEnumerator TypeSentence(TMP_Text targetText, string sentence)
+    IEnumerator TypeSentence(TMP_Text targetText, string sentence, Twin twin)
     {
+        string FMODEvent = "";
+        switch (twin)
+        {
+            case Twin.Twin_02:
+                FMODEvent = "event:/SFX2D/3DDialogSpeech";
+                break;
+            case Twin.Twin_20:
+                FMODEvent = "event:/SFX2D/2DDialogSpeech";
+                break;
+        }
         targetText.text = "";
-        //FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(soundPath);
-        //float dialogueVolume = GameManager.instance.DialogueVolume;
-        //dialogueSoundInstance.setVolume(dialogueVolume);
-        //dialogueSoundInstance.start();
+
+        FMOD.Studio.EventInstance dialogueSoundInstance = FMODUnity.RuntimeManager.CreateInstance(FMODEvent);
+        float dialogueVolume = GameManager.instance.DialogueVolume;
+        dialogueSoundInstance.setVolume(dialogueVolume);
+        dialogueSoundInstance.start();
 
         while (targetText.text.Length < sentence.Length)
         {
             if (Input.GetButtonDown("Fire1") && targetText.text.Length > 1)
             {
-                //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                //dialogueSoundInstance.release(); 
+                dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                dialogueSoundInstance.release(); 
                 targetText.text = sentence;
                 finishedDisplayingText = true;
                 yield break;
             }
 
             targetText.text += sentence[targetText.text.Length];
-            yield return null;
+            yield return new WaitForSeconds(0.01f);
         }
 
-        //dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        //dialogueSoundInstance.release();
+        dialogueSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        dialogueSoundInstance.release();
         finishedDisplayingText = true;
     }
 
