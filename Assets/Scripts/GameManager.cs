@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isFrozen = false;
     
-    public float MusicVolume = 100f;
-    public float DialogueVolume = 100f;
-    public float SFXVolume = 100f;
+    public float MusicVolume = 1f;
+    public float DialogueVolume = 1f;
+    public float SFXVolume = 1f;
 
     private FMODUnity.StudioEventEmitter eventEmitter;
 
