@@ -631,6 +631,9 @@ public class GameManager : MonoBehaviour
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
 
+            Animator playerAnimator = player.transform.Find("Mesh").gameObject.GetComponent<Animator>();
+            playerAnimator.SetFloat("Speed", 0);
+
             // Disable player interaction
             Interaction playerInteraction = player.GetComponent<Interaction>();
             playerInteraction.enabled = !freeze;
