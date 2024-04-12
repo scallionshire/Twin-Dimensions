@@ -8,12 +8,12 @@ public class Interaction : MonoBehaviour
 {
     public Transform interactionCenter;
     public float interactRadius = 5f;
+    public float interactDistance = 5f;
     public LayerMask layers;
     public bool prevHit = false;
     public GameObject prevInteractable;
 
     private DialogueManager dialogueManager;
-    private PlayerFader playerFader;
     private TooltipManager tooltipManager;
     private CinemachineBrain cinemachineBrain;
 
@@ -37,19 +37,17 @@ public class Interaction : MonoBehaviour
 
         // Don't need to worry about checking current camera since this component is disabled when a cutscene is happening
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 9f, Color.green);
+        Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.green);
         
-        currentlyBlockingInteractable = Physics.Raycast(ray, out rayHit, 9f, layers);
+        currentlyBlockingInteractable = Physics.Raycast(ray, out rayHit, interactDistance, layers);
         
         numColliders = Physics.OverlapSphereNonAlloc(interactionCenter.position, interactRadius, hitColliders, layers);
         
         if (currentlyBlockingInteractable && !blockingInteractable)
         {
-            playerFader.Fade();
             blockingInteractable = currentlyBlockingInteractable;
         } else if (!currentlyBlockingInteractable && blockingInteractable)
         {
-            playerFader.ResetFade();
             blockingInteractable = currentlyBlockingInteractable;
         }
 
@@ -114,7 +112,6 @@ public class Interaction : MonoBehaviour
                 prevInteractable = null;
             } else {
                 // Handle case where object is destroyed
-                playerFader.ResetFade();
             }
 
             if (tooltipManager != null)

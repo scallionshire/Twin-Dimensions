@@ -161,6 +161,7 @@ public class PuzzleManager : MonoBehaviour
 
                 // TODO: clean this up
                 if (levelPuzzles.level == Level.computerlab) {
+                    Debug.Log("Solving puzzle block for index " + index);
                     GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, index);
                 }
 

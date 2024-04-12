@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isFrozen = false;
     
-    public float MusicVolume = 100f;
-    public float DialogueVolume = 100f;
-    public float SFXVolume = 100f;
+    public float MusicVolume = 1f;
+    public float DialogueVolume = 1f;
+    public float SFXVolume = 1f;
 
     private FMODUnity.StudioEventEmitter eventEmitter;
 
@@ -102,6 +102,10 @@ public class GameManager : MonoBehaviour
             settingsMenu = GameObject.Find("SettingsMenu");
             settingsMenu.SetActive(false);
         }
+
+        MusicVolume = 1f;
+        DialogueVolume = 1f;
+        SFXVolume = 1f;
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
@@ -202,12 +206,29 @@ public class GameManager : MonoBehaviour
             }
 
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
+                PauseMainMusic(true);
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
+                if (eventEmitter == null) {
+                    var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+                    eventEmitter = eventEmitters[0];
+                }
+                if (eventEmitter.EventInstance.isValid())
+                {
+                    eventEmitter.EventInstance.setPaused(true);
+                }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
+                PauseMainMusic(false);
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
+                    if (eventEmitter == null) {
+                        var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+                        eventEmitter = eventEmitters[0];
+                    }
+                    if (eventEmitter.EventInstance.isValid()) {
+                        eventEmitter.EventInstance.setPaused(false);
+                    }
                     StartCoroutine(WaitBeforeUnfreezing());
                 } else {
                     ToggleDialogueFreeze(false);
@@ -224,11 +245,11 @@ public class GameManager : MonoBehaviour
         ToggleBokeh(false);
     }
 
-    public void SwitchToPuzzle(int puzzleId, Level level) 
+    public void SwitchToPuzzle(int puzzleId, Level level, bool newMap = false) 
     {   
         switchToScene("mainPuzzle");
 
-        if (instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
+        if (newMap) {
             instance.gameState.CurrentPuzzleId = puzzleId;
             instance.gameState.CurrentLevel = level;
             wipePuzzle();
@@ -238,13 +259,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchToMap(int extId, Level level) {
+    public void SwitchToMap(int extId, Level level, bool newMap = false) {
         switchToScene("new2dtut");
         // Find ExtrudableManager and load the map if:
         //  - extrudable set id is different
         //  - level is different
         //  - extrudable set id is -1 (meaning no extrudables have been loaded yet, so we don't care about map state)
-        if (extId != instance.gameState.CurrentExtrudableSetId || level != instance.gameState.CurrentLevel || extId == -1) {
+        if (newMap || extId == -1) {
             instance.gameState.CurrentExtrudableSetId = extId;
             instance.gameState.CurrentLevel = level;
             wipeExtrudables();
@@ -321,6 +342,91 @@ public class GameManager : MonoBehaviour
         }
 
         switchToScene("new2dtut");
+    }
+
+    public void UpdateMusicVolume(float volume)
+    {
+        MusicVolume = volume;
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            eventEmitter = eventEmitters[0];
+        }
+        if (eventEmitter.EventInstance.isValid())
+        {
+            eventEmitter.EventInstance.setVolume(volume);
+        }
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        SFXVolume = volume;
+        FMOD.Studio.Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        sfxBus.setVolume(volume);
+    }
+
+    public void PauseMainMusic(bool pause)
+    {
+        Debug.Log("Pausing music");
+        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            Debug.Log("eventEmitter was null or not valid");
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
+        {
+            Debug.Log("Setting isPaused");
+            if (pause)
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 1);
+            }
+            else
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 0);
+            }
+        }
+    }
+    public void UpdateMusicVolume(float volume)
+    {
+        MusicVolume = volume;
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            eventEmitter = eventEmitters[0];
+        }
+        if (eventEmitter.EventInstance.isValid())
+        {
+            eventEmitter.EventInstance.setVolume(volume);
+        }
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        SFXVolume = volume;
+        FMOD.Studio.Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
+        sfxBus.setVolume(volume);
+    }
+
+    public void PauseMainMusic(bool pause)
+    {
+        Debug.Log("Pausing music");
+        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
+        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
+            Debug.Log("eventEmitter was null or not valid");
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        }
+        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
+        {
+            Debug.Log("Setting isPaused");
+            if (pause)
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 1);
+            }
+            else
+            {
+                eventEmitter.EventInstance.setParameterByName("isPaused", 0);
+            }
+        }
     }
 
     // TODO: clean this up
@@ -562,7 +668,8 @@ public class GameManager : MonoBehaviour
     public void switchToScene(string sceneName)
     {
         if (eventEmitter == null) {
-            eventEmitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            eventEmitter = eventEmitters[0];
 
             // Ensure cursor is focused when you first start the game
             Cursor.lockState = CursorLockMode.Locked;
@@ -596,13 +703,16 @@ public class GameManager : MonoBehaviour
                     playerCamera.m_XAxis.m_MaxSpeed = 0;
                 } else {
                     playerCamera.m_YAxis.m_MaxSpeed = 4;
-                    playerCamera.m_XAxis.m_MaxSpeed = 300;
+                    playerCamera.m_XAxis.m_MaxSpeed = 200;
                 }
             }
 
             // Disable player movement
             ThirdPersonController player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
             player.enabled = !freeze;
+
+            Animator playerAnimator = player.transform.Find("Mesh").gameObject.GetComponent<Animator>();
+            playerAnimator.SetFloat("Speed", 0);
 
             // Disable player interaction
             Interaction playerInteraction = player.GetComponent<Interaction>();

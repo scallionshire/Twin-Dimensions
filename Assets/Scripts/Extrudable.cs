@@ -143,6 +143,8 @@ public class Extrudable : MonoBehaviour
 
     public void Extrude() {
         isMoving = true;
+        FMOD.ATTRIBUTES_3D attributes = FMODUnity.RuntimeUtils.To3DAttributes(gameObject);
+        extrudableSoundInstance.set3DAttributes(attributes);
         extrudableSoundInstance.start();
     }
 
