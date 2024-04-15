@@ -6,5 +6,4 @@ public struct WallData
 {
     public TransformData transformData;
     public ColliderData colliderData;
-    internal Vector3 position;
 }

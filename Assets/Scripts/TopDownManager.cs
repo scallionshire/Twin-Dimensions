@@ -3,9 +3,170 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class TopDownManager : MonoBehaviour
 {
+    [TextArea]
+    [Tooltip("Doesn't do anything. Just comments shown in inspector")]
+    public string Note = "In order for TopDownManager to work, the scene MUST HAVE parent gameobjects called 'Objects', 'Doors', 'USBPorts', 'Walls', and 'Extrudables'.";
+
+    [Header("DEBUG ONLY")]
+    public bool debugMode = false;
+    public TopDownDataScriptable debugRoomData;
+
+    [Header("DO NOT TOUCH")]
+    public GameObject wallPrefab;
+    public GameObject doorPrefab;
+    public GameObject usbPortPrefab;
+    public GameObject extrudablePrefab;
+    public GameObject objectPrefab;
+
+    private int currentRoom;
+
+    void Start()
+    {
+        if (debugMode) {
+            WipeScene();
+            LoadCurrentScene();
+        }
+    }
+
+    public void LoadCurrentScene() {
+        TopDownDataScriptable roomData;
+
+        if (debugMode) {
+            roomData = debugRoomData;
+        } else {
+            currentRoom = GameManager.instance.gameState.CurrentRoom;
+            roomData = GameManager.instance.topDownRoomData[currentRoom];
+        }
+
+        // ------------- LOADING THE ROOM DATA -------------
+
+        // Set the background sprite
+        GameObject.Find("Background").GetComponent<SpriteRenderer>().sprite = roomData.backgroundSprite;
+
+        // Set the background mask sprite
+        GameObject.Find("Sprite Mask").GetComponent<SpriteMask>().sprite = roomData.backgroundMaskSprite;
+
+        // Set the frame size
+        GameObject.Find("Frame").GetComponent<SpriteRenderer>().size = roomData.frameSize;
+
+        // Set the glitch overlay scale
+        GameObject.Find("Glitch").transform.localScale = roomData.glitchScale;
+
+        // Set the wall data list
+        GameObject wallParent = GameObject.Find("Walls");
+        int index = 0;
+        foreach (WallData wallData in roomData.walls) {
+            GameObject wall = Instantiate(wallPrefab, wallData.transformData.position, wallData.transformData.rotation, wallParent.transform);
+            wall.transform.localScale = wallData.transformData.scale;
+            wall.GetComponent<BoxCollider2D>().size = wallData.colliderData.size;
+            wall.GetComponent<BoxCollider2D>().offset = wallData.colliderData.offset;
+            wall.name = "Wall" + index;
+            index++;
+        }
+
+        // Set the object data list
+        GameObject objectParent = GameObject.Find("Objects");
+        foreach (ObjectData objectData in roomData.objects) {
+            GameObject obj = Instantiate(objectPrefab, objectData.position, Quaternion.identity, objectParent.transform);
+            obj.name = objectData.name;
+            obj.GetComponent<SpriteRenderer>().sprite = objectData.sprite;
+            obj.GetComponent<SpriteRenderer>().sortingOrder = objectData.sortingOrder;
+            obj.GetComponent<SpriteRenderer>().color = objectData.color;
+
+            if (objectData.colliderData.noCollider == false) {
+                obj.GetComponent<BoxCollider2D>().size = objectData.colliderData.size;
+                obj.GetComponent<BoxCollider2D>().offset = objectData.colliderData.offset;
+                obj.GetComponent<BoxCollider2D>().isTrigger = objectData.colliderData.isTrigger;
+            } else {
+                Destroy(obj.GetComponent<BoxCollider2D>());
+            }
+
+            if (objectData.animatorController != null) {
+                if (obj.GetComponent<Animator>() == null) {
+                    obj.AddComponent<Animator>();
+                }
+                obj.GetComponent<Animator>().runtimeAnimatorController = objectData.animatorController;
+            }
+
+            obj.GetComponent<DialogueTrigger>().doNotRepeat = objectData.dialogueData.doNotRepeat;
+            obj.GetComponent<DialogueTrigger>().isCutscene = objectData.dialogueData.isCutscene;
+            obj.GetComponent<DialogueTrigger>().conditionToCheck = objectData.dialogueData.conditionToCheck;
+            obj.GetComponent<DialogueTrigger>().noUSBDialogue = objectData.dialogueData.preConditionDialogue;
+            obj.GetComponent<DialogueTrigger>().withUSBDialogue = objectData.dialogueData.postConditionDialogue;
+        }
+
+        // Set the USB port data list
+        GameObject usbPortParent = GameObject.Find("USBPorts");
+        foreach (USBPortData usbPortData in roomData.usbPorts) {
+            GameObject usbPort = Instantiate(usbPortPrefab, usbPortData.position, Quaternion.identity, usbPortParent.transform);
+            usbPort.name = usbPortData.name;
+            usbPort.GetComponent<USBPorts>().id = usbPortData.portID;
+            usbPort.transform.position = usbPortData.position;
+            usbPort.GetComponent<SpriteRenderer>().sprite = usbPortData.sprite;
+
+            if (usbPortData.colliderData.noCollider == false) {
+                usbPort.GetComponent<BoxCollider2D>().size = usbPortData.colliderData.size;
+                usbPort.GetComponent<BoxCollider2D>().offset = usbPortData.colliderData.offset;
+                usbPort.GetComponent<BoxCollider2D>().isTrigger = usbPortData.colliderData.isTrigger;
+            } else {
+                Destroy(usbPort.GetComponent<BoxCollider2D>());
+            }
+
+            DialogueTrigger dialogueTrigger = usbPort.GetComponent<DialogueTrigger>();
+            if (dialogueTrigger != null) {
+                usbPort.GetComponent<DialogueTrigger>().doNotRepeat = usbPortData.dialogueData.doNotRepeat;
+                usbPort.GetComponent<DialogueTrigger>().isCutscene = usbPortData.dialogueData.isCutscene;
+                usbPort.GetComponent<DialogueTrigger>().conditionToCheck = usbPortData.dialogueData.conditionToCheck;
+                usbPort.GetComponent<DialogueTrigger>().noUSBDialogue = usbPortData.dialogueData.preConditionDialogue;
+                usbPort.GetComponent<DialogueTrigger>().withUSBDialogue = usbPortData.dialogueData.postConditionDialogue;
+            }
+        }
+
+        // Set the extrudable data list
+        GameObject extrudableParent = GameObject.Find("Extrudables");
+        foreach (ObjectData extrudableData in roomData.extrudables) {
+            GameObject extrudable = Instantiate(extrudablePrefab, extrudableData.position, Quaternion.identity, extrudableParent.transform);
+            extrudable.name = extrudableData.name;
+            extrudable.transform.position = extrudableData.position;
+            extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.sprite;
+            extrudable.GetComponent<SpriteRenderer>().sortingOrder = extrudableData.sortingOrder;
+            extrudable.GetComponent<SpriteRenderer>().color = extrudableData.color;
+
+            if (extrudableData.animatorController != null) {
+                extrudable.GetComponent<Animator>().runtimeAnimatorController = extrudableData.animatorController;
+            }
+
+            if (extrudableData.colliderData.noCollider == false) {
+                extrudable.GetComponent<BoxCollider2D>().size = extrudableData.colliderData.size;
+                extrudable.GetComponent<BoxCollider2D>().offset = extrudableData.colliderData.offset;
+                extrudable.GetComponent<BoxCollider2D>().isTrigger = extrudableData.colliderData.isTrigger;
+            } else {
+                Destroy(extrudable.GetComponent<BoxCollider2D>());
+            }
+
+            if (extrudable.GetComponent<DialogueTrigger>() != null) {
+                extrudable.GetComponent<DialogueTrigger>().doNotRepeat = extrudableData.dialogueData.doNotRepeat;
+                extrudable.GetComponent<DialogueTrigger>().isCutscene = extrudableData.dialogueData.isCutscene;
+                extrudable.GetComponent<DialogueTrigger>().conditionToCheck = extrudableData.dialogueData.conditionToCheck;
+                extrudable.GetComponent<DialogueTrigger>().noUSBDialogue = extrudableData.dialogueData.preConditionDialogue;
+                extrudable.GetComponent<DialogueTrigger>().withUSBDialogue = extrudableData.dialogueData.postConditionDialogue;
+            }
+        }
+
+        // Set the door data list
+        GameObject doorParent = GameObject.Find("Doors");
+        foreach (DoorData doorData in roomData.doors) {
+            GameObject door = Instantiate(doorPrefab, doorData.position, Quaternion.identity, doorParent.transform);
+            door.name = doorData.name;
+            door.transform.position = doorData.position;
+            door.GetComponent<SpriteRenderer>().sprite = doorData.sprite;
+        }
+    }
+
     public void SaveCurrentScene() {
         TopDownDataScriptable newRoom = ScriptableObject.CreateInstance<TopDownDataScriptable>();
 
@@ -13,6 +174,9 @@ public class TopDownManager : MonoBehaviour
 
         // Set the background sprite
         newRoom.backgroundSprite = GameObject.Find("Background").GetComponent<SpriteRenderer>().sprite;
+
+        // Set the background mask sprite
+        newRoom.backgroundMaskSprite = GameObject.Find("Sprite Mask").GetComponent<SpriteMask>().sprite;
 
         // Set the frame size
         newRoom.frameSize = GameObject.Find("Frame").GetComponent<SpriteRenderer>().size;
@@ -37,7 +201,6 @@ public class TopDownManager : MonoBehaviour
                     size = wall.GetComponent<BoxCollider2D>().size,
                     offset = wall.GetComponent<BoxCollider2D>().offset
                 },
-                position = wall.transform.position,
             };
             newRoom.walls.Add(wallData);
         }
@@ -51,11 +214,15 @@ public class TopDownManager : MonoBehaviour
                 name = obj.name,
                 position = obj.transform.position,
                 sprite = obj.GetComponent<SpriteRenderer>().sprite,
+                sortingOrder = obj.GetComponent<SpriteRenderer>().sortingOrder,
+                color = obj.GetComponent<SpriteRenderer>().color,
+                animatorController = obj.GetComponent<Animator>() ? obj.GetComponent<Animator>().runtimeAnimatorController : null,
                 colliderData = obj.GetComponent<BoxCollider2D>() ? new ColliderData
                 {
                     size = obj.GetComponent<BoxCollider2D>().size,
-                    offset = obj.GetComponent<BoxCollider2D>().offset
-                } : null,
+                    offset = obj.GetComponent<BoxCollider2D>().offset,
+                    isTrigger = obj.GetComponent<BoxCollider2D>().isTrigger
+                } : new ColliderData{ noCollider = true },
                 dialogueData = obj.GetComponent<DialogueTrigger>() ? new DialogueData
                 {
                     doNotRepeat = obj.GetComponent<DialogueTrigger>().doNotRepeat,
@@ -63,8 +230,9 @@ public class TopDownManager : MonoBehaviour
                     conditionToCheck = obj.GetComponent<DialogueTrigger>().conditionToCheck,
                     preConditionDialogue = obj.GetComponent<DialogueTrigger>().noUSBDialogue,
                     postConditionDialogue = obj.GetComponent<DialogueTrigger>().withUSBDialogue
-                } : null,
+                } : new DialogueData(),
             };
+
             newRoom.objects.Add(objectData);
         }
 
@@ -81,8 +249,9 @@ public class TopDownManager : MonoBehaviour
                 colliderData = usbPort.GetComponent<BoxCollider2D>() ? new ColliderData
                 {
                     size = usbPort.GetComponent<BoxCollider2D>().size,
-                    offset = usbPort.GetComponent<BoxCollider2D>().offset
-                } : null,
+                    offset = usbPort.GetComponent<BoxCollider2D>().offset,
+                    isTrigger = usbPort.GetComponent<BoxCollider2D>().isTrigger
+                } : new ColliderData{ noCollider = true },
                 dialogueData = usbPort.GetComponent<DialogueTrigger>() ? new DialogueData
                 {
                     doNotRepeat = usbPort.GetComponent<DialogueTrigger>().doNotRepeat,
@@ -90,29 +259,37 @@ public class TopDownManager : MonoBehaviour
                     conditionToCheck = usbPort.GetComponent<DialogueTrigger>().conditionToCheck,
                     preConditionDialogue = usbPort.GetComponent<DialogueTrigger>().noUSBDialogue,
                     postConditionDialogue = usbPort.GetComponent<DialogueTrigger>().withUSBDialogue
-                } : null
+                } : new DialogueData()
             };
             newRoom.usbPorts.Add(usbPortData);
         }
 
         // Set the extrudable data list
-        newRoom.extrudables = new List<ExtrudableData>();
+        newRoom.extrudables = new List<ObjectData>();
         foreach (Transform extrudableTransform in GameObject.Find("Extrudables").transform) {
             GameObject extrudable = extrudableTransform.gameObject;
-            ExtrudableData extrudableData = new ExtrudableData
+            ObjectData extrudableData = new ObjectData
             {
-                id = extrudable.GetComponent<Extrudable>().extrudableId,
-                transformData = new TransformData
+                name = extrudable.name,
+                position = extrudable.transform.position,
+                sprite = extrudable.GetComponent<SpriteRenderer>().sprite,
+                sortingOrder = extrudable.GetComponent<SpriteRenderer>().sortingOrder,
+                color = extrudable.GetComponent<SpriteRenderer>().color,
+                animatorController = extrudable.GetComponent<Animator>() ? extrudable.GetComponent<Animator>().runtimeAnimatorController : null,
+                colliderData = extrudable.GetComponent<BoxCollider2D>() ? new ColliderData
                 {
-                    position = extrudable.transform.position,
-                    rotation = extrudable.transform.rotation,
-                    scale = extrudable.transform.localScale
-                },
-                direction = extrudable.GetComponent<Extrudable>().extrudeDirection,
-                amount = extrudable.GetComponent<Extrudable>().extrudeAmount,
-                shouldExtrude = extrudable.GetComponent<Extrudable>().isExtruding,
-                shouldLoop = extrudable.GetComponent<Extrudable>().shouldLoop,
-                alreadyExtruded = extrudable.GetComponent<Extrudable>().finishedExtruding
+                    size = extrudable.GetComponent<BoxCollider2D>().size,
+                    offset = extrudable.GetComponent<BoxCollider2D>().offset,
+                    isTrigger = extrudable.GetComponent<BoxCollider2D>().isTrigger
+                } : new ColliderData{ noCollider = true },
+                dialogueData = extrudable.GetComponent<DialogueTrigger>() ? new DialogueData
+                {
+                    doNotRepeat = extrudable.GetComponent<DialogueTrigger>().doNotRepeat,
+                    isCutscene = extrudable.GetComponent<DialogueTrigger>().isCutscene,
+                    conditionToCheck = extrudable.GetComponent<DialogueTrigger>().conditionToCheck,
+                    preConditionDialogue = extrudable.GetComponent<DialogueTrigger>().noUSBDialogue,
+                    postConditionDialogue = extrudable.GetComponent<DialogueTrigger>().withUSBDialogue
+                } : new DialogueData()
             };
             newRoom.extrudables.Add(extrudableData);
         }
@@ -131,6 +308,28 @@ public class TopDownManager : MonoBehaviour
         }
 
         // ------------- SAVING TO ASSET DATABASE -------------
-        AssetDatabase.CreateAsset(newRoom, "Assets/GameData/NewRoomData.asset");
+        AssetDatabase.CreateAsset(newRoom, "Assets/GameData/RoomData/NewRoomData.asset");
+    }
+
+    public void WipeScene() {
+        foreach (Transform wallTransform in GameObject.Find("Walls").transform) {
+            Destroy(wallTransform.gameObject);
+        }
+
+        foreach (Transform objTransform in GameObject.Find("Objects").transform) {
+            Destroy(objTransform.gameObject);
+        }
+
+        foreach (Transform usbPortTransform in GameObject.Find("USBPorts").transform) {
+            Destroy(usbPortTransform.gameObject);
+        }
+
+        foreach (Transform extrudableTransform in GameObject.Find("Extrudables").transform) {
+            Destroy(extrudableTransform.gameObject);
+        }
+
+        foreach (Transform doorTransform in GameObject.Find("Doors").transform) {
+            Destroy(doorTransform.gameObject);
+        }
     }
 }

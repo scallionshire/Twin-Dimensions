@@ -34,10 +34,10 @@ public class PuzzleManager : MonoBehaviour
         currentPuzzleId = GameManager.instance.gameState.CurrentPuzzleId;
         switch (GameManager.instance.gameState.CurrentLevel) {
             case Level.tutorial:
-                levelPuzzles = GameManager.instance.initTutorialPuzzle;
+                levelPuzzles = GameManager.instance.tutorialPuzzle;
                 break;
             case Level.computerlab:
-                levelPuzzles = GameManager.instance.initComputerPuzzle;
+                levelPuzzles = GameManager.instance.computerPuzzle;
                 break;
         }
 

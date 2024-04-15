@@ -23,10 +23,10 @@
 //         currentExtrudableSetId = GameManager.instance.gameState.CurrentExtrudableSetId;
 //         switch (GameManager.instance.gameState.CurrentLevel) {
 //             case Level.tutorial:
-//                 extrudableData = GameManager.instance.initTutorialExtrudables;
+//                 extrudableData = GameManager.instance.tutorialExtrudables;
 //                 break;
 //             case Level.computerlab:
-//                 extrudableData = GameManager.instance.initComputerLabExtrudables;
+//                 extrudableData = GameManager.instance.computerLabExtrudables;
 //                 break;
 //         }
 

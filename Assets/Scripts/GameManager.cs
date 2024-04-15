@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Cinemachine.PostFX;
-using FMOD;
+using FMOD.Studio;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -43,10 +43,11 @@ public class GameManager : MonoBehaviour
     private FMODUnity.StudioEventEmitter eventEmitter;
 
     public GameObject settingsMenu;
-    public ExtrudableDataScriptable initTutorialExtrudables;
-    public ExtrudableDataScriptable initComputerLabExtrudables;
-    public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
-    public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public TopDownDataScriptable[] topDownRoomData;
+    public ExtrudableDataScriptable tutorialExtrudables;
+    public ExtrudableDataScriptable computerLabExtrudables;
+    public PuzzleDataScriptable tutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public PuzzleDataScriptable computerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
 
     [SerializeField]
     private VolumeProfile globalVolumeProfile;
@@ -366,49 +367,6 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        Debug.Log("Pausing music");
-        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
-        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            Debug.Log("eventEmitter was null or not valid");
-            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-        }
-        if (eventEmitter != null && eventEmitter.EventInstance.isValid())
-        {
-            Debug.Log("Setting isPaused");
-            if (pause)
-            {
-                eventEmitter.EventInstance.setParameterByName("isPaused", 1);
-            }
-            else
-            {
-                eventEmitter.EventInstance.setParameterByName("isPaused", 0);
-            }
-        }
-    }
-    public void UpdateMusicVolume(float volume)
-    {
-        MusicVolume = volume;
-        if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            eventEmitter = eventEmitters[0];
-        }
-        if (eventEmitter.EventInstance.isValid())
-        {
-            eventEmitter.EventInstance.setVolume(volume);
-        }
-    }
-
-    public void UpdateSFXVolume(float volume)
-    {
-        SFXVolume = volume;
-        FMOD.Studio.Bus sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
-        sfxBus.setVolume(volume);
-    }
-
-    public void PauseMainMusic(bool pause)
-    {
-        Debug.Log("Pausing music");
         eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
@@ -669,7 +627,7 @@ public class GameManager : MonoBehaviour
     {
         if (eventEmitter == null) {
             var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            eventEmitter = eventEmitters[0];
+            if (eventEmitters.Length > 0) eventEmitter = eventEmitters[0];
 
             // Ensure cursor is focused when you first start the game
             Cursor.lockState = CursorLockMode.Locked;
@@ -769,6 +727,7 @@ public class GameState
     // Current level
     public Level CurrentLevel { get; set; }
     public int CurrentPuzzleId { get; set; } // id of puzzle in current level
+    public int CurrentRoom { get; set; } // current room that 02 is in
 
     // 3D Character State
     public Vector3 PlayerPosition3D { get; set; }
@@ -811,6 +770,7 @@ public class GameState
     {
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
+        CurrentRoom = 0;
 
         PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);
         PlayerRotation3D = new Vector3(0f,180f,0f);

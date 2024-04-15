@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce0d2c95825498f8025e157a10da18, type: 3}
+  m_Name: Bedroom
+  m_EditorClassIdentifier: 
+  backgroundSprite: {fileID: 21300000, guid: 7c082dbe0d243407d9c32177b893c430, type: 3}
+  backgroundMaskSprite: {fileID: 21300000, guid: e79e9d00e10e34d6fa502975779e58cc, type: 3}
+  frameSize: {x: 11.94256, y: 9.060589}
+  glitchScale: {x: 0.97468126, y: 0.74426085, z: 1}
+  walls:
+  - transformData:
+      position: {x: 2.82, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.117301, y: -0.0071139336}
+      size: {x: 0.16689682, y: 7.3190193}
+  - transformData:
+      position: {x: -6.86, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0855541, y: -0.04067409}
+      size: {x: 0.23039055, y: 7.4401197}
+  - transformData:
+      position: {x: 4.21, y: -5.51, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 1.9126247, y: 4.405397}
+      size: {x: 0.18888736, y: 13.01773}
+  - transformData:
+      position: {x: 1.3, y: -1.62, z: 0}
+      scale: {x: 1, y: 2.5, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0939078, y: 0.48930812}
+      size: {x: 0.21368325, y: 5.185551}
+  objects:
+  - name: Bed
+    position: {x: 2.44, y: -2.363595, z: 0}
+    sprite: {fileID: 21300000, guid: 71cb45a6363d74630a3e36b1429db52f, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.000000059604645, y: -0.23570228}
+      size: {x: 1.6667455, y: 1.6521354}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Nightstand
+    position: {x: 3.96, y: -3.003595, z: 0}
+    sprite: {fileID: 21300000, guid: 9ef84759bbfb940dfae9dd3e7651f78e, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: -0.013325453}
+      size: {x: 0.8938694, y: 0.5511365}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Desk
+    position: {x: -0.87, y: -2.763595, z: 0}
+    sprite: {fileID: 21300000, guid: cd5bcdf0ab49e4f66a43bb577b8053c2, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.0066627264, y: 0.03997636}
+      size: {x: 1.9732308, y: 0.79099464}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Chair
+    position: {x: -0.87, y: -1.833595, z: 0}
+    sprite: {fileID: 21300000, guid: 5f568ff1d656944f5b36bdf3f45c6243, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: -0.000000044703484, y: -0.1399172}
+      size: {x: 0.94717133, y: 0.297953}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Shelf
+    position: {x: -4.3500004, y: -2.4535952, z: 0}
+    sprite: {fileID: 21300000, guid: 68dcb8e3d0e344775b0787f36961c0c1, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.012142181, y: -0.09973931}
+      size: {x: 0.5060911, y: 0.8498039}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Fishtank
+    position: {x: 3.18, y: 0.5164049, z: 0}
+    sprite: {fileID: 21300000, guid: bb174de141b134e2e9e5f61ae1e5cd9c, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: -0.58264256}
+      size: {x: 2.0885463, y: 0.7220609}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Vent
+    position: {x: -4.5400004, y: -3.1535952, z: 0}
+    sprite: {fileID: 21300000, guid: e23e9aa9e9324499693c03e951ce4751, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: -0.0054376125}
+      size: {x: 0.08164501, y: 0.2841444}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Light
+    position: {x: -4.505, y: -0.7635951, z: 0}
+    sprite: {fileID: 21300000, guid: 2750211f611814df99ce61abf1c9bad4, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Fountain
+    position: {x: 1.37, y: 1.0764049, z: 0}
+    sprite: {fileID: 21300000, guid: 499213a346c814f40b5a51f64fd36b16, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Door
+    position: {x: -0.21000001, y: 1.306405, z: 0}
+    sprite: {fileID: 21300000, guid: dd5fe5099fc3d4cf7aae631c164f4149, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Window
+    position: {x: 4.7419996, y: -0.25, z: 0}
+    sprite: {fileID: 21300000, guid: 89e98350717ad45f3b284fcbc214c588, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  usbPorts: []
+  extrudables: []
+  doors: []

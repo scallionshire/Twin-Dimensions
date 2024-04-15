@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce0d2c95825498f8025e157a10da18, type: 3}
+  m_Name: CCTV Hall
+  m_EditorClassIdentifier: 
+  backgroundSprite: {fileID: 21300000, guid: a1218e6a0d87748909ca60064b7a748d, type: 3}
+  backgroundMaskSprite: {fileID: 21300000, guid: d0012ca42324b43d48e05cdfd7695bb8, type: 3}
+  frameSize: {x: 11.94256, y: 6.9354124}
+  glitchScale: {x: 0.97468126, y: 0.5597891, z: 1}
+  walls:
+  - transformData:
+      position: {x: 2.82, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.117301, y: -0.0071139336}
+      size: {x: 0.16689682, y: 7.3190193}
+  - transformData:
+      position: {x: -6.8, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0855541, y: -0.04067409}
+      size: {x: 0.23039055, y: 7.4401197}
+  - transformData:
+      position: {x: 4.21, y: -4.4700003, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 1.9126247, y: 4.405397}
+      size: {x: 0.18888736, y: 13.01773}
+  - transformData:
+      position: {x: 1.3, y: -1.49, z: 0}
+      scale: {x: 1, y: 2.5, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0939078, y: 0.48930812}
+      size: {x: 0.21368325, y: 5.185551}
+  objects:
+  - name: CCTV1
+    position: {x: 1.944, y: -1.2335951, z: 0}
+    sprite: {fileID: 21300000, guid: c69362acbcf21497aa31bf6cf0b2099c, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 0.5686275}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Camera1
+    position: {x: 1.963, y: -2.2525952, z: 0}
+    sprite: {fileID: 21300000, guid: 1f7d1014a2ff5423ca24c5255cfb7f8a, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Camera2
+    position: {x: -1.8610001, y: 1.8194048, z: 0}
+    sprite: {fileID: 21300000, guid: 7714f91216e7b451f8bb508e3614aab7, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: CCTV2
+    position: {x: -1.8599999, y: 0.14640486, z: 0}
+    sprite: {fileID: 21300000, guid: d94dbe7abb5324467adeedec4b65cd18, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 0.5686275}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: DoorLight
+    position: {x: 4.73, y: -0.72300005, z: 0}
+    sprite: {fileID: 21300000, guid: c472752cb4c254b9ba5b68f126bc1cbd, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  usbPorts: []
+  extrudables: []
+  doors: []

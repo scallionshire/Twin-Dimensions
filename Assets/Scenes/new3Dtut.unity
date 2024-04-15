@@ -9184,7 +9184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.002259291, y: 0.99537086, z: -0.09298857, w: -0.024183966}
+  m_LocalRotation: {x: -0.0022592878, y: 0.99537086, z: -0.09298857, w: -0.024183933}
   m_LocalPosition: {x: -4.017407, y: 6.008812, z: 30.97101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22154,7 +22154,7 @@ PrefabInstance:
       objectReference: {fileID: 2052186090}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: debugLevel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28933,7 +28933,6 @@ Transform:
   m_Children:
   - {fileID: 310600717}
   - {fileID: 24699317}
-  - {fileID: 1367622255}
   - {fileID: 66780626}
   - {fileID: 713502187}
   - {fileID: 1875377520}
@@ -30743,7 +30742,7 @@ GameObject:
   m_TagString: Extrudable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1257663701
 Transform:
@@ -43614,11 +43613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.024231082
+      value: -0.024231117
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0016797925
+      value: 0.0016797951
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -43730,11 +43729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.024231117
+      value: -0.024231082
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0016797951
+      value: 0.0016797925
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -62825,7 +62824,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d4881c3bbc045b4995b15c9047832dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Name
-      value: battery (3)
+      value: Battery4
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Layer
@@ -72362,7 +72361,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d4881c3bbc045b4995b15c9047832dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Name
-      value: battery (2)
+      value: Battery3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Layer
@@ -72588,7 +72587,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d4881c3bbc045b4995b15c9047832dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Name
-      value: battery
+      value: Battery5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Layer
@@ -72842,7 +72841,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d4881c3bbc045b4995b15c9047832dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Name
-      value: battery (1)
+      value: Battery2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Layer
@@ -73066,7 +73065,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d4881c3bbc045b4995b15c9047832dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Name
-      value: battery
+      value: Battery1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e3a05b366a7f43d490de2cf04567f76, type: 3}
       propertyPath: m_Layer

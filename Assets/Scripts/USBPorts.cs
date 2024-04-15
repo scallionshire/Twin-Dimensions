@@ -8,7 +8,6 @@ public class USBPorts : MonoBehaviour
     // TODO: check if we're in the 3D world or the 2D world
     public GameStateCondition conditionToCheck = GameStateCondition.insertedUSB;
     private bool conditionMet = false;
-
     public bool isPuzzlePort = true; // if true, this port will trigger a puzzle via the 2D scene; otherwise, it will trigger the 2d room via the 3d scene
     public int id;
     public Level level;
