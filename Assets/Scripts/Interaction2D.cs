@@ -12,6 +12,7 @@ public class Interaction2D : MonoBehaviour
     private Interactable currentInteractable;
     [HideInInspector]
     public GameObject collidedBlock;
+    private bool isHoldingBlock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class Interaction2D : MonoBehaviour
         // If player is pressing space and they aren't currently holding a block
         if (Input.GetButton("Drag") && collidedBlock != null)
         {
+            isHoldingBlock = true;
             // player2DMovement.movement = player2DMovement.movement * 0.7f; // Slow down movement while holding a block
 
             if (blockMovingSound.getPlaybackState(out var playbackState) != FMOD.RESULT.OK || playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
@@ -57,6 +59,7 @@ public class Interaction2D : MonoBehaviour
             }
         }
         else {
+            isHoldingBlock = false;
             blockMovingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
@@ -87,7 +90,7 @@ public class Interaction2D : MonoBehaviour
 
     public void OnChildTriggerEntered2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Block")
+        if (collider.gameObject.tag == "Block" && !isHoldingBlock)
         {
             collidedBlock = collider.gameObject;
         }

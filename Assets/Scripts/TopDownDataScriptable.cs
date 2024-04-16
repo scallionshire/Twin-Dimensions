@@ -9,6 +9,8 @@ public class TopDownDataScriptable : ScriptableObject
     public Sprite backgroundMaskSprite; // background mask sprite
     public Vector2 frameSize; // frame size
     public Vector3 glitchScale; // glitch overlay scale;
+
+    public Vector3 playerInitPosition; // player start position
     
     public List<WallData> walls; // wall data list
     public List<ObjectData> objects; // object data list

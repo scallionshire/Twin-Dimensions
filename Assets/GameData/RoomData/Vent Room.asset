@@ -16,6 +16,7 @@ MonoBehaviour:
   backgroundMaskSprite: {fileID: 21300000, guid: e3d156d0165a1491597c65fd38329422, type: 3}
   frameSize: {x: 8.044077, y: 10.189302}
   glitchScale: {x: 0.64354455, y: 0.843742, z: 1}
+  playerInitPosition: {x: 0, y: -1.63, z: 0}
   walls:
   - transformData:
       position: {x: 0.82, y: 0, z: 0}
@@ -54,7 +55,7 @@ MonoBehaviour:
       offset: {x: 2.0939078, y: 0.48930812}
       size: {x: 0.21368325, y: 5.185551}
   objects:
-  - name: CCTV
+  - name: CCTV2D
     position: {x: 0.002000004, y: 2.2764049, z: 0}
     sprite: {fileID: 21300000, guid: 8e3b8489277a344ef825326e8367f718, type: 3}
     sortingOrder: 1
@@ -164,6 +165,7 @@ MonoBehaviour:
     portID: 2
     position: {x: 1.8213774, y: 0.64476204, z: 0}
     sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
+    level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
@@ -183,6 +185,7 @@ MonoBehaviour:
     portID: 3
     position: {x: -1.9286226, y: 0.65076196, z: 0}
     sprite: {fileID: 21300000, guid: 968ee336f441a4a2891f4cb45e7c02de, type: 3}
+    level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
@@ -202,7 +205,7 @@ MonoBehaviour:
   - name: Extrudable2
     position: {x: -0.0036225915, y: 2.993762, z: 0}
     sprite: {fileID: 21300000, guid: 84001caddef2f46c4855c6dd5b6a3847, type: 3}
-    sortingOrder: 1
+    sortingOrder: 3
     color: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
     animatorController: {fileID: 9100000, guid: e1219037c57124b56843dc2d10606ae5, type: 2}
     colliderData:
@@ -223,7 +226,7 @@ MonoBehaviour:
   - name: Extrudable1
     position: {x: -0.95062256, y: 0.3177619, z: 0}
     sprite: {fileID: 21300000, guid: 1a020da4c0b0543dd933d24fbbe2e074, type: 3}
-    sortingOrder: 1
+    sortingOrder: 0
     color: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
     animatorController: {fileID: 9100000, guid: 8853956136910413687eeabb8596022e, type: 2}
     colliderData:
@@ -244,7 +247,7 @@ MonoBehaviour:
   - name: Extrudable0
     position: {x: 0.70237744, y: -0.057238102, z: 0}
     sprite: {fileID: 21300000, guid: 6b188c1f910224de3bc01c7ceb536a57, type: 3}
-    sortingOrder: 1
+    sortingOrder: 0
     color: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
     animatorController: {fileID: 9100000, guid: 9717008102f4e4c3987ce1e6eca05e26, type: 2}
     colliderData:

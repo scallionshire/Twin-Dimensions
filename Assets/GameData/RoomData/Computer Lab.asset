@@ -16,6 +16,7 @@ MonoBehaviour:
   backgroundMaskSprite: {fileID: 21300000, guid: 95c2b473785bf4079b343b042a9b0085, type: 3}
   frameSize: {x: 14.431072, y: 8.994456}
   glitchScale: {x: 1.1897411, y: 0.7436133, z: 1}
+  playerInitPosition: {x: 2.19, y: -2.32, z: 0}
   walls:
   - transformData:
       position: {x: 4.21, y: 0, z: 0}
@@ -349,10 +350,11 @@ MonoBehaviour:
         dialogueName: 
         sentences: []
   usbPorts:
-  - name: Panel2
-    portID: 1
+  - name: Panel4
+    portID: 5
     position: {x: 3.6213775, y: 0.3247621, z: 0}
     sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
+    level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
@@ -368,10 +370,11 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences: []
-  - name: Panel3
-    portID: 2
+  - name: Panel5
+    portID: 4
     position: {x: -2.3786225, y: 0.25476193, z: 0}
     sprite: {fileID: 21300000, guid: 968ee336f441a4a2891f4cb45e7c02de, type: 3}
+    level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
@@ -387,10 +390,11 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences: []
-  - name: Panel1
+  - name: Panel0
     portID: 0
     position: {x: 6.1113772, y: -3.069238, z: 0}
     sprite: {fileID: 21300000, guid: 8f1cd6ef371ed484aa343d9b6932b365, type: 3}
+    level: 1
     colliderData:
       noCollider: 0
       isTrigger: 0
@@ -410,7 +414,7 @@ MonoBehaviour:
   - name: Extrudable4
     position: {x: -5.0286226, y: 0.3447621, z: 0}
     sprite: {fileID: 21300000, guid: 82f30a2c23b9f4effab8922e0c334133, type: 3}
-    sortingOrder: 1
+    sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
     animatorController: {fileID: 9100000, guid: 6efc712f2428d42129836525b39983f4, type: 2}
     colliderData:
@@ -431,7 +435,7 @@ MonoBehaviour:
   - name: Extrudable3
     position: {x: -1.5986227, y: -0.29523802, z: 0}
     sprite: {fileID: 21300000, guid: 636dbcb5b6e3844a9a1762c34e694c91, type: 3}
-    sortingOrder: 1
+    sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
     animatorController: {fileID: 9100000, guid: 1b8fc1679639e435ab1c1fec4dbb4927, type: 2}
     colliderData:

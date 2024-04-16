@@ -8,6 +8,7 @@ public struct USBPortData
     public int portID;
     public Vector3 position;
     public Sprite sprite;
+    public Level level;
     public ColliderData colliderData;
     public DialogueData dialogueData;
 }

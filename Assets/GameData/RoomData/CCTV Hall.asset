@@ -16,6 +16,7 @@ MonoBehaviour:
   backgroundMaskSprite: {fileID: 21300000, guid: d0012ca42324b43d48e05cdfd7695bb8, type: 3}
   frameSize: {x: 11.94256, y: 6.9354124}
   glitchScale: {x: 0.97468126, y: 0.5597891, z: 1}
+  playerInitPosition: {x: 0.12000017, y: -1.0340306, z: 0}
   walls:
   - transformData:
       position: {x: 2.82, y: 0, z: 0}
@@ -59,6 +60,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c69362acbcf21497aa31bf6cf0b2099c, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 0.5686275}
+    animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
       isTrigger: 0
@@ -79,6 +81,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 1f7d1014a2ff5423ca24c5255cfb7f8a, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
       isTrigger: 0
@@ -99,6 +102,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7714f91216e7b451f8bb508e3614aab7, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
       isTrigger: 0
@@ -119,6 +123,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d94dbe7abb5324467adeedec4b65cd18, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 0.5686275}
+    animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
       isTrigger: 0
@@ -139,6 +144,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c472752cb4c254b9ba5b68f126bc1cbd, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
       isTrigger: 0

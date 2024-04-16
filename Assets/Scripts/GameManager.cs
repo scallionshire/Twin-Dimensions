@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private FMODUnity.StudioEventEmitter eventEmitter;
 
     public GameObject settingsMenu;
-    public TopDownDataScriptable[] topDownRoomData;
+    public TopDownDataScriptable[] roomData;
     public ExtrudableDataScriptable tutorialExtrudables;
     public ExtrudableDataScriptable computerLabExtrudables;
     public PuzzleDataScriptable tutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
@@ -81,11 +81,14 @@ public class GameManager : MonoBehaviour
 
             if (SceneManager.GetActiveScene().name == "new3Dtut") {
                 scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
             } else if (SceneManager.GetActiveScene().name == "new2dtut") {
                 scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
+            } else if (SceneManager.GetActiveScene().name == "mainPuzzle") {
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("new2dtut", LoadSceneMode.Additive));
+                scenesToLoad.Add(SceneManager.LoadSceneAsync("new3Dtut", LoadSceneMode.Additive));
             }
-
-            scenesToLoad.Add(SceneManager.LoadSceneAsync("mainPuzzle", LoadSceneMode.Additive));
 
             gameStarted = true;
 
@@ -120,15 +123,20 @@ public class GameManager : MonoBehaviour
         }
         
         if (SceneManager.GetActiveScene().name == "new3Dtut") {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
             DeactivateScene("new2dtut");
             DeactivateScene("mainPuzzle");
             ActiveSceneName = "new3Dtut";
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
         } else if (SceneManager.GetActiveScene().name == "new2dtut") {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new2dtut"));
             DeactivateScene("new3Dtut");
             DeactivateScene("mainPuzzle");
             ActiveSceneName = "new2dtut";
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("new2dtut"));
+        } else if (SceneManager.GetActiveScene().name == "mainPuzzle") {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("mainPuzzle"));
+            DeactivateScene("new3Dtut");
+            DeactivateScene("new2dtut");
+            ActiveSceneName = "mainPuzzle";
         }
 
         instance.gameState.CurrentLevel = debugLevel;
@@ -179,28 +187,27 @@ public class GameManager : MonoBehaviour
                 if (cutsceneManager != null) {
                     cutsceneManager.PlayCutscene("switch");
                 }
-            }
-            
-            if (ActiveSceneName == "new3Dtut")
-            {   
-                SwitchToMap(gameState.CurrentExtrudableSetId, instance.gameState.CurrentLevel);
-            }
-            else if (ActiveSceneName == "new2dtut")
-            {
-                switchToScene("new3Dtut");
-            }
-            else if (ActiveSceneName == "mainPuzzle")
-            {
-                switchToScene("new2dtut");
+                SwitchToMap(instance.gameState.CurrentLevel, true);
+            } else {
+                if (ActiveSceneName == "new3Dtut")
+                {   
+                    SwitchToMap(instance.gameState.CurrentLevel);
+                }
+                else if (ActiveSceneName == "new2dtut")
+                {
+                    switchToScene("new3Dtut");
+                }
+                else if (ActiveSceneName == "mainPuzzle")
+                {
+                    switchToScene("new2dtut");
+                }
             }
         }
 
         // It's fine to toggle pause menu if we're in debug mode
         if (cutsceneManager == null && Input.GetButtonDown("Cancel") && !isFrozen) {
             TogglePauseMenu();
-        }
-
-        if (cutsceneManager != null) {
+        } else if (cutsceneManager != null) {
             // Don't allow pause menu to be opened during cutscenes or dialogue lol
             if (cutsceneManager.IsPlaying() == false && Input.GetButtonDown("Cancel") && !isFrozen) {
                 TogglePauseMenu();
@@ -250,7 +257,7 @@ public class GameManager : MonoBehaviour
     {   
         switchToScene("mainPuzzle");
 
-        if (newMap) {
+        if (newMap || instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
             instance.gameState.CurrentPuzzleId = puzzleId;
             instance.gameState.CurrentLevel = level;
             wipePuzzle();
@@ -260,17 +267,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchToMap(int extId, Level level, bool newMap = false) {
+    public void SwitchToMap(Level level, bool newMap = false) {
         switchToScene("new2dtut");
         // Find ExtrudableManager and load the map if:
         //  - extrudable set id is different
         //  - level is different
         //  - extrudable set id is -1 (meaning no extrudables have been loaded yet, so we don't care about map state)
-        if (newMap || extId == -1) {
-            instance.gameState.CurrentExtrudableSetId = extId;
+        if (newMap || instance.gameState.RoomChanged) {
             instance.gameState.CurrentLevel = level;
-            wipeExtrudables();
+            // wipeExtrudables();
+            
+            RoomManager roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
+            roomManager.WipeScene();
+            roomManager.LoadCurrentScene();
 
+            instance.gameState.RoomChanged = false;
             // ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
             // extrudableManager.LoadMap();
         }
@@ -318,6 +329,53 @@ public class GameManager : MonoBehaviour
         instance.gameState.Extrudables[extrudableId] = true;
     }
 
+    // TODO: clean this up
+    public void SolvePuzzleBlock(Level level, int puzzleId, int blockId) {
+        switch (level) {
+            case Level.tutorial:
+                switch (puzzleId) {
+                    case 2:
+                        switch (blockId) {
+                            case 0:
+                                instance.gameState.Extrudables[0] = true;
+                                break;
+                            case 1:
+                                instance.gameState.Extrudables[1] = true;
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (blockId) {
+                            case 0:
+                                instance.gameState.Extrudables[3] = true;
+                                break;
+                            case 1:
+                                instance.gameState.Extrudables[4] = true;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case Level.computerlab:
+                switch (puzzleId) {
+                    case 0:
+                        switch (blockId) {
+                            case 0:
+                                instance.gameState.BlueGroup0On = true;
+                                break;
+                            case 1:
+                                instance.gameState.BlueGroup1On = true;
+                                break;
+                            case 2:
+                                instance.gameState.BlueGroup2On = true;
+                                break;
+                        }
+                    break;
+                }
+                break;
+        }
+    }
+
     public void SolvePuzzle(Level level, int puzzleId) {
         switch (level) {
             case Level.tutorial:
@@ -327,6 +385,20 @@ public class GameManager : MonoBehaviour
                         break;
                     case 1:
                         instance.gameState.Door1Unlocked = true;
+                        break;
+                    case 2:
+                        instance.gameState.Extrudables[0] = true;
+                        instance.gameState.Extrudables[1] = true;
+                        break;
+                    case 3:
+                        instance.gameState.Extrudables[2] = true;
+                        break;
+                    case 4:
+                        instance.gameState.Extrudables[3] = true;
+                        instance.gameState.Extrudables[4] = true;
+                        break;
+                    case 5:
+                        instance.gameState.Extrudables[5] = true;
                         break;
                 }
                 break;
@@ -387,27 +459,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // TODO: clean this up
-    public void SolvePuzzleBlock(Level level, int blockId) {
-        switch (level) {
-            case Level.tutorial:
-                break;
-            case Level.computerlab:
-                switch (blockId) {
-                    case 0:
-                        instance.gameState.BlueGroup0On = true;
-                        break;
-                    case 1:
-                        instance.gameState.BlueGroup1On = true;
-                        break;
-                    case 2:
-                        instance.gameState.BlueGroup2On = true;
-                        break;
-                }
-                break;
-        }
-    }
-
     public void SetCurrentPuzzle(int puzzleId) {
         instance.gameState.CurrentPuzzleId = puzzleId;
     }
@@ -424,7 +475,12 @@ public class GameManager : MonoBehaviour
         }
 
         // New level, so map should be blank right now
-        instance.gameState.CurrentExtrudableSetId = -1;
+        instance.gameState.CurrentExtrudableSetId = 0;
+    }
+
+    public void SetCurrentRoom(int room) {
+        instance.gameState.CurrentRoom = room;
+        instance.gameState.RoomChanged = true;
     }
 
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
@@ -482,9 +538,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Utility function to handle effects that need to be checked when switching scenes
     public void OnSceneSwitch()
     {
-        // Utility function to handle effects that need to be checked when switching scenes
+        // Unlock doors if they are unlocked
         if (instance.gameState.Door0Unlocked) {
             GameObject Door0 = GameObject.Find("Door0");
             if (Door0 != null && Door0.GetComponent<Animator>().GetBool("isOpen") == false) {
@@ -503,11 +560,30 @@ public class GameManager : MonoBehaviour
             instance.gameState.CurrentLevel = Level.computerlab;
         }
 
-        // TODO: Add variables to check if extrudables are already extruded
         for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
             if (instance.gameState.Extrudables[i]) {
-                if (GameObject.Find("Extrudable" + i) != null) {
-                    GameObject.Find("Extrudable" + i).GetComponent<Extrudable>().isMoving = true;
+                GameObject exti = GameObject.Find("Extrudable" + i);
+                if (exti != null) {
+                    Extrudable extrudable = exti.GetComponent<Extrudable>();
+                    if (extrudable != null) {
+                        extrudable.isMoving = true;
+                    } else {
+                        if (exti.GetComponent<Animator>() != null && exti.GetComponent<Animator>().GetBool("Extruded") == false) {
+                            exti.GetComponent<Animator>().SetBool("Extruded", true);
+                        }
+
+                        if (i == 5) {
+                            if (GameObject.Find("Battery5") != null && GameObject.Find("Battery5").GetComponent<Animator>() != null && GameObject.Find("Battery5").GetComponent<Animator>().GetBool("isFalling") == false) {
+                                GameObject.Find("Battery5").GetComponent<Animator>().SetBool("isFalling", true);
+                            }
+                        }
+
+                        if (i == 2) {
+                            if (GameObject.Find("CCTV2D") != null) {
+                                Destroy(GameObject.Find("CCTV2D"));
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -728,6 +804,7 @@ public class GameState
     public Level CurrentLevel { get; set; }
     public int CurrentPuzzleId { get; set; } // id of puzzle in current level
     public int CurrentRoom { get; set; } // current room that 02 is in
+    public bool RoomChanged { get; set; } // flag to indicate if the room has changed
 
     // 3D Character State
     public Vector3 PlayerPosition3D { get; set; }
@@ -770,7 +847,8 @@ public class GameState
     {
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
-        CurrentRoom = 0;
+        CurrentRoom = -1;
+        RoomChanged = false;
 
         PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);
         PlayerRotation3D = new Vector3(0f,180f,0f);

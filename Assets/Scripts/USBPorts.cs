@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using UnityEngine.UI;
+using TMPro;
 
 public class USBPorts : MonoBehaviour
 {
@@ -34,9 +36,29 @@ public class USBPorts : MonoBehaviour
             if (isPuzzlePort) {
                 GameManager.instance.SwitchToPuzzle(id, level, !alreadyInserted);
             } else {
-                GameManager.instance.SwitchToMap(id, level, !alreadyInserted);
+                StartCoroutine(Hacking());
             }
             alreadyInserted = true;
         }
+    }
+
+    IEnumerator Hacking()
+    {
+        GameObject hackingCanvas = GameObject.Find("HackingCanvas");
+        hackingCanvas.GetComponent<HackingSlider>().ToggleSlider(true);
+
+        Slider slider = hackingCanvas.GetComponentInChildren<Slider>();
+        TMP_Text text = hackingCanvas.GetComponentInChildren<TMP_Text>();
+
+        float elapsedTime = 0;
+        while (elapsedTime <= 2)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = elapsedTime / 2;
+            yield return null;
+        }
+        
+        hackingCanvas.GetComponent<HackingSlider>().ToggleSlider(false);
+        GameManager.instance.SwitchToMap(level, !alreadyInserted);
     }
 }
