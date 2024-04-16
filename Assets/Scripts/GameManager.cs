@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
             } else {
                 if (ActiveSceneName == "new3Dtut")
                 {   
+                    Debug.Log("Switching to map!");
                     SwitchToMap(instance.gameState.CurrentLevel);
                 }
                 else if (ActiveSceneName == "new2dtut")
@@ -260,22 +261,19 @@ public class GameManager : MonoBehaviour
         if (newMap || instance.gameState.CurrentPuzzleId != puzzleId || instance.gameState.CurrentLevel != level) {
             instance.gameState.CurrentPuzzleId = puzzleId;
             instance.gameState.CurrentLevel = level;
-            wipePuzzle();
             // Find PuzzleManager and load the puzzle
             PuzzleManager puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
+            puzzleManager.wipePuzzle();
             puzzleManager.LoadPuzzle();
         }
     }
 
     public void SwitchToMap(Level level, bool newMap = false) {
+        Debug.Log("SwitchToMap()");
         switchToScene("new2dtut");
-        // Find ExtrudableManager and load the map if:
-        //  - extrudable set id is different
-        //  - level is different
-        //  - extrudable set id is -1 (meaning no extrudables have been loaded yet, so we don't care about map state)
+
         if (newMap || instance.gameState.RoomChanged) {
             instance.gameState.CurrentLevel = level;
-            // wipeExtrudables();
             
             RoomManager roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
             roomManager.WipeScene();
@@ -327,6 +325,17 @@ public class GameManager : MonoBehaviour
 
     public void UpdateExtrudables(int extrudableId) {
         instance.gameState.Extrudables[extrudableId] = true;
+    }
+
+    public void UpdateActivatedPanel(int puzzleId, Level level) {
+        switch (level) {
+            case (Level.tutorial):
+                instance.gameState.TutorialLevelPorts[puzzleId] = true;
+                break;
+            case (Level.computerlab):
+                instance.gameState.ComputerLabLevelPorts[puzzleId] = true;
+                break;
+        }
     }
 
     // TODO: clean this up
@@ -414,9 +423,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        switchToScene("new2dtut");
+        if (!(level == Level.computerlab && puzzleId == 1)) {
+            switchToScene("new2dtut");
+        }
     }
-
+    
     public void UpdateMusicVolume(float volume)
     {
         MusicVolume = volume;
@@ -459,10 +470,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetCurrentPuzzle(int puzzleId) {
-        instance.gameState.CurrentPuzzleId = puzzleId;
-    }
-
     public void SetCurrentLevel(int level) {
         // Event invoker can only handle ints as parameters, so we need to do this
         switch (level) {
@@ -479,8 +486,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetCurrentRoom(int room) {
+        // Debug.Log("Setting room to " + room);
+        if (instance.gameState.CurrentRoom != room) {
+            instance.gameState.RoomChanged = true;
+        }
         instance.gameState.CurrentRoom = room;
-        instance.gameState.RoomChanged = true;
     }
 
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
@@ -556,10 +566,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (instance.gameState.Extrudables[2]) {
-            instance.gameState.CurrentLevel = Level.computerlab;
-        }
-
         for (int i = 0; i < instance.gameState.Extrudables.Count; i++) {
             if (instance.gameState.Extrudables[i]) {
                 GameObject exti = GameObject.Find("Extrudable" + i);
@@ -585,6 +591,20 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+
+        for (int i = 0; i < instance.gameState.TutorialLevelPorts.Count; i++) {
+            if (instance.gameState.TutorialLevelPorts[i]) {
+                GameObject RoomManager = GameObject.Find("RoomManager");
+                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i);
+            }
+        }
+
+        for (int i = 0; i < instance.gameState.ComputerLabLevelPorts.Count; i++) {
+            if (instance.gameState.ComputerLabLevelPorts[i]) {
+                GameObject RoomManager = GameObject.Find("RoomManager");
+                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i);
             }
         }
 
@@ -647,55 +667,6 @@ public class GameManager : MonoBehaviour
             if (BlueWallDoneTrigger != null) {
                 BlueWallDoneTrigger.GetComponent<Interactable>().Interact();
             }
-        }
-    }
-
-    private void wipeExtrudables()
-    {
-        // Delete all gameobjects with tag: Extrudable
-        GameObject[] extrudables = GameObject.FindGameObjectsWithTag("Extrudable");
-        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
-
-        foreach (GameObject extrudable in extrudables)
-        {
-            if (extrudable.GetComponent<SpriteRenderer>() != null) {
-                // Only destroy if 2D
-                Destroy(extrudable);
-            }
-        }
-
-        foreach (GameObject dialogueTrigger in dialogueTriggers)
-        {
-            Destroy(dialogueTrigger);
-        }
-    }
-
-    private void wipePuzzle()
-    {
-        // Delete all gameobjects with tag: Block, BlockTrigger, and Connector
-        GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
-        GameObject[] blockTriggers = GameObject.FindGameObjectsWithTag("BlockTrigger");
-        GameObject[] connectors = GameObject.FindGameObjectsWithTag("Connector");
-        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
-
-        foreach (GameObject block in blocks)
-        {
-            Destroy(block);
-        }
-
-        foreach (GameObject blockTrigger in blockTriggers)
-        {
-            Destroy(blockTrigger);
-        }
-
-        foreach (GameObject connector in connectors)
-        {
-            Destroy(connector);
-        }
-
-        foreach (GameObject dialogueTrigger in dialogueTriggers)
-        {
-            Destroy(dialogueTrigger);
         }
     }
 
@@ -832,6 +803,9 @@ public class GameState
 
     public List<bool> Extrudables { get; set; }
 
+    public List<bool> TutorialLevelPorts { get; set; }
+    public List<bool> ComputerLabLevelPorts { get; set; }
+
     public bool BlueOverlayOn { get; set; }
     public bool PinkOverlayOn { get; set; }
 
@@ -862,8 +836,13 @@ public class GameState
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
+        BatteriesCollected = 0;
+
         CurrentExtrudableSetId = -1;
         Extrudables = new List<bool> { false, false, false, false, false, false };
+
+        TutorialLevelPorts = new List<bool> { false, false, false, false, false, false };
+        ComputerLabLevelPorts = new List<bool> { false };
 
         BlueOverlayOn = false;
         PinkOverlayOn = false;

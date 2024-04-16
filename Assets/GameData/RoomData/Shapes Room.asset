@@ -97,10 +97,31 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences: []
+  - name: Circuit1
+    position: {x: 0.12799999, y: 1.1544049, z: 0}
+    sprite: {fileID: 21300000, guid: 3fda90d46afec4f3898d2470d833e818, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0.0001, y: 0.0001}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
   usbPorts:
-  - name: Panel
+  - name: Panel1
     portID: 1
-    position: {x: 0.35137743, y: 0.814762, z: 0}
+    position: {x: 0.3203774, y: 0.814762, z: 0}
     sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
     level: 0
     colliderData:

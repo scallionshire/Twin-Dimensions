@@ -235,10 +235,8 @@ public class PuzzleManager : MonoBehaviour
             {
                 string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
 
-                if (levelPuzzles.level == Level.computerlab) {
-                    Debug.Log("Solving puzzle block for index " + index);
-                    GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, currentPuzzleId, index);
-                }
+                Debug.Log("Solving puzzle block for index " + index);
+                GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, currentPuzzleId, index);
 
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
@@ -269,5 +267,34 @@ public class PuzzleManager : MonoBehaviour
             index++;
         }
         return isSolved;
+    }
+
+    public void wipePuzzle()
+    {
+        // Delete all gameobjects with tag: Block, BlockTrigger, and Connector
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
+        GameObject[] blockTriggers = GameObject.FindGameObjectsWithTag("BlockTrigger");
+        GameObject[] connectors = GameObject.FindGameObjectsWithTag("Connector");
+        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
+
+        foreach (GameObject block in blocks)
+        {
+            Destroy(block);
+        }
+
+        foreach (GameObject blockTrigger in blockTriggers)
+        {
+            Destroy(blockTrigger);
+        }
+
+        foreach (GameObject connector in connectors)
+        {
+            Destroy(connector);
+        }
+
+        foreach (GameObject dialogueTrigger in dialogueTriggers)
+        {
+            Destroy(dialogueTrigger);
+        }
     }
 }

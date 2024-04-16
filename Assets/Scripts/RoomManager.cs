@@ -32,9 +32,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public void LoadCurrentScene() {
-        Debug.Log("Loading current scene...");
-        
+    public void LoadCurrentScene() {        
         TopDownDataScriptable roomData;
 
         if (debugMode) {
@@ -103,34 +101,60 @@ public class RoomManager : MonoBehaviour
             obj.GetComponent<DialogueTrigger>().withUSBDialogue = objectData.dialogueData.postConditionDialogue;
         }
 
-        // Set the USB port data list
-        GameObject usbPortParent = GameObject.Find("USBPorts");
-        foreach (USBPortData usbPortData in roomData.usbPorts) {
-            GameObject usbPort = Instantiate(usbPortPrefab, usbPortData.position, Quaternion.identity, usbPortParent.transform);
-            usbPort.name = usbPortData.name;
-            usbPort.GetComponent<USBPorts>().id = usbPortData.portID;
-            usbPort.transform.position = usbPortData.position;
-            usbPort.GetComponent<SpriteRenderer>().sprite = usbPortData.sprite;
-            usbPort.GetComponent<USBPorts>().level = usbPortData.level;
+        if (debugMode) {
+            // Set the USB port data list
+            GameObject usbPortParent = GameObject.Find("USBPorts");
+            foreach (USBPortData usbPortData in roomData.usbPorts) {
+                GameObject usbPort = Instantiate(usbPortPrefab, usbPortData.position, Quaternion.identity, usbPortParent.transform);
+                usbPort.name = usbPortData.name;
+                usbPort.GetComponent<USBPorts>().id = usbPortData.portID;
+                usbPort.transform.position = usbPortData.position;
+                usbPort.GetComponent<SpriteRenderer>().sprite = usbPortData.sprite;
+                usbPort.GetComponent<USBPorts>().level = usbPortData.level;
 
-            if (usbPortData.colliderData.noCollider == false) {
-                usbPort.GetComponent<BoxCollider2D>().size = usbPortData.colliderData.size;
-                usbPort.GetComponent<BoxCollider2D>().offset = usbPortData.colliderData.offset;
-                usbPort.GetComponent<BoxCollider2D>().isTrigger = usbPortData.colliderData.isTrigger;
-            } else {
-                Destroy(usbPort.GetComponent<BoxCollider2D>());
+                if (usbPortData.colliderData.noCollider == false) {
+                    usbPort.GetComponent<BoxCollider2D>().size = usbPortData.colliderData.size;
+                    usbPort.GetComponent<BoxCollider2D>().offset = usbPortData.colliderData.offset;
+                    usbPort.GetComponent<BoxCollider2D>().isTrigger = usbPortData.colliderData.isTrigger;
+                } else {
+                    Destroy(usbPort.GetComponent<BoxCollider2D>());
+                }
+
+                DialogueTrigger dialogueTrigger = usbPort.GetComponent<DialogueTrigger>();
+                if (dialogueTrigger != null) {
+                    usbPort.GetComponent<DialogueTrigger>().doNotRepeat = usbPortData.dialogueData.doNotRepeat;
+                    usbPort.GetComponent<DialogueTrigger>().isCutscene = usbPortData.dialogueData.isCutscene;
+                    usbPort.GetComponent<DialogueTrigger>().conditionToCheck = usbPortData.dialogueData.conditionToCheck;
+                    usbPort.GetComponent<DialogueTrigger>().noUSBDialogue = usbPortData.dialogueData.preConditionDialogue;
+                    usbPort.GetComponent<DialogueTrigger>().withUSBDialogue = usbPortData.dialogueData.postConditionDialogue;
+                }
             }
-
-            DialogueTrigger dialogueTrigger = usbPort.GetComponent<DialogueTrigger>();
-            if (dialogueTrigger != null) {
-                usbPort.GetComponent<DialogueTrigger>().doNotRepeat = usbPortData.dialogueData.doNotRepeat;
-                usbPort.GetComponent<DialogueTrigger>().isCutscene = usbPortData.dialogueData.isCutscene;
-                usbPort.GetComponent<DialogueTrigger>().conditionToCheck = usbPortData.dialogueData.conditionToCheck;
-                usbPort.GetComponent<DialogueTrigger>().noUSBDialogue = usbPortData.dialogueData.preConditionDialogue;
-                usbPort.GetComponent<DialogueTrigger>().withUSBDialogue = usbPortData.dialogueData.postConditionDialogue;
+        } else {
+            Debug.Log("Activating panels for level: " + GameManager.instance.gameState.CurrentLevel);
+            string result = "List contents: ";
+            foreach (var item in GameManager.instance.gameState.TutorialLevelPorts)
+            {
+                result += item.ToString() + ", ";
+            }
+            Debug.Log(result);
+            switch (GameManager.instance.gameState.CurrentLevel) {
+                case Level.tutorial:
+                    for (int i = 0; i < GameManager.instance.gameState.TutorialLevelPorts.Count; i++) {
+                        if (GameManager.instance.gameState.TutorialLevelPorts[i]) {
+                            ActivatePanel(i);
+                        }
+                    }
+                    break;
+                case Level.computerlab:
+                    for (int i = 0; i < GameManager.instance.gameState.ComputerLabLevelPorts.Count; i++) {
+                        if (GameManager.instance.gameState.ComputerLabLevelPorts[i]) {
+                            ActivatePanel(i);
+                        }
+                    }
+                    break;
             }
         }
-
+        
         // Set the extrudable data list
         GameObject extrudableParent = GameObject.Find("Extrudables");
         foreach (ObjectData extrudableData in roomData.extrudables) {
@@ -338,6 +362,45 @@ public class RoomManager : MonoBehaviour
 
         foreach (Transform doorTransform in GameObject.Find("Doors").transform) {
             Destroy(doorTransform.gameObject);
+        }
+    }
+
+    public void ActivatePanel(int puzzleId) {
+        TopDownDataScriptable roomData = GameManager.instance.roomData[currentRoom];
+
+        // Load in requested puzzle panel
+        GameObject usbPortParent = GameObject.Find("USBPorts");
+        foreach (USBPortData usbPortData in roomData.usbPorts) {
+            if (usbPortData.portID == puzzleId) {
+                if (GameObject.Find(usbPortData.name) != null) {
+                    break;
+                }
+
+                GameObject usbPort = Instantiate(usbPortPrefab, usbPortData.position, Quaternion.identity, usbPortParent.transform);
+
+                usbPort.name = usbPortData.name;
+                usbPort.GetComponent<USBPorts>().id = usbPortData.portID;
+                usbPort.transform.position = usbPortData.position;
+                usbPort.GetComponent<SpriteRenderer>().sprite = usbPortData.sprite;
+                usbPort.GetComponent<USBPorts>().level = usbPortData.level;
+
+                if (usbPortData.colliderData.noCollider == false) {
+                    usbPort.GetComponent<BoxCollider2D>().size = usbPortData.colliderData.size;
+                    usbPort.GetComponent<BoxCollider2D>().offset = usbPortData.colliderData.offset;
+                    usbPort.GetComponent<BoxCollider2D>().isTrigger = usbPortData.colliderData.isTrigger;
+                } else {
+                    Destroy(usbPort.GetComponent<BoxCollider2D>());
+                }
+
+                DialogueTrigger dialogueTrigger = usbPort.GetComponent<DialogueTrigger>();
+                if (dialogueTrigger != null) {
+                    usbPort.GetComponent<DialogueTrigger>().doNotRepeat = usbPortData.dialogueData.doNotRepeat;
+                    usbPort.GetComponent<DialogueTrigger>().isCutscene = usbPortData.dialogueData.isCutscene;
+                    usbPort.GetComponent<DialogueTrigger>().conditionToCheck = usbPortData.dialogueData.conditionToCheck;
+                    usbPort.GetComponent<DialogueTrigger>().noUSBDialogue = usbPortData.dialogueData.preConditionDialogue;
+                    usbPort.GetComponent<DialogueTrigger>().withUSBDialogue = usbPortData.dialogueData.postConditionDialogue;
+                }
+            }
         }
     }
 }

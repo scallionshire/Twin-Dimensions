@@ -202,8 +202,29 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences: []
+  - name: circuit0
+    position: {x: 0.34399998, y: 1.4864049, z: 0}
+    sprite: {fileID: 21300000, guid: f535ad63546274dc29a701d7cdda8e6e, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
   usbPorts:
-  - name: panel
+  - name: Panel0
     portID: 0
     position: {x: 0.22000003, y: 1.2264049, z: 0}
     sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}

@@ -35,7 +35,6 @@ public class MenuController : MonoBehaviour
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
     {
-        Debug.Log("Loading scenes");
         foreach (var loadOp in loadOperations)
         {   
             while (!loadOp.isDone)
@@ -43,8 +42,6 @@ public class MenuController : MonoBehaviour
                 yield return null; 
             }
         }
-
-        Debug.Log("Scenes finished loading");
         
         GameManager.instance.DeactivateScene("new2dtut");
         GameManager.instance.DeactivateScene("mainPuzzle");
@@ -57,7 +54,6 @@ public class MenuController : MonoBehaviour
 
     public void OpenSettings()
     {
-        Debug.Log("OpenSettings");
         GameManager.instance.TogglePauseMenu();
     }
 

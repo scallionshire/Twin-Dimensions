@@ -48,7 +48,6 @@ public class USBPorts : MonoBehaviour
         hackingCanvas.GetComponent<HackingSlider>().ToggleSlider(true);
 
         Slider slider = hackingCanvas.GetComponentInChildren<Slider>();
-        TMP_Text text = hackingCanvas.GetComponentInChildren<TMP_Text>();
 
         float elapsedTime = 0;
         while (elapsedTime <= 2)
@@ -59,6 +58,7 @@ public class USBPorts : MonoBehaviour
         }
         
         hackingCanvas.GetComponent<HackingSlider>().ToggleSlider(false);
+        GameManager.instance.UpdateActivatedPanel(id, level);
         GameManager.instance.SwitchToMap(level, !alreadyInserted);
     }
 }

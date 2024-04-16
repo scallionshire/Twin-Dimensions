@@ -99,20 +99,12 @@ MonoBehaviour:
           twin: 1
   - circuitSprites:
     - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
-      circuitSprite: {fileID: 21300000, guid: f9bc4227b8c2f41d4a91a38d37736957, type: 3}
-      circuitName: ext0-wire
-    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: 36f7c9658d6a640f28420cb6620bb396, type: 3}
       circuitName: ext1-wire
+    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: f9bc4227b8c2f41d4a91a38d37736957, type: 3}
+      circuitName: ext0-wire
     puzzleBlocks:
-    - blockInitPosition: {x: -9.74, y: -3.03, z: 0}
-      blockSprite: {fileID: 21300000, guid: e71061d39bbc1473984e376adcfe2075, type: 3}
-      blockName: ext0
-      correctSprite: {fileID: 21300000, guid: bf0c19de5900b4193908933b4572809b, type: 3}
-      destinationPosition: {x: -5.524, y: -0.493, z: 0}
-      destinationSprite: {fileID: 0}
-      destinationName: ext0-slot
-      isSolved: 0
     - blockInitPosition: {x: -8.39, y: -3.03, z: 0}
       blockSprite: {fileID: 21300000, guid: a8c9d67e7c87948f7b525365752811c6, type: 3}
       blockName: ext1
@@ -120,6 +112,14 @@ MonoBehaviour:
       destinationPosition: {x: -8.124, y: -0.857, z: 0}
       destinationSprite: {fileID: 0}
       destinationName: ext1-slot
+      isSolved: 0
+    - blockInitPosition: {x: -9.74, y: -3.03, z: 0}
+      blockSprite: {fileID: 21300000, guid: e71061d39bbc1473984e376adcfe2075, type: 3}
+      blockName: ext0
+      correctSprite: {fileID: 21300000, guid: bf0c19de5900b4193908933b4572809b, type: 3}
+      destinationPosition: {x: -5.524, y: -0.493, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext0-slot
       isSolved: 0
     dialogues:
     - position: {x: -7.08, y: -2.66, z: 0}

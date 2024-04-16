@@ -223,6 +223,69 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences: []
+  - name: Circuit4
+    position: {x: -3.325, y: 0.4824049, z: 0}
+    sprite: {fileID: 21300000, guid: 2a3fc32c67a4449b38f11899a53d705d, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit5
+    position: {x: 2.621, y: 1.056405, z: 0}
+    sprite: {fileID: 21300000, guid: 75a703279406a426996d3caadbf73f5c, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit0
+    position: {x: 5.7359996, y: -2.4535952, z: 0}
+    sprite: {fileID: 21300000, guid: fd5cd20bba7f34d2f825e7d81698df02, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
   - name: L three1
     position: {x: -3.2, y: 0.03999996, z: 0}
     sprite: {fileID: 21300000, guid: 1ab1a41493b7943d1870526b2e809cb9, type: 3}
@@ -351,15 +414,15 @@ MonoBehaviour:
         sentences: []
   usbPorts:
   - name: Panel4
-    portID: 5
-    position: {x: 3.6213775, y: 0.3247621, z: 0}
-    sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
+    portID: 4
+    position: {x: -2.3786225, y: 0.25476193, z: 0}
+    sprite: {fileID: 21300000, guid: 968ee336f441a4a2891f4cb45e7c02de, type: 3}
     level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
-      offset: {x: 0.002072215, y: 0.02072315}
-      size: {x: 0.6129625, y: 0.74855375}
+      offset: {x: 0.004144788, y: 0.020723164}
+      size: {x: 0.61710715, y: 0.74855375}
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
@@ -371,15 +434,15 @@ MonoBehaviour:
         dialogueName: 
         sentences: []
   - name: Panel5
-    portID: 4
-    position: {x: -2.3786225, y: 0.25476193, z: 0}
-    sprite: {fileID: 21300000, guid: 968ee336f441a4a2891f4cb45e7c02de, type: 3}
+    portID: 5
+    position: {x: 3.6213775, y: 0.3247621, z: 0}
+    sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
     level: 0
     colliderData:
       noCollider: 0
       isTrigger: 0
-      offset: {x: 0.004144788, y: 0.020723164}
-      size: {x: 0.61710715, y: 0.74855375}
+      offset: {x: 0.002072215, y: 0.02072315}
+      size: {x: 0.6129625, y: 0.74855375}
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0

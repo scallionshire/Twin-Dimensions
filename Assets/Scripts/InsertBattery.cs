@@ -41,6 +41,7 @@ public class InsertBattery : MonoBehaviour
 
         if (batteriesIn == 5)
         {
+            Debug.Log("Hi!");
             GameManager.instance.SolvePuzzle(Level.computerlab, 1);
             GameObject.Find("PinkOverlay").GetComponent<SpriteRenderer>().enabled = true;
             GameManager.instance.OnSceneSwitch();
