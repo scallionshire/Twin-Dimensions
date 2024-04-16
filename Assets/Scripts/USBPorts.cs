@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class USBPorts : MonoBehaviour
 {
@@ -36,7 +37,11 @@ public class USBPorts : MonoBehaviour
             if (isPuzzlePort) {
                 GameManager.instance.SwitchToPuzzle(id, level, !alreadyInserted);
             } else {
-                StartCoroutine(Hacking());
+                if (alreadyInserted) {
+                    GameManager.instance.SwitchToMap(level, !alreadyInserted);
+                } else {
+                    StartCoroutine(Hacking());
+                }
             }
             alreadyInserted = true;
         }
@@ -49,6 +54,11 @@ public class USBPorts : MonoBehaviour
 
         Slider slider = hackingCanvas.GetComponentInChildren<Slider>();
 
+        TooltipManager tooltipManager = GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>();
+
+        tooltipManager.ToggleClickTooltip(false);
+        GameManager.instance.ToggleDialogueFreeze(true);
+
         float elapsedTime = 0;
         while (elapsedTime <= 2)
         {
@@ -58,6 +68,7 @@ public class USBPorts : MonoBehaviour
         }
         
         hackingCanvas.GetComponent<HackingSlider>().ToggleSlider(false);
+        GameManager.instance.ToggleDialogueFreeze(false);
         GameManager.instance.UpdateActivatedPanel(id, level);
         GameManager.instance.SwitchToMap(level, !alreadyInserted);
     }

@@ -53,6 +53,9 @@ public class TimelineActivator : MonoBehaviour
             case GameStateCondition.hasBattery:
                 conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
                 break;
+            case GameStateCondition.noUSB:
+                conditionMet = !GameManager.instance.gameState.PlayerHasUSB;
+                break;
         }
 
         // Handle the PC case

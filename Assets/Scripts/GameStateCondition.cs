@@ -1,5 +1,6 @@
 public enum GameStateCondition {
   hasUSB,
   insertedUSB,
-  hasBattery
+  hasBattery,
+  noUSB
 }
