@@ -665,13 +665,22 @@ public class GameManager : MonoBehaviour
             if (Door2 != null && Door2.GetComponent<Animator>().GetBool("isOpen") == false) {
                 Door2.GetComponent<Animator>().SetBool("isOpen", true);
             }
-        } else if (instance.gameState.BlueOverlayOn || instance.gameState.PinkOverlayOn) {
+        } else if (instance.gameState.BlueOverlayOn)
+        {
             // Play overlay cutscene
-            GameObject LookAtOverlayTrigger = GameObject.Find("LookAtOverlayTrigger");
-            if (LookAtOverlayTrigger != null) {
-                LookAtOverlayTrigger.GetComponent<Interactable>().Interact();
+            GameObject LookAtBlueOverlayTrigger = GameObject.Find("LookAtBlueOverlayTrigger");
+            if (LookAtBlueOverlayTrigger != null) {
+                LookAtBlueOverlayTrigger.GetComponent<Interactable>().Interact();
             }
-        } else if (instance.gameState.BlueGroup0On || instance.gameState.BlueGroup1On || instance.gameState.BlueGroup2On) {
+        } else if (instance.gameState.PinkOverlayOn)
+        {
+            // Play overlay cutscene
+            GameObject LookAtPinkOverlayTrigger = GameObject.Find("LookAtPinkOverlayTrigger");
+            if (LookAtPinkOverlayTrigger != null) {
+                LookAtPinkOverlayTrigger.GetComponent<Interactable>().Interact();
+            }
+        } // If any of the blue groups are on, play group cutscene(s
+        else if (instance.gameState.BlueGroup0On || instance.gameState.BlueGroup1On || instance.gameState.BlueGroup2On) {
             // Play group cutscene
             GameObject BlueWallDoneTrigger = GameObject.Find("BlueWallDoneTrigger");
             if (BlueWallDoneTrigger != null) {
