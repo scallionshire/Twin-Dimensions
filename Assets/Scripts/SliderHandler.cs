@@ -24,7 +24,9 @@ public class SliderHandler : MonoBehaviour
     
     void Start()
     {
+        GameManager.instance.settingsMenu = gameObject;
         InitializeSliders();
+        gameObject.SetActive(false);
     }
 
     private void InitializeSliders()

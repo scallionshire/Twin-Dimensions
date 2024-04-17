@@ -104,17 +104,9 @@ public class GameManager : MonoBehaviour
             eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
 
-        if (GameObject.Find("SettingsMenu") != null) {
-            settingsMenu = GameObject.Find("SettingsMenu");
-            settingsMenu.SetActive(false);
-        }
-
         MusicVolume = 1f;
         DialogueVolume = 1f;
         SFXVolume = 1f;
-
-        TogglePauseMenu();
-        TogglePauseMenu();
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
@@ -493,14 +485,14 @@ public class GameManager : MonoBehaviour
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
-        if (settingsMenu == null) {
-            settingsMenu = GameObject.Find("SettingsMenu");
-            settingsMenu.SetActive(false);
+        if (instance.settingsMenu == null) {
+            instance.settingsMenu = GameObject.Find("SettingsMenu");
+            instance.settingsMenu.SetActive(false);
         }
 
-        if (settingsMenu.activeSelf)
+        if (instance.settingsMenu.activeSelf)
         {
-            settingsMenu.SetActive(false);
+            instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -509,7 +501,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.None;
-            settingsMenu.SetActive(true);
+            instance.settingsMenu.SetActive(true);
             Time.timeScale = 0f;
         }
     }
