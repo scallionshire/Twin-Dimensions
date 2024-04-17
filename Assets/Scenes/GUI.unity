@@ -135,13 +135,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 599730637150123113, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 599730637150123113, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599730637150123113, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2779775224912079284, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: canvas
@@ -153,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 78304684}
     - target: {fileID: 4033866349891191790, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5303545734537166110, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_Pivot.x
@@ -237,35 +241,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6293937996956782965, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6293937996956782965, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6293937996956782965, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6663153007271416885, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7192742971192107954, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7192742971192107954, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7561834621455542002, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7561834621455542002, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1033,6 +1037,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130016104464608524, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32d8c305d95f4c419070f9b89067cde, type: 3}
+    - target: {fileID: 4959563387335396610, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -26.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205166404240536476, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32d8c305d95f4c419070f9b89067cde, type: 3}
     - target: {fileID: 5592842515824178717, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1113,6 +1129,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5741811956919639566, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58150f4c612a04819a4703b640d6d2ee, type: 3}
     - target: {fileID: 6026448802621700347, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
       propertyPath: m_Name
       value: TooltipCanvas
@@ -1121,6 +1141,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6826167264370120566, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102688298394138238, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2923cb9dc49f64c9aa1890e2847fa4a0, type: 3}
+    - target: {fileID: 7828205392589312331, guid: 48fc08269168243ff9083d803cef04e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b40d7c7bdc8614b0a8969bbc57be196b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1150,10 +1182,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -422.2387
       objectReference: {fileID: 0}
+    - target: {fileID: 1266065054125600369, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32d8c305d95f4c419070f9b89067cde, type: 3}
     - target: {fileID: 1450853306172019097, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8bb8ea88c0ede498cbe08926c97b83ba, type: 3}
+    - target: {fileID: 2044645932559533817, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32d8c305d95f4c419070f9b89067cde, type: 3}
     - target: {fileID: 2953939987320327243, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
@@ -1250,6 +1290,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -165.19998
       objectReference: {fileID: 0}
+    - target: {fileID: 4065114669373715839, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b40d7c7bdc8614b0a8969bbc57be196b, type: 3}
+    - target: {fileID: 5579899797209389540, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b40d7c7bdc8614b0a8969bbc57be196b, type: 3}
     - target: {fileID: 7331419005565685052, guid: 888900d9d771c4d77a0c56702843f43d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 346

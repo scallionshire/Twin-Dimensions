@@ -44,7 +44,9 @@ public class GamepadCursor : MonoBehaviour
         if (cursorTransform != null)
         {
             Vector2 position = cursorTransform.anchoredPosition;
-            InputState.Change(virtualMouse.position, position);
+            if (virtualMouse != null) {
+                InputState.Change(virtualMouse.position, position);
+            }
         }
 
         InputSystem.onAfterUpdate += UpdateMotion;
@@ -83,7 +85,7 @@ public class GamepadCursor : MonoBehaviour
         InputState.Change(virtualMouse.position, newPosition);
         InputState.Change(virtualMouse.delta, deltaValue);
 
-        bool isPressed = Gamepad.current.aButton.isPressed;
+        bool isPressed = Gamepad.current.bButton.isPressed;
         if (previousMouseState != isPressed)
         {
             virtualMouse.CopyState<MouseState>(out var mouseState);
