@@ -219,9 +219,7 @@ public class GameManager : MonoBehaviour
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
-                if (eventEmitter == null) {
-                    eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-                }
+                eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
                 if (eventEmitter.EventInstance.isValid())
                 {
                     eventEmitter.EventInstance.setPaused(true);
@@ -246,7 +244,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitBeforeUnfreezing()
     {
-        yield return new WaitForSeconds(1.0f);
+        GameObject[] diaTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
+        foreach (GameObject diaTrigger in diaTriggers) {
+            if (diaTrigger.name == "IntroDialogueTrigger") {
+                diaTrigger.GetComponent<Interactable>().Interact();
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
         ToggleDialogueFreeze(false);
         ToggleBokeh(false);
     }
@@ -854,7 +858,7 @@ public class GameState
         CurrentRoom = 0;
         RoomChanged = false;
 
-        PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);
+        PlayerPosition3D = new Vector3(-6.40f,3.520f,27.110f);
         PlayerRotation3D = new Vector3(0f,180f,0f);
         CameraPosition3D = Vector3.zero;
         CameraRotation3D = Vector3.zero;
