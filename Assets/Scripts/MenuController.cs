@@ -66,4 +66,9 @@ public class MenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PlaySFX()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/MenuInteraction");
+    }
 }
