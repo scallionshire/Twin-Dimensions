@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SliderHandler : MonoBehaviour
@@ -71,11 +72,17 @@ public class SliderHandler : MonoBehaviour
 
     public void QuitSettings()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/MenuInteraction");
         GameManager.instance.TogglePauseMenu();
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlaySFX()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/MenuInteraction");
     }
 }
