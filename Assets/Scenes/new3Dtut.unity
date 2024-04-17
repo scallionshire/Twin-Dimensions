@@ -3350,8 +3350,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
-  m_Range: 3.3519106
+  m_Intensity: 7
+  m_Range: 3.4413214
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -3408,12 +3408,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125609492}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.56195486, y: -0, z: -0, w: 0.827168}
-  m_LocalPosition: {x: -13.976, y: -6.1990004, z: 16.696999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.54239714, y: -0.45365775, z: 0.54239714, w: 0.45365775}
+  m_LocalPosition: {x: -3.0774295, y: 17.184525, z: 0.040000275}
+  m_LocalScale: {x: 6.666666, y: 6.6666656, z: 6.666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1237174282}
+  m_Father: {fileID: 1628981764}
   m_LocalEulerAnglesHint: {x: 68.382, y: 0, z: 0}
 --- !u!64 &127983810
 MeshCollider:
@@ -4024,6 +4024,7 @@ Transform:
   - {fileID: 5548186428114480577}
   - {fileID: 582128664}
   - {fileID: 465621420}
+  - {fileID: 711097787}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153721725
@@ -18623,7 +18624,7 @@ Transform:
   m_LocalScale: {x: 0.5621098, y: 1, z: 0.34764233}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 145824983}
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!64 &712686115
 MeshCollider:
@@ -31496,7 +31497,6 @@ Transform:
   - {fileID: 1871390804}
   - {fileID: 710218194}
   - {fileID: 1040398734}
-  - {fileID: 125609495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1238085044 stripped
@@ -33331,6 +33331,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
       propertyPath: m_TagString
       value: USB
       objectReference: {fileID: 0}
@@ -33412,7 +33416,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c38fb016ade5648cfa139fc2d86f398b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 125609495}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3b55ffa470674443a8caa2753f37641, type: 3}
       insertIndex: -1
@@ -82153,4 +82160,3 @@ SceneRoots:
   - {fileID: 168516618}
   - {fileID: 1889336689}
   - {fileID: 362238047}
-  - {fileID: 711097787}
