@@ -590,7 +590,7 @@ public class GameManager : MonoBehaviour
                 if (exti != null) {
                     Extrudable extrudable = exti.GetComponent<Extrudable>();
                     if (extrudable != null) {
-                        extrudable.isMoving = true;
+                        extrudable.Extrude();
                     } else {
                         if (instance.gameState.ExtrudablesAnimPlayed2D[i]) {
                             Debug.Log("Extrudable animation already played");

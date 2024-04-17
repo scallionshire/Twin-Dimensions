@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Extrudable : MonoBehaviour
 {
@@ -87,9 +86,6 @@ public class Extrudable : MonoBehaviour
     void Update()
     {   
         if (isMoving) {
-            extrudableSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-            extrudableSoundInstance.start();
-
             if (!gameStateUpdated) {
                 gameStateUpdated = true;
                 GameManager.instance.UpdateExtrudables(extrudableId);
@@ -141,9 +137,10 @@ public class Extrudable : MonoBehaviour
 
     public void Extrude() {
         isMoving = true;
-        FMOD.ATTRIBUTES_3D attributes = FMODUnity.RuntimeUtils.To3DAttributes(gameObject);
-        extrudableSoundInstance.set3DAttributes(attributes);
-        extrudableSoundInstance.start();
+        if (!is2D) {
+            extrudableSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            extrudableSoundInstance.start();
+        }
     }
 
     public void MakeAlreadyExtruded() {
