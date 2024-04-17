@@ -193,7 +193,6 @@ public class GameManager : MonoBehaviour
             } else {
                 if (ActiveSceneName == "new3Dtut")
                 {   
-                    Debug.Log("Switching to map!");
                     SwitchToMap(instance.gameState.CurrentLevel);
                 }
                 else if (ActiveSceneName == "new2dtut")
@@ -322,6 +321,13 @@ public class GameManager : MonoBehaviour
             gameState.BatteriesCollected--;
             UpdateInventoryUI(); 
         }
+    }
+
+    public void ShowControls()
+    {
+        if (instance.gameState.ControlsShown) return;
+        GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ActivateControls();
+        instance.gameState.ControlsShown = true;
     }
 
     public void UpdateExtrudables(int extrudableId) {
@@ -492,16 +498,13 @@ public class GameManager : MonoBehaviour
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
-        Debug.Log("???");
         if (instance.settingsMenu == null) {
-            Debug.Log("1");
             instance.settingsMenu = GameObject.Find("SettingsMenu");
             instance.settingsMenu.SetActive(false);
         }
 
         if (instance.settingsMenu.activeSelf)
         {
-            Debug.Log("2");
             instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
             if (ActiveSceneName != "StartMenu" || ActiveSceneName != "") {
@@ -510,7 +513,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("3");
             instance.settingsMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
@@ -810,6 +812,8 @@ public class GameState
     public int CurrentRoom { get; set; } // current room that 02 is in
     public bool RoomChanged { get; set; } // flag to indicate if the room has changed
 
+    public bool ControlsShown { get; set; }
+
     // 3D Character State
     public Vector3 PlayerPosition3D { get; set; }
     public Vector3 PlayerRotation3D { get; set; }
@@ -861,6 +865,8 @@ public class GameState
         CurrentPuzzleId = -1;
         CurrentRoom = 0;
         RoomChanged = false;
+
+        ControlsShown = false;
 
         PlayerPosition3D = new Vector3(-6.40f,3.520f,27.110f);
         PlayerRotation3D = new Vector3(0f,180f,0f);
