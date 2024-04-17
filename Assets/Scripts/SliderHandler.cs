@@ -30,6 +30,11 @@ public class SliderHandler : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    void OnEnable()
+    {
+        EventSystem.current.SetSelectedGameObject(musicSlider.gameObject);
+    }
+
     private void InitializeSliders()
     {
         musicSlider = GameObject.Find("Music").GetComponent<Slider>();
