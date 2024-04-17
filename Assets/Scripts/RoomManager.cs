@@ -54,9 +54,6 @@ public class RoomManager : MonoBehaviour
         // Set the frame size
         GameObject.Find("Frame").GetComponent<SpriteRenderer>().size = roomData.frameSize;
 
-        // Set the glitch overlay scale
-        GameObject.Find("Glitch").transform.localScale = roomData.glitchScale;
-
         GameObject.FindGameObjectWithTag("Player").transform.position = roomData.playerInitPosition;
 
         // Set the wall data list
@@ -204,9 +201,6 @@ public class RoomManager : MonoBehaviour
 
         // Set the frame size
         newRoom.frameSize = GameObject.Find("Frame").GetComponent<SpriteRenderer>().size;
-
-        // Set the glitch overlay scale
-        newRoom.glitchScale = GameObject.Find("Glitch").transform.localScale;
 
         newRoom.playerInitPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
