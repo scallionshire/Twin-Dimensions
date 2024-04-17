@@ -431,8 +431,7 @@ public class GameManager : MonoBehaviour
     {
         MusicVolume = volume;
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            eventEmitter = eventEmitters[0];
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter.EventInstance.isValid())
         {
