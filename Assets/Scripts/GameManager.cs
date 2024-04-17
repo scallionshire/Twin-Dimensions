@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
     {
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
 
         if (GameObject.Find("SettingsMenu") != null) {
@@ -221,8 +222,7 @@ public class GameManager : MonoBehaviour
                 ToggleBokeh(true);
                 cutscenePlaying = true;
                 if (eventEmitter == null) {
-                    var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-                    eventEmitter = eventEmitters[0];
+                    eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
                 }
                 if (eventEmitter.EventInstance.isValid())
                 {
@@ -233,8 +233,7 @@ public class GameManager : MonoBehaviour
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
                     if (eventEmitter == null) {
-                        var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-                        eventEmitter = eventEmitters[0];
+                        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
                     }
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
@@ -447,8 +446,6 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
             Debug.Log("eventEmitter was null or not valid");
             eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
@@ -695,9 +692,8 @@ public class GameManager : MonoBehaviour
     public void switchToScene(string sceneName)
     {
         if (eventEmitter == null) {
-            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            if (eventEmitters.Length > 0) eventEmitter = eventEmitters[0];
-
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+            Debug.Log("Found event emitter: " + eventEmitter);
             // Ensure cursor is focused when you first start the game
             Cursor.lockState = CursorLockMode.Locked;
         }
