@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public float MusicVolume = 1f;
     public float DialogueVolume = 1f;
     public float SFXVolume = 1f;
+    public bool isUsingController = false;
 
     private FMODUnity.StudioEventEmitter eventEmitter;
 
@@ -491,23 +492,27 @@ public class GameManager : MonoBehaviour
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
+        Debug.Log("???");
         if (instance.settingsMenu == null) {
+            Debug.Log("1");
             instance.settingsMenu = GameObject.Find("SettingsMenu");
             instance.settingsMenu.SetActive(false);
         }
 
         if (instance.settingsMenu.activeSelf)
         {
+            Debug.Log("2");
             instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
-            if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
+            if (ActiveSceneName != "StartMenu" || ActiveSceneName != "") {
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            Debug.Log("3");
             instance.settingsMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }
