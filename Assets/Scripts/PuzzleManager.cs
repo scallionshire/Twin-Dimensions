@@ -235,7 +235,6 @@ public class PuzzleManager : MonoBehaviour
             {
                 string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
 
-                Debug.Log("Solving puzzle block for index " + index);
                 GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, currentPuzzleId, index);
 
                 // Visual indicator for success state goes here

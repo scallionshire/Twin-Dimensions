@@ -8,10 +8,10 @@ using UnityEditor;
 
 public class USBPorts : MonoBehaviour
 {
-    // TODO: check if we're in the 3D world or the 2D world
     public GameStateCondition conditionToCheck = GameStateCondition.insertedUSB;
     private bool conditionMet = false;
-    public bool isPuzzlePort = true; // if true, this port will trigger a puzzle via the 2D scene; otherwise, it will trigger the 2d room via the 3d scene
+    [Tooltip("If isPuzzlePort = true, the port will trigger a puzzle via the 2D scene. Otherwise, it will trigger the 2D room via the 3D scene.")]
+    public bool isPuzzlePort = true;
     public int id;
     public Level level;
     public string eventName = "event:/SFX3D/USBInsert";

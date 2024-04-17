@@ -130,13 +130,7 @@ public class RoomManager : MonoBehaviour
                 }
             }
         } else {
-            Debug.Log("Activating panels for level: " + GameManager.instance.gameState.CurrentLevel);
-            string result = "List contents: ";
-            foreach (var item in GameManager.instance.gameState.TutorialLevelPorts)
-            {
-                result += item.ToString() + ", ";
-            }
-            Debug.Log(result);
+            // Instantiate usb panels if they've been activated
             switch (GameManager.instance.gameState.CurrentLevel) {
                 case Level.tutorial:
                     for (int i = 0; i < GameManager.instance.gameState.TutorialLevelPorts.Count; i++) {
@@ -399,6 +393,17 @@ public class RoomManager : MonoBehaviour
                     usbPort.GetComponent<DialogueTrigger>().conditionToCheck = usbPortData.dialogueData.conditionToCheck;
                     usbPort.GetComponent<DialogueTrigger>().noUSBDialogue = usbPortData.dialogueData.preConditionDialogue;
                     usbPort.GetComponent<DialogueTrigger>().withUSBDialogue = usbPortData.dialogueData.postConditionDialogue;
+                }
+            }
+        }
+    }
+
+    public void SwapExtrudableSprite(string name) {
+        GameObject extrudable = GameObject.Find(name);
+        if (extrudable != null) {
+            foreach (ObjectData extrudableData in GameManager.instance.roomData[currentRoom].extrudables) {
+                if (extrudableData.name == name) {
+                    extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.extrudedSprite;
                 }
             }
         }

@@ -8,6 +8,7 @@ public struct ObjectData
     public Sprite sprite;
     public int sortingOrder;
     public Color color;
+    public Sprite extrudedSprite;
     public RuntimeAnimatorController animatorController;
     public ColliderData colliderData;
     public DialogueData dialogueData;

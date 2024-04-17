@@ -9184,7 +9184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380861217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0022592882, y: 0.99537086, z: -0.09298858, w: -0.024183938}
+  m_LocalRotation: {x: -0.002259291, y: 0.99537086, z: -0.09298857, w: -0.024183966}
   m_LocalPosition: {x: -4.017407, y: 6.008812, z: 30.97101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22204,7 +22204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: debugCondition
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
       propertyPath: roomData.Array.data[1]
@@ -43667,11 +43667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.02423113
+      value: -0.024231082
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0016797958
+      value: 0.0016797925
       objectReference: {fileID: 0}
     - target: {fileID: 836883158250017625, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -43783,11 +43783,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.024231087
+      value: -0.024231117
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.001679793
+      value: 0.0016797951
       objectReference: {fileID: 0}
     - target: {fileID: 5283621875559145956, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
@@ -43851,27 +43851,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7386885
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.021303
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -6.391457e-16
+      value: -0.024231082
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.9348035e-16
+      value: 0.0016797925
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7864119
+      value: 0.96724796
       objectReference: {fileID: 0}
     - target: {fileID: 8651204556056473195, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.61770254
+      value: -0.25266868
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -9059580956105317691, guid: 4f6e971cf4d7d4310aa0f1bc9ec67971, type: 3}
@@ -47671,7 +47671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13241da499546648f22709eba273bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditionToCheck: 0
+  conditionToCheck: 3
   checkCondition: 1
   doNotUnfreeze: 0
 --- !u!320 &1950747632
@@ -54268,7 +54268,7 @@ GameObject:
   - component: {fileID: 7892225634764475687}
   - component: {fileID: 139487595866054320}
   - component: {fileID: 896843332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube55
   m_TagString: Untagged
   m_Icon: {fileID: 0}

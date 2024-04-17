@@ -5,6 +5,7 @@ using Cinemachine;
 using Cinemachine.PostFX;
 using FMOD.Studio;
 using StarterAssets;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -269,7 +270,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchToMap(Level level, bool newMap = false) {
-        Debug.Log("SwitchToMap()");
         switchToScene("new2dtut");
 
         if (newMap || instance.gameState.RoomChanged) {
@@ -280,8 +280,6 @@ public class GameManager : MonoBehaviour
             roomManager.LoadCurrentScene();
 
             instance.gameState.RoomChanged = false;
-            // ExtrudableManager extrudableManager = GameObject.Find("ExtrudableManager").GetComponent<ExtrudableManager>();
-            // extrudableManager.LoadMap();
         }
     }
 
@@ -338,7 +336,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // TODO: clean this up
     public void SolvePuzzleBlock(Level level, int puzzleId, int blockId) {
         switch (level) {
             case Level.tutorial:
@@ -551,18 +548,47 @@ public class GameManager : MonoBehaviour
     // Utility function to handle effects that need to be checked when switching scenes
     public void OnSceneSwitch()
     {
-        // Unlock doors if they are unlocked
+        // Unlock doors if they are unlocked, and use flags to make sure animations are only played once
         if (instance.gameState.Door0Unlocked) {
             GameObject Door0 = GameObject.Find("Door0");
-            if (Door0 != null && Door0.GetComponent<Animator>().GetBool("isOpen") == false) {
-                Door0.GetComponent<Animator>().SetBool("isOpen", true);
+            if (Door0 != null) {
+                // check if we're in 3d or 2d scene and play animation once
+                if (ActiveSceneName == "new3Dtut") {
+                    if (instance.gameState.Door0AnimPlayed3D) {
+                        Destroy(Door0);
+                    } else {
+                        Door0.GetComponent<Animator>().SetBool("isOpen", true);
+                        instance.gameState.Door0AnimPlayed3D = true;
+                    }
+                } else {
+                    if (instance.gameState.Door0AnimPlayed2D) {
+                        Destroy(Door0);
+                    } else {
+                        Door0.GetComponent<Animator>().SetBool("isOpen", true);
+                        instance.gameState.Door0AnimPlayed2D = true;
+                    }
+                }
             }
         }
         
         if (instance.gameState.Door1Unlocked) {
             GameObject Door1 = GameObject.Find("Door1");
-            if (Door1 != null && Door1.GetComponent<Animator>().GetBool("isOpen") == false) {
-                Door1.GetComponent<Animator>().SetBool("isOpen", true);
+            if (Door1 != null) {
+                if (ActiveSceneName == "new3Dtut") {
+                    if (instance.gameState.Door1AnimPlayed3D) {
+                        Destroy(Door1);
+                    } else {
+                        Door1.GetComponent<Animator>().SetBool("isOpen", true);
+                        instance.gameState.Door1AnimPlayed3D = true;
+                    }
+                } else {
+                    if (instance.gameState.Door1AnimPlayed2D) {
+                        Destroy(Door1);
+                    } else {
+                        Door1.GetComponent<Animator>().SetBool("isOpen", true);
+                        instance.gameState.Door1AnimPlayed2D = true;
+                    }
+                }
             }
         }
 
@@ -574,19 +600,15 @@ public class GameManager : MonoBehaviour
                     if (extrudable != null) {
                         extrudable.isMoving = true;
                     } else {
-                        if (exti.GetComponent<Animator>() != null && exti.GetComponent<Animator>().GetBool("Extruded") == false) {
-                            exti.GetComponent<Animator>().SetBool("Extruded", true);
-                        }
-
-                        if (i == 5) {
-                            if (GameObject.Find("Battery5") != null && GameObject.Find("Battery5").GetComponent<Animator>() != null && GameObject.Find("Battery5").GetComponent<Animator>().GetBool("isFalling") == false) {
-                                GameObject.Find("Battery5").GetComponent<Animator>().SetBool("isFalling", true);
-                            }
-                        }
-
-                        if (i == 2) {
-                            if (GameObject.Find("CCTV2D") != null) {
-                                Destroy(GameObject.Find("CCTV2D"));
+                        if (instance.gameState.ExtrudablesAnimPlayed2D[i]) {
+                            Debug.Log("Extrudable animation already played");
+                            exti.GetComponent<Animator>().enabled = false;
+                            GameObject RoomManager = GameObject.Find("RoomManager");
+                            RoomManager?.GetComponent<RoomManager>().SwapExtrudableSprite(exti.name);
+                        } else {
+                            if (exti.GetComponent<Animator>() != null) {
+                                exti.GetComponent<Animator>().SetBool("Extruded", true);
+                                instance.gameState.ExtrudablesAnimPlayed2D[i] = true;
                             }
                         }
                     }
@@ -786,7 +808,11 @@ public class GameState
     // 3D Game State
     // Tutorial
     public bool Door0Unlocked { get; set; }
+    public bool Door0AnimPlayed3D { get; set; }
+    public bool Door0AnimPlayed2D { get; set; }
     public bool Door1Unlocked { get; set; }
+    public bool Door1AnimPlayed3D { get; set; }
+    public bool Door1AnimPlayed2D { get; set; }
     public bool PlayerHasUSB { get; set; }
     public bool USBInserted { get; set; }
 
@@ -802,6 +828,7 @@ public class GameState
     public int CurrentExtrudableSetId { get; set; }
 
     public List<bool> Extrudables { get; set; }
+    public List<bool> ExtrudablesAnimPlayed2D { get; set; }
 
     public List<bool> TutorialLevelPorts { get; set; }
     public List<bool> ComputerLabLevelPorts { get; set; }
@@ -830,9 +857,16 @@ public class GameState
         CameraRotation3D = Vector3.zero;
 
         Door0Unlocked = false;
+        Door0AnimPlayed3D = false;
+        Door0AnimPlayed2D = false;
+
         Door1Unlocked = false;
+        Door1AnimPlayed3D = false;
+        Door1AnimPlayed2D = false;
+
         PlayerHasUSB = false;
         USBInserted = false;
+
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
 
@@ -840,6 +874,7 @@ public class GameState
 
         CurrentExtrudableSetId = -1;
         Extrudables = new List<bool> { false, false, false, false, false, false };
+        ExtrudablesAnimPlayed2D = new List<bool> { false, false, false, false, false, false };
 
         TutorialLevelPorts = new List<bool> { false, false, false, false, false, false };
         ComputerLabLevelPorts = new List<bool> { false };

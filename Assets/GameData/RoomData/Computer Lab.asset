@@ -55,95 +55,12 @@ MonoBehaviour:
       offset: {x: 2.0939078, y: 0.48930812}
       size: {x: 0.21368325, y: 5.185551}
   objects:
-  - name: Battery4
-    position: {x: -5.54, y: -3.05, z: 0}
-    sprite: {fileID: 21300000, guid: 24159ff547d994e5dba1c8d6eafacf93, type: 3}
-    sortingOrder: 3
-    color: {r: 1, g: 1, b: 1, a: 1}
-    animatorController: {fileID: 0}
-    colliderData:
-      noCollider: 0
-      isTrigger: 0
-      offset: {x: 0, y: 0}
-      size: {x: 0, y: 0}
-    dialogueData:
-      doNotRepeat: 0
-      isCutscene: 0
-      conditionToCheck: 0
-      preConditionDialogue:
-        dialogueName: 
-        sentences: []
-      postConditionDialogue:
-        dialogueName: 
-        sentences: []
-  - name: Battery5
-    position: {x: 3.59, y: 1.8564049, z: 0}
-    sprite: {fileID: 21300000, guid: 24159ff547d994e5dba1c8d6eafacf93, type: 3}
-    sortingOrder: 2
-    color: {r: 1, g: 1, b: 1, a: 1}
-    animatorController: {fileID: 9100000, guid: 4bb5230e1695743fc877d1bae45f29b8, type: 2}
-    colliderData:
-      noCollider: 1
-      isTrigger: 0
-      offset: {x: 0, y: 0}
-      size: {x: 0.6, y: 0.3}
-    dialogueData:
-      doNotRepeat: 0
-      isCutscene: 0
-      conditionToCheck: 0
-      preConditionDialogue:
-        dialogueName: 
-        sentences: []
-      postConditionDialogue:
-        dialogueName: 
-        sentences: []
-  - name: Battery1
-    position: {x: -4.4500003, y: 1.9464049, z: 0}
-    sprite: {fileID: 21300000, guid: 24159ff547d994e5dba1c8d6eafacf93, type: 3}
-    sortingOrder: 2
-    color: {r: 1, g: 1, b: 1, a: 1}
-    animatorController: {fileID: 0}
-    colliderData:
-      noCollider: 1
-      isTrigger: 0
-      offset: {x: 0, y: 0}
-      size: {x: 0.6, y: 0.3}
-    dialogueData:
-      doNotRepeat: 0
-      isCutscene: 0
-      conditionToCheck: 0
-      preConditionDialogue:
-        dialogueName: 
-        sentences: []
-      postConditionDialogue:
-        dialogueName: 
-        sentences: []
-  - name: Battery3
-    position: {x: 0.0119999945, y: -1.8069999, z: 0}
-    sprite: {fileID: 21300000, guid: 24159ff547d994e5dba1c8d6eafacf93, type: 3}
-    sortingOrder: 2
-    color: {r: 1, g: 1, b: 1, a: 1}
-    animatorController: {fileID: 0}
-    colliderData:
-      noCollider: 1
-      isTrigger: 0
-      offset: {x: 0, y: 0}
-      size: {x: 0.6, y: 0.3}
-    dialogueData:
-      doNotRepeat: 0
-      isCutscene: 0
-      conditionToCheck: 0
-      preConditionDialogue:
-        dialogueName: 
-        sentences: []
-      postConditionDialogue:
-        dialogueName: 
-        sentences: []
   - name: Tube
     position: {x: 0.019999996, y: -2.533595, z: 0}
     sprite: {fileID: 21300000, guid: d4f1092ce71f948c9819ae96e441da9f, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -165,6 +82,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: fbfc2a4bf7030412fb7f352f37c4b22b, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -186,6 +104,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: cbfc1b7e16e344d16b1f9667037ce622, type: 3}
     sortingOrder: 3
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -207,6 +126,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 6e724cbea7f3145e1b95c39fee2ef67e, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -228,6 +148,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 2a3fc32c67a4449b38f11899a53d705d, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -249,6 +170,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 75a703279406a426996d3caadbf73f5c, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -270,6 +192,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: fd5cd20bba7f34d2f825e7d81698df02, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -291,6 +214,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 1ab1a41493b7943d1870526b2e809cb9, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -312,6 +236,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9ae4aed6811044fa8acdee19643858f7, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 0.7176471}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -333,6 +258,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8f13adadd0f534cafb12b38b23ef75e6, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -354,6 +280,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 662a6052cd3f0443b9bf811dc5f21b0c, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -375,6 +302,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: f6eb7032600514dc383e817298810fff, type: 3}
     sortingOrder: 3
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -396,6 +324,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 1ef3c9268d468482bb5f1a4c1c4608da, type: 3}
     sortingOrder: 3
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -479,6 +408,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 82f30a2c23b9f4effab8922e0c334133, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: 542844da4fca64bcaa8e597e38605dcf, type: 3}
     animatorController: {fileID: 9100000, guid: 6efc712f2428d42129836525b39983f4, type: 2}
     colliderData:
       noCollider: 1
@@ -500,6 +430,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 636dbcb5b6e3844a9a1762c34e694c91, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: ac42b8fcb211340139b1b4c7674f3b48, type: 3}
     animatorController: {fileID: 9100000, guid: 1b8fc1679639e435ab1c1fec4dbb4927, type: 2}
     colliderData:
       noCollider: 1
@@ -521,6 +452,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 2bc8e50f7528d4b809cbc2bf033c455a, type: 3}
     sortingOrder: 3
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: 8e6b699ba2750441b8ff46f91e0e5974, type: 3}
     animatorController: {fileID: 9100000, guid: fc2b61f0d9c224929b5fb35ec7ef9704, type: 2}
     colliderData:
       noCollider: 1
