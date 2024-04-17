@@ -16,4 +16,5 @@ public class TopDownDataScriptable : ScriptableObject
     public List<USBPortData> usbPorts; // glitch data list
     public List<ObjectData> extrudables; // dialogue data list
     public List<DoorData> doors; // door data list
+    public List <DialogueObject> dialogueTriggers; // dialogue trigger data list
 }

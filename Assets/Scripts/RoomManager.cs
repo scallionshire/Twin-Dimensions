@@ -21,6 +21,7 @@ public class RoomManager : MonoBehaviour
     public GameObject usbPortPrefab;
     public GameObject extrudablePrefab;
     public GameObject objectPrefab;
+    public GameObject dialogueTriggerPrefab;
 
     private int currentRoom;
 
@@ -186,6 +187,17 @@ public class RoomManager : MonoBehaviour
             door.transform.position = doorData.position;
             door.GetComponent<SpriteRenderer>().sprite = doorData.sprite;
         }
+
+        // Set the dialogue trigger data list
+        GameObject dialogueParent = GameObject.Find("DialogueTriggers");
+        foreach (DialogueObject dialogueObject in roomData.dialogueTriggers) {
+            GameObject dialogueTrigger = Instantiate(dialogueTriggerPrefab, dialogueObject.position, Quaternion.identity, dialogueParent.transform);
+            dialogueTrigger.transform.localScale = dialogueObject.scale;
+            DialogueTrigger trigger = dialogueTrigger.GetComponent<DialogueTrigger>();
+            trigger.withUSBDialogue = dialogueObject.dialogue;
+            trigger.name = dialogueObject.dialogue.dialogueName;
+            trigger.conditionToCheck = dialogueObject.conditionToCheck;
+        }
     }
 
     public void SaveCurrentScene() {
@@ -326,6 +338,20 @@ public class RoomManager : MonoBehaviour
                 sprite = door.GetComponent<SpriteRenderer>().sprite
             };
             newRoom.doors.Add(doorData);
+        }
+
+        // Set the dialogue trigger data list
+        newRoom.dialogueTriggers = new List<DialogueObject>();
+        foreach (Transform dialogueTransform in GameObject.Find("DialogueTriggers").transform) {
+            GameObject dialogueTrigger = dialogueTransform.gameObject;
+            DialogueObject dialogueObject = new DialogueObject
+            {
+                conditionToCheck = dialogueTrigger.GetComponent<DialogueTrigger>().conditionToCheck,
+                position = dialogueTrigger.transform.position,
+                scale = dialogueTrigger.transform.localScale,
+                dialogue = dialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue
+            };
+            newRoom.dialogueTriggers.Add(dialogueObject);
         }
 
         // ------------- SAVING TO ASSET DATABASE -------------

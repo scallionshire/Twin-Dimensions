@@ -15,7 +15,6 @@ MonoBehaviour:
   backgroundSprite: {fileID: 21300000, guid: 7d60d00edb4aa412eabfe3d7f4586e70, type: 3}
   backgroundMaskSprite: {fileID: 21300000, guid: e3d156d0165a1491597c65fd38329422, type: 3}
   frameSize: {x: 8.044077, y: 10.189302}
-  glitchScale: {x: 0.64354455, y: 0.843742, z: 1}
   playerInitPosition: {x: 0, y: -1.63, z: 0}
   walls:
   - transformData:
@@ -98,7 +97,10 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: Couldn't they have come up with a more comfortable way to experiment
+            on us?
+          twin: 0
   - name: Desk
     position: {x: 0.78, y: -3.1085951, z: 0}
     sprite: {fileID: 21300000, guid: 77df4808367dd47718f0deae758dbb1f, type: 3}
@@ -120,7 +122,11 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: i'm the big bad boss and you'll do what i say! rawr!
+          twin: 1
+        - text: ...
+          twin: 0
   - name: Chair
     position: {x: 0.735, y: -3.5735953, z: 0}
     sprite: {fileID: 21300000, guid: cf09af866d881497cb6fe4bf268ca31f, type: 3}
@@ -318,3 +324,12 @@ MonoBehaviour:
         dialogueName: 
         sentences: []
   doors: []
+  dialogueTriggers:
+  - conditionToCheck: 1
+    position: {x: 0, y: -1.43, z: 0}
+    scale: {x: 6.47, y: 2.88, z: 1}
+    dialogue:
+      dialogueName: VentIntro
+      sentences:
+      - text: this is it!!! i can hack into the walls and push out those steps!
+        twin: 1

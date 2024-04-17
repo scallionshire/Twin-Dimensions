@@ -168,6 +168,9 @@ public class GameManager : MonoBehaviour
                 instance.gameState.USBInserted = true;
                 instance.gameState.BatteriesCollected = 5;
                 break;
+            case GameStateCondition.door0Open:
+                instance.gameState.Door0Unlocked = true;
+                break;
         }
     }
 
@@ -340,6 +343,7 @@ public class GameManager : MonoBehaviour
                 instance.gameState.TutorialLevelPorts[puzzleId] = true;
                 break;
             case (Level.computerlab):
+                Debug.Log("Updating computer lab level ports");
                 instance.gameState.ComputerLabLevelPorts[puzzleId] = true;
                 break;
         }
@@ -606,7 +610,6 @@ public class GameManager : MonoBehaviour
                         extrudable.Extrude();
                     } else {
                         if (instance.gameState.ExtrudablesAnimPlayed2D[i]) {
-                            Debug.Log("Extrudable animation already played");
                             exti.GetComponent<Animator>().enabled = false;
                             GameObject RoomManager = GameObject.Find("RoomManager");
                             RoomManager?.GetComponent<RoomManager>().SwapExtrudableSprite(exti.name);

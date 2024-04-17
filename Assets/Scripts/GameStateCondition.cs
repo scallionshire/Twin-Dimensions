@@ -2,5 +2,6 @@ public enum GameStateCondition {
   hasUSB,
   insertedUSB,
   hasBattery,
-  noUSB
+  noUSB,
+  door0Open,
 }

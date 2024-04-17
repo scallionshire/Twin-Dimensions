@@ -12,6 +12,7 @@ public class Dialogue
 [System.Serializable]
 public class DialogueObject
 {
+    public GameStateCondition conditionToCheck = GameStateCondition.insertedUSB;
     public Vector3 position;
     public Vector3 scale;
     public Dialogue dialogue;

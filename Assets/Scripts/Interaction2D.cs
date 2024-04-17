@@ -97,7 +97,12 @@ public class Interaction2D : MonoBehaviour
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
+            if (currentInteractable != null)
+            {
+                currentInteractable.transform.localScale /= 1.1f;
+            }
             currentInteractable = collider.gameObject.GetComponent<Interactable>();
+            currentInteractable.transform.localScale *= 1.1f;
             if (tooltipManager != null)
             {
                 tooltipManager.ToggleClickTooltip(true);
@@ -113,6 +118,7 @@ public class Interaction2D : MonoBehaviour
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
+            collider.transform.localScale = collider.transform.localScale / 1.1f;
             currentInteractable = null;
             if (tooltipManager != null)
             {
