@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
     {
         if (!debugMode) {
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
-            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
 
         MusicVolume = 1f;
@@ -212,7 +211,6 @@ public class GameManager : MonoBehaviour
             }
 
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
-                PauseMainMusic(true);
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
@@ -224,7 +222,6 @@ public class GameManager : MonoBehaviour
                     eventEmitter.EventInstance.setPaused(true);
                 }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
-                PauseMainMusic(false);
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
                     if (eventEmitter == null) {
@@ -447,7 +444,6 @@ public class GameManager : MonoBehaviour
         }
         if (eventEmitter != null && eventEmitter.EventInstance.isValid())
         {
-            Debug.Log("Setting isPaused");
             if (pause)
             {
                 eventEmitter.EventInstance.setParameterByName("isPaused", 1);
