@@ -179,6 +179,11 @@ public class GameManager : MonoBehaviour
                 ToggleDialogueFreeze(false);
                 ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
+                // Turn off particles
+                GameObject[] particles = GameObject.FindGameObjectsWithTag("ParticleSystem");
+                foreach (GameObject particle in particles) {
+                    if (particle.name == "PCParticleSystem") particle.SetActive(false);
+                }
                 firstSwitch = false;
                 if (cutsceneManager != null) {
                     cutsceneManager.PlayCutscene("switch");
@@ -285,7 +290,9 @@ public class GameManager : MonoBehaviour
     public void GetUSB() {
         instance.gameState.PlayerHasUSB = true;
         UpdateInventoryUI();
-        GameObject.FindGameObjectWithTag("USB").SetActive(false);
+        GameObject USB = GameObject.FindGameObjectWithTag("USB");
+        USB.SetActive(false);
+        USB.transform.parent.Find("USBParticleSystem").gameObject.SetActive(false);
     }
 
     public void InsertUSB() {
