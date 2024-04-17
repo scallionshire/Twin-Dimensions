@@ -694,13 +694,9 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: popupMenu
+      propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 1491478769}
-    - target: {fileID: 7516719043319510648, guid: b69e0cad1c659493193bb87fd64566d7, type: 3}
-      propertyPath: gameStarted
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -814,8 +810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutscenes:
-  - {fileID: 32900000, guid: e1bd0541ac049431aad054d10709d6f8, type: 3}
-  - {fileID: 32900000, guid: 7c6fa32ea5b91af4bb818581588ac236, type: 3}
+  - {fileID: 32900000, guid: 4fa80d1e58f7342be9553ab722778025, type: 3}
+  - {fileID: 32900000, guid: be96f5340c2eb4c4285e1d7851b74686, type: 3}
   videoTexture: {fileID: 8600000, guid: 449432857530c70409acf877bdc7015d, type: 2}
   videoImage: {fileID: 551568509}
 --- !u!114 &977460976
@@ -1428,11 +1424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6189ba980abdd4c9cf0c562aeb9df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1491478769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-  m_PrefabInstance: {fileID: 2076493413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628173688
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class RoomManager : MonoBehaviour
             WipeScene();
             LoadCurrentScene();
         }
+        currentRoom = 0;
     }
 
     public void LoadCurrentScene() {        

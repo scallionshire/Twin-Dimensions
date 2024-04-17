@@ -112,6 +112,9 @@ public class GameManager : MonoBehaviour
         MusicVolume = 1f;
         DialogueVolume = 1f;
         SFXVolume = 1f;
+
+        TogglePauseMenu();
+        TogglePauseMenu();
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
@@ -844,7 +847,7 @@ public class GameState
     {
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
-        CurrentRoom = -1;
+        CurrentRoom = 0;
         RoomChanged = false;
 
         PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);
