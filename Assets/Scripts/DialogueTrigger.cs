@@ -32,6 +32,9 @@ public class DialogueTrigger : MonoBehaviour
             case GameStateCondition.hasBattery:
                 conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
                 break;
+            case GameStateCondition.door0Open:
+                conditionMet = GameManager.instance.gameState.Door0Unlocked;
+                break;
         }
 
         GameObject dc = GameObject.Find("DialogueCanvas");

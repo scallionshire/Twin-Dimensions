@@ -15,7 +15,6 @@ MonoBehaviour:
   backgroundSprite: {fileID: 21300000, guid: 437edbafee83242e3ad14f7f7d3f7be8, type: 3}
   backgroundMaskSprite: {fileID: 21300000, guid: 57b65bc7551764c91aa720d085fc3c7e, type: 3}
   frameSize: {x: 11.94256, y: 9.060589}
-  glitchScale: {x: 0.97468126, y: 0.74426085, z: 1}
   playerInitPosition: {x: 0, y: -1.04, z: 0}
   walls:
   - transformData:
@@ -60,6 +59,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 3ac710492f6104f4c91d97b8c6ec9dfb, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -69,18 +69,23 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: It's your home, 20!
+          twin: 0
+        - text: not for much longer, i hope!
+          twin: 1
   - name: shelf0
     position: {x: -1.9100001, y: -2.9469998, z: 0}
     sprite: {fileID: 21300000, guid: d8e844314c52a419794dda30b0e3c56d, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -90,18 +95,21 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: humu humu...
+          twin: 1
   - name: shelf1
     position: {x: -3.8079998, y: -2.9469998, z: 0}
     sprite: {fileID: 21300000, guid: d8e844314c52a419794dda30b0e3c56d, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -111,18 +119,23 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: will i power up if i gnaw on these servers a little?
+          twin: 1
+        - text: 20! Don't eat that! It's not food!
+          twin: 0
   - name: shelf2
     position: {x: 0.030000001, y: -2.9469998, z: 0}
     sprite: {fileID: 21300000, guid: d8e844314c52a419794dda30b0e3c56d, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -132,18 +145,21 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: stop dallying! we gotta go!
+          twin: 1
   - name: tube0
     position: {x: 1.89, y: -2.9550002, z: 0}
     sprite: {fileID: 21300000, guid: e4953debb988049559c485401f3e100c, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -153,18 +169,21 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: one for 02, and one for me~
+          twin: 1
   - name: tube1
     position: {x: 3.473, y: -2.9550002, z: 0}
     sprite: {fileID: 21300000, guid: 400340b4ff84c413aac0612cf993653a, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -174,18 +193,21 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: not gonna miss these!
+          twin: 1
   - name: light
     position: {x: 4.48, y: -0.77, z: 0}
     sprite: {fileID: 21300000, guid: f9fb9d0f167dd42e2aad717e07102010, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -207,6 +229,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: f535ad63546274dc29a701d7cdda8e6e, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -249,3 +272,27 @@ MonoBehaviour:
   - name: Door0
     position: {x: -1.4113792, y: 1.2657318, z: 0}
     sprite: {fileID: 21300000, guid: abd92f9444b424e1ea5dc9b830313a63, type: 3}
+  dialogueTriggers:
+  - conditionToCheck: 1
+    position: {x: 0, y: -1.43, z: 0}
+    scale: {x: 6.47, y: 2.88, z: 1}
+    dialogue:
+      dialogueName: PCRoomIntro
+      sentences:
+      - text: i can see the circuits in the room now! there's a green one for the
+          door!
+        twin: 1
+      - text: ah.. but i'm missing the data for the door's panel... >.<
+        twin: 1
+      - text: go back! plug me in the panel so i can hack it and get us out!
+        twin: 1
+  - conditionToCheck: 4
+    position: {x: -1.59, y: 0.6, z: 0}
+    scale: {x: 2.32, y: 1.85, z: 1}
+    dialogue:
+      dialogueName: Door0Outro
+      sentences:
+      - text: i can't leave these rooms without you, 02!
+        twin: 1
+      - text: My bad! I'll take the lead now.
+        twin: 0

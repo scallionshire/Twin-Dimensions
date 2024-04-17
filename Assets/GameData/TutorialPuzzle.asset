@@ -43,7 +43,8 @@ MonoBehaviour:
       destinationName: BlockSlot
       isSolved: 0
     dialogues:
-    - position: {x: -6.64, y: -1.8, z: 0}
+    - conditionToCheck: 1
+      position: {x: -6.64, y: -1.8, z: 0}
       scale: {x: 3.81, y: 2.05, z: 1}
       dialogue:
         dialogueName: BlockPuzzleIntro
@@ -88,7 +89,8 @@ MonoBehaviour:
       destinationName: yellowTrigger
       isSolved: 0
     dialogues:
-    - position: {x: -6.64, y: -1.12, z: 0}
+    - conditionToCheck: 1
+      position: {x: -6.64, y: -1.12, z: 0}
       scale: {x: 3.81, y: 2.05, z: 1}
       dialogue:
         dialogueName: BlockPuzzleIntro
@@ -121,14 +123,7 @@ MonoBehaviour:
       destinationSprite: {fileID: 0}
       destinationName: ext0-slot
       isSolved: 0
-    dialogues:
-    - position: {x: -7.08, y: -2.66, z: 0}
-      scale: {x: 6.66, y: 2.88, z: 1}
-      dialogue:
-        dialogueName: ExtrudablePuzzleIntro
-        sentences:
-        - text: i can control the walls of the lab with these circuits!!!
-          twin: 1
+    dialogues: []
   - circuitSprites:
     - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: e2e5953dd86924c11993b3437dbd1782, type: 3}
@@ -143,13 +138,15 @@ MonoBehaviour:
       destinationName: ext2-slot
       isSolved: 0
     dialogues:
-    - position: {x: -6.86, y: -2.5, z: 0}
+    - conditionToCheck: 1
+      position: {x: -6.86, y: -2.5, z: 0}
       scale: {x: 6.46, y: 2.69, z: 1}
       dialogue:
         dialogueName: ExtrudableIntro
         sentences:
-        - text: a CCTV was blocking the vent! maybe this circuit can help us block
-            the camera?
+        - text: a CCTV was blocking the vent!
+          twin: 1
+        - text: maybe this circuit can help us block the camera?
           twin: 1
   - circuitSprites:
     - circuitInitPosition: {x: -6.8, y: -0.51, z: 0}

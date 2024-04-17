@@ -15,7 +15,6 @@ MonoBehaviour:
   backgroundSprite: {fileID: 21300000, guid: 685570af217304a93afb662da9157e0c, type: 3}
   backgroundMaskSprite: {fileID: 21300000, guid: eae65c8a566294d28960962e90801c58, type: 3}
   frameSize: {x: 11.94256, y: 8.030464}
-  glitchScale: {x: 0.97468126, y: 0.65629035, z: 1}
   playerInitPosition: {x: 0, y: -1.62, z: 0}
   walls:
   - transformData:
@@ -60,6 +59,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 97b827d3107a549ffb2a54d7e35fc8f6, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -69,18 +69,21 @@ MonoBehaviour:
     dialogueData:
       doNotRepeat: 0
       isCutscene: 0
-      conditionToCheck: 0
+      conditionToCheck: 1
       preConditionDialogue:
         dialogueName: 
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: hm... what could these shapes mean...
+          twin: 1
   - name: Bookshelf
     position: {x: 4.3199997, y: -0.6465951, z: 0}
     sprite: {fileID: 21300000, guid: 09c5d70f3699c49289d1d32cee6951bd, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -96,12 +99,15 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: No time for reading! Go go go!
+          twin: 0
   - name: Circuit1
     position: {x: 0.12799999, y: 1.1544049, z: 0}
     sprite: {fileID: 21300000, guid: 3fda90d46afec4f3898d2470d833e818, type: 3}
     sortingOrder: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -144,3 +150,4 @@ MonoBehaviour:
   - name: Door1
     position: {x: -1.3886226, y: 0.824762, z: 0}
     sprite: {fileID: 21300000, guid: abd92f9444b424e1ea5dc9b830313a63, type: 3}
+  dialogueTriggers: []

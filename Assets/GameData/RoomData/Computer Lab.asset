@@ -15,7 +15,6 @@ MonoBehaviour:
   backgroundSprite: {fileID: 21300000, guid: 3f30b0f3a50284e59b0144e772913126, type: 3}
   backgroundMaskSprite: {fileID: 21300000, guid: 95c2b473785bf4079b343b042a9b0085, type: 3}
   frameSize: {x: 14.431072, y: 8.994456}
-  glitchScale: {x: 1.1897411, y: 0.7436133, z: 1}
   playerInitPosition: {x: 2.19, y: -2.32, z: 0}
   walls:
   - transformData:
@@ -76,7 +75,12 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: luckily for me, i don't have to run in circles around this thing
+            :3
+          twin: 1
+        - text: Hey, I'm not even breaking a sweat back there!
+          twin: 0
   - name: blue tvs
     position: {x: 6.1099997, y: -0.24359512, z: 0}
     sprite: {fileID: 21300000, guid: fbfc2a4bf7030412fb7f352f37c4b22b, type: 3}
@@ -85,7 +89,7 @@ MonoBehaviour:
     extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
-      noCollider: 0
+      noCollider: 1
       isTrigger: 0
       offset: {x: 0, y: 0}
       size: {x: 0.32, y: 5.04}
@@ -98,7 +102,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: a faulty circuit like this is right in my wheelhouse!
+          twin: 1
   - name: pink tvs
     position: {x: -6.1000004, y: -0.49359512, z: 0}
     sprite: {fileID: 21300000, guid: cbfc1b7e16e344d16b1f9667037ce622, type: 3}
@@ -120,7 +126,10 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: pink is my favourite colour :) you wouldn't know it by looking at
+            me!
+          twin: 1
   - name: L two1
     position: {x: -4.08, y: 0.19000006, z: 0}
     sprite: {fileID: 21300000, guid: 6e724cbea7f3145e1b95c39fee2ef67e, type: 3}
@@ -473,3 +482,13 @@ MonoBehaviour:
   - name: Door2
     position: {x: -0.0016225576, y: 0.35476208, z: 0}
     sprite: {fileID: 21300000, guid: abd92f9444b424e1ea5dc9b830313a63, type: 3}
+  dialogueTriggers:
+  - conditionToCheck: 1
+    position: {x: 5.43, y: -2.4, z: 0}
+    scale: {x: 2, y: 2, z: 0}
+    dialogue:
+      dialogueName: BlueScreenIntro
+      sentences:
+      - text: it's a tiny baby panel on the side! i can use this to hack into the
+          blue screens!
+        twin: 1

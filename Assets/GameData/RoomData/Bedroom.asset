@@ -15,7 +15,6 @@ MonoBehaviour:
   backgroundSprite: {fileID: 21300000, guid: 7c082dbe0d243407d9c32177b893c430, type: 3}
   backgroundMaskSprite: {fileID: 21300000, guid: e79e9d00e10e34d6fa502975779e58cc, type: 3}
   frameSize: {x: 11.94256, y: 9.060589}
-  glitchScale: {x: 0.97468126, y: 0.74426085, z: 1}
   playerInitPosition: {x: 0, y: -1.04, z: 0}
   walls:
   - transformData:
@@ -60,6 +59,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 71cb45a6363d74630a3e36b1429db52f, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9ef84759bbfb940dfae9dd3e7651f78e, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -102,6 +103,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: cd5bcdf0ab49e4f66a43bb577b8053c2, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -123,6 +125,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5f568ff1d656944f5b36bdf3f45c6243, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -144,6 +147,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 68dcb8e3d0e344775b0787f36961c0c1, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -165,6 +169,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: bb174de141b134e2e9e5f61ae1e5cd9c, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -186,6 +191,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: e23e9aa9e9324499693c03e951ce4751, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 0
@@ -207,6 +213,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 2750211f611814df99ce61abf1c9bad4, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -228,6 +235,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 499213a346c814f40b5a51f64fd36b16, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -249,6 +257,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: dd5fe5099fc3d4cf7aae631c164f4149, type: 3}
     sortingOrder: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -270,6 +279,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 89e98350717ad45f3b284fcbc214c588, type: 3}
     sortingOrder: 2
     color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
       noCollider: 1
@@ -289,3 +299,9 @@ MonoBehaviour:
   usbPorts: []
   extrudables: []
   doors: []
+  dialogueTriggers:
+  - position: {x: 0, y: 0, z: 0}
+    scale: {x: 0, y: 0, z: 0}
+    dialogue:
+      dialogueName: 
+      sentences: []
