@@ -16,8 +16,8 @@ public class PuzzleDataScriptable : ScriptableObject
     public Vector3 backgroundScale;
     public Vector3 backgroundPosition;
     public Color backgroundColor;
-    public Vector3 recScale;
-    public Vector3 recPosition;
+    public Vector2 frameSize; // frame size
+    public Vector3 framePosition; // frame position
 
     public List<Vector3> wallPositions;
 

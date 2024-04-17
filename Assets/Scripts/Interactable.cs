@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {   
+    public bool is2DInteractable = false;
+
     public UnityEvent interactionEvent;
     public Material highlightMaterial;
     [HideInInspector]
@@ -12,17 +14,22 @@ public class Interactable : MonoBehaviour
 
     private List<Material> originalMaterials = new List<Material>();
     private List<Renderer> renderers = new List<Renderer>();
+    private SpriteRenderer spriteRenderer;
     
-
     void Start()
     {
-        // Get all renderers in this object and its children
-        renderers.AddRange(GetComponentsInChildren<Renderer>());
-
-        // Store the original materials for each renderer
-        foreach (Renderer rend in renderers)
+        if (!is2DInteractable)
         {
-            originalMaterials.Add(rend.material);
+            // Get all renderers in this object and its children
+            renderers.AddRange(GetComponentsInChildren<Renderer>());
+
+            // Store the original materials for each renderer
+            foreach (Renderer rend in renderers)
+            {
+                originalMaterials.Add(rend.material);
+            }
+        } else {
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
 

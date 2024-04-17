@@ -6,8 +6,6 @@ public class ComputerLabMonitorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("The player has entered the detection zone.");
-
             GetComponent<ResetToCheckpoint>().Reset();
 
             showRedHint();

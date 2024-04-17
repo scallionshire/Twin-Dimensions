@@ -45,15 +45,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ea68e9e56d145218644060be364139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupMenu: {fileID: 0}
+  debugMode: 1
+  debugLevel: 0
+  debugCondition: 1
   gameStarted: 0
-  MusicVolume: 100
-  DialogueVolume: 100
-  SFXVolume: 100
-  initTutorialExtrudables: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
-  initComputerLabExtrudables: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
-  initTutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
-  initComputerPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
+  firstSwitch: 1
+  isFrozen: 0
+  MusicVolume: 1
+  DialogueVolume: 1
+  SFXVolume: 1
+  settingsMenu: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
+  roomData:
+  - {fileID: 11400000, guid: b2e4aa68892df4d3cbb6e440f0badf73, type: 2}
+  - {fileID: 11400000, guid: 0af459f4d72484015ac4c29d7dd50661, type: 2}
+  - {fileID: 11400000, guid: ffa56f1e6aecc4a7aa58ed15f39dac14, type: 2}
+  - {fileID: 11400000, guid: 3c3b3177936d745989ec7b8c2de5c5e2, type: 2}
+  - {fileID: 11400000, guid: 23a9070dc0ea74b45b249f30d203e9db, type: 2}
+  - {fileID: 11400000, guid: 7078f823ba2e2470fba6e89cd96dc0b1, type: 2}
+  tutorialExtrudables: {fileID: 11400000, guid: cb87a317137504ac9ab0f6dc401e8816, type: 2}
+  computerLabExtrudables: {fileID: 11400000, guid: fe4322e75bf71431e9a1a2fc3862527d, type: 2}
+  tutorialPuzzle: {fileID: 11400000, guid: 5cfc5b19ebf5a41449d82af74f2a5a59, type: 2}
+  computerPuzzle: {fileID: 11400000, guid: 2f104de43e66d45da99b2fc96d0a3b12, type: 2}
   globalVolumeProfile: {fileID: 11400000, guid: 01266eb8650ac4451b15130b7ffb92bc, type: 2}
   ActiveSceneName: 
 --- !u!114 &530273347719653553

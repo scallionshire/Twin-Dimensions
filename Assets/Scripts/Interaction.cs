@@ -31,7 +31,7 @@ public class Interaction : MonoBehaviour
 
     void Update()
     {   
-        bool currentlyBlockingInteractable = false;
+        bool currentlyBlockingInteractable;
 
         // Don't need to worry about checking current camera since this component is disabled when a cutscene is happening
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);

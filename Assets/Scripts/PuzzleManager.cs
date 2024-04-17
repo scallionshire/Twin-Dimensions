@@ -14,12 +14,27 @@ public struct PuzzlePiece {
 
 public class PuzzleManager : MonoBehaviour
 {
-    public List<PuzzlePiece> correctBlocks;
-    public int currentPuzzleId;
-    public bool[] puzzlesSolved;
-    public PuzzleDataScriptable levelPuzzles;
+    [TextArea]
+    [Tooltip("Doesn't do anything. Just comments shown in inspector")]
+    public string Note = "In order for TopDownManager to work, the scene MUST HAVE parent gameobjects called 'Objects', 'Doors', 'USBPorts', 'Walls', and 'Extrudables'.";
 
+    [Header("DEBUG ONLY")]
+    public bool debugMode = false;
+    public PuzzleDataScriptable levelPuzzles;
+    public int currentPuzzleId;
+
+    [Header("Puzzle Data")]
+    public List<PuzzlePiece> correctBlocks;
+    public bool[] puzzlesSolved;
     private bool firstTimeFinished = false;
+
+    // ----------- SCENE LOAD FUNCTIONS -----------
+    void Start()
+    {
+        if (debugMode) {
+            LoadPuzzle();
+        }
+    }
 
     public void LoadPuzzle()
     {   
@@ -31,14 +46,16 @@ public class PuzzleManager : MonoBehaviour
         GameObject player = GameObject.Find("2D Player");
         player.transform.position = GameObject.Find("Background").transform.position;
 
-        currentPuzzleId = GameManager.instance.gameState.CurrentPuzzleId;
-        switch (GameManager.instance.gameState.CurrentLevel) {
-            case Level.tutorial:
-                levelPuzzles = GameManager.instance.initTutorialPuzzle;
-                break;
-            case Level.computerlab:
-                levelPuzzles = GameManager.instance.initComputerPuzzle;
-                break;
+        if (!debugMode) {
+            currentPuzzleId = GameManager.instance.gameState.CurrentPuzzleId;
+            switch (GameManager.instance.gameState.CurrentLevel) {
+                case Level.tutorial:
+                    levelPuzzles = GameManager.instance.tutorialPuzzle;
+                    break;
+                case Level.computerlab:
+                    levelPuzzles = GameManager.instance.computerPuzzle;
+                    break;
+            }
         }
 
         GameObject background = GameObject.Find("Background");
@@ -47,9 +64,9 @@ public class PuzzleManager : MonoBehaviour
         background.transform.position = levelPuzzles.backgroundPosition;
         background.GetComponent<SpriteRenderer>().color = levelPuzzles.backgroundColor;
 
-        GameObject rec = GameObject.Find("Rec");
-        rec.transform.localScale = levelPuzzles.recScale;
-        rec.transform.position = levelPuzzles.recPosition;
+        GameObject frame = GameObject.Find("Frame");
+        frame.GetComponent<SpriteRenderer>().size = levelPuzzles.frameSize;
+        frame.transform.position = levelPuzzles.framePosition;
 
         for (int i = 0; i < levelPuzzles.wallPositions.Count; i++) {
             GameObject wall = GameObject.Find("Wall" + i);
@@ -117,10 +134,69 @@ public class PuzzleManager : MonoBehaviour
                 newWire.name = levelPuzzles.puzzles[currentPuzzleId].circuitSprites[k].circuitName;
 
                 Color tmp = newWire.GetComponent<SpriteRenderer>().color;
-                tmp.a = 0.3f;
+                tmp.a = 0.6f;
                 newWire.GetComponent<SpriteRenderer>().color = tmp;
             }
         }
+    }
+
+    public void SavePuzzle()
+    {
+        PuzzleList puzzle = new PuzzleList();
+
+        puzzle.puzzleBlocks = new List<PuzzleSet>();
+        puzzle.circuitSprites = new List<CircuitSet>();
+        puzzle.dialogues = new List<DialogueObject>();
+
+        // Save puzzle block data
+        foreach (GameObject blockSlot in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
+            PuzzleSet blockData = new PuzzleSet();
+
+            GameObject block = GameObject.Find(blockSlot.GetComponent<BlockScript>().blockName);
+
+            if (block == null) {
+                Debug.Log("Matching block not found: " + blockSlot.GetComponent<BlockScript>().blockName);
+                continue;
+            }
+
+            blockData.blockInitPosition = block.transform.position;
+            blockData.blockSprite = block.GetComponent<SpriteRenderer>().sprite;
+            blockData.blockName = block.name;
+
+            blockData.destinationPosition = blockSlot.transform.position;
+            blockData.destinationSprite = blockSlot.GetComponent<SpriteRenderer>().sprite;
+            blockData.destinationName = blockSlot.name;
+
+            puzzle.puzzleBlocks.Add(blockData);
+        }
+
+        // Save circuit data
+        foreach (GameObject connector in GameObject.FindGameObjectsWithTag("Connector")) {
+            CircuitSet circuitData = new CircuitSet();
+
+            circuitData.circuitInitPosition = connector.transform.position;
+            circuitData.circuitSprite = connector.GetComponent<SpriteRenderer>().sprite;
+            circuitData.circuitName = connector.name;
+
+            puzzle.circuitSprites.Add(circuitData);
+        }
+
+        // Save dialogue data
+        foreach (GameObject dialogueTrigger in GameObject.FindGameObjectsWithTag("DialogueTrigger")) {
+            DialogueObject dialogueData = new DialogueObject();
+
+            dialogueData.position = dialogueTrigger.transform.position;
+            dialogueData.scale = dialogueTrigger.transform.localScale;
+            dialogueData.dialogue = dialogueTrigger.GetComponent<DialogueTrigger>().withUSBDialogue;
+
+            puzzle.dialogues.Add(dialogueData);
+        }
+
+        while (levelPuzzles.puzzles.Count <= currentPuzzleId) {
+            levelPuzzles.puzzles.Add(new PuzzleList());
+        }
+
+        levelPuzzles.puzzles[currentPuzzleId] = puzzle;
     }
 
     void Update()
@@ -159,11 +235,7 @@ public class PuzzleManager : MonoBehaviour
             {
                 string blockName = levelPuzzles.puzzles[currentPuzzleId].puzzleBlocks[index].blockName;
 
-                // TODO: clean this up
-                if (levelPuzzles.level == Level.computerlab) {
-                    Debug.Log("Solving puzzle block for index " + index);
-                    GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, index);
-                }
+                GameManager.instance.SolvePuzzleBlock(levelPuzzles.level, currentPuzzleId, index);
 
                 // Visual indicator for success state goes here
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("BlockTrigger")) {
@@ -194,5 +266,34 @@ public class PuzzleManager : MonoBehaviour
             index++;
         }
         return isSolved;
+    }
+
+    public void wipePuzzle()
+    {
+        // Delete all gameobjects with tag: Block, BlockTrigger, and Connector
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
+        GameObject[] blockTriggers = GameObject.FindGameObjectsWithTag("BlockTrigger");
+        GameObject[] connectors = GameObject.FindGameObjectsWithTag("Connector");
+        GameObject[] dialogueTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
+
+        foreach (GameObject block in blocks)
+        {
+            Destroy(block);
+        }
+
+        foreach (GameObject blockTrigger in blockTriggers)
+        {
+            Destroy(blockTrigger);
+        }
+
+        foreach (GameObject connector in connectors)
+        {
+            Destroy(connector);
+        }
+
+        foreach (GameObject dialogueTrigger in dialogueTriggers)
+        {
+            Destroy(dialogueTrigger);
+        }
     }
 }

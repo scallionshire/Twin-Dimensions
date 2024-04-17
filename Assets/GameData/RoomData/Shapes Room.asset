@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce0d2c95825498f8025e157a10da18, type: 3}
+  m_Name: Shapes Room
+  m_EditorClassIdentifier: 
+  backgroundSprite: {fileID: 21300000, guid: 685570af217304a93afb662da9157e0c, type: 3}
+  backgroundMaskSprite: {fileID: 21300000, guid: eae65c8a566294d28960962e90801c58, type: 3}
+  frameSize: {x: 11.94256, y: 8.030464}
+  glitchScale: {x: 0.97468126, y: 0.65629035, z: 1}
+  playerInitPosition: {x: 0, y: -1.62, z: 0}
+  walls:
+  - transformData:
+      position: {x: 2.58, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.117301, y: -0.0071139336}
+      size: {x: 0.16689682, y: 7.3190193}
+  - transformData:
+      position: {x: -7.03, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0855541, y: -0.04067409}
+      size: {x: 0.23039055, y: 7.4401197}
+  - transformData:
+      position: {x: 4.21, y: -5.08, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 1.9126247, y: 4.405397}
+      size: {x: 0.18888736, y: 13.01773}
+  - transformData:
+      position: {x: 1.3, y: -2.1299999, z: 0}
+      scale: {x: 1, y: 2.5, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0939078, y: 0.48930812}
+      size: {x: 0.21368325, y: 5.185551}
+  objects:
+  - name: PC
+    position: {x: -3.9999998, y: -1.4535952, z: 0}
+    sprite: {fileID: 21300000, guid: 97b827d3107a549ffb2a54d7e35fc8f6, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: 0.010589182}
+      size: {x: 1.656528, y: 1.5718147}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Bookshelf
+    position: {x: 4.3199997, y: -0.6465951, z: 0}
+    sprite: {fileID: 21300000, guid: 09c5d70f3699c49289d1d32cee6951bd, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: -0.00000023841858, y: 0.039516956}
+      size: {x: 0.5433593, y: 0.762898}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit1
+    position: {x: 0.12799999, y: 1.1544049, z: 0}
+    sprite: {fileID: 21300000, guid: 3fda90d46afec4f3898d2470d833e818, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0.0001, y: 0.0001}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  usbPorts:
+  - name: Panel1
+    portID: 1
+    position: {x: 0.3203774, y: 0.814762, z: 0}
+    sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
+    level: 0
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.002072215, y: 0.02072315}
+      size: {x: 0.6129625, y: 0.74855375}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  extrudables: []
+  doors:
+  - name: Door1
+    position: {x: -1.3886226, y: 0.824762, z: 0}
+    sprite: {fileID: 21300000, guid: abd92f9444b424e1ea5dc9b830313a63, type: 3}

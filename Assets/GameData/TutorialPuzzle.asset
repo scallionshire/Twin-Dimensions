@@ -18,16 +18,16 @@ MonoBehaviour:
   circuitPrefab: {fileID: 6973451946996186604, guid: 5c46802f32e602a48aab772578f00695, type: 3}
   dialogueTriggerPrefab: {fileID: 7202296556703228170, guid: eb7e2a916475a4d59b8f959149a3c32e, type: 3}
   backgroundSprite: {fileID: 21300000, guid: bab9458741aac1f44b40ad9e036cee3a, type: 3}
-  backgroundScale: {x: 0.38780707, y: 0.3548408, z: 1}
-  backgroundPosition: {x: -6.7901998, y: -0.5066001, z: 0}
+  backgroundScale: {x: 0.35, y: 0.35, z: 1}
+  backgroundPosition: {x: -6.8191, y: -0.5066, z: 0}
   backgroundColor: {r: 0.25882354, g: 0.20784314, b: 0.36862746, a: 1}
-  recScale: {x: 0.5, y: 0.5, z: 1}
-  recPosition: {x: -6.7905, y: -0.5332, z: 0}
+  frameSize: {x: 8.691331, y: 8.768117}
+  framePosition: {x: -6.8679, y: -0.5227, z: 0}
   wallPositions:
-  - {x: -2.55, y: 1.69, z: 0}
-  - {x: -10.91, y: 1.74, z: 0}
-  - {x: 2.14, y: -4.44, z: 0}
-  - {x: 2.14, y: 3.21, z: 0}
+  - {x: -3.19, y: 1.69, z: 0}
+  - {x: -10.29, y: 1.74, z: 0}
+  - {x: 2.14, y: -4.14, z: 0}
+  - {x: 2.14, y: 2.92, z: 0}
   puzzles:
   - circuitSprites:
     - circuitInitPosition: {x: -6.76, y: -0.55, z: 0}
@@ -97,3 +97,118 @@ MonoBehaviour:
           twin: 1
         - text: just gotta connect the wires to open the door...
           twin: 1
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 36f7c9658d6a640f28420cb6620bb396, type: 3}
+      circuitName: ext1-wire
+    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: f9bc4227b8c2f41d4a91a38d37736957, type: 3}
+      circuitName: ext0-wire
+    puzzleBlocks:
+    - blockInitPosition: {x: -8.39, y: -3.03, z: 0}
+      blockSprite: {fileID: 21300000, guid: a8c9d67e7c87948f7b525365752811c6, type: 3}
+      blockName: ext1
+      correctSprite: {fileID: 21300000, guid: 98724a0f8479a4949b7b4f129516eef4, type: 3}
+      destinationPosition: {x: -8.124, y: -0.857, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext1-slot
+      isSolved: 0
+    - blockInitPosition: {x: -9.74, y: -3.03, z: 0}
+      blockSprite: {fileID: 21300000, guid: e71061d39bbc1473984e376adcfe2075, type: 3}
+      blockName: ext0
+      correctSprite: {fileID: 21300000, guid: bf0c19de5900b4193908933b4572809b, type: 3}
+      destinationPosition: {x: -5.524, y: -0.493, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext0-slot
+      isSolved: 0
+    dialogues:
+    - position: {x: -7.08, y: -2.66, z: 0}
+      scale: {x: 6.66, y: 2.88, z: 1}
+      dialogue:
+        dialogueName: ExtrudablePuzzleIntro
+        sentences:
+        - text: i can control the walls of the lab with these circuits!!!
+          twin: 1
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: e2e5953dd86924c11993b3437dbd1782, type: 3}
+      circuitName: ext2-wire
+    puzzleBlocks:
+    - blockInitPosition: {x: -9.51, y: -3.03, z: 0}
+      blockSprite: {fileID: 21300000, guid: 9ae9a25e3762044fbafa838688f68642, type: 3}
+      blockName: ext2
+      correctSprite: {fileID: 21300000, guid: 8ee07dcb557bd43d3b10bfcb77d54788, type: 3}
+      destinationPosition: {x: -6.83, y: -0.501, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext2-slot
+      isSolved: 0
+    dialogues:
+    - position: {x: -6.86, y: -2.5, z: 0}
+      scale: {x: 6.46, y: 2.69, z: 1}
+      dialogue:
+        dialogueName: ExtrudableIntro
+        sentences:
+        - text: a CCTV was blocking the vent! maybe this circuit can help us block
+            the camera?
+          twin: 1
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.8, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: f65450f430253469a941ab85e0c07012, type: 3}
+      circuitName: ext3=wire
+    - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 9345902231a44476f9a056339987784d, type: 3}
+      circuitName: ext4-wire
+    puzzleBlocks:
+    - blockInitPosition: {x: -9.42, y: -3.01, z: 0}
+      blockSprite: {fileID: 21300000, guid: 89b2b9ddd99eb4dbf955ce2f9562e663, type: 3}
+      blockName: ext3
+      correctSprite: {fileID: 21300000, guid: 6e57d03195edf4d9e87ad548cf4b263a, type: 3}
+      destinationPosition: {x: -5.26, y: 1.055, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext3-slot
+      isSolved: 0
+    - blockInitPosition: {x: -4.21, y: -3.01, z: 0}
+      blockSprite: {fileID: 21300000, guid: c216ffd9752224a7098817d688dd688a, type: 3}
+      blockName: ext4
+      correctSprite: {fileID: 21300000, guid: 74ab530100e70441087b3bfdda6ab40a, type: 3}
+      destinationPosition: {x: -8.45, y: -2.08, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext4-slot
+      isSolved: 0
+    dialogues: []
+  - circuitSprites:
+    - circuitInitPosition: {x: -6.82, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: a4cb2f8936eaf4a05a6db967f6c7b2f9, type: 3}
+      circuitName: ext5-0-wire
+    - circuitInitPosition: {x: -6.82, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: e79a4287dab35434498cd175afefff47, type: 3}
+      circuitName: ext5-1-wire
+    - circuitInitPosition: {x: -6.82, y: -0.51, z: 0}
+      circuitSprite: {fileID: 21300000, guid: 0f30bc3b7245a4081aabd7621a9f9f6e, type: 3}
+      circuitName: ext5-2-wire
+    puzzleBlocks:
+    - blockInitPosition: {x: -9.29, y: -2.9, z: 0}
+      blockSprite: {fileID: 21300000, guid: 61e66bda5e08d4175b1938543bfe5a33, type: 3}
+      blockName: ext5-0
+      correctSprite: {fileID: 21300000, guid: 5f722ccfce7334136bf6bfc634c0c9a7, type: 3}
+      destinationPosition: {x: -6.83, y: 1.45, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext5-0-slot
+      isSolved: 0
+    - blockInitPosition: {x: -9.29, y: -1.39, z: 0}
+      blockSprite: {fileID: 21300000, guid: 381b3c5299f114d109ad61e554dff532, type: 3}
+      blockName: ext5-1
+      correctSprite: {fileID: 21300000, guid: 67237cd0bb71448d3b0ccb99eca56d1e, type: 3}
+      destinationPosition: {x: -6.822, y: -0.505, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext5-1-slot
+      isSolved: 0
+    - blockInitPosition: {x: -9.3, y: 0.18, z: 0}
+      blockSprite: {fileID: 21300000, guid: af385aeb9e85a487e92cec4fc5c5415c, type: 3}
+      blockName: ext5-2
+      correctSprite: {fileID: 21300000, guid: 2ae08d2a7048c48dcbb48967e2e05069, type: 3}
+      destinationPosition: {x: -5.066, y: -2.442, z: 0}
+      destinationSprite: {fileID: 0}
+      destinationName: ext5-2-slot
+      isSolved: 0
+    dialogues: []

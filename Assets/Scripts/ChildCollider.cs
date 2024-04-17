@@ -16,11 +16,11 @@ public class ChildCollider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.parent.GetComponent<Player2DMovement>().OnChildTriggerEntered2D(collision);
+        transform.parent.GetComponent<Interaction2D>().OnChildTriggerEntered2D(collision);
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        transform.parent.GetComponent<Player2DMovement>().OnChildTriggerExited2D(collision);
+        transform.parent.GetComponent<Interaction2D>().OnChildTriggerExited2D(collision);
     }
 }

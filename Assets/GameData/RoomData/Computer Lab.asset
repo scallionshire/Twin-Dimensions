@@ -1,0 +1,475 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce0d2c95825498f8025e157a10da18, type: 3}
+  m_Name: Computer Lab
+  m_EditorClassIdentifier: 
+  backgroundSprite: {fileID: 21300000, guid: 3f30b0f3a50284e59b0144e772913126, type: 3}
+  backgroundMaskSprite: {fileID: 21300000, guid: 95c2b473785bf4079b343b042a9b0085, type: 3}
+  frameSize: {x: 14.431072, y: 8.994456}
+  glitchScale: {x: 1.1897411, y: 0.7436133, z: 1}
+  playerInitPosition: {x: 2.19, y: -2.32, z: 0}
+  walls:
+  - transformData:
+      position: {x: 4.21, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.117301, y: -0.08391571}
+      size: {x: 0.16689682, y: 9.344582}
+  - transformData:
+      position: {x: -8.42, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0855541, y: -0.1580131}
+      size: {x: 0.23039055, y: 10.256271}
+  - transformData:
+      position: {x: 4.21, y: -5.48, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 1.9126247, y: 4.405397}
+      size: {x: 0.18888736, y: 13.01773}
+  - transformData:
+      position: {x: 1.3, y: -2.53, z: 0}
+      scale: {x: 1, y: 2.5, z: 1}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 2.0939078, y: 0.48930812}
+      size: {x: 0.21368325, y: 5.185551}
+  objects:
+  - name: Tube
+    position: {x: 0.019999996, y: -2.533595, z: 0}
+    sprite: {fileID: 21300000, guid: d4f1092ce71f948c9819ae96e441da9f, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: -0.47292173}
+      size: {x: 1.1912942, y: 0.94686246}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: blue tvs
+    position: {x: 6.1099997, y: -0.24359512, z: 0}
+    sprite: {fileID: 21300000, guid: fbfc2a4bf7030412fb7f352f37c4b22b, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0.32, y: 5.04}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: pink tvs
+    position: {x: -6.1000004, y: -0.49359512, z: 0}
+    sprite: {fileID: 21300000, guid: cbfc1b7e16e344d16b1f9667037ce622, type: 3}
+    sortingOrder: 3
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: -0.015463427, y: 0.010350227}
+      size: {x: 0.28907314, y: 5.6390963}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: L two1
+    position: {x: -4.08, y: 0.19000006, z: 0}
+    sprite: {fileID: 21300000, guid: 6e724cbea7f3145e1b95c39fee2ef67e, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit4
+    position: {x: -3.325, y: 0.4824049, z: 0}
+    sprite: {fileID: 21300000, guid: 2a3fc32c67a4449b38f11899a53d705d, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit5
+    position: {x: 2.621, y: 1.056405, z: 0}
+    sprite: {fileID: 21300000, guid: 75a703279406a426996d3caadbf73f5c, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Circuit0
+    position: {x: 5.7359996, y: -2.4535952, z: 0}
+    sprite: {fileID: 21300000, guid: fd5cd20bba7f34d2f825e7d81698df02, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: L three1
+    position: {x: -3.2, y: 0.03999996, z: 0}
+    sprite: {fileID: 21300000, guid: 1ab1a41493b7943d1870526b2e809cb9, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: walkway
+    position: {x: -2.89, y: -2.25, z: 0}
+    sprite: {fileID: 21300000, guid: 9ae4aed6811044fa8acdee19643858f7, type: 3}
+    sortingOrder: 2
+    color: {r: 1, g: 1, b: 1, a: 0.7176471}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: L top
+    position: {x: -4.45, y: 1.8376399, z: 0}
+    sprite: {fileID: 21300000, guid: 8f13adadd0f534cafb12b38b23ef75e6, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: R bottom
+    position: {x: 3.59, y: 1.77, z: 0}
+    sprite: {fileID: 21300000, guid: 662a6052cd3f0443b9bf811dc5f21b0c, type: 3}
+    sortingOrder: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: wire 1
+    position: {x: -3.53, y: 0.03999996, z: 0}
+    sprite: {fileID: 21300000, guid: f6eb7032600514dc383e817298810fff, type: 3}
+    sortingOrder: 3
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: wire
+    position: {x: 3.53, y: 0.049999952, z: 0}
+    sprite: {fileID: 21300000, guid: 1ef3c9268d468482bb5f1a4c1c4608da, type: 3}
+    sortingOrder: 3
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 0}
+    animatorController: {fileID: 0}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  usbPorts:
+  - name: Panel4
+    portID: 4
+    position: {x: -2.3786225, y: 0.25476193, z: 0}
+    sprite: {fileID: 21300000, guid: 968ee336f441a4a2891f4cb45e7c02de, type: 3}
+    level: 0
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.004144788, y: 0.020723164}
+      size: {x: 0.61710715, y: 0.74855375}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Panel5
+    portID: 5
+    position: {x: 3.6213775, y: 0.3247621, z: 0}
+    sprite: {fileID: 21300000, guid: 61f86dd3c51864666b9028064ca903a3, type: 3}
+    level: 0
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.002072215, y: 0.02072315}
+      size: {x: 0.6129625, y: 0.74855375}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Panel0
+    portID: 0
+    position: {x: 6.1113772, y: -3.069238, z: 0}
+    sprite: {fileID: 21300000, guid: 8f1cd6ef371ed484aa343d9b6932b365, type: 3}
+    level: 1
+    colliderData:
+      noCollider: 0
+      isTrigger: 0
+      offset: {x: 0.027008772, y: 0.0030009747}
+      size: {x: 0.22574854, y: 0.5138421}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  extrudables:
+  - name: Extrudable4
+    position: {x: -5.0286226, y: 0.3447621, z: 0}
+    sprite: {fileID: 21300000, guid: 82f30a2c23b9f4effab8922e0c334133, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: 542844da4fca64bcaa8e597e38605dcf, type: 3}
+    animatorController: {fileID: 9100000, guid: 6efc712f2428d42129836525b39983f4, type: 2}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Extrudable3
+    position: {x: -1.5986227, y: -0.29523802, z: 0}
+    sprite: {fileID: 21300000, guid: 636dbcb5b6e3844a9a1762c34e694c91, type: 3}
+    sortingOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: ac42b8fcb211340139b1b4c7674f3b48, type: 3}
+    animatorController: {fileID: 9100000, guid: 1b8fc1679639e435ab1c1fec4dbb4927, type: 2}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  - name: Extrudable5
+    position: {x: 3.5883775, y: 1.984762, z: 0}
+    sprite: {fileID: 21300000, guid: 2bc8e50f7528d4b809cbc2bf033c455a, type: 3}
+    sortingOrder: 3
+    color: {r: 1, g: 1, b: 1, a: 1}
+    extrudedSprite: {fileID: 21300000, guid: 8e6b699ba2750441b8ff46f91e0e5974, type: 3}
+    animatorController: {fileID: 9100000, guid: fc2b61f0d9c224929b5fb35ec7ef9704, type: 2}
+    colliderData:
+      noCollider: 1
+      isTrigger: 0
+      offset: {x: 0, y: 0}
+      size: {x: 0, y: 0}
+    dialogueData:
+      doNotRepeat: 0
+      isCutscene: 0
+      conditionToCheck: 0
+      preConditionDialogue:
+        dialogueName: 
+        sentences: []
+      postConditionDialogue:
+        dialogueName: 
+        sentences: []
+  doors:
+  - name: Door2
+    position: {x: -0.0016225576, y: 0.35476208, z: 0}
+    sprite: {fileID: 21300000, guid: abd92f9444b424e1ea5dc9b830313a63, type: 3}
