@@ -8,6 +8,7 @@ public class TooltipManager : MonoBehaviour
     public GameObject leftClick;
     public GameObject pressQ;
     public GameObject pressSpace;
+    public GameObject controls;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +16,12 @@ public class TooltipManager : MonoBehaviour
         leftClick = transform.Find("LeftClick").gameObject;
         pressQ = transform.Find("PressQ").gameObject;
         pressSpace = transform.Find("PressSpace").gameObject;
+        controls = transform.Find("Controls").gameObject;
 
         leftClick.SetActive(false);
         pressQ.SetActive(false);
         pressSpace.SetActive(false);
+        controls.SetActive(false);
     }
 
     public void ToggleClickTooltip(bool toggle)
@@ -48,10 +51,15 @@ public class TooltipManager : MonoBehaviour
         pressSpace.SetActive(toggle);
     }
 
-    IEnumerator ShowTooltip(GameObject tooltip)
+    public void ActivateControls()
+    {
+        StartCoroutine(ShowTooltip(controls, 5f));
+    }
+
+    IEnumerator ShowTooltip(GameObject tooltip, float duration = 3f)
     {
         tooltip.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(duration);
         tooltip.SetActive(false);
     }
 }

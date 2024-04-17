@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public float MusicVolume = 1f;
     public float DialogueVolume = 1f;
     public float SFXVolume = 1f;
+    public bool isUsingController = false;
 
     private FMODUnity.StudioEventEmitter eventEmitter;
 
@@ -192,7 +193,6 @@ public class GameManager : MonoBehaviour
             } else {
                 if (ActiveSceneName == "new3Dtut")
                 {   
-                    Debug.Log("Switching to map!");
                     SwitchToMap(instance.gameState.CurrentLevel);
                 }
                 else if (ActiveSceneName == "new2dtut")
@@ -323,6 +323,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ShowControls()
+    {
+        if (instance.gameState.ControlsShown) return;
+        GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ActivateControls();
+        instance.gameState.ControlsShown = true;
+    }
+
     public void UpdateExtrudables(int extrudableId) {
         instance.gameState.Extrudables[extrudableId] = true;
     }
@@ -431,8 +438,7 @@ public class GameManager : MonoBehaviour
     {
         MusicVolume = volume;
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            eventEmitter = eventEmitters[0];
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter.EventInstance.isValid())
         {
@@ -501,14 +507,14 @@ public class GameManager : MonoBehaviour
         {
             instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
-            if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
+            if (ActiveSceneName != "StartMenu" || ActiveSceneName != "") {
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
             instance.settingsMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }
@@ -806,6 +812,8 @@ public class GameState
     public int CurrentRoom { get; set; } // current room that 02 is in
     public bool RoomChanged { get; set; } // flag to indicate if the room has changed
 
+    public bool ControlsShown { get; set; }
+
     // 3D Character State
     public Vector3 PlayerPosition3D { get; set; }
     public Vector3 PlayerRotation3D { get; set; }
@@ -857,6 +865,8 @@ public class GameState
         CurrentPuzzleId = -1;
         CurrentRoom = 0;
         RoomChanged = false;
+
+        ControlsShown = false;
 
         PlayerPosition3D = new Vector3(-6.40f,3.520f,27.110f);
         PlayerRotation3D = new Vector3(0f,180f,0f);

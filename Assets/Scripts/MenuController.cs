@@ -54,6 +54,7 @@ public class MenuController : MonoBehaviour
 
     public void OpenSettings()
     {
+        GetComponent<CanvasGroup>().interactable = !GetComponent<CanvasGroup>().interactable;
         GameManager.instance.TogglePauseMenu();
     }
 
