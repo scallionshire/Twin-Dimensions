@@ -41,6 +41,11 @@ public class Player2DMovement : MonoBehaviour
         _animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
+    void OnDisable()
+    {
+        footstepsSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
     void HandleFootstepsSound()
     {
         if (movement.sqrMagnitude > 0)

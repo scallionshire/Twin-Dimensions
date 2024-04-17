@@ -103,11 +103,6 @@ public class GameManager : MonoBehaviour
             cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
         }
 
-        if (GameObject.Find("SettingsMenu") != null) {
-            settingsMenu = GameObject.Find("SettingsMenu");
-            settingsMenu.SetActive(false);
-        }
-
         MusicVolume = 1f;
         DialogueVolume = 1f;
         SFXVolume = 1f;
@@ -216,25 +211,21 @@ public class GameManager : MonoBehaviour
             }
 
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
-                PauseMainMusic(true);
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
                 cutscenePlaying = true;
                 if (eventEmitter == null) {
-                    var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-                    eventEmitter = eventEmitters[0];
+                    eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
                 }
                 if (eventEmitter.EventInstance.isValid())
                 {
                     eventEmitter.EventInstance.setPaused(true);
                 }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
-                PauseMainMusic(false);
                 cutscenePlaying = false;
                 if (ActiveSceneName == "new3Dtut") {
                     if (eventEmitter == null) {
-                        var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-                        eventEmitter = eventEmitters[0];
+                        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
                     }
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
@@ -447,15 +438,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseMainMusic(bool pause)
     {
-        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-        // Debug.Log("EventEmitter: " + eventEmitter.gameObject.name);
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
             Debug.Log("eventEmitter was null or not valid");
             eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter != null && eventEmitter.EventInstance.isValid())
         {
-            Debug.Log("Setting isPaused");
             if (pause)
             {
                 eventEmitter.EventInstance.setParameterByName("isPaused", 1);
@@ -493,14 +481,14 @@ public class GameManager : MonoBehaviour
     // --------------- SCENE MANAGEMENT FUNCTIONS ---------------
     public void TogglePauseMenu()
     {
-        if (settingsMenu == null) {
-            settingsMenu = GameObject.Find("SettingsMenu");
-            settingsMenu.SetActive(false);
+        if (instance.settingsMenu == null) {
+            instance.settingsMenu = GameObject.Find("SettingsMenu");
+            instance.settingsMenu.SetActive(false);
         }
 
-        if (settingsMenu.activeSelf)
+        if (instance.settingsMenu.activeSelf)
         {
-            settingsMenu.SetActive(false);
+            instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
             if (ActiveSceneName == "new3Dtut" || ActiveSceneName == "mainPuzzle" || ActiveSceneName == "new2dtut") {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -509,7 +497,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.None;
-            settingsMenu.SetActive(true);
+            instance.settingsMenu.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -598,7 +586,7 @@ public class GameManager : MonoBehaviour
                 if (exti != null) {
                     Extrudable extrudable = exti.GetComponent<Extrudable>();
                     if (extrudable != null) {
-                        extrudable.isMoving = true;
+                        extrudable.Extrude();
                     } else {
                         if (instance.gameState.ExtrudablesAnimPlayed2D[i]) {
                             Debug.Log("Extrudable animation already played");
@@ -695,9 +683,8 @@ public class GameManager : MonoBehaviour
     public void switchToScene(string sceneName)
     {
         if (eventEmitter == null) {
-            var eventEmitters = GameObject.FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            if (eventEmitters.Length > 0) eventEmitter = eventEmitters[0];
-
+            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+            Debug.Log("Found event emitter: " + eventEmitter);
             // Ensure cursor is focused when you first start the game
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -848,7 +835,7 @@ public class GameState
     {
         CurrentLevel = Level.tutorial;
         CurrentPuzzleId = -1;
-        CurrentRoom = -1;
+        CurrentRoom = 0;
         RoomChanged = false;
 
         PlayerPosition3D = new Vector3(-4.05f,3.541f,28.56f);

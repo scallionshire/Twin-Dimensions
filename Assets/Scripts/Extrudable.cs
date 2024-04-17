@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Extrudable : MonoBehaviour
 {
@@ -94,8 +93,6 @@ public class Extrudable : MonoBehaviour
 
             if (is2D) {
                 if ((targetScale - new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f)).sqrMagnitude < 0.05f) {
-                    // Debug.Log("The target scale is: " + targetScale);
-                    // Debug.Log("The current scale is: " + new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f));
                     if (shouldLoop && targetScale == endScale) {
                         targetScale = initScale;
                         targetPosition = initPosition;
@@ -126,12 +123,9 @@ public class Extrudable : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * extrudeSpeed);
                 transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * extrudeSpeed);
             }
-        }
-        if (!isMoving) {
+        } else {
             extrudableSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-
-            
-        }
+        }  
 
         if(is2D) {
             if ((targetScale - new Vector3(spriteRenderer.size.x, spriteRenderer.size.y, 1.0f)).sqrMagnitude < 0.05f)
@@ -143,9 +137,10 @@ public class Extrudable : MonoBehaviour
 
     public void Extrude() {
         isMoving = true;
-        FMOD.ATTRIBUTES_3D attributes = FMODUnity.RuntimeUtils.To3DAttributes(gameObject);
-        extrudableSoundInstance.set3DAttributes(attributes);
-        extrudableSoundInstance.start();
+        if (!is2D) {
+            extrudableSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            extrudableSoundInstance.start();
+        }
     }
 
     public void MakeAlreadyExtruded() {

@@ -1351,8 +1351,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5344355608652613651}
   m_SourcePrefab: {fileID: 100100000, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+--- !u!1 &2629585986898406817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+  m_PrefabInstance: {fileID: 538714647821316194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5344355608652613651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2629585986898406817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8597508742243679326}
+          m_TargetAssemblyTypeName: SliderHandler, Assembly-CSharp
+          m_MethodName: PlaySFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &3061294341481424548 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
@@ -1481,13 +1518,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3436182640001265466}
   m_SourcePrefab: {fileID: 100100000, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
 --- !u!224 &2403567475727115236 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
   m_PrefabInstance: {fileID: 889794111483950370}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3413415828356393185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+  m_PrefabInstance: {fileID: 889794111483950370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3436182640001265466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413415828356393185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8597508742243679326}
+          m_TargetAssemblyTypeName: SliderHandler, Assembly-CSharp
+          m_MethodName: PlaySFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &7483369933899539193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1627,8 +1701,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7123580774811228688}
   m_SourcePrefab: {fileID: 100100000, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+--- !u!1 &4962273914588200762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2524211086247124419, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}
+  m_PrefabInstance: {fileID: 7483369933899539193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7123580774811228688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962273914588200762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8597508742243679326}
+          m_TargetAssemblyTypeName: SliderHandler, Assembly-CSharp
+          m_MethodName: PlaySFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &5393137157381698623 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3243155668468340422, guid: 9851c0d5bf4724406b115a473a6f67a9, type: 3}

@@ -146,7 +146,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(false, Twin.Twin_20);
 
                 TMP_Text target02 = dialogue02.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/3DDialogStartSound");
+                RuntimeManager.PlayOneShot("event:/SFX2D/3DDialogStartSound");
                 StartCoroutine(TypeSentence(target02, sentence.text, sentence.twin));
                 break;
             case Twin.Twin_20:
@@ -154,7 +154,7 @@ public class DialogueManager : MonoBehaviour
                 ToggleActive(false, Twin.Twin_02);
                 
                 TMP_Text target20 = dialogue20.transform.GetChild(0).Find("DialogueText").GetComponent<TMP_Text>();
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX2D/2DDialogStartSound");
+                RuntimeManager.PlayOneShot("event:/SFX2D/2DDialogStartSound");
                 StartCoroutine(TypeSentence(target20, sentence.text, sentence.twin));
                 break;
         }

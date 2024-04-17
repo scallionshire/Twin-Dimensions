@@ -49,8 +49,14 @@ public class CutsceneManager : MonoBehaviour
             return;
         }
 
-        cutsceneMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/IntroCutscene");
-        cutsceneMusicInstance.start();
+        if (cutsceneName == "intro")
+        {
+            cutsceneMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/IntroCutscene");
+            cutsceneMusicInstance.start();
+        } else if (cutsceneName == "switch")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/TVOff", Camera.main.transform.position);
+        }
 
         videoImage.color = new Color(1, 1, 1, 1);
         int index = cutsceneIndex[cutsceneName];
