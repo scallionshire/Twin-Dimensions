@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
@@ -355,7 +357,9 @@ public class RoomManager : MonoBehaviour
         }
 
         // ------------- SAVING TO ASSET DATABASE -------------
-        AssetDatabase.CreateAsset(newRoom, "Assets/GameData/RoomData/NewRoomData.asset");
+        #if UNITY_EDITOR
+            AssetDatabase.CreateAsset(newRoom, "Assets/GameData/RoomData/NewRoomData.asset");
+        #endif
     }
 
     public void WipeScene() {
