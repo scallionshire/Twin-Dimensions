@@ -21,21 +21,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        switch (conditionToCheck)
-        {
-            case GameStateCondition.hasUSB:
-                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
-                break;
-            case GameStateCondition.insertedUSB:
-                conditionMet = GameManager.instance.gameState.USBInserted;
-                break;
-            case GameStateCondition.hasBattery:
-                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
-                break;
-            case GameStateCondition.door0Open:
-                conditionMet = GameManager.instance.gameState.Door0Unlocked;
-                break;
-        }
+        conditionMet = GameManager.instance.CheckCondition(conditionToCheck);
 
         GameObject dc = GameObject.Find("DialogueCanvas");
         GameObject gm = GameObject.Find("GameManager");

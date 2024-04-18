@@ -804,6 +804,30 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public bool CheckCondition(GameStateCondition condition)
+    {
+        bool conditionMet = false;
+        switch (condition)
+        {
+            case GameStateCondition.hasUSB:
+                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
+                break;
+            case GameStateCondition.insertedUSB:
+                conditionMet = GameManager.instance.gameState.USBInserted;
+                break;
+            case GameStateCondition.hasBattery:
+                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
+                break;
+            case GameStateCondition.door0Open:
+                conditionMet = GameManager.instance.gameState.Door0Unlocked;
+                break;
+            case GameStateCondition.noUSB:
+                conditionMet = !GameManager.instance.gameState.PlayerHasUSB;
+                break;
+        }
+        return conditionMet;
+    }
 }
 
 [System.Serializable]

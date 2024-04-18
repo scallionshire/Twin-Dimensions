@@ -42,21 +42,7 @@ public class TimelineActivator : MonoBehaviour
 
     public void PlayTimeline()
     {   
-        switch (conditionToCheck)
-        {
-            case GameStateCondition.hasUSB:
-                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
-                break;
-            case GameStateCondition.insertedUSB:
-                conditionMet = GameManager.instance.gameState.USBInserted;
-                break;
-            case GameStateCondition.hasBattery:
-                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
-                break;
-            case GameStateCondition.noUSB:
-                conditionMet = !GameManager.instance.gameState.PlayerHasUSB;
-                break;
-        }
+        conditionMet = GameManager.instance.CheckCondition(conditionToCheck);
 
         // Handle the PC case
         if (checkCondition && !conditionMet)

@@ -19,18 +19,7 @@ public class USBPorts : MonoBehaviour
 
     public void PlugInUSB()
     {   
-        switch (conditionToCheck)
-        {
-            case GameStateCondition.hasUSB:
-                conditionMet = GameManager.instance.gameState.PlayerHasUSB;
-                break;
-            case GameStateCondition.insertedUSB:
-                conditionMet = GameManager.instance.gameState.USBInserted;
-                break;
-            case GameStateCondition.hasBattery:
-                conditionMet = GameManager.instance.gameState.BatteriesCollected > 0;
-                break;
-        }
+        conditionMet = GameManager.instance.CheckCondition(conditionToCheck);
 
         if (conditionMet) {
             RuntimeManager.PlayOneShot(eventName, transform.position);
