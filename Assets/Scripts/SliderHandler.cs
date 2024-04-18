@@ -27,8 +27,16 @@ public class SliderHandler : MonoBehaviour
     {
         GameManager.instance.settingsMenu = gameObject;
         InitializeSliders();
-        EventSystem.current.SetSelectedGameObject(musicSlider.gameObject);
+        
         gameObject.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+        if (EventSystem.current != null && musicSlider != null)
+        {
+            EventSystem.current.SetSelectedGameObject(musicSlider.gameObject);
+        }
     }
 
     private void InitializeSliders()
