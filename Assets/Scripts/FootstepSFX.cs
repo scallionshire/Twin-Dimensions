@@ -5,9 +5,24 @@ using FMODUnity;
 
 public class FootstepSFX : MonoBehaviour
 {
-    public EventReference footstepEvent;
+    public EventReference walkEvent;
+    public EventReference runEvent;
+    public EventReference jumpEvent;
+    public EventReference landEvent;
 
-    public void Step() {
-        RuntimeManager.PlayOneShot(footstepEvent, transform.position);
+    public void WalkStep() {
+        RuntimeManager.PlayOneShot(walkEvent, transform.position);
+    }
+
+    public void RunStep() {
+        RuntimeManager.PlayOneShot(runEvent, transform.position);
+    }
+
+    public void Jump() {
+        RuntimeManager.PlayOneShot(jumpEvent, transform.position);
+    }
+
+    public void Land() {
+        RuntimeManager.PlayOneShot(landEvent, transform.position);
     }
 }
