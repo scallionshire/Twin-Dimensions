@@ -21,15 +21,16 @@ MonoBehaviour:
   backgroundScale: {x: 0.75, y: 0.75, z: 1}
   backgroundPosition: {x: -6.58, y: -0.54, z: 0}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  recScale: {x: 0.5, y: 0.5, z: 1}
-  recPosition: {x: -6.5571, y: -0.54, z: 0}
+  frameSize: {x: 0, y: 0}
+  framePosition: {x: 0, y: 0, z: 0}
   wallPositions:
   - {x: -1.27, y: 1.69, z: 0}
   - {x: -11.74, y: 1.74, z: 0}
   - {x: 2.14, y: -3.76, z: 0}
   - {x: 2.14, y: 2.38, z: 0}
   puzzles:
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -4.465, y: -2.251, z: 0}
       circuitSprite: {fileID: 21300000, guid: 6ebb4b57c99be4e83893f3e7bc1c6510, type: 3}
       circuitName: screen-group-0
@@ -65,7 +66,8 @@ MonoBehaviour:
       destinationName: block2trigger
       isSolved: 0
     dialogues:
-    - position: {x: -6.67, y: -0.79, z: 0}
+    - conditionToCheck: 1
+      position: {x: -6.67, y: -0.79, z: 0}
       scale: {x: 6.19, y: 1, z: 1}
       dialogue:
         dialogueName: CompPuzzleGuide
