@@ -518,7 +518,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance.settingsMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
+            // Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }
