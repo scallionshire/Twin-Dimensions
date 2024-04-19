@@ -452,10 +452,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
-
-        if (!(level == Level.computerlab && puzzleId == 1)) {
-            switchToScene("new2dtut");
-        }
     }
     
     public void UpdateMusicVolume(float volume)
