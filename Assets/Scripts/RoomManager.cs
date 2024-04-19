@@ -377,7 +377,6 @@ public class RoomManager : MonoBehaviour
     }
 
     public void WipeScene() {
-        Debug.Log("Wiping scene");
         foreach (Transform wallTransform in GameObject.Find("Walls").transform) {
             Destroy(wallTransform.gameObject);
         }
