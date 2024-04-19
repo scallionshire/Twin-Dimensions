@@ -830,6 +830,21 @@ public class GameManager : MonoBehaviour
             case GameStateCondition.noUSB:
                 conditionMet = !GameManager.instance.gameState.PlayerHasUSB;
                 break;
+            case GameStateCondition.tutPanel0Activated:
+                conditionMet = GameManager.instance.gameState.TutorialLevelPorts[0];
+                break;
+            case GameStateCondition.tutPanel0NotActivated:
+                conditionMet = !GameManager.instance.gameState.TutorialLevelPorts[0];
+                break;
+            case GameStateCondition.tutPanel1Activated:
+                conditionMet = GameManager.instance.gameState.TutorialLevelPorts[1];
+                break;
+            case GameStateCondition.tutPanel2Activated:
+                conditionMet = GameManager.instance.gameState.TutorialLevelPorts[2];
+                break;
+            case GameStateCondition.compPanel0Activated:
+                conditionMet = GameManager.instance.gameState.ComputerLabLevelPorts[0];
+                break;
         }
         return conditionMet;
     }

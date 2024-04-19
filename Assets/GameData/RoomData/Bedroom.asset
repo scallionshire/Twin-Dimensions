@@ -75,7 +75,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: can't sleep! sleep is for the weak!
+          twin: 1
   - name: Nightstand
     position: {x: 3.96, y: -3.003595, z: 0}
     sprite: {fileID: 21300000, guid: 9ef84759bbfb940dfae9dd3e7651f78e, type: 3}
@@ -97,7 +99,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: oh, i'm so excited to have my own room one day! and decorate it!
+          twin: 1
   - name: Desk
     position: {x: -0.87, y: -2.763595, z: 0}
     sprite: {fileID: 21300000, guid: cd5bcdf0ab49e4f66a43bb577b8053c2, type: 3}
@@ -119,7 +123,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: My desk is so messy!
+          twin: 0
   - name: Chair
     position: {x: -0.87, y: -1.833595, z: 0}
     sprite: {fileID: 21300000, guid: 5f568ff1d656944f5b36bdf3f45c6243, type: 3}
@@ -141,7 +147,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: Don't sit! We gotta go!
+          twin: 0
   - name: Shelf
     position: {x: -4.3500004, y: -2.4535952, z: 0}
     sprite: {fileID: 21300000, guid: 68dcb8e3d0e344775b0787f36961c0c1, type: 3}
@@ -163,7 +171,12 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: One day, when we're out, I'll plug you into a Kindle and you can
+            read all the YA you want.
+          twin: 0
+        - text: omg, really?! you would?
+          twin: 1
   - name: Fishtank
     position: {x: 3.18, y: 0.5164049, z: 0}
     sprite: {fileID: 21300000, guid: bb174de141b134e2e9e5f61ae1e5cd9c, type: 3}
@@ -185,7 +198,11 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: "tommy and jimmy, sitting in a tank, 5 feet apart because they're\u2014"
+          twin: 1
+        - text: What are you even referencing?
+          twin: 0
   - name: Vent
     position: {x: -4.5400004, y: -3.1535952, z: 0}
     sprite: {fileID: 21300000, guid: e23e9aa9e9324499693c03e951ce4751, type: 3}
@@ -207,7 +224,10 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: ooh, it's the vent... wonder if we can use them later to get to the
+            next floor...
+          twin: 1
   - name: Light
     position: {x: -4.505, y: -0.7635951, z: 0}
     sprite: {fileID: 21300000, guid: 2750211f611814df99ce61abf1c9bad4, type: 3}
@@ -216,7 +236,7 @@ MonoBehaviour:
     extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
-      noCollider: 1
+      noCollider: 0
       isTrigger: 0
       offset: {x: 0, y: 0}
       size: {x: 0, y: 0}
@@ -251,7 +271,9 @@ MonoBehaviour:
         sentences: []
       postConditionDialogue:
         dialogueName: 
-        sentences: []
+        sentences:
+        - text: digital water... ah, how it refreshes me...
+          twin: 0
   - name: Door
     position: {x: -0.21000001, y: 1.306405, z: 0}
     sprite: {fileID: 21300000, guid: dd5fe5099fc3d4cf7aae631c164f4149, type: 3}
@@ -260,7 +282,7 @@ MonoBehaviour:
     extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
-      noCollider: 1
+      noCollider: 0
       isTrigger: 0
       offset: {x: 0, y: 0}
       size: {x: 0, y: 0}
@@ -282,7 +304,7 @@ MonoBehaviour:
     extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
-      noCollider: 1
+      noCollider: 0
       isTrigger: 0
       offset: {x: 0, y: 0}
       size: {x: 0, y: 0}
@@ -300,7 +322,8 @@ MonoBehaviour:
   extrudables: []
   doors: []
   dialogueTriggers:
-  - position: {x: 0, y: 0, z: 0}
+  - conditionToCheck: 1
+    position: {x: 0, y: 0, z: 0}
     scale: {x: 0, y: 0, z: 0}
     dialogue:
       dialogueName: 
