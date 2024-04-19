@@ -293,6 +293,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayOutroCutscene() {
+        if (cutsceneManager != null) {
+            cutsceneManager.PlayCutscene("outro");
+        } else {
+            cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
+            cutsceneManager.PlayCutscene("outro");
+        }
+        eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+        eventEmitter.EventInstance.setPaused(true);
+
+        instance.ToggleDialogueFreeze(true);
+        instance.ToggleBokeh(true);
+    }
+
     // --------------- GAME STATE FUNCTIONS ---------------
     private void UpdateInventoryUI() {
         InventorySystem inventorySystem = FindObjectOfType<InventorySystem>();

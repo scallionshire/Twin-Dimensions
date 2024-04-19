@@ -64,8 +64,16 @@ public class TooltipManager : MonoBehaviour
 
     IEnumerator ShowTooltip(GameObject tooltip, float duration = 3f)
     {
+        if (tooltip == controls)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Interaction>().enabled = false;
+        }
         tooltip.SetActive(true);
         yield return new WaitForSeconds(duration);
+        if (tooltip == controls)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Interaction>().enabled = true;
+        }
         tooltip.SetActive(false);
     }
 }

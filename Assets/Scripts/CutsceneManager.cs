@@ -60,8 +60,10 @@ public class CutsceneManager : MonoBehaviour
         } else if (cutsceneName == "switch")
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/TVOff", Camera.main.transform.position);
+        } else if (cutsceneName == "outro")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Music/EndingMusic");
         }
-
 
         videoImage.color = new Color(1, 1, 1, 1);
         int index = cutsceneIndex[cutsceneName];
