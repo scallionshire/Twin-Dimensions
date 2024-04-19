@@ -62,7 +62,7 @@ MonoBehaviour:
     extrudedSprite: {fileID: 0}
     animatorController: {fileID: 0}
     colliderData:
-      noCollider: 1
+      noCollider: 0
       isTrigger: 0
       offset: {x: 0.0055072308, y: -0.0035110116}
       size: {x: 1.6278019, y: 1.711923}
@@ -102,8 +102,10 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences:
-        - text: humu humu...
+        - text: will i power up if i gnaw on these servers a little?
           twin: 1
+        - text: 20! Don't eat that! It's not food!
+          twin: 0
   - name: shelf1
     position: {x: -3.8079998, y: -2.9469998, z: 0}
     sprite: {fileID: 21300000, guid: d8e844314c52a419794dda30b0e3c56d, type: 3}
@@ -126,10 +128,8 @@ MonoBehaviour:
       postConditionDialogue:
         dialogueName: 
         sentences:
-        - text: will i power up if i gnaw on these servers a little?
+        - text: humu humu...
           twin: 1
-        - text: 20! Don't eat that! It's not food!
-          twin: 0
   - name: shelf2
     position: {x: 0.030000001, y: -2.9469998, z: 0}
     sprite: {fileID: 21300000, guid: d8e844314c52a419794dda30b0e3c56d, type: 3}
