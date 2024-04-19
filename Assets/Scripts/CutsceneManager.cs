@@ -18,8 +18,12 @@ public class CutsceneManager : MonoBehaviour
     private Dictionary<string, int> cutsceneIndex = new Dictionary<string, int>
     {   
         {"intro", 0},
-        {"switch", 1}
+        {"switch", 1},
+        {"outro", 2}
     };
+
+    [SerializeField]
+    private string[] videoFileNames;
     
     void Awake()
     {   
@@ -58,10 +62,18 @@ public class CutsceneManager : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX3D/TVOff", Camera.main.transform.position);
         }
 
+
         videoImage.color = new Color(1, 1, 1, 1);
         int index = cutsceneIndex[cutsceneName];
         Debug.Log("Playing cutscene: " + cutsceneName);
+        
+
+    #if UNITY_WEBGL
+        string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, videoFileNames[index]);
+        videoPlayer.url = videoPath;
+    #else
         videoPlayer.clip = cutscenes[index];
+    #endif
         videoPlayer.Play();
     }
 
