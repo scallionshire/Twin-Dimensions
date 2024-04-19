@@ -231,6 +231,8 @@ public class PuzzleManager : MonoBehaviour
                     break;
             }
 
+            GameManager.instance.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
+
             if (!firstTimeFinished) {
                 StartCoroutine(PuzzleCompletionReturn());
             }
@@ -241,7 +243,7 @@ public class PuzzleManager : MonoBehaviour
     {
         firstTimeFinished = true;
         yield return new WaitForSeconds(0.5f);
-        GameManager.instance.SolvePuzzle(levelPuzzles.level, currentPuzzleId);
+        GameManager.instance.switchToScene("new2dtut");
     }
 
     bool IsPuzzleSolved()

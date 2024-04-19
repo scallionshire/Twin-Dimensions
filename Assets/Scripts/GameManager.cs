@@ -452,10 +452,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
-
-        if (!(level == Level.computerlab && puzzleId == 1)) {
-            switchToScene("new2dtut");
-        }
     }
     
     public void UpdateMusicVolume(float volume)
@@ -764,8 +760,8 @@ public class GameManager : MonoBehaviour
                     playerCamera.m_YAxis.m_MaxSpeed = 0;
                     playerCamera.m_XAxis.m_MaxSpeed = 0;
                 } else {
-                    playerCamera.m_YAxis.m_MaxSpeed = 4;
-                    playerCamera.m_XAxis.m_MaxSpeed = 200;
+                    playerCamera.m_YAxis.m_MaxSpeed = 3;
+                    playerCamera.m_XAxis.m_MaxSpeed = 150;
                 }
             }
 
