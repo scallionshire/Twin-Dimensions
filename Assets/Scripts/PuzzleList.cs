@@ -24,6 +24,7 @@ public struct CircuitSet {
 
 [System.Serializable]
 public class PuzzleList {
+    public bool isSolved;
     public List<CircuitSet> circuitSprites;
     public List<PuzzleSet> puzzleBlocks;
     public List<DialogueObject> dialogues;

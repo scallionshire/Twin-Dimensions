@@ -48,8 +48,12 @@ public class GameManager : MonoBehaviour
     public TopDownDataScriptable[] roomData;
     public ExtrudableDataScriptable tutorialExtrudables;
     public ExtrudableDataScriptable computerLabExtrudables;
-    public PuzzleDataScriptable tutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
-    public PuzzleDataScriptable computerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public PuzzleDataScriptable initTutorialPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    public PuzzleDataScriptable initComputerPuzzle; // Initial puzzle states, loaded in via ScriptableObjects in the inspector
+    [HideInInspector]
+    public PuzzleDataScriptable tutorialPuzzle;
+    [HideInInspector]
+    public PuzzleDataScriptable computerPuzzle;
 
     [SerializeField]
     private VolumeProfile globalVolumeProfile;
@@ -107,6 +111,9 @@ public class GameManager : MonoBehaviour
         MusicVolume = 1f;
         DialogueVolume = 1f;
         SFXVolume = 1f;
+
+        tutorialPuzzle = Instantiate(initTutorialPuzzle);
+        computerPuzzle = Instantiate(initComputerPuzzle);
     }
 
     private IEnumerator<YieldInstruction> LoadAndDeactivate(List<AsyncOperation> loadOperations)
@@ -343,7 +350,6 @@ public class GameManager : MonoBehaviour
                 instance.gameState.TutorialLevelPorts[puzzleId] = true;
                 break;
             case (Level.computerlab):
-                Debug.Log("Updating computer lab level ports");
                 instance.gameState.ComputerLabLevelPorts[puzzleId] = true;
                 break;
         }
@@ -610,7 +616,6 @@ public class GameManager : MonoBehaviour
                         extrudable.Extrude();
                     } else {
                         if (instance.gameState.ExtrudablesAnimPlayed2D[i]) {
-                            exti.GetComponent<Animator>().enabled = false;
                             GameObject RoomManager = GameObject.Find("RoomManager");
                             RoomManager?.GetComponent<RoomManager>().SwapExtrudableSprite(exti.name);
                         } else {
@@ -627,14 +632,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < instance.gameState.TutorialLevelPorts.Count; i++) {
             if (instance.gameState.TutorialLevelPorts[i]) {
                 GameObject RoomManager = GameObject.Find("RoomManager");
-                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i);
+                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i, Level.tutorial);
             }
         }
 
         for (int i = 0; i < instance.gameState.ComputerLabLevelPorts.Count; i++) {
             if (instance.gameState.ComputerLabLevelPorts[i]) {
                 GameObject RoomManager = GameObject.Find("RoomManager");
-                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i);
+                RoomManager?.GetComponent<RoomManager>().ActivatePanel(i, Level.computerlab);
             }
         }
 

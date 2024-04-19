@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
+
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
 
 public class RoomManager : MonoBehaviour
 {
@@ -36,7 +36,7 @@ public class RoomManager : MonoBehaviour
         currentRoom = 0;
     }
 
-    public void LoadCurrentScene() {        
+    public void LoadCurrentScene() {
         TopDownDataScriptable roomData;
 
         if (debugMode) {
@@ -136,14 +136,14 @@ public class RoomManager : MonoBehaviour
                 case Level.tutorial:
                     for (int i = 0; i < GameManager.instance.gameState.TutorialLevelPorts.Count; i++) {
                         if (GameManager.instance.gameState.TutorialLevelPorts[i]) {
-                            ActivatePanel(i);
+                            ActivatePanel(i, Level.tutorial);
                         }
                     }
                     break;
                 case Level.computerlab:
                     for (int i = 0; i < GameManager.instance.gameState.ComputerLabLevelPorts.Count; i++) {
                         if (GameManager.instance.gameState.ComputerLabLevelPorts[i]) {
-                            ActivatePanel(i);
+                            ActivatePanel(i, Level.computerlab);
                         }
                     }
                     break;
@@ -156,13 +156,23 @@ public class RoomManager : MonoBehaviour
             GameObject extrudable = Instantiate(extrudablePrefab, extrudableData.position, Quaternion.identity, extrudableParent.transform);
             extrudable.name = extrudableData.name;
             extrudable.transform.position = extrudableData.position;
-            extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.sprite;
+
+            // Get extrudable ID from name of extrudable and check if it has been extruded already
+            var extId = Regex.Match(extrudable.name, @"\d+$");
+            if (GameManager.instance.gameState.ExtrudablesAnimPlayed2D[int.Parse(extId.Value)]) {
+                if (extrudableData.animatorController != null) {
+                    Destroy(extrudable.GetComponent<Animator>());
+                }
+                extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.extrudedSprite;
+            } else {
+                extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.sprite;
+                if (extrudableData.animatorController != null) {
+                    extrudable.GetComponent<Animator>().runtimeAnimatorController = extrudableData.animatorController;
+                }
+            }
+
             extrudable.GetComponent<SpriteRenderer>().sortingOrder = extrudableData.sortingOrder;
             extrudable.GetComponent<SpriteRenderer>().color = extrudableData.color;
-
-            if (extrudableData.animatorController != null) {
-                extrudable.GetComponent<Animator>().runtimeAnimatorController = extrudableData.animatorController;
-            }
 
             if (extrudableData.colliderData.noCollider == false) {
                 extrudable.GetComponent<BoxCollider2D>().size = extrudableData.colliderData.size;
@@ -184,6 +194,10 @@ public class RoomManager : MonoBehaviour
         // Set the door data list
         GameObject doorParent = GameObject.Find("Doors");
         foreach (DoorData doorData in roomData.doors) {
+            if ((doorData.name == "Door0" && GameManager.instance.gameState.Door0AnimPlayed2D) || (doorData.name == "Door1" && GameManager.instance.gameState.Door1AnimPlayed2D)) {
+                continue;
+            }
+
             GameObject door = Instantiate(doorPrefab, doorData.position, Quaternion.identity, doorParent.transform);
             door.name = doorData.name;
             door.transform.position = doorData.position;
@@ -363,6 +377,7 @@ public class RoomManager : MonoBehaviour
     }
 
     public void WipeScene() {
+        Debug.Log("Wiping scene");
         foreach (Transform wallTransform in GameObject.Find("Walls").transform) {
             Destroy(wallTransform.gameObject);
         }
@@ -382,16 +397,20 @@ public class RoomManager : MonoBehaviour
         foreach (Transform doorTransform in GameObject.Find("Doors").transform) {
             Destroy(doorTransform.gameObject);
         }
+
+        foreach (Transform dialogueTransform in GameObject.Find("DialogueTriggers").transform) {
+            Destroy(dialogueTransform.gameObject);
+        }
     }
 
-    public void ActivatePanel(int puzzleId) {
+    public void ActivatePanel(int puzzleId, Level level) {
         TopDownDataScriptable roomData = GameManager.instance.roomData[currentRoom];
 
         // Load in requested puzzle panel
         GameObject usbPortParent = GameObject.Find("USBPorts");
         foreach (USBPortData usbPortData in roomData.usbPorts) {
-            if (usbPortData.portID == puzzleId) {
-                if (GameObject.Find(usbPortData.name) != null) {
+            if (usbPortData.portID == puzzleId && usbPortData.level == level) {
+                if (usbPortParent.transform.Find(usbPortData.name) != null) {
                     break;
                 }
 
@@ -428,6 +447,9 @@ public class RoomManager : MonoBehaviour
         if (extrudable != null) {
             foreach (ObjectData extrudableData in GameManager.instance.roomData[currentRoom].extrudables) {
                 if (extrudableData.name == name) {
+                    if (extrudableData.animatorController != null) {
+                        Destroy(extrudable.GetComponent<Animator>());
+                    }
                     extrudable.GetComponent<SpriteRenderer>().sprite = extrudableData.extrudedSprite;
                 }
             }

@@ -29,7 +29,8 @@ MonoBehaviour:
   - {x: 2.14, y: -4.14, z: 0}
   - {x: 2.14, y: 2.92, z: 0}
   puzzles:
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.76, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
       circuitName: firstpuzzlewire
@@ -53,7 +54,8 @@ MonoBehaviour:
           twin: 1
         - text: if i connect these wires, i can hack into the door...
           twin: 1
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.76, y: -0.55, z: 0}
       circuitSprite: {fileID: 21300000, guid: 8c08b1003b27bcd4ab5850b81ccadf85, type: 3}
       circuitName: greenWire
@@ -99,7 +101,8 @@ MonoBehaviour:
           twin: 1
         - text: just gotta connect the wires to open the door...
           twin: 1
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: 36f7c9658d6a640f28420cb6620bb396, type: 3}
       circuitName: ext1-wire
@@ -124,7 +127,8 @@ MonoBehaviour:
       destinationName: ext0-slot
       isSolved: 0
     dialogues: []
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.83, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: e2e5953dd86924c11993b3437dbd1782, type: 3}
       circuitName: ext2-wire
@@ -148,7 +152,8 @@ MonoBehaviour:
           twin: 1
         - text: maybe this circuit can help us block the camera?
           twin: 1
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.8, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: f65450f430253469a941ab85e0c07012, type: 3}
       circuitName: ext3=wire
@@ -173,7 +178,8 @@ MonoBehaviour:
       destinationName: ext4-slot
       isSolved: 0
     dialogues: []
-  - circuitSprites:
+  - isSolved: 0
+    circuitSprites:
     - circuitInitPosition: {x: -6.82, y: -0.51, z: 0}
       circuitSprite: {fileID: 21300000, guid: a4cb2f8936eaf4a05a6db967f6c7b2f9, type: 3}
       circuitName: ext5-0-wire
