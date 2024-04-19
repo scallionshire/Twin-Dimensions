@@ -1,16 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour
 {
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
     private bool gameStarted = false;
+    private GameObject previousSelection;
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
-        if (!gameStarted) {
-            Cursor.lockState = CursorLockMode.None;
+        var currentSelection = EventSystem.current.currentSelectedGameObject;
+        if (currentSelection != null)
+        {
+            previousSelection = currentSelection;
+        }
+
+        if (currentSelection == null)
+        {
+            EventSystem.current.SetSelectedGameObject(previousSelection);
         }
     }
 
