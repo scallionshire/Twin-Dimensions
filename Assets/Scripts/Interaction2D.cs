@@ -93,6 +93,10 @@ public class Interaction2D : MonoBehaviour
         if (collider.gameObject.tag == "Block" && !isHoldingBlock)
         {
             collidedBlock = collider.gameObject;
+            if (tooltipManager != null)
+            {
+                tooltipManager.ShowSpaceTooltip();
+            }
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
@@ -112,7 +116,7 @@ public class Interaction2D : MonoBehaviour
 
     public void OnChildTriggerExited2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Block")
+        if (collider.gameObject.tag == "Block" && !isHoldingBlock)
         {
             collidedBlock = null;
         }

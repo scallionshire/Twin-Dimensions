@@ -51,6 +51,12 @@ public class TooltipManager : MonoBehaviour
         pressSpace.SetActive(toggle);
     }
 
+    public void ShowSpaceTooltip()
+    {
+        if (pressSpace.activeSelf) return;
+        StartCoroutine(ShowTooltip(pressSpace, 1f));
+    }
+
     public void ActivateControls()
     {
         StartCoroutine(ShowTooltip(controls, 5f));
