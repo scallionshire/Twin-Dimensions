@@ -244,26 +244,17 @@ public class GameManager : MonoBehaviour
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
                     }
-                    StartCoroutine(WaitBeforeUnfreezing());
+                    GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
+                    if (dialogueTrigger != null) {
+                        dialogueTrigger.GetComponent<Interactable>().Interact();
+                    }
+                    ToggleBokeh(false);
                 } else {
                     ToggleDialogueFreeze(false);
                     ToggleBokeh(false);
                 }
             }
         }
-    }
-
-    IEnumerator WaitBeforeUnfreezing()
-    {
-        GameObject[] diaTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
-        foreach (GameObject diaTrigger in diaTriggers) {
-            if (diaTrigger.name == "IntroDialogueTrigger") {
-                diaTrigger.GetComponent<Interactable>().Interact();
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        ToggleDialogueFreeze(false);
-        ToggleBokeh(false);
     }
 
     public void SwitchToPuzzle(int puzzleId, Level level, bool newMap = false) 
@@ -477,7 +468,6 @@ public class GameManager : MonoBehaviour
     public void PauseMainMusic(bool pause)
     {
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            Debug.Log("eventEmitter was null or not valid");
             eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter != null && eventEmitter.EventInstance.isValid())
