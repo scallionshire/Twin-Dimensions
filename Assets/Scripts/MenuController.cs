@@ -7,25 +7,10 @@ public class MenuController : MonoBehaviour
 {
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
     private bool gameStarted = false;
-    private GameObject previousSelection;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    void Update()
-    {
-        var currentSelection = EventSystem.current.currentSelectedGameObject;
-        if (currentSelection != null)
-        {
-            previousSelection = currentSelection;
-        }
-
-        if (currentSelection == null)
-        {
-            EventSystem.current.SetSelectedGameObject(previousSelection);
-        }
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void StartGame()
@@ -70,11 +55,6 @@ public class MenuController : MonoBehaviour
     {
         GetComponent<CanvasGroup>().interactable = !GetComponent<CanvasGroup>().interactable;
         GameManager.instance.TogglePauseMenu();
-    }
-
-    public void OpenCredits()
-    {
-        // SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()
