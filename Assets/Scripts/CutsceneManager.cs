@@ -70,6 +70,7 @@ public class CutsceneManager : MonoBehaviour
             currentCutscene = "outro";
         }
 
+        videoPlayer.targetTexture.Create();
         videoImage.color = new Color(1, 1, 1, 1);
         int index = cutsceneIndex[cutsceneName];        
 
@@ -79,7 +80,6 @@ public class CutsceneManager : MonoBehaviour
     #else
         videoPlayer.clip = cutscenes[index];
     #endif
-        videoPlayer.targetTexture.Create();
         videoPlayer.Play();
     }
 
