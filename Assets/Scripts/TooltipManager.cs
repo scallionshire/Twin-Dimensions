@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class TooltipManager : MonoBehaviour
     public GameObject pressQ;
     public GameObject pressSpace;
     public GameObject controls;
+    public GameObject pressESkip;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +19,13 @@ public class TooltipManager : MonoBehaviour
         pressQ = transform.Find("PressQ").gameObject;
         pressSpace = transform.Find("PressSpace").gameObject;
         controls = transform.Find("Controls").gameObject;
+        pressESkip = transform.Find("PressESkip").gameObject;
 
         leftClick.SetActive(false);
         pressQ.SetActive(false);
         pressSpace.SetActive(false);
         controls.SetActive(false);
+        pressESkip.SetActive(false);
     }
 
     public void ToggleClickTooltip(bool toggle)
@@ -60,6 +64,11 @@ public class TooltipManager : MonoBehaviour
     public void ActivateControls()
     {
         StartCoroutine(ShowTooltip(controls, 5f));
+    }
+
+    public void ToggleESkipTooltip(bool toggle)
+    {
+        pressESkip.SetActive(toggle);
     }
 
     IEnumerator ShowTooltip(GameObject tooltip, float duration = 3f)

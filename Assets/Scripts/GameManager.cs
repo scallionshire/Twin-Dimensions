@@ -191,14 +191,16 @@ public class GameManager : MonoBehaviour
                 ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
                 // Turn off particles
-                GameObject[] particles = GameObject.FindGameObjectsWithTag("ParticleSystem");
-                foreach (GameObject particle in particles) {
-                    if (particle.name == "PCParticleSystem") particle.SetActive(false);
-                }
                 firstSwitch = false;
                 if (cutsceneManager != null) {
                     cutsceneManager.PlayCutscene("switch");
                 }
+
+                GameObject[] particles = GameObject.FindGameObjectsWithTag("ParticleSystem");
+                foreach (GameObject particle in particles) {
+                    if (particle.name == "PCParticleSystem") particle.SetActive(false);
+                }
+
                 SwitchToMap(instance.gameState.CurrentLevel, true);
                 instance.gameState.LookAtPanelFlag = true;
             } else {
@@ -226,6 +228,10 @@ public class GameManager : MonoBehaviour
                 TogglePauseMenu();
             }
 
+            if (cutsceneManager.IsPlaying("intro") == true && Input.GetButtonDown("Fire1")) {
+                cutsceneManager.StopCutscene();
+            }
+
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
@@ -234,6 +240,10 @@ public class GameManager : MonoBehaviour
                 if (eventEmitter.EventInstance.isValid())
                 {
                     eventEmitter.EventInstance.setPaused(true);
+                }
+                
+                if (cutsceneManager.IsPlaying("intro")) {
+                    GameObject.Find("TooltipCanvas")?.GetComponent<TooltipManager>().ToggleESkipTooltip(true);
                 }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
                 cutscenePlaying = false;
@@ -244,11 +254,28 @@ public class GameManager : MonoBehaviour
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
                     }
-                    GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
-                    if (dialogueTrigger != null) {
-                        dialogueTrigger.GetComponent<Interactable>().Interact();
+
+                    if (firstSwitch) {
+                        GameObject.Find("TooltipCanvas")?.GetComponent<TooltipManager>().ToggleESkipTooltip(false);
+
+                        GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
+                        if (dialogueTrigger != null) {
+                            dialogueTrigger.GetComponent<Interactable>().Interact();
+                        }
+                        ToggleBokeh(false);
+                    } else {
+                        // This is the outro cutscene that just ended
+                        if (eventEmitter == null) {
+                            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+                        }
+                        if (eventEmitter.EventInstance.isValid()) {
+                            eventEmitter.EventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        }
+                        
+                        ToggleDialogueFreeze(false);
+                        ToggleBokeh(false);
+                        switchToScene("StartMenu");
                     }
-                    ToggleBokeh(false);
                 } else {
                     ToggleDialogueFreeze(false);
                     ToggleBokeh(false);
@@ -289,8 +316,8 @@ public class GameManager : MonoBehaviour
         if (cutsceneManager != null) {
             cutsceneManager.PlayCutscene("outro");
         } else {
-            cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
-            cutsceneManager.PlayCutscene("outro");
+            cutsceneManager = GameObject.Find("CutsceneManager")?.GetComponent<CutsceneManager>();
+            cutsceneManager?.PlayCutscene("outro");
         }
         eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         eventEmitter.EventInstance.setPaused(true);
@@ -518,14 +545,14 @@ public class GameManager : MonoBehaviour
         {
             instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
-            if (ActiveSceneName != "StartMenu" || ActiveSceneName != "") {
+            if (ActiveSceneName != "StartMenu") {
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
         else
         {
             instance.settingsMenu.SetActive(true);
-            // Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }
