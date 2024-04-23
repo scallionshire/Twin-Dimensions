@@ -191,14 +191,16 @@ public class GameManager : MonoBehaviour
                 ToggleBokeh(false);
                 GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().RemoveQTooltip();
                 // Turn off particles
-                GameObject[] particles = GameObject.FindGameObjectsWithTag("ParticleSystem");
-                foreach (GameObject particle in particles) {
-                    if (particle.name == "PCParticleSystem") particle.SetActive(false);
-                }
                 firstSwitch = false;
                 if (cutsceneManager != null) {
                     cutsceneManager.PlayCutscene("switch");
                 }
+
+                GameObject[] particles = GameObject.FindGameObjectsWithTag("ParticleSystem");
+                foreach (GameObject particle in particles) {
+                    if (particle.name == "PCParticleSystem") particle.SetActive(false);
+                }
+
                 SwitchToMap(instance.gameState.CurrentLevel, true);
                 instance.gameState.LookAtPanelFlag = true;
             } else {

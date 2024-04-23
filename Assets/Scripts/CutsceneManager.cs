@@ -79,6 +79,7 @@ public class CutsceneManager : MonoBehaviour
     #else
         videoPlayer.clip = cutscenes[index];
     #endif
+        videoPlayer.targetTexture.Create();
         videoPlayer.Play();
     }
 
@@ -89,6 +90,7 @@ public class CutsceneManager : MonoBehaviour
         cutsceneMusicInstance.release();
 
         videoImage.color = new Color(0, 0, 0, 0);
+        videoPlayer.targetTexture.Release();
         videoPlayer.Stop();
         videoPlayer.clip = null;
     }
@@ -98,8 +100,9 @@ public class CutsceneManager : MonoBehaviour
         currentCutscene = null;
         cutsceneMusicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         cutsceneMusicInstance.release();
-        
+
         videoImage.color = new Color(0, 0, 0, 0);
+        videoPlayer.targetTexture.Release();
         videoPlayer.Stop();
         videoPlayer.clip = null;
     }
