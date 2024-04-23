@@ -130,6 +130,12 @@ public class DialogueManager : MonoBehaviour
                 }
                 ToggleActive(false);
                 currentDialogueName = "";
+            } else if (currentDialogueName == "PCRoomIntro") {
+                if (GameObject.Find("TooltipCanvas") != null)
+                {
+                    GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ShowQTooltip();
+                }
+                EndDialogue();
             } else {
                 EndDialogue();
             }

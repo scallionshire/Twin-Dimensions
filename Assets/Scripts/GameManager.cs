@@ -200,6 +200,7 @@ public class GameManager : MonoBehaviour
                     cutsceneManager.PlayCutscene("switch");
                 }
                 SwitchToMap(instance.gameState.CurrentLevel, true);
+                instance.gameState.LookAtPanelFlag = true;
             } else {
                 if (ActiveSceneName == "new3Dtut")
                 {   
@@ -243,26 +244,17 @@ public class GameManager : MonoBehaviour
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
                     }
-                    StartCoroutine(WaitBeforeUnfreezing());
+                    GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
+                    if (dialogueTrigger != null) {
+                        dialogueTrigger.GetComponent<Interactable>().Interact();
+                    }
+                    ToggleBokeh(false);
                 } else {
                     ToggleDialogueFreeze(false);
                     ToggleBokeh(false);
                 }
             }
         }
-    }
-
-    IEnumerator WaitBeforeUnfreezing()
-    {
-        GameObject[] diaTriggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
-        foreach (GameObject diaTrigger in diaTriggers) {
-            if (diaTrigger.name == "IntroDialogueTrigger") {
-                diaTrigger.GetComponent<Interactable>().Interact();
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        ToggleDialogueFreeze(false);
-        ToggleBokeh(false);
     }
 
     public void SwitchToPuzzle(int puzzleId, Level level, bool newMap = false) 
@@ -476,7 +468,6 @@ public class GameManager : MonoBehaviour
     public void PauseMainMusic(bool pause)
     {
         if (eventEmitter == null || !eventEmitter.EventInstance.isValid()) {
-            Debug.Log("eventEmitter was null or not valid");
             eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         }
         if (eventEmitter != null && eventEmitter.EventInstance.isValid())
@@ -658,6 +649,15 @@ public class GameManager : MonoBehaviour
             GameObject.Find("TooltipCanvas").GetComponent<TooltipManager>().ToggleClickTooltip(false);
         } else {
             GameObject.Find("Light 2D").GetComponent<Light2D>().enabled = false;
+        }
+
+        // Active Panel cutscene
+        if (instance.gameState.LookAtPanelFlag) {
+            GameObject LookAtPanelTrigger = GameObject.Find("LookAtPanelTrigger");
+            if (LookAtPanelTrigger != null) {
+                LookAtPanelTrigger.GetComponent<Interactable>().Interact();
+            }
+            instance.gameState.LookAtPanelFlag = false;
         }
 
         // Lighting up the blue screens in the computer lab
@@ -888,6 +888,8 @@ public class GameState
     public bool PlayerHasUSB { get; set; }
     public bool USBInserted { get; set; }
 
+    public bool LookAtPanelFlag { get; set; }
+
     // ComputerLab
     public int BatteriesCollected { get; set; }
     public int TotalBatteries { get; } = 5;
@@ -940,6 +942,8 @@ public class GameState
 
         PlayerHasUSB = false;
         USBInserted = false;
+
+        LookAtPanelFlag = false;
 
         PlayerPosition2D = new Vector3(0.13f, 2.1f, 0.0f);
         PlayerPuzzlePosition2D = new Vector3(-6.64f,-1.75f,0f);
