@@ -459,10 +459,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 599730637150123113, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -471,21 +467,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1656768452759017679, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_DeselectOnBackgroundClick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726609146543712009, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4033866349891191790, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077827354846159433, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5303545734537166110, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_Pivot.x
@@ -567,10 +551,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5672313717657728606, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6293937996956782965, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -582,10 +562,6 @@ PrefabInstance:
     - target: {fileID: 6293937996956782965, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355978820815827154, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6663153007271416885, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_AnchorMax.y
@@ -608,52 +584,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1484320348}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 375758993}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSettings
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlaySFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SliderHandler, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277647388451117091, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2050214411731543721, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
@@ -662,17 +597,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 230040543995427593, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
   m_PrefabInstance: {fileID: 375758990}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &375758993 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8597508742243679326, guid: 8e233b0b87304c045abbea5342ab2001, type: 3}
-  m_PrefabInstance: {fileID: 375758990}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375758991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a96742b443895b4fb3bd8086cab9c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &551568508
 GameObject:
   m_ObjectHideFlags: 0

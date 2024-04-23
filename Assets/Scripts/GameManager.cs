@@ -226,6 +226,10 @@ public class GameManager : MonoBehaviour
                 TogglePauseMenu();
             }
 
+            if (cutsceneManager.IsPlaying("intro") == true && Input.GetButtonDown("Fire1")) {
+                cutsceneManager.StopCutscene();
+            }
+
             if (cutsceneManager.IsPlaying() && !cutscenePlaying && ActiveSceneName == "new3Dtut") {
                 ToggleDialogueFreeze(true);
                 ToggleBokeh(true);
@@ -234,6 +238,10 @@ public class GameManager : MonoBehaviour
                 if (eventEmitter.EventInstance.isValid())
                 {
                     eventEmitter.EventInstance.setPaused(true);
+                }
+                
+                if (cutsceneManager.IsPlaying("intro")) {
+                    GameObject.Find("TooltipCanvas")?.GetComponent<TooltipManager>().ToggleESkipTooltip(true);
                 }
             } else if (cutsceneManager.IsPlaying() == false && cutscenePlaying) {
                 cutscenePlaying = false;
@@ -244,11 +252,28 @@ public class GameManager : MonoBehaviour
                     if (eventEmitter.EventInstance.isValid()) {
                         eventEmitter.EventInstance.setPaused(false);
                     }
-                    GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
-                    if (dialogueTrigger != null) {
-                        dialogueTrigger.GetComponent<Interactable>().Interact();
+
+                    if (firstSwitch) {
+                        GameObject.Find("TooltipCanvas")?.GetComponent<TooltipManager>().ToggleESkipTooltip(false);
+
+                        GameObject dialogueTrigger = GameObject.Find("IntroDialogueTrigger");
+                        if (dialogueTrigger != null) {
+                            dialogueTrigger.GetComponent<Interactable>().Interact();
+                        }
+                        ToggleBokeh(false);
+                    } else {
+                        // This is the outro cutscene that just ended
+                        if (eventEmitter == null) {
+                            eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+                        }
+                        if (eventEmitter.EventInstance.isValid()) {
+                            eventEmitter.EventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        }
+                        
+                        ToggleDialogueFreeze(false);
+                        ToggleBokeh(false);
+                        switchToScene("StartMenu");
                     }
-                    ToggleBokeh(false);
                 } else {
                     ToggleDialogueFreeze(false);
                     ToggleBokeh(false);
@@ -289,8 +314,8 @@ public class GameManager : MonoBehaviour
         if (cutsceneManager != null) {
             cutsceneManager.PlayCutscene("outro");
         } else {
-            cutsceneManager = GameObject.Find("CutsceneManager").GetComponent<CutsceneManager>();
-            cutsceneManager.PlayCutscene("outro");
+            cutsceneManager = GameObject.Find("CutsceneManager")?.GetComponent<CutsceneManager>();
+            cutsceneManager?.PlayCutscene("outro");
         }
         eventEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
         eventEmitter.EventInstance.setPaused(true);

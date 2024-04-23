@@ -6,12 +6,21 @@ using UnityEngine.EventSystems;
 public class MenuController : MonoBehaviour
 {
     List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+    List<AsyncOperation> scenesToUnload = new List<AsyncOperation>();
     private bool gameStarted = false;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         GameManager.instance.ActiveSceneName = "StartMenu";
+    }
+
+    void OnEnable()
+    {
+        if (gameStarted)
+        {
+            UnloadGame();
+        }
     }
 
     public void StartGame()
@@ -50,6 +59,37 @@ public class MenuController : MonoBehaviour
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("new3Dtut"));
         GameManager.instance.gameStarted = true;
+    }
+
+    public void UnloadGame()
+    {
+        Debug.Log("Unloading game");
+
+        scenesToUnload.Add(SceneManager.UnloadSceneAsync("GUI"));
+        scenesToUnload.Add(SceneManager.UnloadSceneAsync("new3Dtut"));
+        scenesToUnload.Add(SceneManager.UnloadSceneAsync("mainPuzzle"));
+        scenesToUnload.Add(SceneManager.UnloadSceneAsync("new2dtut"));
+
+        StartCoroutine(Unload(scenesToUnload));
+    }
+
+    private IEnumerator<YieldInstruction> Unload(List<AsyncOperation> unloadOperations)
+    {
+        foreach (var unloadOp in unloadOperations)
+        {
+            while (!unloadOp.isDone)
+            {
+                yield return null;
+            }
+        }
+
+        GameManager.instance.ActiveSceneName = "StartMenu";
+        GameManager.instance.gameStarted = false;
+        GameManager.instance.gameState = new GameState();
+        GameManager.instance.firstSwitch = true;
+        GameManager.instance.tutorialPuzzle = Instantiate(GameManager.instance.initTutorialPuzzle);
+        GameManager.instance.computerPuzzle = Instantiate(GameManager.instance.initComputerPuzzle);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("StartMenu"));
     }
 
     public void OpenSettings()

@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 2629585986898406817}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &1656768452759017679
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 3315876356836362650, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   m_TrackedDevicePositionAction: {fileID: -2685011840982566482, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 866086146319705810, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
-  m_DeselectOnBackgroundClick: 0
+  m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!1 &2161259313391468330
@@ -1100,9 +1100,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: OpenSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 8597508742243679326}
         m_TargetAssemblyTypeName: SliderHandler, Assembly-CSharp
-        m_MethodName: QuitSettings
+        m_MethodName: PlaySFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
