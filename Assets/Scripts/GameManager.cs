@@ -518,7 +518,7 @@ public class GameManager : MonoBehaviour
         {
             instance.settingsMenu.SetActive(false);
             Time.timeScale = 1f;
-            if (ActiveSceneName != "StartMenu" || ActiveSceneName != "") {
+            if (ActiveSceneName != "StartMenu") {
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }

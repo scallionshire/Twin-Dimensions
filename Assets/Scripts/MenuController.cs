@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        GameManager.instance.ActiveSceneName = "StartMenu";
     }
 
     public void StartGame()
